@@ -293,6 +293,44 @@
       .section-body, p { overflow-wrap: anywhere; }
     }
 
+
+    /* WRITE-A-BLOG CTA (hero) */
+    .write-blog-cta{position:relative;z-index:1;margin-top:28px;display:flex;justify-content:center;}
+
+    /* COMMUNITY POSTS SECTION */
+    .community-section{padding:8px 48px 0;}
+    .community-empty{border:1px dashed rgba(217,186,111,.25);padding:36px;text-align:center;color:var(--silver);opacity:.55;font-size:13px;font-weight:300;}
+    .community-status{font-size:11px;color:var(--gold-bronze);letter-spacing:1px;margin-bottom:14px;display:none;}
+    .community-badge{position:absolute;top:20px;left:20px;background:rgba(26,26,23,.85);border:1px solid rgba(217,186,111,.35);color:var(--gold);font-size:9px;font-weight:800;letter-spacing:2px;text-transform:uppercase;padding:5px 12px;z-index:2;}
+
+    /* MODAL OVERLAY (shared: write form + reader) */
+    .modal-overlay{position:fixed;inset:0;background:rgba(10,10,9,.82);backdrop-filter:blur(4px);z-index:10000;display:none;align-items:flex-start;justify-content:center;padding:90px 20px 40px;overflow-y:auto;}
+    .modal-overlay.open{display:flex;}
+    .modal-box{background:var(--matte-black);border:1px solid rgba(217,186,111,.25);border-top:2px solid var(--gold);max-width:680px;width:100%;padding:40px 36px 36px;position:relative;}
+    .modal-close{position:absolute;top:16px;right:16px;width:32px;height:32px;display:flex;align-items:center;justify-content:center;background:transparent;border:1px solid rgba(217,186,111,.25);color:var(--gold-bronze);cursor:pointer;font-size:14px;transition:all .2s;}
+    .modal-close:hover{color:var(--gold);border-color:var(--gold);}
+    .modal-title{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:600;color:var(--champagne);margin-bottom:6px;}
+    .modal-sub{font-size:12px;color:var(--silver);opacity:.6;margin-bottom:26px;}
+    .form-row{margin-bottom:18px;}
+    .form-row label{display:block;font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold-bronze);margin-bottom:8px;}
+    .form-row input,.form-row select,.form-row textarea{width:100%;background:#141412;border:1px solid rgba(217,186,111,.2);color:var(--silver);padding:12px 14px;font-family:'Montserrat',sans-serif;font-size:13px;font-weight:400;transition:border-color .2s;}
+    .form-row input:focus,.form-row select:focus,.form-row textarea:focus{outline:none;border-color:var(--gold);}
+    .form-row textarea{resize:vertical;min-height:110px;line-height:1.7;}
+    .form-two{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+    .form-hint{font-size:10.5px;color:var(--silver);opacity:.45;margin-top:6px;}
+    .form-msg{font-size:12px;padding:12px 14px;margin-bottom:18px;display:none;}
+    .form-msg.err{background:rgba(200,60,50,.12);border:1px solid rgba(200,60,50,.35);color:#e08c85;display:block;}
+    .form-msg.ok{background:rgba(90,180,120,.1);border:1px solid rgba(90,180,120,.3);color:#8fd6a8;display:block;}
+    .modal-submit{width:100%;justify-content:center;margin-top:6px;}
+    .modal-submit[disabled]{opacity:.5;cursor:not-allowed;}
+
+    /* READER MODAL */
+    .reader-cat{font-size:10px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold-mid);margin-bottom:12px;display:inline-block;}
+    .reader-title{font-family:'Cormorant Garamond',serif;font-size:clamp(24px,4vw,34px);font-weight:600;color:var(--champagne);line-height:1.25;margin-bottom:14px;}
+    .reader-meta{font-size:11px;color:var(--silver);opacity:.5;margin-bottom:24px;display:flex;gap:14px;flex-wrap:wrap;}
+    .reader-body{font-size:14px;font-weight:300;line-height:1.9;color:var(--silver);opacity:.85;white-space:pre-wrap;}
+
+    @media(max-width:640px){.form-two{grid-template-columns:1fr;}.modal-box{padding:30px 22px 26px;}}
   </style>
 </head>
 <body>
@@ -321,6 +359,7 @@
   <h1 class="pht gold-text">The Prestige Journal</h1>
   <div class="phl"><span><i class="fa-solid fa-pen-nib"></i></span></div>
   <p class="phst">Travel guides, resort tips, member stories, and everything you need to plan a better holiday.</p>
+  <div class="write-blog-cta"><button class="btn bg" onclick="openWriteModal()"><i class="fa-solid fa-pen"></i> Write a Blog</button></div>
 </section>
 
 <!-- STICKY CATEGORY FILTER — WP: generated via wp_list_categories() or custom taxonomy -->
@@ -333,6 +372,7 @@
     <button class="cat-tab" onclick="filterCat('events',this)">Events <span class="cat-tab-count">6</span></button>
     <button class="cat-tab" onclick="filterCat('membership',this)">Membership <span class="cat-tab-count">9</span></button>
     <button class="cat-tab" onclick="filterCat('travel-tips',this)">Travel Tips <span class="cat-tab-count">7</span></button>
+    <button class="cat-tab" style="color:var(--gold);opacity:1;" onclick="openWriteModal()"><i class="fa-solid fa-pen" style="margin-right:6px;"></i>Write a Blog</button>
   </div>
 </div>
 
@@ -369,6 +409,18 @@
     </div>
   </a>
 </div>
+
+<!-- COMMUNITY POSTS — written from the website, stored in Firebase Firestore -->
+<section class="community-section">
+  <div class="ct">
+    <div class="blog-section-header fi">
+      <h2 class="blog-section-title">From Our Readers</h2>
+      <span class="community-status" id="communityStatus">Loading community posts…</span>
+    </div>
+    <div class="blog-grid" id="communityGrid"></div>
+    <div class="community-empty" id="communityEmpty" style="display:none;">No community posts yet — be the first to <a href="javascript:void(0)" onclick="openWriteModal()" style="color:var(--gold);text-decoration:underline;">write one</a>.</div>
+  </div>
+</section>
 
 <!-- BLOG GRID — WP: WP_Query with posts_per_page -->
 <section class="blog-section">
@@ -706,6 +758,60 @@
   </div>
 </footer>
 
+<!-- WRITE-A-BLOG MODAL -->
+<div class="modal-overlay" id="writeModalOverlay">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeWriteModal()"><i class="fa-solid fa-xmark"></i></button>
+    <div class="modal-title gold-text">Write a Blog</div>
+    <div class="modal-sub">Share a travel story, tip, or member experience — it will be published to this page for everyone to read.</div>
+    <div class="form-msg" id="writeFormMsg"></div>
+    <form id="writeForm" onsubmit="submitBlogPost(event)">
+      <div class="form-two">
+        <div class="form-row">
+          <label>Your Name</label>
+          <input type="text" id="postAuthor" maxlength="60" required placeholder="e.g. Priya Suresh" />
+        </div>
+        <div class="form-row">
+          <label>Category</label>
+          <select id="postCategory" required>
+            <option value="destinations">Destinations</option>
+            <option value="resort-tips">Resort Tips</option>
+            <option value="member-stories">Member Stories</option>
+            <option value="events">Events</option>
+            <option value="membership">Membership</option>
+            <option value="travel-tips">Travel Tips</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-row">
+        <label>Title</label>
+        <input type="text" id="postTitle" maxlength="120" required placeholder="e.g. Our Weekend at The Country Bay" />
+      </div>
+      <div class="form-row">
+        <label>Image URL (optional)</label>
+        <input type="url" id="postImage" placeholder="https://..." />
+        <div class="form-hint">Paste a link to an image, or leave blank to use a placeholder.</div>
+      </div>
+      <div class="form-row">
+        <label>Your Story</label>
+        <textarea id="postContent" maxlength="6000" required placeholder="Write your blog here..."></textarea>
+      </div>
+      <button type="submit" class="btn bg modal-submit" id="writeSubmitBtn"><i class="fa-solid fa-paper-plane"></i> Publish Blog</button>
+    </form>
+  </div>
+</div>
+
+<!-- READ POST MODAL -->
+<div class="modal-overlay" id="readModalOverlay">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeReadModal()"><i class="fa-solid fa-xmark"></i></button>
+    <span class="reader-cat" id="readerCat"></span>
+    <h2 class="reader-title" id="readerTitle"></h2>
+    <div class="reader-meta"><span id="readerAuthor"></span><span id="readerDate"></span></div>
+    <div class="reader-body" id="readerBody"></div>
+  </div>
+</div>
+
 <script>
   const nav=document.getElementById('mainNav');
   window.addEventListener('scroll',()=>{nav.classList.toggle('scrolled',window.scrollY>60);});
@@ -802,6 +908,198 @@
       }
     });
   });
+})();
+</script>
+
+<!-- FIREBASE — community blog write/read -->
+<script src="https://www.gstatic.com/firebasejs/10.13.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.13.0/firebase-firestore-compat.js"></script>
+<script>
+(function () {
+  const firebaseConfig = {
+    apiKey: "AIzaSyCXyeG8d2Xqa4l6lw2oxRsMnovzWRPvcVc",
+    authDomain: "chatapp-f4237.firebaseapp.com",
+    databaseURL: "https://chatapp-f4237-default-rtdb.asia-southeast1.firebasedatabase.app",
+    projectId: "chatapp-f4237",
+    storageBucket: "chatapp-f4237.firebasestorage.app",
+    messagingSenderId: "830433078140",
+    appId: "1:830433078140:web:85182fb345151dc91ed2f9",
+    measurementId: "G-G1MR37FM94"
+  };
+
+  firebase.initializeApp(firebaseConfig);
+  const db = firebase.firestore();
+  const POSTS_COLLECTION = 'communityBlogPosts';
+
+  const CAT_LABELS = {
+    'destinations':'Destinations','resort-tips':'Resort Tips','member-stories':'Member Stories',
+    'events':'Events','membership':'Membership','travel-tips':'Travel Tips'
+  };
+
+  function escapeHtml(str) {
+    const div = document.createElement('div');
+    div.textContent = str == null ? '' : String(str);
+    return div.innerHTML;
+  }
+
+  function initials(name) {
+    return (name || 'P').trim().charAt(0).toUpperCase();
+  }
+
+  function formatDate(ts) {
+    try {
+      const d = ts && ts.toDate ? ts.toDate() : new Date();
+      return d.toLocaleDateString('en-GB', { day:'numeric', month:'long', year:'numeric' });
+    } catch (e) { return ''; }
+  }
+
+  function readingTime(text) {
+    const words = (text || '').trim().split(/\s+/).filter(Boolean).length;
+    return Math.max(1, Math.round(words / 200));
+  }
+
+  function excerptOf(text) {
+    const clean = (text || '').replace(/\s+/g, ' ').trim();
+    return clean.length > 160 ? clean.slice(0, 157) + '…' : clean;
+  }
+
+  // ---- Render a community post card ----
+  function renderCard(id, data) {
+    const article = document.createElement('article');
+    article.className = 'blog-card fi vis';
+    article.dataset.cat = data.category || 'travel-tips';
+
+    const imgHtml = data.imageUrl
+      ? `<img src="${escapeHtml(data.imageUrl)}" alt="${escapeHtml(data.title)}" style="width:100%;height:100%;object-fit:cover;" onerror="this.parentElement.innerHTML='<div class=&quot;blog-card-img-ph&quot;><i class=&quot;fa-solid fa-feather-pointed blog-card-img-icon&quot;></i></div>'">`
+      : `<div class="blog-card-img-ph"><i class="fa-solid fa-feather-pointed blog-card-img-icon"></i></div>`;
+
+    article.innerHTML = `
+      <div style="position:relative;">
+        <div class="community-badge"><i class="fa-solid fa-users"></i> Community</div>
+        <div class="blog-card-img">${imgHtml}<span class="blog-cat-pill">${escapeHtml(CAT_LABELS[data.category] || 'Travel Tips')}</span></div>
+      </div>
+      <div class="blog-card-body">
+        <div class="blog-card-meta">
+          <span class="blog-card-date">${formatDate(data.createdAt)}</span>
+          <span class="blog-card-dot"></span>
+          <span class="blog-card-read"><i class="fa-regular fa-clock"></i> ${readingTime(data.content)} min</span>
+        </div>
+        <h3 class="blog-card-title">${escapeHtml(data.title)}</h3>
+        <p class="blog-card-excerpt">${escapeHtml(excerptOf(data.content))}</p>
+        <div class="blog-card-footer">
+          <div class="blog-card-author">
+            <div class="blog-card-avatar">${escapeHtml(initials(data.author))}</div>
+            <span class="blog-card-author-name">${escapeHtml(data.author || 'Guest')}</span>
+          </div>
+          <span class="blog-card-link">Read <i class="fa-solid fa-arrow-right"></i></span>
+        </div>
+      </div>`;
+
+    article.style.cursor = 'pointer';
+    article.addEventListener('click', () => openReadModal(data));
+    return article;
+  }
+
+  // ---- Live-load posts from Firestore ----
+  function listenForPosts() {
+    const grid = document.getElementById('communityGrid');
+    const empty = document.getElementById('communityEmpty');
+    const status = document.getElementById('communityStatus');
+
+    db.collection(POSTS_COLLECTION).orderBy('createdAt', 'desc').limit(30)
+      .onSnapshot((snap) => {
+        status.style.display = 'none';
+        grid.innerHTML = '';
+        if (snap.empty) {
+          empty.style.display = 'block';
+          return;
+        }
+        empty.style.display = 'none';
+        snap.forEach((doc) => grid.appendChild(renderCard(doc.id, doc.data())));
+      }, (err) => {
+        console.error('Firestore read error:', err);
+        status.textContent = 'Could not load community posts. Check Firebase config / connection.';
+        status.style.display = 'block';
+      });
+  }
+
+  // ---- Write modal controls ----
+  window.openWriteModal = function () {
+    document.getElementById('writeModalOverlay').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  };
+  window.closeWriteModal = function () {
+    document.getElementById('writeModalOverlay').classList.remove('open');
+    document.body.style.overflow = '';
+  };
+
+  // ---- Read modal controls ----
+  window.openReadModal = function (data) {
+    document.getElementById('readerCat').textContent = CAT_LABELS[data.category] || 'Travel Tips';
+    document.getElementById('readerTitle').textContent = data.title || '';
+    document.getElementById('readerAuthor').textContent = data.author || 'Guest';
+    document.getElementById('readerDate').textContent = formatDate(data.createdAt);
+    document.getElementById('readerBody').textContent = data.content || '';
+    document.getElementById('readModalOverlay').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  };
+  window.closeReadModal = function () {
+    document.getElementById('readModalOverlay').classList.remove('open');
+    document.body.style.overflow = '';
+  };
+
+  // Close modals on overlay click or Escape
+  ['writeModalOverlay', 'readModalOverlay'].forEach((id) => {
+    document.getElementById(id).addEventListener('click', (e) => {
+      if (e.target.id === id) { id === 'writeModalOverlay' ? closeWriteModal() : closeReadModal(); }
+    });
+  });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') { closeWriteModal(); closeReadModal(); }
+  });
+
+  // ---- Submit new post ----
+  window.submitBlogPost = function (evt) {
+    evt.preventDefault();
+    const msg = document.getElementById('writeFormMsg');
+    const btn = document.getElementById('writeSubmitBtn');
+    msg.className = 'form-msg';
+    msg.textContent = '';
+
+    const author = document.getElementById('postAuthor').value.trim();
+    const category = document.getElementById('postCategory').value;
+    const title = document.getElementById('postTitle').value.trim();
+    const imageUrl = document.getElementById('postImage').value.trim();
+    const content = document.getElementById('postContent').value.trim();
+
+    if (!author || !title || !content) {
+      msg.className = 'form-msg err';
+      msg.textContent = 'Please fill in your name, a title, and your story.';
+      return;
+    }
+
+    btn.disabled = true;
+    btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Publishing…';
+
+    db.collection(POSTS_COLLECTION).add({
+      author, category, title, imageUrl: imageUrl || null, content,
+      createdAt: firebase.firestore.FieldValue.serverTimestamp()
+    }).then(() => {
+      msg.className = 'form-msg ok';
+      msg.textContent = 'Published! Your blog is now live on this page.';
+      document.getElementById('writeForm').reset();
+      setTimeout(closeWriteModal, 1200);
+    }).catch((err) => {
+      console.error('Firestore write error:', err);
+      msg.className = 'form-msg err';
+      msg.textContent = 'Something went wrong publishing your blog. Please try again.';
+    }).finally(() => {
+      btn.disabled = false;
+      btn.innerHTML = '<i class="fa-solid fa-paper-plane"></i> Publish Blog';
+    });
+  };
+
+  listenForPosts();
 })();
 </script>
 
