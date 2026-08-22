@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Holiday Membership | Prestige Vacations | Join 14,000+ Members in Chennai</title>
+  <meta name="description" content="Join Prestige Vacations membership — Chennai's most trusted holiday membership with 14,000+ members. Choose from Club or Holiday membership plans and unlock resort stays, day outings, events and tour packages." />
+  <meta name="keywords" content="Prestige Vacations membership, Prestige Clubs and Resorts membership, holiday membership Chennai, resort membership Chennai, Prestige Vacations reviews membership, club membership Chennai" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600&family=Great+Vibes&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    :root {
+      --black:#1A1A17;--matte-black:#1C1B18;--gold:#D9BA6F;--gold-mid:#C9A44B;
+      --gold-bronze:#A3895A;--gold-dark:#504834;--silver:#DCDCDC;--white:#FFFFFF;
+      --champagne:#E8D8B0;--cream:#F2E7C7;--charcoal:#222222;--dark-gray:#2F2F2F;
+      --gold-glow:rgba(217,186,111,0.18);--nav-h:80px;
+    }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    html{scroll-behavior:smooth;}
+    body{font-family:'Montserrat',sans-serif;background:var(--black);color:var(--silver);overflow-x:hidden;}
+    a{text-decoration:none;color:inherit;}
+    ul{list-style:none;}
+    .gold-text{background:linear-gradient(135deg,#C9A44B 0%,#D9BA6F 35%,#F2E7C7 55%,#D9BA6F 75%,#A3895A 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+    .section-label{font-family:'Montserrat',sans-serif;font-size:11px;font-weight:600;letter-spacing:4px;text-transform:uppercase;color:var(--gold-mid);display:block;margin-bottom:14px;}
+    .section-title{font-family:'Cormorant Garamond',serif;font-size:clamp(32px,5vw,52px);font-weight:600;line-height:1.15;color:var(--champagne);}
+    .section-body{font-size:15px;font-weight:300;line-height:1.85;color:var(--silver);max-width:620px;}
+    .container{max-width:1200px;margin:0 auto;}
+    .text-center{text-align:center;}
+    .section{padding:100px 48px;}
+    .section-dark{background:var(--black);}
+    .section-deep{background:#141412;}
+    .section-cream{background:linear-gradient(135deg,var(--cream) 0%,var(--champagne) 50%,#E0CFA0 100%);}
+    .section-cream .section-title{color:var(--charcoal);}
+    .section-cream .section-body{color:var(--dark-gray);}
+    .gold-rule{width:40px;height:2px;background:linear-gradient(90deg,var(--gold-mid),var(--gold));margin:24px 0;}
+    .ornament{display:flex;align-items:center;gap:14px;margin:0 auto 56px;max-width:340px;}
+    .ornament::before,.ornament::after{content:'';flex:1;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);}
+    .ornament-icon{color:var(--gold);font-size:13px;}
+    .section-cream .ornament::before,.section-cream .ornament::after{background:linear-gradient(90deg,transparent,var(--gold-mid),transparent);}
+    .btn{display:inline-flex;align-items:center;gap:8px;padding:14px 32px;font-family:'Montserrat',sans-serif;font-size:12px;font-weight:600;letter-spacing:2px;text-transform:uppercase;cursor:pointer;transition:all 0.3s ease;border:none;}
+    .btn-gold{background:linear-gradient(135deg,var(--gold-mid),var(--gold),var(--gold-mid));color:var(--black);}
+    .btn-gold:hover{background:linear-gradient(135deg,var(--gold),var(--cream),var(--gold));transform:translateY(-2px);box-shadow:0 8px 24px rgba(217,186,111,0.35);}
+    .btn-outline{background:transparent;border:1px solid var(--gold);color:var(--gold);}
+    .btn-outline:hover{background:var(--gold-glow);color:var(--cream);transform:translateY(-2px);}
+    .btn-outline-dark{display:inline-flex;align-items:center;gap:8px;padding:12px 28px;font-family:'Montserrat',sans-serif;font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;background:transparent;border:1px solid var(--gold-mid);color:var(--gold-mid);transition:all .3s;}
+    .btn-outline-dark:hover{background:rgba(201,164,75,0.1);border-color:var(--gold);color:var(--gold);}
+    .btn-whatsapp{background:#25D366;color:#fff;display:inline-flex;align-items:center;gap:8px;padding:14px 32px;font-family:'Montserrat',sans-serif;font-size:12px;font-weight:600;letter-spacing:2px;text-transform:uppercase;transition:all .3s;}
+    .btn-whatsapp:hover{background:#20ba59;transform:translateY(-2px);box-shadow:0 8px 24px rgba(37,211,102,0.3);}
+    /* NAV */
+    .nav{position:fixed;top:0;left:0;right:0;z-index:9000;height:var(--nav-h);display:flex;align-items:center;padding:0 48px;background:rgba(26,26,23,0.92);backdrop-filter:blur(12px);border-bottom:1px solid rgba(217,186,111,0.15);transition:all 0.4s ease;}
+    .nav.scrolled{background:rgba(26,26,23,0.98);box-shadow:0 4px 24px rgba(0,0,0,0.4);}
+    .nav-logo{flex-shrink:0;margin-right:auto;}
+    .nav-logo-text{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:700;line-height:1.1;}
+    .nav-logo-sub{font-family:'Montserrat',sans-serif;font-size:9px;letter-spacing:3px;color:var(--gold-bronze);text-transform:uppercase;}
+    .nav-links{display:flex;align-items:center;gap:6px;}
+    .nav-item{position:relative;}
+    .nav-link{display:flex;align-items:center;gap:5px;padding:8px 14px;font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--silver);transition:color 0.2s;white-space:nowrap;}
+    .nav-link:hover,.nav-link.active{color:var(--gold);}
+    .nav-link .fa-chevron-down{font-size:8px;transition:transform 0.2s;}
+    .nav-item:hover .fa-chevron-down{transform:rotate(180deg);}
+    .nav-dropdown{position:absolute;top:calc(100% + 10px);left:0;background:var(--matte-black);border:1px solid rgba(217,186,111,0.2);border-top:2px solid var(--gold);min-width:220px;opacity:0;visibility:hidden;transform:translateY(-8px);transition:all 0.25s ease;z-index:9999;}
+    .nav-item:hover .nav-dropdown{opacity:1;visibility:visible;transform:translateY(0);}
+    .nav-dropdown a{display:flex;align-items:center;gap:10px;padding:13px 20px;font-size:12px;font-weight:500;color:var(--silver);border-bottom:1px solid rgba(217,186,111,0.08);transition:all 0.2s;}
+    .nav-dropdown a:last-child{border-bottom:none;}
+    .nav-dropdown a i{color:var(--gold-bronze);width:14px;font-size:11px;}
+    .nav-dropdown a:hover{background:var(--gold-glow);color:var(--gold);padding-left:26px;}
+    .nav-dropdown a:hover i{color:var(--gold);}
+    .nav-cta{margin-left:16px;padding:10px 22px;font-size:10px;}
+    /* PAGE HERO */
+    .page-hero{position:relative;padding:calc(var(--nav-h) + 90px) 48px 90px;background-color:var(--black);background-image:radial-gradient(ellipse 50% 60% at 0% 0%,rgba(217,186,111,0.18) 0%,transparent 55%),radial-gradient(ellipse 50% 60% at 100% 0%,rgba(217,186,111,0.18) 0%,transparent 55%),radial-gradient(ellipse 30% 30% at 50% 100%,rgba(201,164,75,0.1) 0%,transparent 50%);text-align:center;border-bottom:1px solid rgba(217,186,111,0.12);overflow:hidden;}
+    .page-hero::before{content:'';position:absolute;inset:0;background-image:radial-gradient(circle 1px at 12% 18%,rgba(217,186,111,0.6) 0%,transparent 100%),radial-gradient(circle 1px at 88% 22%,rgba(217,186,111,0.5) 0%,transparent 100%),radial-gradient(circle 1px at 65% 80%,rgba(242,231,199,0.45) 0%,transparent 100%),radial-gradient(circle 1px at 30% 75%,rgba(217,186,111,0.4) 0%,transparent 100%),radial-gradient(circle 1px at 50% 8%,rgba(201,164,75,0.5) 0%,transparent 100%);pointer-events:none;}
+    .page-hero-breadcrumb{display:flex;align-items:center;justify-content:center;gap:8px;margin-bottom:28px;font-size:11px;font-weight:500;letter-spacing:2px;text-transform:uppercase;color:var(--gold-bronze);position:relative;z-index:1;}
+    .page-hero-breadcrumb a{color:var(--gold-bronze);transition:color 0.2s;}
+    .page-hero-breadcrumb a:hover{color:var(--gold);}
+    .page-hero-breadcrumb i{font-size:8px;color:var(--gold-dark);}
+    .page-hero-script{font-family:'Great Vibes',cursive;font-size:clamp(26px,4vw,44px);color:var(--silver);opacity:0.8;display:block;margin-bottom:12px;position:relative;z-index:1;}
+    .page-hero-title{font-family:'Cormorant Garamond',serif;font-size:clamp(48px,9vw,96px);font-weight:700;letter-spacing:4px;line-height:1.0;margin-bottom:24px;position:relative;z-index:1;}
+    .page-hero-line{display:flex;align-items:center;gap:16px;justify-content:center;margin-bottom:28px;position:relative;z-index:1;}
+    .page-hero-line::before,.page-hero-line::after{content:'';width:60px;height:1px;background:linear-gradient(90deg,transparent,var(--gold));}
+    .page-hero-line::after{background:linear-gradient(90deg,var(--gold),transparent);}
+    .page-hero-line span{color:var(--gold);font-size:10px;}
+    .page-hero-subtitle{font-family:'Cormorant Garamond',serif;font-size:clamp(16px,2.5vw,22px);font-style:italic;font-weight:300;color:var(--silver);opacity:0.75;max-width:680px;margin:0 auto 40px;position:relative;z-index:1;}
+    .page-hero-ctas{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;position:relative;z-index:1;}
+    /* STATS BAND */
+    .stats-band{background:linear-gradient(135deg,#141412,#1C1B18,#141412);border-top:1px solid rgba(217,186,111,0.2);border-bottom:1px solid rgba(217,186,111,0.2);padding:40px 48px;}
+    .stats-band-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0;max-width:900px;margin:0 auto;}
+    .stat-item{text-align:center;padding:20px 16px;border-right:1px solid rgba(217,186,111,0.15);}
+    .stat-item:last-child{border-right:none;}
+    .stat-num{font-family:'Cormorant Garamond',serif;font-size:48px;font-weight:700;line-height:1;margin-bottom:6px;}
+    .stat-label{font-size:10px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--gold-bronze);}
+    /* MEMBERSHIP CARDS */
+    .membership-cards{display:grid;grid-template-columns:1fr 1fr;gap:28px;}
+    .mem-card{border:1px solid rgba(217,186,111,0.2);overflow:hidden;transition:all 0.35s ease;position:relative;}
+    .mem-card:hover{border-color:var(--gold);transform:translateY(-6px);box-shadow:0 20px 50px rgba(0,0,0,0.4),0 0 0 1px rgba(217,186,111,0.15);}
+    .mem-card-top{padding:44px 40px;background:#141412;position:relative;}
+    .mem-card-top::before{content:'';position:absolute;top:0;left:0;width:100%;height:3px;background:linear-gradient(90deg,var(--gold-mid),var(--gold),var(--gold-mid));}
+    .mem-card-num{font-family:'Cormorant Garamond',serif;font-size:80px;font-weight:700;color:rgba(217,186,111,0.05);position:absolute;bottom:-10px;right:20px;line-height:1;pointer-events:none;}
+    .mem-card-icon{width:64px;height:64px;border:1px solid rgba(217,186,111,0.3);display:flex;align-items:center;justify-content:center;margin-bottom:20px;}
+    .mem-card-icon i{font-size:26px;color:var(--gold-mid);}
+    .mem-card-type{font-size:10px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--gold-mid);margin-bottom:10px;}
+    .mem-card-name{font-family:'Cormorant Garamond',serif;font-size:34px;font-weight:600;color:var(--champagne);margin-bottom:14px;line-height:1.1;}
+    .mem-card-desc{font-size:14px;font-weight:300;line-height:1.75;color:var(--silver);opacity:0.8;margin-bottom:0;}
+    .mem-card-body{padding:32px 40px;background:#1a1a16;}
+    .mem-card-features{margin-bottom:28px;}
+    .mem-feature{display:flex;align-items:flex-start;gap:12px;padding:11px 0;border-bottom:1px solid rgba(217,186,111,0.08);}
+    .mem-feature:last-child{border-bottom:none;}
+    .mem-feature i{color:var(--gold);font-size:12px;margin-top:3px;flex-shrink:0;}
+    .mem-feature-text{font-size:13px;font-weight:300;color:var(--silver);line-height:1.5;}
+    .mem-feature-text strong{color:var(--champagne);font-weight:500;}
+    /* HOW IT WORKS */
+    .steps-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0;position:relative;}
+    .steps-grid::before{content:'';position:absolute;top:32px;left:12.5%;right:12.5%;height:1px;background:linear-gradient(90deg,transparent,var(--gold-mid),var(--gold),var(--gold-mid),transparent);z-index:0;}
+    .step-item{text-align:center;padding:0 20px;position:relative;z-index:1;}
+    .step-num-wrap{width:64px;height:64px;border:2px solid var(--gold);background:var(--black);display:flex;align-items:center;justify-content:center;margin:0 auto 20px;position:relative;z-index:2;}
+    .step-num{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:700;line-height:1;}
+    .step-icon{font-size:22px;color:var(--gold-mid);margin-bottom:14px;}
+    .step-title{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:600;color:var(--champagne);margin-bottom:10px;}
+    .step-desc{font-size:12px;font-weight:300;line-height:1.7;color:var(--silver);opacity:0.75;}
+    /* WHAT YOU GET */
+    .benefits-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;}
+    .benefit-card{background:#141412;border:1px solid rgba(217,186,111,0.08);padding:40px 32px;transition:all 0.3s;position:relative;overflow:hidden;}
+    .benefit-card::before{content:'';position:absolute;bottom:0;left:0;width:0;height:2px;background:linear-gradient(90deg,var(--gold-mid),var(--gold));transition:width 0.4s;}
+    .benefit-card:hover::before{width:100%;}
+    .benefit-card:hover{background:#1a1a16;border-color:rgba(217,186,111,0.2);}
+    .benefit-icon{font-size:30px;color:var(--gold-bronze);margin-bottom:18px;transition:color 0.3s;}
+    .benefit-card:hover .benefit-icon{color:var(--gold);}
+    .benefit-title{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:600;color:var(--champagne);margin-bottom:10px;}
+    .benefit-desc{font-size:13px;font-weight:300;line-height:1.75;color:var(--silver);opacity:0.75;}
+    /* COMPARE TABLE */
+    .compare-table{width:100%;border-collapse:collapse;border:1px solid rgba(217,186,111,0.15);}
+    .compare-table th{padding:18px 24px;font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:600;text-align:center;border-bottom:2px solid var(--gold);}
+    .compare-table th:first-child{text-align:left;border-bottom:2px solid rgba(217,186,111,0.2);}
+    .compare-table th.col-club{background:#141412;color:var(--champagne);}
+    .compare-table th.col-holiday{background:linear-gradient(135deg,#1a1a15,#141412);color:var(--champagne);}
+    .compare-table th.col-feature{background:var(--black);color:var(--silver);font-size:11px;letter-spacing:2px;text-transform:uppercase;font-family:'Montserrat',sans-serif;font-weight:600;}
+    .compare-table td{padding:14px 24px;font-size:13px;font-weight:300;border-bottom:1px solid rgba(217,186,111,0.06);vertical-align:middle;}
+    .compare-table td:first-child{color:var(--silver);opacity:0.85;font-weight:400;}
+    .compare-table td:not(:first-child){text-align:center;background:rgba(217,186,111,0.02);}
+    .compare-table td:last-child{background:rgba(217,186,111,0.04);}
+    .compare-table tr:hover td{background:rgba(217,186,111,0.04);}
+    .compare-table tr:hover td:last-child{background:rgba(217,186,111,0.07);}
+    .check{color:var(--gold);font-size:16px;}
+    .cross{color:var(--gold-dark);font-size:14px;opacity:0.5;}
+    .partial{color:var(--gold-bronze);font-size:12px;font-weight:500;}
+    /* TESTIMONIAL STRIP */
+    .testi-strip{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+    .testi-card{background:#1a1a17;border:1px solid rgba(217,186,111,0.12);padding:32px 28px;transition:border-color 0.3s;}
+    .testi-card:hover{border-color:rgba(217,186,111,0.3);}
+    .testi-quote{font-size:40px;line-height:1;color:var(--gold);opacity:0.2;font-family:'Cormorant Garamond',serif;margin-bottom:8px;}
+    .testi-stars{color:var(--gold);font-size:12px;margin-bottom:14px;letter-spacing:3px;}
+    .testi-text{font-family:'Cormorant Garamond',serif;font-size:17px;font-style:italic;font-weight:400;line-height:1.7;color:var(--silver);margin-bottom:22px;}
+    .testi-author{display:flex;align-items:center;gap:14px;padding-top:18px;border-top:1px solid rgba(217,186,111,0.1);}
+    .testi-avatar{width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,var(--gold-dark),var(--gold-bronze));display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:18px;color:var(--gold);flex-shrink:0;}
+    .testi-name{font-size:14px;font-weight:600;color:var(--champagne);margin-bottom:3px;}
+    .testi-meta{font-size:11px;color:var(--gold-bronze);letter-spacing:1px;}
+    /* CTA */
+    .cta-banner{padding:100px 48px;background-color:var(--black);background-image:radial-gradient(ellipse 60% 80% at 50% 50%,rgba(217,186,111,0.08) 0%,transparent 70%),radial-gradient(ellipse 30% 40% at 10% 50%,rgba(217,186,111,0.1) 0%,transparent 50%),radial-gradient(ellipse 30% 40% at 90% 50%,rgba(217,186,111,0.1) 0%,transparent 50%);text-align:center;border-top:1px solid rgba(217,186,111,0.15);}
+    .cta-script{font-family:'Great Vibes',cursive;font-size:clamp(26px,4vw,42px);color:var(--silver);opacity:0.8;display:block;margin-bottom:12px;}
+    .cta-title{font-family:'Cormorant Garamond',serif;font-size:clamp(36px,6vw,60px);font-weight:700;line-height:1.1;margin-bottom:20px;}
+    .cta-sub{font-size:14px;font-weight:300;color:var(--silver);opacity:0.7;margin-bottom:44px;}
+    .cta-buttons{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;}
+    /* FOOTER */
+    footer{background:#0e0e0c;padding:80px 48px 0;border-top:1px solid rgba(217,186,111,0.2);}
+    .footer-top{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:48px;padding-bottom:60px;border-bottom:1px solid rgba(217,186,111,0.1);}
+    .footer-brand-name{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:700;margin-bottom:6px;}
+    .footer-brand-sub{font-size:9px;letter-spacing:3px;color:var(--gold-bronze);text-transform:uppercase;margin-bottom:20px;}
+    .footer-tagline{font-family:'Cormorant Garamond',serif;font-size:15px;font-style:italic;color:var(--gold-bronze);margin-bottom:24px;}
+    .footer-desc{font-size:13px;font-weight:300;line-height:1.8;color:var(--silver);opacity:0.65;margin-bottom:28px;}
+    .footer-contact-item{display:flex;align-items:center;gap:10px;font-size:13px;color:var(--silver);opacity:0.75;margin-bottom:12px;}
+    .footer-contact-item i{color:var(--gold-bronze);width:16px;font-size:13px;}
+    .footer-social{display:flex;gap:10px;margin-top:20px;}
+    .footer-social a{width:36px;height:36px;border:1px solid rgba(217,186,111,0.25);display:flex;align-items:center;justify-content:center;color:var(--gold-bronze);font-size:14px;transition:all .25s;}
+    .footer-social a:hover{background:var(--gold-glow);border-color:var(--gold);color:var(--gold);}
+    .footer-col-title{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:600;color:var(--champagne);margin-bottom:8px;}
+    .footer-col-divider{width:32px;height:1px;background:var(--gold);margin-bottom:24px;}
+    .footer-links li{margin-bottom:10px;}
+    .footer-links a{font-size:13px;font-weight:300;color:var(--silver);opacity:0.65;display:flex;align-items:center;gap:8px;transition:all .2s;}
+    .footer-links a::before{content:'';width:0;height:1px;background:var(--gold);transition:width .2s;flex-shrink:0;}
+    .footer-links a:hover{opacity:1;color:var(--gold);}
+    .footer-links a:hover::before{width:12px;}
+    .footer-seo{padding:20px 0;border-top:1px solid rgba(217,186,111,0.07);display:flex;flex-wrap:wrap;gap:8px 20px;}
+    .footer-seo a{font-size:11px;color:var(--silver);opacity:0.35;transition:opacity .2s;}
+    .footer-seo a:hover{opacity:0.7;}
+    .footer-bottom{padding:20px 0;display:flex;align-items:center;justify-content:space-between;font-size:12px;color:var(--silver);opacity:0.4;flex-wrap:wrap;gap:12px;}
+    .footer-bottom-links{display:flex;gap:20px;}
+    .footer-bottom-links a{opacity:1;transition:color .2s;}
+    .footer-bottom-links a:hover{color:var(--gold);}
+    /* FADE */
+    .fade-in{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s ease;}
+    .fade-in.visible{opacity:1;transform:translateY(0);}
+    .fade-in-delay-1{transition-delay:.1s;}
+    .fade-in-delay-2{transition-delay:.2s;}
+    .fade-in-delay-3{transition-delay:.3s;}
+    .fade-in-delay-4{transition-delay:.4s;}
+    /* RESPONSIVE */
+    @media(max-width:1024px){.nav{padding:0 24px;}.section{padding:80px 24px;}.membership-cards{grid-template-columns:1fr;}.steps-grid{grid-template-columns:1fr 1fr;gap:32px;}.steps-grid::before{display:none;}.benefits-grid{grid-template-columns:1fr 1fr;}.testi-strip{grid-template-columns:1fr 1fr;}.stats-band-grid{grid-template-columns:1fr 1fr;}.stat-item:nth-child(2){border-right:none;}.footer-top{grid-template-columns:1fr 1fr;}.compare-table{font-size:12px;}}
+    @media(max-width:768px){:root{--nav-h:64px;}.nav-links,.nav-cta{display:none;}.steps-grid{grid-template-columns:1fr;}.benefits-grid{grid-template-columns:1fr;}.testi-strip{grid-template-columns:1fr;}.stats-band-grid{grid-template-columns:1fr 1fr;}.footer-top{grid-template-columns:1fr;}.footer-seo{display:none;}footer{padding:60px 24px 0;}.compare-table th,.compare-table td{padding:12px 14px;}}
+
+
+    /* Mobile and compact desktop navigation fix */
+    .mobile-nav-toggle {
+      display: none;
+      width: 42px;
+      height: 42px;
+      margin-left: 12px;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 5px;
+      border: 1px solid rgba(217,186,111,0.42);
+      background: rgba(20,20,18,0.96);
+      color: var(--gold);
+      cursor: pointer;
+      z-index: 10002;
+      flex-shrink: 0;
+    }
+    .mobile-nav-toggle span {
+      display: block;
+      width: 19px;
+      height: 2px;
+      background: currentColor;
+      transition: transform 0.25s ease, opacity 0.25s ease;
+    }
+    body.mobile-nav-open { overflow: hidden; }
+    body.mobile-nav-open .mobile-nav-toggle span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    body.mobile-nav-open .mobile-nav-toggle span:nth-child(2) { opacity: 0; }
+    body.mobile-nav-open .mobile-nav-toggle span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    .mobile-nav-panel {
+      position: fixed;
+      inset: var(--nav-h) 0 auto 0;
+      max-height: calc(100vh - var(--nav-h));
+      overflow-y: auto;
+      padding: 16px 20px 28px;
+      background: rgba(20,20,18,0.98);
+      border-bottom: 1px solid rgba(217,186,111,0.24);
+      box-shadow: 0 22px 48px rgba(0,0,0,0.48);
+      transform: translateY(-110%);
+      opacity: 0;
+      visibility: hidden;
+      transition: transform 0.28s ease, opacity 0.28s ease, visibility 0.28s ease;
+      z-index: 8998;
+    }
+    body.mobile-nav-open .mobile-nav-panel {
+      transform: translateY(0);
+      opacity: 1;
+      visibility: visible;
+    }
+    .mobile-nav-panel a {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      width: 100%;
+      padding: 14px 4px;
+      border-bottom: 1px solid rgba(217,186,111,0.13);
+      color: var(--silver) !important;
+      opacity: 1 !important;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 1.2px;
+      line-height: 1.35;
+      text-transform: uppercase;
+      -webkit-text-fill-color: currentColor;
+    }
+    .mobile-nav-panel a i { color: var(--gold); min-width: 16px; }
+    .mobile-nav-panel a.mobile-sub-link {
+      padding-left: 22px;
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--champagne) !important;
+      text-transform: none;
+      letter-spacing: 0.4px;
+    }
+    .mobile-nav-panel .mobile-cta-link {
+      margin-top: 16px;
+      justify-content: center;
+      background: linear-gradient(135deg, var(--gold-mid), var(--gold), var(--gold-mid));
+      color: var(--black) !important;
+      border-bottom: none;
+      -webkit-text-fill-color: var(--black);
+    }
+    @media (max-width: 1200px) {
+      .nav { padding-left: 24px; padding-right: 24px; }
+      .nav-links, .nls-wrap, .nl-wrap { gap: 2px; }
+      .nav-link, .nl { padding-left: 9px; padding-right: 9px; font-size: 10px; letter-spacing: 1px; }
+      .nav-cta, .nc { margin-left: 8px; padding-left: 14px; padding-right: 14px; }
+    }
+    @media (max-width: 1100px) {
+      .nav-links, .nls-wrap, .nl-wrap, .nav-cta, .nc { display: none !important; }
+      .mobile-nav-toggle { display: inline-flex; }
+    }
+    @media (max-width: 768px) {
+      html, body { max-width: 100%; overflow-x: hidden; }
+      .nav { padding-left: 18px; padding-right: 18px; }
+      .nav-logo-text, .nlt { font-size: 20px; }
+      .nav-logo-sub, .nls { font-size: 8px; letter-spacing: 2px; }
+      .btn { max-width: 100%; justify-content: center; white-space: normal; text-align: center; line-height: 1.35; }
+      .section-body, p { overflow-wrap: anywhere; }
+    }
+
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav" id="mainNav">
+  <div class="nav-logo"><a href="prestige-home.html"><div class="nav-logo-text gold-text">Prestige</div><div class="nav-logo-sub">Vacations &amp; Clubs</div></a></div>
+  <ul class="nav-links">
+    <li><a href="prestige-home.html" class="nav-link">Home</a></li>
+    <li><a href="prestige-about.html" class="nav-link">About</a></li>
+    <li class="nav-item"><a href="prestige-country-resort.html" class="nav-link">Properties <i class="fa-solid fa-chevron-down"></i></a><div class="nav-dropdown"><a href="prestige-country-resort.html"><i class="fa-solid fa-tree"></i>The Country Resort</a><a href="prestige-country-suites.html"><i class="fa-solid fa-house"></i>The Country Suites</a><a href="prestige-country-bay.html"><i class="fa-solid fa-water"></i>The Country Bay</a></div></li>
+    <li class="nav-item"><a href="prestige-home.html" class="nav-link active">Membership <i class="fa-solid fa-chevron-down"></i></a><div class="nav-dropdown"><a href="prestige-club-membership.html"><i class="fa-solid fa-crown"></i>Club Membership</a><a href="prestige-holiday-membership.html"><i class="fa-solid fa-umbrella-beach"></i>Holiday Membership</a><a href="prestige-gift-vouchers.html"><i class="fa-solid fa-gift"></i>Gift Vouchers</a><a href="prestige-membership-faqs.html"><i class="fa-solid fa-circle-question"></i>Membership FAQs</a></div></li>
+    <li class="nav-item"><a href="prestige-experiences-overview.html" class="nav-link">Experiences <i class="fa-solid fa-chevron-down"></i></a><div class="nav-dropdown"><a href="prestige-resort-stays.html"><i class="fa-solid fa-bed"></i>Resort Stays</a><a href="prestige-day-outings.html"><i class="fa-solid fa-sun"></i>Day Outings</a><a href="prestige-events.html"><i class="fa-solid fa-champagne-glasses"></i>Events</a><a href="prestige-tour-packages.html"><i class="fa-solid fa-map-location-dot"></i>Tour Packages</a><a href="prestige-weddings.html"><i class="fa-solid fa-heart"></i>Weddings & Celebrations</a><a href="prestige-corporate.html"><i class="fa-solid fa-briefcase"></i>Corporate & Groups</a></div></li>
+    <li><a href="prestige-gallery.html" class="nav-link">Gallery</a></li>
+    <li><a href="prestige-blog-index.html" class="nav-link">Blog</a></li>
+    <li class="nav-item"><a href="prestige-member-reviews.html" class="nav-link">Reviews <i class="fa-solid fa-chevron-down"></i></a><div class="nav-dropdown"><a href="prestige-member-reviews.html"><i class="fa-solid fa-star"></i>Member Reviews</a><a href="prestige-video-testimonials.html"><i class="fa-solid fa-circle-play"></i>Video Testimonials</a></div></li>
+    <li><a href="prestige-contact%20(1).html" class="nav-link">Contact</a></li>
+  </ul>
+  <a href="prestige-contact%20(1).html" class="btn btn-gold nav-cta">Become a Member</a>
+</nav>
+
+<!-- HERO -->
+<section class="page-hero">
+  <div class="page-hero-breadcrumb"><a href="prestige-home.html">Home</a><i class="fa-solid fa-chevron-right"></i><span style="color:var(--gold);">Membership</span></div>
+  <span class="page-hero-script">Join the family</span>
+  <h1 class="page-hero-title gold-text">Membership</h1>
+  <div class="page-hero-line"><span><i class="fa-solid fa-crown"></i></span></div>
+  <p class="page-hero-subtitle">One membership. Three properties. Unlimited experiences. This is what 14,000+ Chennai families already know.</p>
+  <div class="page-hero-ctas">
+    <a href="prestige-club-membership.html" class="btn btn-gold"><i class="fa-solid fa-crown"></i> Club Membership</a>
+    <a href="prestige-holiday-membership.html" class="btn btn-outline"><i class="fa-solid fa-umbrella-beach"></i> Holiday Membership</a>
+    <a href="prestige-membership-faqs.html" class="btn btn-outline" style="border-color:var(--gold-bronze);color:var(--gold-bronze);"><i class="fa-solid fa-circle-question"></i> FAQs</a>
+  </div>
+</section>
+
+<!-- STATS BAND -->
+<div class="stats-band">
+  <div class="stats-band-grid">
+    <div class="stat-item fade-in"><div class="stat-num gold-text">14K+</div><div class="stat-label">Happy Members</div></div>
+    <div class="stat-item fade-in fade-in-delay-1"><div class="stat-num gold-text">15+</div><div class="stat-label">Years of Excellence</div></div>
+    <div class="stat-item fade-in fade-in-delay-2"><div class="stat-num gold-text">3</div><div class="stat-label">Premium Properties</div></div>
+    <div class="stat-item fade-in fade-in-delay-3"><div class="stat-num gold-text">50+</div><div class="stat-label">Tour Destinations</div></div>
+  </div>
+</div>
+
+<!-- WHAT IS MEMBERSHIP -->
+<section class="section section-dark">
+  <div class="container">
+    <div class="section-header text-center fade-in" style="margin-bottom:64px;">
+      <span class="section-label">The Prestige Membership</span>
+      <h2 class="section-title">Not Just a Resort. A Holiday Lifestyle.</h2>
+      <p class="section-body" style="margin:20px auto 0;">A Prestige Vacations membership is not a hotel booking. It is a decision to holiday differently — with everything planned, every destination available, and every visit worth it.</p>
+    </div>
+    <div class="ornament fade-in"><span class="ornament-icon"><i class="fa-solid fa-crown"></i></span></div>
+    <div class="membership-cards">
+      <!-- Club Membership -->
+      <div class="mem-card fade-in">
+        <div class="mem-card-top">
+          <span class="mem-card-num">01</span>
+          <div class="mem-card-icon"><i class="fa-solid fa-crown"></i></div>
+          <div class="mem-card-type">Plan One</div>
+          <h3 class="mem-card-name">Club Membership</h3>
+          <p class="mem-card-desc">Access to all Prestige club facilities, exclusive events, and member privileges across all three properties throughout the year. Ideal for families who want flexible, ongoing access.</p>
+        </div>
+        <div class="mem-card-body">
+          <div class="mem-card-features">
+            <div class="mem-feature"><i class="fa-solid fa-check"></i><span class="mem-feature-text"><strong>Full property access</strong> — The Country Resort, Suites &amp; Bay</span></div>
+            <div class="mem-feature"><i class="fa-solid fa-check"></i><span class="mem-feature-text"><strong>Priority event invitations</strong> — New Year, seasonal &amp; special events</span></div>
+            <div class="mem-feature"><i class="fa-solid fa-check"></i><span class="mem-feature-text"><strong>Day outing privileges</strong> — pool, dining &amp; resort facilities</span></div>
+            <div class="mem-feature"><i class="fa-solid fa-check"></i><span class="mem-feature-text"><strong>Member-only discounts</strong> on resort stays &amp; packages</span></div>
+            <div class="mem-feature"><i class="fa-solid fa-check"></i><span class="mem-feature-text"><strong>Dedicated member support</strong> — a team that knows you</span></div>
+            <div class="mem-feature"><i class="fa-solid fa-check"></i><span class="mem-feature-text"><strong>Gift voucher access</strong> for family &amp; corporate gifting</span></div>
+          </div>
+          <a href="prestige-club-membership.html" class="btn btn-gold" style="width:100%;justify-content:center;">Know More <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+      </div>
+      <!-- Holiday Membership -->
+      <div class="mem-card fade-in fade-in-delay-1">
+        <div class="mem-card-top" style="background:linear-gradient(145deg,#1C1B18,#141412);">
+          <span class="mem-card-num">02</span>
+          <div class="mem-card-icon"><i class="fa-solid fa-umbrella-beach"></i></div>
+          <div class="mem-card-type">Plan Two</div>
+          <h3 class="mem-card-name">Holiday Membership</h3>
+          <p class="mem-card-desc">Annual resort stay nights, tour packages to 50+ destinations, exclusive events, and day outings — all in one complete holiday plan. Everything your family needs, sorted.</p>
+        </div>
+        <div class="mem-card-body" style="background:#1C1B18;">
+          <div class="mem-card-features">
+            <div class="mem-feature"><i class="fa-solid fa-check"></i><span class="mem-feature-text"><strong>Annual resort stay nights</strong> at Prestige properties</span></div>
+            <div class="mem-feature"><i class="fa-solid fa-check"></i><span class="mem-feature-text"><strong>Tour packages</strong> to 50+ destinations across India</span></div>
+            <div class="mem-feature"><i class="fa-solid fa-check"></i><span class="mem-feature-text"><strong>Day outing access</strong> year-round at all properties</span></div>
+            <div class="mem-feature"><i class="fa-solid fa-check"></i><span class="mem-feature-text"><strong>Exclusive event access</strong> for members &amp; their families</span></div>
+            <div class="mem-feature"><i class="fa-solid fa-check"></i><span class="mem-feature-text"><strong>Gift voucher privileges</strong> — great for festive &amp; corporate gifting</span></div>
+            <div class="mem-feature"><i class="fa-solid fa-check"></i><span class="mem-feature-text"><strong>All Club Membership benefits</strong> included</span></div>
+          </div>
+          <a href="prestige-holiday-membership.html" class="btn btn-gold" style="width:100%;justify-content:center;">Know More <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:32px;" class="fade-in">
+      <a href="#compare" class="btn-outline-dark"><i class="fa-solid fa-table-columns"></i> Compare Both Plans</a>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT YOU GET -->
+<section class="section section-cream">
+  <div class="container">
+    <div class="section-header text-center fade-in">
+      <span class="section-label">Your Membership Unlocks</span>
+      <h2 class="section-title">Everything That Comes With Being a Prestige Member</h2>
+      <p class="section-body" style="margin:20px auto 0;">Both membership plans give you access to a full ecosystem of experiences — not just a hotel room.</p>
+    </div>
+    <div class="ornament fade-in"><span class="ornament-icon"><i class="fa-solid fa-star"></i></span></div>
+    <div class="benefits-grid">
+      <div class="benefit-card fade-in" style="background:linear-gradient(145deg,#faf3e4,var(--cream));border-color:rgba(163,137,90,0.2);">
+        <div class="benefit-icon" style="color:var(--gold-mid);"><i class="fa-solid fa-bed"></i></div>
+        <h3 class="benefit-title" style="color:var(--charcoal);">Resort Stays</h3>
+        <p class="benefit-desc" style="color:var(--dark-gray);">Overnight stays at all three Prestige properties — The Country Resort, The Country Suites, and The Country Bay. Three unique experiences, one membership.</p>
+      </div>
+      <div class="benefit-card fade-in fade-in-delay-1" style="background:linear-gradient(145deg,#faf3e4,var(--cream));border-color:rgba(163,137,90,0.2);">
+        <div class="benefit-icon" style="color:var(--gold-mid);"><i class="fa-solid fa-sun"></i></div>
+        <h3 class="benefit-title" style="color:var(--charcoal);">Day Outings</h3>
+        <p class="benefit-desc" style="color:var(--dark-gray);">Pool access, dining, resort facilities — a perfect day from Chennai without the overnight commitment. Available year-round at all Prestige properties.</p>
+      </div>
+      <div class="benefit-card fade-in fade-in-delay-2" style="background:linear-gradient(145deg,#faf3e4,var(--cream));border-color:rgba(163,137,90,0.2);">
+        <div class="benefit-icon" style="color:var(--gold-mid);"><i class="fa-solid fa-champagne-glasses"></i></div>
+        <h3 class="benefit-title" style="color:var(--charcoal);">Events</h3>
+        <p class="benefit-desc" style="color:var(--dark-gray);">New Year galas, seasonal celebrations, family events — curated exclusively for Prestige members throughout the year. Always something to look forward to.</p>
+      </div>
+      <div class="benefit-card fade-in fade-in-delay-3" style="background:linear-gradient(145deg,#faf3e4,var(--cream));border-color:rgba(163,137,90,0.2);">
+        <div class="benefit-icon" style="color:var(--gold-mid);"><i class="fa-solid fa-map-location-dot"></i></div>
+        <h3 class="benefit-title" style="color:var(--charcoal);">Tour Packages</h3>
+        <p class="benefit-desc" style="color:var(--dark-gray);">Curated tours to 50+ destinations across India — hill stations, beaches, heritage cities, and more. Planned and managed by our team so you just show up.</p>
+      </div>
+      <div class="benefit-card fade-in fade-in-delay-4" style="background:linear-gradient(145deg,#faf3e4,var(--cream));border-color:rgba(163,137,90,0.2);">
+        <div class="benefit-icon" style="color:var(--gold-mid);"><i class="fa-solid fa-gift"></i></div>
+        <h3 class="benefit-title" style="color:var(--charcoal);">Gift Vouchers</h3>
+        <p class="benefit-desc" style="color:var(--dark-gray);">Give the gift of a Prestige holiday — perfect for birthdays, anniversaries, festivals, and corporate gifting. Redeemable across all properties and experiences.</p>
+      </div>
+      <div class="benefit-card fade-in" style="background:linear-gradient(145deg,#faf3e4,var(--cream));border-color:rgba(163,137,90,0.2);">
+        <div class="benefit-icon" style="color:var(--gold-mid);"><i class="fa-solid fa-phone-volume"></i></div>
+        <h3 class="benefit-title" style="color:var(--charcoal);">Dedicated Support</h3>
+        <p class="benefit-desc" style="color:var(--dark-gray);">A team that knows your name, remembers your preferences, and makes every booking feel effortless. This is the support that 14,000+ members rely on.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="section section-deep">
+  <div class="container">
+    <div class="section-header text-center fade-in">
+      <span class="section-label">The Process</span>
+      <h2 class="section-title" style="color:var(--champagne);">How Membership Works</h2>
+      <p class="section-body" style="margin:20px auto 0;">Joining Prestige Vacations is simple. Here is how you go from enquiry to your first holiday.</p>
+    </div>
+    <div class="ornament fade-in"><span class="ornament-icon"><i class="fa-solid fa-arrow-right"></i></span></div>
+    <div class="steps-grid">
+      <div class="step-item fade-in">
+        <div class="step-num-wrap"><div class="step-num gold-text">01</div></div>
+        <div class="step-icon"><i class="fa-solid fa-phone"></i></div>
+        <h3 class="step-title">Enquire</h3>
+        <p class="step-desc">Call us, WhatsApp us, or fill an enquiry form. Our team will reach out within 24 hours to understand what you need.</p>
+      </div>
+      <div class="step-item fade-in fade-in-delay-1">
+        <div class="step-num-wrap"><div class="step-num gold-text">02</div></div>
+        <div class="step-icon"><i class="fa-solid fa-handshake"></i></div>
+        <h3 class="step-title">Choose Your Plan</h3>
+        <p class="step-desc">Our team will walk you through both plans — Club and Holiday — and help you pick the one that fits your family perfectly.</p>
+      </div>
+      <div class="step-item fade-in fade-in-delay-2">
+        <div class="step-num-wrap"><div class="step-num gold-text">03</div></div>
+        <div class="step-icon"><i class="fa-solid fa-id-card"></i></div>
+        <h3 class="step-title">Become a Member</h3>
+        <p class="step-desc">Complete the membership process and receive your member credentials. You are now part of the Prestige family — 14,000+ strong.</p>
+      </div>
+      <div class="step-item fade-in fade-in-delay-3">
+        <div class="step-num-wrap"><div class="step-num gold-text">04</div></div>
+        <div class="step-icon"><i class="fa-solid fa-plane-departure"></i></div>
+        <h3 class="step-title">Start Holidaying</h3>
+        <p class="step-desc">Book your first stay, plan a day outing, register for an event, or choose a tour. Your holidays are sorted — now just enjoy them.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COMPARE TABLE -->
+<section class="section section-dark" id="compare">
+  <div class="container">
+    <div class="section-header text-center fade-in">
+      <span class="section-label">Side by Side</span>
+      <h2 class="section-title">Compare Both Plans</h2>
+      <p class="section-body" style="margin:20px auto 0;">Not sure which plan is right for you? Here's everything in one table.</p>
+    </div>
+    <div class="ornament fade-in"><span class="ornament-icon"><i class="fa-solid fa-table-columns"></i></span></div>
+    <div style="overflow-x:auto;" class="fade-in">
+      <table class="compare-table">
+        <thead>
+          <tr>
+            <th class="col-feature">Feature</th>
+            <th class="col-club"><i class="fa-solid fa-crown" style="color:var(--gold-mid);margin-right:8px;"></i>Club Membership</th>
+            <th class="col-holiday"><i class="fa-solid fa-umbrella-beach" style="color:var(--gold-mid);margin-right:8px;"></i>Holiday Membership</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Access to all Prestige properties</td><td><i class="fa-solid fa-check check"></i></td><td><i class="fa-solid fa-check check"></i></td></tr>
+          <tr><td>Day outing privileges</td><td><i class="fa-solid fa-check check"></i></td><td><i class="fa-solid fa-check check"></i></td></tr>
+          <tr><td>Annual resort stay nights</td><td><span class="partial">Limited</span></td><td><i class="fa-solid fa-check check"></i></td></tr>
+          <tr><td>Priority event invitations</td><td><i class="fa-solid fa-check check"></i></td><td><i class="fa-solid fa-check check"></i></td></tr>
+          <tr><td>Tour packages (50+ destinations)</td><td><i class="fa-solid fa-xmark cross"></i></td><td><i class="fa-solid fa-check check"></i></td></tr>
+          <tr><td>Member-only discounts</td><td><i class="fa-solid fa-check check"></i></td><td><i class="fa-solid fa-check check"></i></td></tr>
+          <tr><td>Gift voucher access</td><td><i class="fa-solid fa-check check"></i></td><td><i class="fa-solid fa-check check"></i></td></tr>
+          <tr><td>Dedicated member support</td><td><i class="fa-solid fa-check check"></i></td><td><i class="fa-solid fa-check check"></i></td></tr>
+          <tr><td>Access to The Country Bay (Beach)</td><td><i class="fa-solid fa-check check"></i></td><td><i class="fa-solid fa-check check"></i></td></tr>
+          <tr><td>Private villa access (Country Suites)</td><td><span class="partial">On request</span></td><td><i class="fa-solid fa-check check"></i></td></tr>
+          <tr><td>Corporate group booking benefits</td><td><i class="fa-solid fa-check check"></i></td><td><i class="fa-solid fa-check check"></i></td></tr>
+          <tr><td>Best for</td><td style="color:var(--silver);opacity:.85;">Flexible access, events &amp; day outings</td><td style="color:var(--silver);opacity:.85;">Full holiday planning — stays, tours &amp; more</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div style="text-align:center;margin-top:32px;padding:20px;border:1px solid rgba(217,186,111,0.12);background:rgba(217,186,111,0.03);" class="fade-in">
+      <p style="font-size:13px;color:var(--silver);opacity:.7;">For detailed pricing and plan specifics, please contact our team directly. We'll help you find the right plan for your family.</p>
+      <div style="display:flex;gap:14px;justify-content:center;margin-top:16px;flex-wrap:wrap;">
+        <a href="tel:18001213457" class="btn btn-gold" style="padding:11px 28px;font-size:11px;"><i class="fa-solid fa-phone"></i> Call 1800 121 3457</a>
+        <a href="https://wa.me/918001213457" target="_blank" class="btn-whatsapp" style="padding:11px 28px;font-size:11px;"><i class="fa-brands fa-whatsapp"></i> WhatsApp Us</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="section section-deep">
+  <div class="container">
+    <div class="section-header text-center fade-in">
+      <span class="section-label">From Our Members</span>
+      <h2 class="section-title" style="color:var(--champagne);">What Prestige Members Say</h2>
+    </div>
+    <div class="ornament fade-in"><span class="ornament-icon"><i class="fa-solid fa-star"></i></span></div>
+    <div class="testi-strip">
+      <div class="testi-card fade-in">
+        <div class="testi-quote">"</div>
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">We've been Prestige members for 3 years. Every trip has been worth it — the resort, the food, the team. The membership pays for itself in the first trip alone.</p>
+        <div class="testi-author"><div class="testi-avatar">R</div><div><div class="testi-name">Ramesh Krishnan</div><div class="testi-meta">Holiday Member · 3 Years</div></div></div>
+      </div>
+      <div class="testi-card fade-in fade-in-delay-1">
+        <div class="testi-quote">"</div>
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">Before joining Prestige we never really went on proper holidays. Now we go at least 4–5 times a year. The membership changed how our family spends time together.</p>
+        <div class="testi-author"><div class="testi-avatar">S</div><div><div class="testi-name">Sundar Rajan</div><div class="testi-meta">Holiday Member · Velachery</div></div></div>
+      </div>
+      <div class="testi-card fade-in fade-in-delay-2">
+        <div class="testi-quote">"</div>
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">The day outings are underrated. We drive down, spend the day at the pool, have lunch, and come back refreshed. It's become our monthly reset.</p>
+        <div class="testi-author"><div class="testi-avatar">P</div><div><div class="testi-name">Priya Nair</div><div class="testi-meta">Club Member · OMR</div></div></div>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:40px;" class="fade-in">
+      <a href="prestige-member-reviews.html" class="btn btn-outline"><i class="fa-solid fa-star"></i> Read All Member Reviews</a>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-banner">
+  <div class="container fade-in">
+    <span class="cta-script">Your next holiday is waiting</span>
+    <h2 class="cta-title gold-text">Ready to Become a Member?</h2>
+    <p class="cta-sub">Join 14,000+ families who made the best holiday decision of their lives. Our team is ready to help you choose the right plan.</p>
+    <div class="cta-buttons">
+      <a href="tel:18001213457" class="btn btn-gold"><i class="fa-solid fa-phone"></i> Call 1800 121 3457</a>
+      <a href="https://wa.me/918001213457" target="_blank" class="btn-whatsapp"><i class="fa-brands fa-whatsapp"></i> WhatsApp Us</a>
+      <a href="prestige-membership-faqs.html" class="btn btn-outline"><i class="fa-solid fa-circle-question"></i> Membership FAQs</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-top">
+      <div>
+        <div class="footer-brand-name gold-text">Prestige</div>
+        <div class="footer-brand-sub">Vacations &amp; Clubs</div>
+        <p class="footer-tagline">Live a Prestigious Life</p>
+        <p class="footer-desc">Chennai's most trusted holiday membership company. 15+ years, 14,000+ members, and a team that genuinely cares.</p>
+        <div class="footer-contact-item"><i class="fa-solid fa-phone"></i><a href="tel:18001213457" style="color:var(--silver);opacity:.75;">1800 121 3457 (Toll Free)</a></div>
+        <div class="footer-contact-item"><i class="fa-solid fa-envelope"></i><a href="mailto:info@prestigevacations.in" style="color:var(--silver);opacity:.75;">info@prestigevacations.in</a></div>
+        <div class="footer-social">
+          <a href="https://www.facebook.com/prestigevacationschennai/" target="_blank"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="https://www.instagram.com/prestige_vacations17/" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+          <a href="https://youtube.com/channel/UC1k56gGYKjmQKFtGuO7WhlQ" target="_blank"><i class="fa-brands fa-youtube"></i></a>
+          <a href="https://wa.me/918001213457" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
+        </div>
+      </div>
+      <div>
+        <h4 class="footer-col-title">Membership</h4>
+        <div class="footer-col-divider"></div>
+        <ul class="footer-links">
+          <li><a href="prestige-home.html">Membership Overview</a></li>
+          <li><a href="prestige-club-membership.html">Club Membership</a></li>
+          <li><a href="prestige-holiday-membership.html">Holiday Membership</a></li>
+          <li><a href="prestige-gift-vouchers.html">Gift Vouchers</a></li>
+          <li><a href="prestige-membership-faqs.html">Membership FAQs</a></li>
+        </ul>
+        <h4 class="footer-col-title" style="margin-top:32px;">Our Properties</h4>
+        <div class="footer-col-divider"></div>
+        <ul class="footer-links">
+          <li><a href="prestige-country-resort.html">The Country Resort</a></li>
+          <li><a href="prestige-country-suites.html">The Country Suites</a></li>
+          <li><a href="prestige-country-bay.html">The Country Bay</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="footer-col-title">Experiences</h4>
+        <div class="footer-col-divider"></div>
+        <ul class="footer-links">
+          <li><a href="prestige-resort-stays.html">Resort Stays</a></li>
+          <li><a href="prestige-day-outings.html">Day Outings</a></li>
+          <li><a href="prestige-events.html">Events</a></li>
+          <li><a href="prestige-tour-packages.html">Tour Packages</a></li>
+          <li><a href="prestige-weddings.html">Weddings &amp; Celebrations</a></li>
+          <li><a href="prestige-corporate.html">Corporate &amp; Groups</a></li>
+        </ul>
+        <h4 class="footer-col-title" style="margin-top:32px;">Quick Links</h4>
+        <div class="footer-col-divider"></div>
+        <ul class="footer-links">
+          <li><a href="prestige-about.html">About Us</a></li>
+          <li><a href="prestige-gallery.html">Gallery</a></li>
+          <li><a href="prestige-blog-index.html">Blog</a></li>
+          <li><a href="prestige-member-reviews.html">Member Reviews</a></li>
+          <li><a href="prestige-contact%20(1).html">Contact Us</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="footer-col-title">Enquire Now</h4>
+        <div class="footer-col-divider"></div>
+        <p style="font-size:13px;font-weight:300;line-height:1.8;color:var(--silver);opacity:.65;margin-bottom:24px;">Ready to become a Prestige member? Our team will help you choose the right plan for your family.</p>
+        <a href="tel:18001213457" class="btn btn-gold" style="width:100%;justify-content:center;margin-bottom:12px;"><i class="fa-solid fa-phone"></i> Call Us Now</a>
+        <a href="https://wa.me/918001213457" target="_blank" class="btn-whatsapp" style="width:100%;justify-content:center;display:flex;"><i class="fa-brands fa-whatsapp"></i> WhatsApp Us</a>
+      </div>
+    </div>
+    <div class="footer-seo">
+      <a href="prestige-home.html">Holiday Membership Chennai</a>
+      <a href="prestige-home.html">Prestige Vacations Reviews</a>
+      <a href="prestige-home.html">Prestige Clubs and Resorts</a>
+      <a href="prestige-home.html">Resorts in Mahabalipuram</a>
+      <a href="prestige-home.html">Weekend Getaway from Chennai</a>
+      <a href="prestige-home.html">Day Outing from Chennai</a>
+      <a href="prestige-home.html">Family Resort Near Chennai</a>
+      <a href="prestige-home.html">Beach Resort Near Chennai</a>
+      <a href="prestige-home.html">Resort Stay Mahabalipuram</a>
+      <a href="prestige-home.html">Resort Wedding Near Chennai</a>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2025 Prestige Vacations &amp; Clubs. All rights reserved. | Prestige Group of Companies</span>
+      <div class="footer-bottom-links"><a href="prestige-home.html">Privacy Policy</a><a href="prestige-home.html">Terms &amp; Conditions</a><a href="prestige-home.html">Sitemap</a></div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const nav=document.getElementById('mainNav');
+  window.addEventListener('scroll',()=>{nav.classList.toggle('scrolled',window.scrollY>60);});
+  const faders=document.querySelectorAll('.fade-in');
+  const observer=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');observer.unobserve(e.target);}});},{threshold:0.1});
+  faders.forEach(f=>observer.observe(f));
+</script>
+
+
+<script>
+(function () {
+  function ready(fn) {
+    if (document.readyState !== 'loading') fn();
+    else document.addEventListener('DOMContentLoaded', fn);
+  }
+
+  ready(function () {
+    var nav = document.querySelector('nav.nav');
+    if (!nav || nav.querySelector('.mobile-nav-toggle')) return;
+
+    var toggle = document.createElement('button');
+    toggle.className = 'mobile-nav-toggle';
+    toggle.type = 'button';
+    toggle.setAttribute('aria-label', 'Open navigation menu');
+    toggle.setAttribute('aria-expanded', 'false');
+    toggle.innerHTML = '<span></span><span></span><span></span>';
+    nav.appendChild(toggle);
+
+    var panel = document.createElement('div');
+    panel.className = 'mobile-nav-panel';
+    panel.setAttribute('aria-hidden', 'true');
+
+    var list = nav.querySelector('.nav-links, .nls-wrap, .nl-wrap');
+    if (list) {
+      list.querySelectorAll(':scope > li').forEach(function (item) {
+        var topLink = item.querySelector(':scope > a');
+        if (topLink) {
+          var topClone = topLink.cloneNode(true);
+          topClone.className = '';
+          panel.appendChild(topClone);
+        }
+        item.querySelectorAll('.nav-dropdown a, .nd a').forEach(function (subLink) {
+          var subClone = subLink.cloneNode(true);
+          subClone.className = 'mobile-sub-link';
+          panel.appendChild(subClone);
+        });
+      });
+    }
+
+    var cta = nav.querySelector('.nav-cta, .nc');
+    if (cta) {
+      var ctaClone = cta.cloneNode(true);
+      ctaClone.className = 'mobile-cta-link';
+      panel.appendChild(ctaClone);
+    }
+
+    document.body.appendChild(panel);
+
+    function setOpen(open) {
+      document.body.classList.toggle('mobile-nav-open', open);
+      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+      toggle.setAttribute('aria-label', open ? 'Close navigation menu' : 'Open navigation menu');
+      panel.setAttribute('aria-hidden', open ? 'false' : 'true');
+    }
+
+    toggle.addEventListener('click', function () {
+      setOpen(!document.body.classList.contains('mobile-nav-open'));
+    });
+
+    panel.addEventListener('click', function (event) {
+      if (event.target.closest('a')) setOpen(false);
+    });
+
+    window.addEventListener('resize', function () {
+      if (window.innerWidth > 1100) setOpen(false);
+    });
+
+    document.addEventListener('keydown', function (event) {
+      if (event.key === 'Escape') setOpen(false);
+    });
+
+    document.querySelectorAll('body *').forEach(function (el) {
+      if (!el.children.length && el.textContent.trim().length > 2) {
+        var style = window.getComputedStyle(el);
+        var opacity = parseFloat(style.opacity);
+        if (opacity > 0 && opacity < 0.6) el.style.opacity = '0.72';
+      }
+    });
+  });
+})();
+</script>
+
+</body>
+</html>

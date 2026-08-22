@@ -1,0 +1,1698 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Country Resort Mahabalipuram | Resort Stay Near Chennai | Prestige Vacations</title>
+  <meta name="description" content="The Country Resort, Mahabalipuram — a Prestige Clubs and Resorts property on the ECR, just 90 minutes from Chennai. Resort stays, day outings, events, weddings and more. Book your stay today." />
+  <meta name="keywords" content="The Country Resort Mahabalipuram, resort near Chennai, Prestige Vacations resort, resort stay ECR, day outing Mahabalipuram, Prestige Clubs and Resorts, resort wedding Chennai, family resort near Chennai" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600&family=Great+Vibes&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <style>
+    /* ─── TOKENS ─────────────────────────────────────────── */
+    :root {
+      --black:       #1A1A17;
+      --matte-black: #1C1B18;
+      --gold:        #D9BA6F;
+      --gold-mid:    #C9A44B;
+      --gold-bronze: #A3895A;
+      --gold-dark:   #504834;
+      --silver:      #DCDCDC;
+      --white:       #FFFFFF;
+      --champagne:   #E8D8B0;
+      --cream:       #F2E7C7;
+      --charcoal:    #222222;
+      --dark-gray:   #2F2F2F;
+      --gold-glow:   rgba(217,186,111,0.18);
+      --nav-h:       80px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Montserrat', sans-serif; background: var(--black); color: var(--silver); overflow-x: hidden; }
+    a { text-decoration: none; color: inherit; }
+    img { max-width: 100%; display: block; }
+    ul { list-style: none; }
+
+    /* ─── UTILITY ─────────────────────────────────────────── */
+    .gold-text {
+      background: linear-gradient(135deg, #C9A44B 0%, #D9BA6F 35%, #F2E7C7 55%, #D9BA6F 75%, #A3895A 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .section-label {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 11px; font-weight: 600;
+      letter-spacing: 4px; text-transform: uppercase;
+      color: var(--gold-mid); display: block; margin-bottom: 14px;
+    }
+    .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(32px, 5vw, 52px);
+      font-weight: 600; line-height: 1.15; color: var(--champagne);
+    }
+    .section-body {
+      font-size: 15px; font-weight: 300;
+      line-height: 1.85; color: var(--silver); max-width: 620px;
+    }
+    .container { max-width: 1200px; margin: 0 auto; }
+    .text-center { text-align: center; }
+    .section { padding: 100px 48px; }
+    .section-dark  { background: var(--black); }
+    .section-deep  { background: #141412; }
+    .section-cream {
+      background: linear-gradient(135deg, var(--cream) 0%, var(--champagne) 50%, #E0CFA0 100%);
+      color: var(--charcoal);
+    }
+    .section-cream .section-title { color: var(--charcoal); }
+    .section-cream .section-body  { color: var(--dark-gray); }
+    .gold-rule { width: 40px; height: 2px; background: linear-gradient(90deg, var(--gold-mid), var(--gold)); margin: 24px 0; }
+    .gold-rule-center { margin: 24px auto; }
+    .ornament {
+      display: flex; align-items: center; gap: 14px;
+      margin: 0 auto 56px; max-width: 340px;
+    }
+    .ornament::before, .ornament::after {
+      content: ''; flex: 1; height: 1px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    }
+    .ornament-icon { color: var(--gold); font-size: 13px; }
+    .section-cream .ornament::before,
+    .section-cream .ornament::after {
+      background: linear-gradient(90deg, transparent, var(--gold-mid), transparent);
+    }
+
+    /* ─── BUTTONS ─────────────────────────────────────────── */
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 14px 32px; font-family: 'Montserrat', sans-serif;
+      font-size: 12px; font-weight: 600;
+      letter-spacing: 2px; text-transform: uppercase;
+      cursor: pointer; transition: all 0.3s ease; border: none;
+    }
+    .btn-gold { background: linear-gradient(135deg, var(--gold-mid), var(--gold), var(--gold-mid)); color: var(--black); }
+    .btn-gold:hover { background: linear-gradient(135deg, var(--gold), var(--cream), var(--gold)); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(217,186,111,0.35); }
+    .btn-outline { background: transparent; border: 1px solid var(--gold); color: var(--gold); }
+    .btn-outline:hover { background: var(--gold-glow); color: var(--cream); transform: translateY(-2px); }
+    .btn-outline-dark { background: transparent; border: 1px solid var(--gold-mid); color: var(--gold-mid); display: inline-flex; align-items: center; gap: 8px; padding: 12px 28px; font-family: 'Montserrat', sans-serif; font-size: 11px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; transition: all 0.3s; }
+    .btn-outline-dark:hover { background: rgba(201,164,75,0.1); border-color: var(--gold); color: var(--gold); }
+    .btn-whatsapp { background: #25D366; color: #fff; display: inline-flex; align-items: center; gap: 8px; padding: 14px 32px; font-family: 'Montserrat', sans-serif; font-size: 12px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; transition: all 0.3s; }
+    .btn-whatsapp:hover { background: #20ba59; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(37,211,102,0.3); }
+
+    /* ─── NAVIGATION ─────────────────────────────────────── */
+    .nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 9000;
+      height: var(--nav-h); display: flex; align-items: center;
+      padding: 0 48px; background: rgba(26,26,23,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(217,186,111,0.15);
+      transition: background 0.4s ease, box-shadow 0.4s ease;
+    }
+    .nav.scrolled { background: rgba(26,26,23,0.98); box-shadow: 0 4px 24px rgba(0,0,0,0.4); }
+    .nav-logo { flex-shrink: 0; margin-right: auto; }
+    .nav-logo-text { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 700; line-height: 1.1; }
+    .nav-logo-sub { font-family: 'Montserrat', sans-serif; font-size: 9px; letter-spacing: 3px; color: var(--gold-bronze); text-transform: uppercase; }
+    .nav-links { display: flex; align-items: center; gap: 6px; }
+    .nav-item { position: relative; }
+    .nav-link { display: flex; align-items: center; gap: 5px; padding: 8px 14px; font-size: 11px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; color: var(--silver); transition: color 0.2s; white-space: nowrap; }
+    .nav-link:hover, .nav-link.active { color: var(--gold); }
+    .nav-link .fa-chevron-down { font-size: 8px; transition: transform 0.2s; }
+    .nav-item:hover .fa-chevron-down { transform: rotate(180deg); }
+    .nav-dropdown { position: absolute; top: calc(100% + 10px); left: 0; background: var(--matte-black); border: 1px solid rgba(217,186,111,0.2); border-top: 2px solid var(--gold); min-width: 220px; opacity: 0; visibility: hidden; transform: translateY(-8px); transition: all 0.25s ease; z-index: 9999; }
+    .nav-item:hover .nav-dropdown { opacity: 1; visibility: visible; transform: translateY(0); }
+    .nav-dropdown a { display: flex; align-items: center; gap: 10px; padding: 13px 20px; font-size: 12px; font-weight: 500; color: var(--silver); border-bottom: 1px solid rgba(217,186,111,0.08); transition: all 0.2s; }
+    .nav-dropdown a:last-child { border-bottom: none; }
+    .nav-dropdown a i { color: var(--gold-bronze); width: 14px; font-size: 11px; }
+    .nav-dropdown a:hover { background: var(--gold-glow); color: var(--gold); padding-left: 26px; }
+    .nav-dropdown a:hover i { color: var(--gold); }
+    .nav-cta { margin-left: 16px; padding: 10px 22px; font-size: 10px; }
+
+    /* ─── PROPERTY HERO ──────────────────────────────────── */
+    .prop-hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex; align-items: flex-end;
+      padding: 0 48px 80px;
+      background-color: #141210;
+      background-image:
+        radial-gradient(ellipse 70% 50% at 50% 0%,  rgba(217,186,111,0.15) 0%, transparent 60%),
+        radial-gradient(ellipse 40% 60% at 0% 100%,  rgba(217,186,111,0.12) 0%, transparent 55%),
+        radial-gradient(ellipse 40% 60% at 100% 100%, rgba(217,186,111,0.12) 0%, transparent 55%);
+      overflow: hidden;
+    }
+    /* large image placeholder full bleed */
+    .prop-hero-bg {
+      position: absolute; inset: 0;
+      background: linear-gradient(160deg, #1e1c14 0%, #141210 40%, #0d0c0a 100%);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .prop-hero-bg-label {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 18px; font-style: italic;
+      color: rgba(217,186,111,0.15); letter-spacing: 4px;
+      text-align: center; line-height: 2;
+    }
+    /* gradient overlay bottom */
+    .prop-hero::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 65%;
+      background: linear-gradient(to top, rgba(20,18,16,0.98) 0%, rgba(20,18,16,0.7) 50%, transparent 100%);
+      pointer-events: none;
+    }
+    .prop-hero-content {
+      position: relative; z-index: 2;
+      max-width: 780px;
+    }
+    .prop-hero-breadcrumb {
+      display: flex; align-items: center; gap: 8px;
+      font-size: 11px; font-weight: 500; letter-spacing: 2px;
+      text-transform: uppercase; color: var(--gold-bronze);
+      margin-bottom: 20px;
+    }
+    .prop-hero-breadcrumb a { color: var(--gold-bronze); transition: color 0.2s; }
+    .prop-hero-breadcrumb a:hover { color: var(--gold); }
+    .prop-hero-breadcrumb i { font-size: 8px; color: var(--gold-dark); }
+    .prop-hero-tag {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(217,186,111,0.12);
+      border: 1px solid rgba(217,186,111,0.3);
+      padding: 7px 16px; margin-bottom: 20px;
+      font-size: 10px; font-weight: 600;
+      letter-spacing: 2.5px; text-transform: uppercase;
+      color: var(--gold-mid);
+    }
+    .prop-hero-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(42px, 8vw, 88px);
+      font-weight: 700; line-height: 1.0;
+      letter-spacing: 2px; margin-bottom: 8px;
+    }
+    .prop-hero-subtitle {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(18px, 3vw, 28px);
+      font-weight: 300; letter-spacing: 4px;
+      text-transform: uppercase; color: var(--champagne);
+      margin-bottom: 20px; opacity: 0.8;
+    }
+    .prop-hero-desc {
+      font-size: 15px; font-weight: 300; line-height: 1.8;
+      color: var(--silver); opacity: 0.8;
+      max-width: 580px; margin-bottom: 36px;
+    }
+    .prop-hero-pills {
+      display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 36px;
+    }
+    .prop-hero-pill {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: 11px; font-weight: 500; color: var(--silver);
+      opacity: 0.75; padding: 6px 14px;
+      border: 1px solid rgba(220,220,220,0.2);
+    }
+    .prop-hero-pill i { color: var(--gold-bronze); font-size: 11px; }
+    .prop-hero-ctas { display: flex; gap: 14px; flex-wrap: wrap; }
+    /* sticky booking bar */
+    .prop-hero-info-bar {
+      position: absolute; top: calc(var(--nav-h) + 20px); right: 48px;
+      z-index: 2; display: flex; flex-direction: column; gap: 0;
+      border: 1px solid rgba(217,186,111,0.25);
+      background: rgba(26,26,23,0.85);
+      backdrop-filter: blur(10px);
+      min-width: 200px;
+    }
+    .info-bar-item {
+      padding: 14px 20px;
+      border-bottom: 1px solid rgba(217,186,111,0.1);
+    }
+    .info-bar-item:last-child { border-bottom: none; }
+    .info-bar-label {
+      font-size: 9px; font-weight: 600;
+      letter-spacing: 2px; text-transform: uppercase;
+      color: var(--gold-bronze); margin-bottom: 4px;
+    }
+    .info-bar-value {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 18px; font-weight: 600; color: var(--champagne);
+    }
+
+    /* ─── QUICK FACTS ────────────────────────────────────── */
+    .quick-facts {
+      background: linear-gradient(135deg, #141412, #1C1B18, #141412);
+      border-top: 1px solid rgba(217,186,111,0.2);
+      border-bottom: 1px solid rgba(217,186,111,0.2);
+      padding: 40px 48px;
+    }
+    .quick-facts-grid {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 0;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .qf-item {
+      text-align: center;
+      padding: 16px 12px;
+      border-right: 1px solid rgba(217,186,111,0.12);
+    }
+    .qf-item:last-child { border-right: none; }
+    .qf-icon { font-size: 22px; color: var(--gold-bronze); margin-bottom: 8px; }
+    .qf-label { font-size: 10px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--silver); opacity: 0.6; margin-bottom: 4px; }
+    .qf-value { font-family: 'Cormorant Garamond', serif; font-size: 20px; font-weight: 600; color: var(--champagne); }
+
+    /* ─── OVERVIEW ───────────────────────────────────────── */
+    .overview-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+    .overview-img {
+      position: relative;
+    }
+    .overview-img-main {
+      width: 100%;
+      aspect-ratio: 4/3;
+      background: linear-gradient(135deg, #252520, #1a1a17, #252520);
+      border: 1px solid rgba(217,186,111,0.2);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .img-placeholder-label {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 15px; font-style: italic;
+      color: var(--gold-bronze); letter-spacing: 2px;
+    }
+    .overview-img::before {
+      content: '';
+      position: absolute;
+      inset: 14px;
+      border: 1px solid rgba(217,186,111,0.1);
+      pointer-events: none; z-index: 1;
+    }
+    .overview-img::after {
+      content: '';
+      position: absolute;
+      bottom: -20px; right: -20px;
+      width: 60%; height: 60%;
+      border: 2px solid rgba(217,186,111,0.15);
+      z-index: -1;
+    }
+    .overview-content p { margin-bottom: 16px; }
+
+    /* ─── ROOMS ──────────────────────────────────────────── */
+    .rooms-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 28px;
+    }
+    .room-card {
+      background: #141412;
+      border: 1px solid rgba(217,186,111,0.15);
+      overflow: hidden;
+      transition: all 0.35s ease;
+    }
+    .room-card:hover {
+      border-color: var(--gold);
+      transform: translateY(-5px);
+      box-shadow: 0 16px 48px rgba(0,0,0,0.5), 0 0 0 1px rgba(217,186,111,0.15);
+    }
+    .room-img {
+      width: 100%;
+      aspect-ratio: 16/10;
+      background: linear-gradient(135deg, #2a2920, #1C1B18, #2a2920);
+      display: flex; align-items: center; justify-content: center;
+      position: relative; overflow: hidden;
+    }
+    .room-img-label { font-family: 'Cormorant Garamond', serif; font-size: 15px; font-style: italic; color: var(--gold-bronze); letter-spacing: 2px; }
+    .room-type-badge {
+      position: absolute; top: 16px; left: 16px;
+      background: linear-gradient(135deg, var(--gold-mid), var(--gold));
+      color: var(--black); font-size: 9px; font-weight: 700;
+      letter-spacing: 2px; text-transform: uppercase;
+      padding: 5px 12px;
+    }
+    .room-body { padding: 28px 28px 32px; }
+    .room-name { font-family: 'Cormorant Garamond', serif; font-size: 26px; font-weight: 600; color: var(--champagne); margin-bottom: 14px; line-height: 1.2; }
+    .room-specs {
+      display: flex; gap: 20px; margin-bottom: 16px; flex-wrap: wrap;
+    }
+    .room-spec {
+      display: flex; align-items: center; gap: 6px;
+      font-size: 12px; color: var(--silver); opacity: 0.7;
+    }
+    .room-spec i { color: var(--gold-bronze); font-size: 12px; }
+    .room-desc { font-size: 13px; font-weight: 300; line-height: 1.7; color: var(--silver); opacity: 0.8; margin-bottom: 20px; }
+    .room-amenities { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 24px; }
+    .room-amenity { font-size: 11px; font-weight: 500; color: var(--gold-bronze); border: 1px solid rgba(163,137,90,0.3); padding: 4px 12px; }
+    .room-footer { display: flex; align-items: center; justify-content: space-between; padding-top: 20px; border-top: 1px solid rgba(217,186,111,0.1); }
+    .room-price-label { font-size: 10px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--gold-bronze); margin-bottom: 4px; }
+    .room-price { font-family: 'Cormorant Garamond', serif; font-size: 28px; font-weight: 600; color: var(--gold); }
+    .room-price-night { font-size: 11px; color: var(--silver); opacity: 0.5; margin-left: 2px; }
+
+    /* ─── AMENITIES ──────────────────────────────────────── */
+    .amenities-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+    .amenity-card {
+      background: linear-gradient(145deg, #faf3e4, var(--cream));
+      border: 1px solid rgba(163,137,90,0.18);
+      padding: 32px 24px;
+      text-align: center;
+      transition: all 0.3s ease;
+    }
+    .amenity-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--gold-mid);
+      box-shadow: 0 10px 28px rgba(163,137,90,0.2);
+    }
+    .amenity-icon { font-size: 28px; color: var(--gold-mid); margin-bottom: 14px; }
+    .amenity-name { font-family: 'Cormorant Garamond', serif; font-size: 20px; font-weight: 600; color: var(--charcoal); margin-bottom: 8px; }
+    .amenity-desc { font-size: 12px; font-weight: 300; line-height: 1.6; color: var(--dark-gray); }
+    .coming-soon-badge { display: inline-block; font-size: 9px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--gold-mid); border: 1px solid var(--gold-mid); padding: 2px 8px; margin-top: 6px; }
+
+    /* ─── RESTAURANT ─────────────────────────────────────── */
+    .restaurant-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+    .restaurant-content .section-body { max-width: 100%; margin-bottom: 16px; }
+    .restaurant-features { margin: 28px 0; }
+    .restaurant-feature {
+      display: flex; align-items: flex-start; gap: 12px;
+      padding: 12px 0;
+      border-bottom: 1px solid rgba(217,186,111,0.1);
+    }
+    .restaurant-feature:last-child { border-bottom: none; }
+    .restaurant-feature i { color: var(--gold); font-size: 14px; margin-top: 2px; flex-shrink: 0; }
+    .restaurant-feature-text { font-size: 14px; font-weight: 300; line-height: 1.6; color: var(--silver); }
+    .restaurant-feature-text strong { color: var(--champagne); font-weight: 500; }
+
+    /* ─── ACTIVITIES ─────────────────────────────────────── */
+    .activities-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+    }
+    .activity-card {
+      background: #141412;
+      border: 1px solid rgba(217,186,111,0.08);
+      padding: 36px 30px;
+      transition: all 0.3s ease;
+      position: relative; overflow: hidden;
+    }
+    .activity-card::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0;
+      width: 0; height: 2px;
+      background: linear-gradient(90deg, var(--gold-mid), var(--gold));
+      transition: width 0.4s ease;
+    }
+    .activity-card:hover::after { width: 100%; }
+    .activity-card:hover { background: #1a1a16; border-color: rgba(217,186,111,0.2); }
+    .activity-icon { font-size: 28px; color: var(--gold-bronze); margin-bottom: 16px; transition: color 0.3s; }
+    .activity-card:hover .activity-icon { color: var(--gold); }
+    .activity-title { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 600; color: var(--champagne); margin-bottom: 10px; }
+    .activity-desc { font-size: 13px; font-weight: 300; line-height: 1.7; color: var(--silver); opacity: 0.75; }
+
+    /* ─── EVENTS & WEDDINGS ──────────────────────────────── */
+    .events-split {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 28px;
+    }
+    .event-feature-card {
+      padding: 44px 40px;
+      border: 1px solid rgba(163,137,90,0.2);
+      background: linear-gradient(145deg, #faf3e4, var(--cream));
+      position: relative; overflow: hidden;
+      transition: all 0.3s;
+    }
+    .event-feature-card:hover { border-color: var(--gold-mid); transform: translateY(-3px); box-shadow: 0 10px 30px rgba(163,137,90,0.2); }
+    .event-feature-card::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 3px; background: linear-gradient(90deg, var(--gold-mid), var(--gold), var(--gold-mid)); }
+    .event-feature-icon { font-size: 32px; color: var(--gold-mid); margin-bottom: 20px; }
+    .event-feature-title { font-family: 'Cormorant Garamond', serif; font-size: 28px; font-weight: 600; color: var(--charcoal); margin-bottom: 14px; }
+    .event-feature-desc { font-size: 14px; font-weight: 300; line-height: 1.75; color: var(--dark-gray); margin-bottom: 24px; }
+    .event-feature-list li { display: flex; align-items: center; gap: 10px; font-size: 13px; color: var(--dark-gray); padding: 8px 0; border-bottom: 1px solid rgba(163,137,90,0.12); }
+    .event-feature-list li:last-child { border-bottom: none; }
+    .event-feature-list li i { color: var(--gold-mid); font-size: 11px; flex-shrink: 0; }
+
+    /* ─── LOCATION ───────────────────────────────────────── */
+    .location-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: start;
+    }
+    .location-map-placeholder {
+      width: 100%;
+      aspect-ratio: 4/3;
+      background: linear-gradient(135deg, #252520, #1a1a17, #252520);
+      border: 1px solid rgba(217,186,111,0.2);
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center; gap: 12px;
+    }
+    .location-map-placeholder i { font-size: 36px; color: var(--gold-bronze); }
+    .location-map-placeholder span { font-family: 'Cormorant Garamond', serif; font-size: 15px; font-style: italic; color: var(--gold-bronze); letter-spacing: 1px; }
+    .location-map-placeholder a { font-size: 11px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); border: 1px solid var(--gold); padding: 8px 20px; margin-top: 8px; transition: all 0.2s; }
+    .location-map-placeholder a:hover { background: var(--gold-glow); }
+    .location-details { color: var(--silver); }
+    .location-detail-item { display: flex; align-items: flex-start; gap: 16px; padding: 18px 0; border-bottom: 1px solid rgba(217,186,111,0.1); }
+    .location-detail-item:last-child { border-bottom: none; }
+    .location-detail-icon { width: 44px; height: 44px; border: 1px solid rgba(217,186,111,0.25); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .location-detail-icon i { font-size: 16px; color: var(--gold-mid); }
+    .location-detail-label { font-size: 10px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--gold-bronze); margin-bottom: 5px; }
+    .location-detail-value { font-size: 14px; font-weight: 300; color: var(--silver); line-height: 1.5; }
+    .location-detail-value a { color: var(--gold); transition: opacity 0.2s; }
+    .location-detail-value a:hover { opacity: 0.8; }
+
+    /* ─── NEARBY ─────────────────────────────────────────── */
+    .nearby-items {
+      display: flex; flex-direction: column; gap: 0;
+      margin-top: 24px;
+    }
+    .nearby-item { display: flex; align-items: center; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid rgba(217,186,111,0.08); }
+    .nearby-item:last-child { border-bottom: none; }
+    .nearby-name { font-size: 14px; font-weight: 400; color: var(--silver); display: flex; align-items: center; gap: 8px; }
+    .nearby-name i { color: var(--gold-bronze); font-size: 12px; width: 16px; }
+    .nearby-dist { font-size: 12px; font-weight: 500; color: var(--gold-bronze); }
+
+    /* ─── TESTIMONIALS ───────────────────────────────────── */
+    .testi-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+    .testi-card { background: #1a1a17; border: 1px solid rgba(217,186,111,0.12); padding: 36px 32px; transition: border-color 0.3s; }
+    .testi-card:hover { border-color: rgba(217,186,111,0.3); }
+    .testi-quote { font-size: 48px; line-height: 1; color: var(--gold); opacity: 0.2; font-family: 'Cormorant Garamond', serif; margin-bottom: 8px; }
+    .testi-stars { color: var(--gold); font-size: 13px; margin-bottom: 16px; letter-spacing: 3px; }
+    .testi-text { font-family: 'Cormorant Garamond', serif; font-size: 18px; font-style: italic; font-weight: 400; line-height: 1.7; color: var(--silver); margin-bottom: 24px; }
+    .testi-author { display: flex; align-items: center; gap: 14px; padding-top: 18px; border-top: 1px solid rgba(217,186,111,0.1); }
+    .testi-avatar { width: 44px; height: 44px; border-radius: 50%; background: linear-gradient(135deg, var(--gold-dark), var(--gold-bronze)); display: flex; align-items: center; justify-content: center; font-family: 'Cormorant Garamond', serif; font-size: 18px; color: var(--gold); flex-shrink: 0; }
+    .testi-name { font-size: 14px; font-weight: 600; color: var(--champagne); margin-bottom: 3px; }
+    .testi-member { font-size: 11px; color: var(--gold-bronze); letter-spacing: 1px; }
+
+    /* ─── CTA ────────────────────────────────────────────── */
+    .cta-banner { padding: 100px 48px; background-color: var(--black); background-image: radial-gradient(ellipse 60% 80% at 50% 50%, rgba(217,186,111,0.08) 0%, transparent 70%), radial-gradient(ellipse 30% 40% at 10% 50%, rgba(217,186,111,0.1) 0%, transparent 50%), radial-gradient(ellipse 30% 40% at 90% 50%, rgba(217,186,111,0.1) 0%, transparent 50%); text-align: center; border-top: 1px solid rgba(217,186,111,0.15); }
+    .cta-script { font-family: 'Great Vibes', cursive; font-size: clamp(26px, 4vw, 42px); color: var(--silver); opacity: 0.8; display: block; margin-bottom: 12px; }
+    .cta-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(36px, 6vw, 60px); font-weight: 700; line-height: 1.1; margin-bottom: 20px; }
+    .cta-sub { font-size: 14px; font-weight: 300; color: var(--silver); opacity: 0.7; margin-bottom: 44px; }
+    .cta-buttons { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+
+    /* ─── FOOTER ─────────────────────────────────────────── */
+    footer { background: #0e0e0c; padding: 80px 48px 0; border-top: 1px solid rgba(217,186,111,0.2); }
+    .footer-top { display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: 48px; padding-bottom: 60px; border-bottom: 1px solid rgba(217,186,111,0.1); }
+    .footer-brand-name { font-family: 'Cormorant Garamond', serif; font-size: 28px; font-weight: 700; margin-bottom: 6px; }
+    .footer-brand-sub { font-size: 9px; letter-spacing: 3px; color: var(--gold-bronze); text-transform: uppercase; margin-bottom: 20px; }
+    .footer-tagline { font-family: 'Cormorant Garamond', serif; font-size: 15px; font-style: italic; color: var(--gold-bronze); margin-bottom: 24px; }
+    .footer-desc { font-size: 13px; font-weight: 300; line-height: 1.8; color: var(--silver); opacity: 0.65; margin-bottom: 28px; }
+    .footer-contact-item { display: flex; align-items: center; gap: 10px; font-size: 13px; color: var(--silver); opacity: 0.75; margin-bottom: 12px; }
+    .footer-contact-item i { color: var(--gold-bronze); width: 16px; font-size: 13px; }
+    .footer-social { display: flex; gap: 10px; margin-top: 20px; }
+    .footer-social a { width: 36px; height: 36px; border: 1px solid rgba(217,186,111,0.25); display: flex; align-items: center; justify-content: center; color: var(--gold-bronze); font-size: 14px; transition: all 0.25s; }
+    .footer-social a:hover { background: var(--gold-glow); border-color: var(--gold); color: var(--gold); }
+    .footer-col-title { font-family: 'Cormorant Garamond', serif; font-size: 20px; font-weight: 600; color: var(--champagne); margin-bottom: 8px; }
+    .footer-col-divider { width: 32px; height: 1px; background: var(--gold); margin-bottom: 24px; }
+    .footer-links li { margin-bottom: 10px; }
+    .footer-links a { font-size: 13px; font-weight: 300; color: var(--silver); opacity: 0.65; display: flex; align-items: center; gap: 8px; transition: all 0.2s; }
+    .footer-links a::before { content: ''; width: 0; height: 1px; background: var(--gold); transition: width 0.2s; flex-shrink: 0; }
+    .footer-links a:hover { opacity: 1; color: var(--gold); }
+    .footer-links a:hover::before { width: 12px; }
+    .footer-seo { padding: 20px 0; border-top: 1px solid rgba(217,186,111,0.07); display: flex; flex-wrap: wrap; gap: 8px 20px; }
+    .footer-seo a { font-size: 11px; color: var(--silver); opacity: 0.35; transition: opacity 0.2s; }
+    .footer-seo a:hover { opacity: 0.7; }
+    .footer-bottom { padding: 20px 0; display: flex; align-items: center; justify-content: space-between; font-size: 12px; color: var(--silver); opacity: 0.4; flex-wrap: wrap; gap: 12px; }
+    .footer-bottom-links { display: flex; gap: 20px; }
+    .footer-bottom-links a { opacity: 1; transition: color 0.2s; }
+    .footer-bottom-links a:hover { color: var(--gold); }
+
+    /* ─── FADE IN ─────────────────────────────────────────── */
+    .fade-in { opacity: 0; transform: translateY(28px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+    .fade-in-delay-1 { transition-delay: 0.1s; }
+    .fade-in-delay-2 { transition-delay: 0.2s; }
+    .fade-in-delay-3 { transition-delay: 0.3s; }
+    .fade-in-delay-4 { transition-delay: 0.4s; }
+    .fade-in-delay-5 { transition-delay: 0.5s; }
+
+    /* ─── RESPONSIVE ─────────────────────────────────────── */
+    @media (max-width: 1024px) {
+      .nav { padding: 0 24px; }
+      .section { padding: 80px 24px; }
+      .prop-hero { padding: 0 24px 60px; }
+      .prop-hero-info-bar { display: none; }
+      .quick-facts-grid { grid-template-columns: repeat(3, 1fr); }
+      .qf-item:nth-child(3) { border-right: none; }
+      .overview-grid, .restaurant-grid, .location-grid { grid-template-columns: 1fr; gap: 40px; }
+      .overview-img, .overview-img::after { display: none; }
+      .rooms-grid { grid-template-columns: 1fr; }
+      .amenities-grid { grid-template-columns: repeat(2, 1fr); }
+      .activities-grid { grid-template-columns: 1fr 1fr; }
+      .events-split { grid-template-columns: 1fr; }
+      .testi-grid { grid-template-columns: 1fr; }
+      .footer-top { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 768px) {
+      :root { --nav-h: 64px; }
+      .nav-links, .nav-cta { display: none; }
+      .amenities-grid { grid-template-columns: 1fr 1fr; }
+      .activities-grid { grid-template-columns: 1fr; }
+      .quick-facts-grid { grid-template-columns: repeat(2, 1fr); }
+      .qf-item:nth-child(2) { border-right: none; }
+      .qf-item:nth-child(4) { border-right: none; }
+      .footer-top { grid-template-columns: 1fr; }
+      .footer-seo { display: none; }
+      footer { padding: 60px 24px 0; }
+      .quick-facts { padding: 32px 24px; }
+    }
+
+
+    /* Mobile and compact desktop navigation fix */
+    .mobile-nav-toggle {
+      display: none;
+      width: 42px;
+      height: 42px;
+      margin-left: 12px;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 5px;
+      border: 1px solid rgba(217,186,111,0.42);
+      background: rgba(20,20,18,0.96);
+      color: var(--gold);
+      cursor: pointer;
+      z-index: 10002;
+      flex-shrink: 0;
+    }
+    .mobile-nav-toggle span {
+      display: block;
+      width: 19px;
+      height: 2px;
+      background: currentColor;
+      transition: transform 0.25s ease, opacity 0.25s ease;
+    }
+    body.mobile-nav-open { overflow: hidden; }
+    body.mobile-nav-open .mobile-nav-toggle span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    body.mobile-nav-open .mobile-nav-toggle span:nth-child(2) { opacity: 0; }
+    body.mobile-nav-open .mobile-nav-toggle span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    .mobile-nav-panel {
+      position: fixed;
+      inset: var(--nav-h) 0 auto 0;
+      max-height: calc(100vh - var(--nav-h));
+      overflow-y: auto;
+      padding: 16px 20px 28px;
+      background: rgba(20,20,18,0.98);
+      border-bottom: 1px solid rgba(217,186,111,0.24);
+      box-shadow: 0 22px 48px rgba(0,0,0,0.48);
+      transform: translateY(-110%);
+      opacity: 0;
+      visibility: hidden;
+      transition: transform 0.28s ease, opacity 0.28s ease, visibility 0.28s ease;
+      z-index: 8998;
+    }
+    body.mobile-nav-open .mobile-nav-panel {
+      transform: translateY(0);
+      opacity: 1;
+      visibility: visible;
+    }
+    .mobile-nav-panel a {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      width: 100%;
+      padding: 14px 4px;
+      border-bottom: 1px solid rgba(217,186,111,0.13);
+      color: var(--silver) !important;
+      opacity: 1 !important;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 1.2px;
+      line-height: 1.35;
+      text-transform: uppercase;
+      -webkit-text-fill-color: currentColor;
+    }
+    .mobile-nav-panel a i { color: var(--gold); min-width: 16px; }
+    .mobile-nav-panel a.mobile-sub-link {
+      padding-left: 22px;
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--champagne) !important;
+      text-transform: none;
+      letter-spacing: 0.4px;
+    }
+    .mobile-nav-panel .mobile-cta-link {
+      margin-top: 16px;
+      justify-content: center;
+      background: linear-gradient(135deg, var(--gold-mid), var(--gold), var(--gold-mid));
+      color: var(--black) !important;
+      border-bottom: none;
+      -webkit-text-fill-color: var(--black);
+    }
+    @media (max-width: 1200px) {
+      .nav { padding-left: 24px; padding-right: 24px; }
+      .nav-links, .nls-wrap, .nl-wrap { gap: 2px; }
+      .nav-link, .nl { padding-left: 9px; padding-right: 9px; font-size: 10px; letter-spacing: 1px; }
+      .nav-cta, .nc { margin-left: 8px; padding-left: 14px; padding-right: 14px; }
+    }
+    @media (max-width: 1100px) {
+      .nav-links, .nls-wrap, .nl-wrap, .nav-cta, .nc { display: none !important; }
+      .mobile-nav-toggle { display: inline-flex; }
+    }
+    @media (max-width: 768px) {
+      html, body { max-width: 100%; overflow-x: hidden; }
+      .nav { padding-left: 18px; padding-right: 18px; }
+      .nav-logo-text, .nlt { font-size: 20px; }
+      .nav-logo-sub, .nls { font-size: 8px; letter-spacing: 2px; }
+      .btn { max-width: 100%; justify-content: center; white-space: normal; text-align: center; line-height: 1.35; }
+      .section-body, p { overflow-wrap: anywhere; }
+    }
+
+  </style>
+</head>
+
+<body>
+
+<!-- ═══ NAVIGATION ══════════════════════════════════════ -->
+<nav class="nav" id="mainNav">
+  <div class="nav-logo">
+    <a href="prestige-home.html">
+      <div class="nav-logo-text gold-text">Prestige</div>
+      <div class="nav-logo-sub">Vacations &amp; Clubs</div>
+    </a>
+  </div>
+  <ul class="nav-links">
+    <li><a href="prestige-home.html" class="nav-link">Home</a></li>
+    <li><a href="prestige-about.html" class="nav-link">About</a></li>
+    <li class="nav-item">
+      <a href="prestige-home.html" class="nav-link active">Properties <i class="fa-solid fa-chevron-down"></i></a>
+      <div class="nav-dropdown">
+        <a href="prestige-country-resort.html"><i class="fa-solid fa-tree"></i>The Country Resort</a>
+        <a href="prestige-country-suites.html"><i class="fa-solid fa-house"></i>The Country Suites</a>
+        <a href="prestige-country-bay.html"><i class="fa-solid fa-water"></i>The Country Bay</a>
+      </div>
+    </li>
+    <li class="nav-item">
+      <a href="prestige-membership-overview.html" class="nav-link">Membership <i class="fa-solid fa-chevron-down"></i></a>
+      <div class="nav-dropdown">
+        <a href="prestige-club-membership.html"><i class="fa-solid fa-crown"></i>Club Membership</a>
+        <a href="prestige-holiday-membership.html"><i class="fa-solid fa-umbrella-beach"></i>Holiday Membership</a>
+        <a href="prestige-gift-vouchers.html"><i class="fa-solid fa-gift"></i>Gift Vouchers</a>
+        <a href="prestige-membership-faqs.html"><i class="fa-solid fa-circle-question"></i>Membership FAQs</a>
+      </div>
+    </li>
+    <li class="nav-item">
+      <a href="prestige-experiences-overview.html" class="nav-link">Experiences <i class="fa-solid fa-chevron-down"></i></a>
+      <div class="nav-dropdown">
+        <a href="prestige-resort-stays.html"><i class="fa-solid fa-bed"></i>Resort Stays</a>
+        <a href="prestige-day-outings.html"><i class="fa-solid fa-sun"></i>Day Outings</a>
+        <a href="prestige-events.html"><i class="fa-solid fa-champagne-glasses"></i>Events</a>
+        <a href="prestige-tour-packages.html"><i class="fa-solid fa-map-location-dot"></i>Tour Packages</a>
+        <a href="prestige-weddings.html"><i class="fa-solid fa-heart"></i>Weddings & Celebrations</a>
+        <a href="prestige-corporate.html"><i class="fa-solid fa-briefcase"></i>Corporate & Groups</a>
+      </div>
+    </li>
+    <li><a href="prestige-gallery.html" class="nav-link">Gallery</a></li>
+    <li><a href="prestige-blog-index.html" class="nav-link">Blog</a></li>
+    <li class="nav-item">
+      <a href="prestige-member-reviews.html" class="nav-link">Reviews <i class="fa-solid fa-chevron-down"></i></a>
+      <div class="nav-dropdown">
+        <a href="prestige-member-reviews.html"><i class="fa-solid fa-star"></i>Member Reviews</a>
+        <a href="prestige-video-testimonials.html"><i class="fa-solid fa-circle-play"></i>Video Testimonials</a>
+      </div>
+    </li>
+    <li><a href="prestige-contact%20(1).html" class="nav-link">Contact</a></li>
+  </ul>
+  <a href="prestige-membership-overview.html" class="btn btn-gold nav-cta">Become a Member</a>
+</nav>
+
+
+<!-- ═══ PROPERTY HERO ═══════════════════════════════════ -->
+<section class="prop-hero">
+  <div class="prop-hero-bg">
+    <div class="prop-hero-bg-label">
+      Property Image<br>The Country Resort, Mahabalipuram
+    </div>
+  </div>
+
+  <!-- Info bar top right -->
+  <div class="prop-hero-info-bar">
+    <div class="info-bar-item">
+      <div class="info-bar-label">Location</div>
+      <div class="info-bar-value">Mahabalipuram</div>
+    </div>
+    <div class="info-bar-item">
+      <div class="info-bar-label">Distance from Chennai</div>
+      <div class="info-bar-value">~90 Minutes</div>
+    </div>
+    <div class="info-bar-item">
+      <div class="info-bar-label">Rooms from</div>
+      <div class="info-bar-value gold-text">₹8,850/night</div>
+    </div>
+    <div class="info-bar-item">
+      <div class="info-bar-label">Contact</div>
+      <div class="info-bar-value" style="font-size:14px;">+91 98848 45022</div>
+    </div>
+    <div class="info-bar-item">
+      <a href="tel:+919884845022" class="btn btn-gold" style="width:100%;justify-content:center;font-size:10px;padding:12px;">
+        <i class="fa-solid fa-phone"></i> Book a Stay
+      </a>
+    </div>
+  </div>
+
+  <div class="prop-hero-content">
+    <div class="prop-hero-breadcrumb">
+      <a href="prestige-home.html">Home</a>
+      <i class="fa-solid fa-chevron-right"></i>
+      <a href="prestige-home.html">Properties</a>
+      <i class="fa-solid fa-chevron-right"></i>
+      <span style="color:var(--gold);">The Country Resort</span>
+    </div>
+    <div class="prop-hero-tag">
+      <i class="fa-solid fa-location-dot"></i>
+      No. 45/2, East Coast Road, Devaneri, Mahabalipuram
+    </div>
+    <h1 class="prop-hero-title gold-text">The Country<br>Resort</h1>
+    <p class="prop-hero-subtitle">Mahabalipuram, Tamil Nadu</p>
+    <p class="prop-hero-desc">
+      A serene retreat nestled in the picturesque town of Mahabalipuram — where rustic charm meets modern comfort. Just 90 minutes from Chennai on the East Coast Road, The Country Resort is the flagship property of Prestige Clubs &amp; Resorts.
+    </p>
+    <div class="prop-hero-pills">
+      <span class="prop-hero-pill"><i class="fa-solid fa-bed"></i> Resort Stays</span>
+      <span class="prop-hero-pill"><i class="fa-solid fa-sun"></i> Day Outings</span>
+      <span class="prop-hero-pill"><i class="fa-solid fa-utensils"></i> Restaurant</span>
+      <span class="prop-hero-pill"><i class="fa-solid fa-heart"></i> Weddings</span>
+      <span class="prop-hero-pill"><i class="fa-solid fa-wifi"></i> Free Wi-Fi</span>
+      <span class="prop-hero-pill"><i class="fa-solid fa-mug-saucer"></i> Complimentary Breakfast</span>
+    </div>
+    <div class="prop-hero-ctas">
+      <a href="tel:+919884845022" class="btn btn-gold">
+        <i class="fa-solid fa-phone"></i> Call to Book
+      </a>
+      <a href="https://wa.me/919884845022" target="_blank" class="btn-whatsapp">
+        <i class="fa-brands fa-whatsapp"></i> WhatsApp
+      </a>
+      <a href="prestige-contact%20(1).html" class="btn btn-outline">
+        <i class="fa-solid fa-envelope"></i> Send Enquiry
+      </a>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══ QUICK FACTS BAR ══════════════════════════════════ -->
+<div class="quick-facts">
+  <div class="quick-facts-grid">
+    <div class="qf-item fade-in">
+      <div class="qf-icon"><i class="fa-solid fa-bed"></i></div>
+      <div class="qf-label">Room Types</div>
+      <div class="qf-value">2 Categories</div>
+    </div>
+    <div class="qf-item fade-in fade-in-delay-1">
+      <div class="qf-icon"><i class="fa-solid fa-expand"></i></div>
+      <div class="qf-label">Room Size</div>
+      <div class="qf-value">47–48 Sqm</div>
+    </div>
+    <div class="qf-item fade-in fade-in-delay-2">
+      <div class="qf-icon"><i class="fa-solid fa-mug-saucer"></i></div>
+      <div class="qf-label">Breakfast</div>
+      <div class="qf-value">Complimentary</div>
+    </div>
+    <div class="qf-item fade-in fade-in-delay-3">
+      <div class="qf-icon"><i class="fa-solid fa-car"></i></div>
+      <div class="qf-label">Pickup & Drop</div>
+      <div class="qf-value">Available (Paid)</div>
+    </div>
+    <div class="qf-item fade-in fade-in-delay-4">
+      <div class="qf-icon"><i class="fa-solid fa-route"></i></div>
+      <div class="qf-label">From Chennai</div>
+      <div class="qf-value">~90 Minutes</div>
+    </div>
+    <div class="qf-item fade-in fade-in-delay-5">
+      <div class="qf-icon"><i class="fa-solid fa-indian-rupee-sign"></i></div>
+      <div class="qf-label">Starting From</div>
+      <div class="qf-value gold-text">₹8,850/night</div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══ OVERVIEW ═════════════════════════════════════════ -->
+<section class="section section-dark">
+  <div class="container">
+    <div class="overview-grid">
+      <div class="overview-img fade-in">
+        <div class="overview-img-main">
+          <span class="img-placeholder-label">Resort Overview Image</span>
+        </div>
+      </div>
+      <div class="fade-in fade-in-delay-1">
+        <span class="section-label">About The Property</span>
+        <h2 class="section-title">A Resort That Feels Like Home — But Better</h2>
+        <div class="gold-rule"></div>
+        <p class="section-body" style="max-width:100%;">
+          The Country Resort in Mahabalipuram is the flagship property of Prestige Clubs &amp; Resorts — a unit of Prestige Vacations. Nestled along the East Coast Road, surrounded by natural beauty and just minutes from the UNESCO World Heritage Mahabalipuram Shore Temple, the resort is designed to offer a perfect blend of rustic charm and modern comfort.
+        </p>
+        <br>
+        <p class="section-body" style="max-width:100%;">
+          From the moment you arrive, the warmth is unmistakable. Our spacious rooms and suites are thoughtfully designed with plush beds, cosy linens, and panoramic views of the surrounding landscape. Our on-site restaurant, Green Bay, serves fresh gourmet cuisine made with locally-sourced ingredients. Our team — warm, attentive, and genuinely invested in your experience — makes every visit feel personal.
+        </p>
+        <br>
+        <p class="section-body" style="max-width:100%;">
+          Whether you are a Prestige Vacations member coming for your annual stay, a family seeking a weekend escape from Chennai, or a couple looking for a quiet retreat — The Country Resort is where great memories are made.
+        </p>
+        <div style="display:flex;gap:14px;flex-wrap:wrap;margin-top:32px;">
+          <a href="tel:+919884845022" class="btn btn-gold"><i class="fa-solid fa-phone"></i> Book a Stay</a>
+          <a href="https://wa.me/919884845022" target="_blank" class="btn-outline" style="border:1px solid var(--gold);color:var(--gold);display:inline-flex;align-items:center;gap:8px;padding:14px 28px;font-family:'Montserrat',sans-serif;font-size:12px;font-weight:600;letter-spacing:2px;text-transform:uppercase;transition:all .3s;"><i class="fa-brands fa-whatsapp"></i> WhatsApp Us</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══ ROOMS ═════════════════════════════════════════════ -->
+<section class="section section-deep">
+  <div class="container">
+    <div class="section-header text-center fade-in" style="margin-bottom:64px;">
+      <span class="section-label">Accommodations</span>
+      <h2 class="section-title" style="color:var(--champagne);">Our Rooms &amp; Suites</h2>
+      <p class="section-body" style="margin:20px auto 0;">
+        Spacious, thoughtfully designed, and genuinely comfortable. Every room at The Country Resort is a retreat in itself.
+      </p>
+    </div>
+
+    <div class="ornament fade-in">
+      <span class="ornament-icon"><i class="fa-solid fa-bed"></i></span>
+    </div>
+
+    <div class="rooms-grid">
+
+      <!-- Suite Room Garden View -->
+      <div class="room-card fade-in">
+        <div class="room-img">
+          <span class="room-img-label">Suite Room — Garden View</span>
+          <span class="room-type-badge">Suite</span>
+        </div>
+        <div class="room-body">
+          <h3 class="room-name">Suite Room<br><span style="color:var(--gold-bronze);font-size:18px;font-weight:300;">Garden View</span></h3>
+          <div class="room-specs">
+            <span class="room-spec"><i class="fa-solid fa-expand"></i> 47 Sqm</span>
+            <span class="room-spec"><i class="fa-solid fa-user"></i> Up to 2 Guests</span>
+            <span class="room-spec"><i class="fa-solid fa-tree"></i> Garden View</span>
+          </div>
+          <p class="room-desc">
+            Our Suite Rooms offer a generous 47 Sqm of thoughtfully designed space. The Garden View suite faces our beautifully landscaped grounds — wake up to the sound of nature and soft morning light filtering through.
+          </p>
+          <div class="room-amenities">
+            <span class="room-amenity">Plush King Bed</span>
+            <span class="room-amenity">Garden View</span>
+            <span class="room-amenity">Room Service</span>
+            <span class="room-amenity">Free Wi-Fi</span>
+            <span class="room-amenity">Complimentary Breakfast</span>
+            <span class="room-amenity">Air Conditioning</span>
+          </div>
+          <div class="room-footer">
+            <div>
+              <div class="room-price-label">Starting From</div>
+              <div class="room-price">₹14,160<span class="room-price-night">/night</span></div>
+            </div>
+            <a href="tel:+919884845022" class="btn btn-gold" style="padding:10px 24px;font-size:11px;">
+              <i class="fa-solid fa-phone"></i> Book Now
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Suite Room Balcony View -->
+      <div class="room-card fade-in fade-in-delay-1">
+        <div class="room-img">
+          <span class="room-img-label">Suite Room — Balcony View</span>
+          <span class="room-type-badge">Suite</span>
+        </div>
+        <div class="room-body">
+          <h3 class="room-name">Suite Room<br><span style="color:var(--gold-bronze);font-size:18px;font-weight:300;">Balcony View</span></h3>
+          <div class="room-specs">
+            <span class="room-spec"><i class="fa-solid fa-expand"></i> 47 Sqm</span>
+            <span class="room-spec"><i class="fa-solid fa-user"></i> Up to 2 Guests</span>
+            <span class="room-spec"><i class="fa-solid fa-door-open"></i> Private Balcony</span>
+          </div>
+          <p class="room-desc">
+            The Suite Room with Balcony View is our most sought-after accommodation. Step out onto your private balcony and breathe in the fresh ECR air with views of the resort grounds — the perfect way to start a morning.
+          </p>
+          <div class="room-amenities">
+            <span class="room-amenity">Plush King Bed</span>
+            <span class="room-amenity">Private Balcony</span>
+            <span class="room-amenity">Room Service</span>
+            <span class="room-amenity">Free Wi-Fi</span>
+            <span class="room-amenity">Complimentary Breakfast</span>
+            <span class="room-amenity">Air Conditioning</span>
+          </div>
+          <div class="room-footer">
+            <div>
+              <div class="room-price-label">Starting From</div>
+              <div class="room-price">₹14,160<span class="room-price-night">/night</span></div>
+            </div>
+            <a href="tel:+919884845022" class="btn btn-gold" style="padding:10px 24px;font-size:11px;">
+              <i class="fa-solid fa-phone"></i> Book Now
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Executive Room Garden View -->
+      <div class="room-card fade-in fade-in-delay-2">
+        <div class="room-img">
+          <span class="room-img-label">Executive Room — Garden View</span>
+          <span class="room-type-badge" style="background:linear-gradient(135deg,var(--gold-bronze),var(--gold-mid));">Executive</span>
+        </div>
+        <div class="room-body">
+          <h3 class="room-name">Executive Room<br><span style="color:var(--gold-bronze);font-size:18px;font-weight:300;">Garden View</span></h3>
+          <div class="room-specs">
+            <span class="room-spec"><i class="fa-solid fa-expand"></i> 48 Sqm</span>
+            <span class="room-spec"><i class="fa-solid fa-user"></i> Up to 2 Guests</span>
+            <span class="room-spec"><i class="fa-solid fa-tree"></i> Garden View</span>
+          </div>
+          <p class="room-desc">
+            Our Executive Rooms are actually our most spacious at 48 Sqm — generous, well-furnished, and designed for comfort. The garden-facing rooms are peaceful and private, ideal for those who want a quiet retreat.
+          </p>
+          <div class="room-amenities">
+            <span class="room-amenity">Queen Bed</span>
+            <span class="room-amenity">Garden View</span>
+            <span class="room-amenity">Room Service</span>
+            <span class="room-amenity">Free Wi-Fi</span>
+            <span class="room-amenity">Complimentary Breakfast</span>
+            <span class="room-amenity">Work Desk</span>
+          </div>
+          <div class="room-footer">
+            <div>
+              <div class="room-price-label">Starting From</div>
+              <div class="room-price">₹8,850<span class="room-price-night">/night</span></div>
+            </div>
+            <a href="tel:+919884845022" class="btn btn-gold" style="padding:10px 24px;font-size:11px;">
+              <i class="fa-solid fa-phone"></i> Book Now
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Executive Room Balcony View -->
+      <div class="room-card fade-in fade-in-delay-3">
+        <div class="room-img">
+          <span class="room-img-label">Executive Room — Balcony View</span>
+          <span class="room-type-badge" style="background:linear-gradient(135deg,var(--gold-bronze),var(--gold-mid));">Executive</span>
+        </div>
+        <div class="room-body">
+          <h3 class="room-name">Executive Room<br><span style="color:var(--gold-bronze);font-size:18px;font-weight:300;">Balcony View</span></h3>
+          <div class="room-specs">
+            <span class="room-spec"><i class="fa-solid fa-expand"></i> 47 Sqm</span>
+            <span class="room-spec"><i class="fa-solid fa-user"></i> Up to 2 Guests</span>
+            <span class="room-spec"><i class="fa-solid fa-door-open"></i> Private Balcony</span>
+          </div>
+          <p class="room-desc">
+            The Executive Room with Balcony is the perfect balance of space, comfort, and value. A private balcony gives you your own outdoor moment — whether it's a morning coffee or a quiet evening away from the city.
+          </p>
+          <div class="room-amenities">
+            <span class="room-amenity">Queen Bed</span>
+            <span class="room-amenity">Private Balcony</span>
+            <span class="room-amenity">Room Service</span>
+            <span class="room-amenity">Free Wi-Fi</span>
+            <span class="room-amenity">Complimentary Breakfast</span>
+            <span class="room-amenity">Work Desk</span>
+          </div>
+          <div class="room-footer">
+            <div>
+              <div class="room-price-label">Starting From</div>
+              <div class="room-price">₹8,850<span class="room-price-night">/night</span></div>
+            </div>
+            <a href="tel:+919884845022" class="btn btn-gold" style="padding:10px 24px;font-size:11px;">
+              <i class="fa-solid fa-phone"></i> Book Now
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div style="text-align:center;margin-top:20px;padding:24px;border:1px solid rgba(217,186,111,0.15);background:rgba(217,186,111,0.04);" class="fade-in">
+      <p style="font-size:13px;font-weight:300;color:var(--silver);opacity:0.7;">
+        <i class="fa-solid fa-circle-info" style="color:var(--gold-bronze);margin-right:8px;"></i>
+        Prestige Vacations members enjoy exclusive rates and priority booking. <a href="prestige-membership-overview.html" style="color:var(--gold);">Learn about membership →</a>
+      </p>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══ AMENITIES ════════════════════════════════════════ -->
+<section class="section section-cream">
+  <div class="container">
+    <div class="section-header text-center fade-in">
+      <span class="section-label">Facilities</span>
+      <h2 class="section-title">Everything You Need</h2>
+      <p class="section-body" style="margin:20px auto 0;">
+        From complimentary breakfast to room service — every facility at The Country Resort is designed around your comfort.
+      </p>
+    </div>
+
+    <div class="ornament fade-in">
+      <span class="ornament-icon"><i class="fa-solid fa-star"></i></span>
+    </div>
+
+    <div class="amenities-grid">
+
+      <div class="amenity-card fade-in">
+        <div class="amenity-icon"><i class="fa-solid fa-mug-saucer"></i></div>
+        <h3 class="amenity-name">Complimentary Breakfast</h3>
+        <p class="amenity-desc">Start every morning with a delicious breakfast included with your stay — the best way to begin a day at the resort.</p>
+      </div>
+
+      <div class="amenity-card fade-in fade-in-delay-1">
+        <div class="amenity-icon"><i class="fa-solid fa-wifi"></i></div>
+        <h3 class="amenity-name">High-Speed Wi-Fi</h3>
+        <p class="amenity-desc">Stay connected with reliable, high-speed Wi-Fi throughout the property — for those who need it, and easy to ignore for those who don't.</p>
+      </div>
+
+      <div class="amenity-card fade-in fade-in-delay-2">
+        <div class="amenity-icon"><i class="fa-solid fa-bell-concierge"></i></div>
+        <h3 class="amenity-name">Room Service</h3>
+        <p class="amenity-desc">Exceptional room service available to ensure your comfort at any time — from meals to amenity requests, we've got you covered.</p>
+      </div>
+
+      <div class="amenity-card fade-in fade-in-delay-3">
+        <div class="amenity-icon"><i class="fa-solid fa-car"></i></div>
+        <h3 class="amenity-name">Pickup &amp; Drop</h3>
+        <p class="amenity-desc">Hassle-free transportation with our paid pickup and drop service. Travel comfortably from Chennai to the resort and back.</p>
+      </div>
+
+      <div class="amenity-card fade-in fade-in-delay-4">
+        <div class="amenity-icon"><i class="fa-solid fa-square-parking"></i></div>
+        <h3 class="amenity-name">Parking Space</h3>
+        <p class="amenity-desc">Spacious, secure parking for all guests. Drive down from Chennai worry-free — your vehicle is in safe hands at the resort.</p>
+      </div>
+
+      <div class="amenity-card fade-in fade-in-delay-5">
+        <div class="amenity-icon"><i class="fa-solid fa-water-ladder"></i></div>
+        <h3 class="amenity-name">Swimming Pool</h3>
+        <p class="amenity-desc">A stunning state-of-the-art swimming pool — the perfect place to unwind and soak up the sun at the resort.</p>
+        <span class="coming-soon-badge">Coming Soon</span>
+      </div>
+
+      <div class="amenity-card fade-in">
+        <div class="amenity-icon"><i class="fa-solid fa-spa"></i></div>
+        <h3 class="amenity-name">Spa Treatment</h3>
+        <p class="amenity-desc">Soothing spa treatments to help you truly unwind — the ideal complement to a resort stay on the ECR.</p>
+        <span class="coming-soon-badge">Coming Soon</span>
+      </div>
+
+      <div class="amenity-card fade-in fade-in-delay-1">
+        <div class="amenity-icon"><i class="fa-solid fa-leaf"></i></div>
+        <h3 class="amenity-name">Landscaped Gardens</h3>
+        <p class="amenity-desc">Beautifully maintained gardens and lawns to stroll through, sit in, or simply enjoy from the comfort of your balcony.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══ RESTAURANT ═══════════════════════════════════════ -->
+<section class="section section-dark">
+  <div class="container">
+    <div class="restaurant-grid">
+      <div class="fade-in">
+        <span class="section-label">Dining at The Country Resort</span>
+        <h2 class="section-title">Green Bay Restaurant</h2>
+        <div class="gold-rule"></div>
+        <p class="section-body" style="max-width:100%;">
+          The Green Bay restaurant at The Country Resort is more than just a dining experience — it is a destination in itself. Named after its picturesque setting, Green Bay offers a delightful culinary journey with views and a menu that reflects the very best of the region.
+        </p>
+        <div class="restaurant-features">
+          <div class="restaurant-feature">
+            <i class="fa-solid fa-fish"></i>
+            <span class="restaurant-feature-text"><strong>Fresh Seafood</strong> — Locally sourced, freshly prepared seafood dishes that celebrate the flavours of the Mahabalipuram coast.</span>
+          </div>
+          <div class="restaurant-feature">
+            <i class="fa-solid fa-seedling"></i>
+            <span class="restaurant-feature-text"><strong>Vegetarian Options</strong> — A rich selection of vegetarian dishes prepared with fresh, locally sourced ingredients for every palate.</span>
+          </div>
+          <div class="restaurant-feature">
+            <i class="fa-solid fa-fish-fins"></i>
+            <span class="restaurant-feature-text"><strong>Live Aquarium</strong> — Dine with an extensive live aquarium display — a unique dining feature that makes every meal memorable.</span>
+          </div>
+          <div class="restaurant-feature">
+            <i class="fa-solid fa-wind"></i>
+            <span class="restaurant-feature-text"><strong>Sea Breeze Setting</strong> — Enjoy your meal in the soothing ambience of the sea breeze with the resort's natural surroundings as your backdrop.</span>
+          </div>
+          <div class="restaurant-feature">
+            <i class="fa-solid fa-mug-saucer"></i>
+            <span class="restaurant-feature-text"><strong>Complimentary Breakfast</strong> — All resort stays include a complimentary breakfast — the perfect start to every morning at The Country Resort.</span>
+          </div>
+        </div>
+        <a href="prestige-contact%20(1).html" class="btn btn-gold">
+          <i class="fa-solid fa-utensils"></i> Reserve a Table
+        </a>
+      </div>
+      <div class="fade-in fade-in-delay-1">
+        <div class="overview-img-main" style="width:100%;aspect-ratio:3/4;background:linear-gradient(135deg,#252520,#1a1a17,#252520);border:1px solid rgba(217,186,111,0.2);display:flex;align-items:center;justify-content:center;">
+          <span class="img-placeholder-label">Green Bay Restaurant Image</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══ ACTIVITIES ════════════════════════════════════════ -->
+<section class="section section-deep">
+  <div class="container">
+    <div class="section-header text-center fade-in">
+      <span class="section-label">Things to Do</span>
+      <h2 class="section-title" style="color:var(--champagne);">Leisure &amp; Activities</h2>
+      <p class="section-body" style="margin:20px auto 0;">
+        There is always something to do at The Country Resort — whether you want to be active, relaxed, or somewhere in between.
+      </p>
+    </div>
+
+    <div class="ornament fade-in">
+      <span class="ornament-icon"><i class="fa-solid fa-sun"></i></span>
+    </div>
+
+    <div class="activities-grid">
+      <div class="activity-card fade-in">
+        <div class="activity-icon"><i class="fa-solid fa-person-hiking"></i></div>
+        <h3 class="activity-title">Hiking &amp; Nature Walks</h3>
+        <p class="activity-desc">Explore the natural beauty around Mahabalipuram with guided hiking trails and peaceful nature walks through the resort's landscaped surroundings and nearby terrain.</p>
+      </div>
+      <div class="activity-card fade-in fade-in-delay-1">
+        <div class="activity-icon"><i class="fa-solid fa-person-biking"></i></div>
+        <h3 class="activity-title">Cycling</h3>
+        <p class="activity-desc">Cycle through the scenic backroads of Mahabalipuram at your own pace — a refreshing and memorable way to explore the area around the resort.</p>
+      </div>
+      <div class="activity-card fade-in fade-in-delay-2">
+        <div class="activity-icon"><i class="fa-solid fa-chess"></i></div>
+        <h3 class="activity-title">Indoor Games</h3>
+        <p class="activity-desc">A variety of indoor games available for families and groups — perfect for an afternoon of fun that brings everyone together regardless of age.</p>
+      </div>
+      <div class="activity-card fade-in fade-in-delay-3">
+        <div class="activity-icon"><i class="fa-solid fa-volleyball"></i></div>
+        <h3 class="activity-title">Outdoor Activities</h3>
+        <p class="activity-desc">Activity-oriented outdoor games and sports available for guests — ideal for team outings, family fun days, and group stays at the resort.</p>
+      </div>
+      <div class="activity-card fade-in fade-in-delay-4">
+        <div class="activity-icon"><i class="fa-solid fa-leaf"></i></div>
+        <h3 class="activity-title">Garden Strolls</h3>
+        <p class="activity-desc">Stroll through our beautifully landscaped gardens and grounds — a simple, restorative experience that reminds you why you came to the resort in the first place.</p>
+      </div>
+      <div class="activity-card fade-in fade-in-delay-5">
+        <div class="activity-icon"><i class="fa-solid fa-landmark"></i></div>
+        <h3 class="activity-title">Local Sightseeing</h3>
+        <p class="activity-desc">Mahabalipuram is home to the UNESCO World Heritage Shore Temple, pristine beaches, and stone carvings. Our team can help you plan a memorable local excursion.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══ EVENTS & WEDDINGS ════════════════════════════════ -->
+<section class="section section-cream">
+  <div class="container">
+    <div class="section-header text-center fade-in">
+      <span class="section-label">Celebrate Here</span>
+      <h2 class="section-title">Weddings, Events &amp; More</h2>
+      <p class="section-body" style="margin:20px auto 0;">
+        The Country Resort is an ideal venue for life's most important moments — whether it's an intimate wedding, a milestone anniversary, or a corporate retreat.
+      </p>
+    </div>
+
+    <div class="ornament fade-in">
+      <span class="ornament-icon"><i class="fa-solid fa-heart"></i></span>
+    </div>
+
+    <div class="events-split">
+      <div class="event-feature-card fade-in">
+        <div class="event-feature-icon"><i class="fa-solid fa-heart"></i></div>
+        <h3 class="event-feature-title">Weddings &amp; Celebrations</h3>
+        <p class="event-feature-desc">
+          An intimate wedding at The Country Resort is a choice that couples talk about for years. The open lawns, natural surroundings, and our dedicated team make every celebration feel genuinely personal and beautifully executed.
+        </p>
+        <ul class="event-feature-list">
+          <li><i class="fa-solid fa-check"></i> Open lawn wedding ceremony spaces</li>
+          <li><i class="fa-solid fa-check"></i> Customisable decoration and setup</li>
+          <li><i class="fa-solid fa-check"></i> In-house catering — fresh and generous</li>
+          <li><i class="fa-solid fa-check"></i> Dedicated event coordination team</li>
+          <li><i class="fa-solid fa-check"></i> Overnight accommodation for guests</li>
+          <li><i class="fa-solid fa-check"></i> Anniversary and milestone celebrations</li>
+        </ul>
+      </div>
+
+      <div class="event-feature-card fade-in fade-in-delay-1">
+        <div class="event-feature-icon"><i class="fa-solid fa-briefcase"></i></div>
+        <h3 class="event-feature-title">Corporate &amp; Group Events</h3>
+        <p class="event-feature-desc">
+          Team outings, conferences, leadership retreats, and group gatherings — The Country Resort provides the perfect environment for productive offsite experiences with the right balance of work and leisure.
+        </p>
+        <ul class="event-feature-list">
+          <li><i class="fa-solid fa-check"></i> Well-equipped event and meeting spaces</li>
+          <li><i class="fa-solid fa-check"></i> Group accommodation packages</li>
+          <li><i class="fa-solid fa-check"></i> Outdoor team-building activities</li>
+          <li><i class="fa-solid fa-check"></i> Customisable group packages</li>
+          <li><i class="fa-solid fa-check"></i> Professional event planning support</li>
+          <li><i class="fa-solid fa-check"></i> In-house catering for group meals</li>
+        </ul>
+      </div>
+    </div>
+
+    <div style="text-align:center;margin-top:40px;" class="fade-in">
+      <a href="prestige-contact%20(1).html" class="btn btn-gold">
+        <i class="fa-solid fa-envelope"></i> Enquire About Events
+      </a>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══ LOCATION ══════════════════════════════════════════ -->
+<section class="section section-dark">
+  <div class="container">
+    <div class="section-header text-center fade-in" style="margin-bottom:64px;">
+      <span class="section-label">How to Find Us</span>
+      <h2 class="section-title">Location &amp; Getting Here</h2>
+      <p class="section-body" style="margin:20px auto 0;">
+        The Country Resort is conveniently located on the East Coast Road — an easy, scenic drive from Chennai.
+      </p>
+    </div>
+
+    <div class="ornament fade-in">
+      <span class="ornament-icon"><i class="fa-solid fa-location-dot"></i></span>
+    </div>
+
+    <div class="location-grid">
+      <div class="location-map-placeholder fade-in">
+        <i class="fa-solid fa-map-location-dot"></i>
+        <span>No. 45/2, East Coast Road<br>Devaneri, Mahabalipuram</span>
+        <a href="https://goo.gl/maps/y5M2wFMoQ7ea5NwK9" target="_blank">
+          <i class="fa-solid fa-map"></i> Open in Google Maps
+        </a>
+      </div>
+
+      <div class="fade-in fade-in-delay-1">
+        <div class="location-details">
+          <div class="location-detail-item">
+            <div class="location-detail-icon"><i class="fa-solid fa-location-dot"></i></div>
+            <div>
+              <div class="location-detail-label">Address</div>
+              <div class="location-detail-value">No. 45/2, East Coast Road, Devaneri,<br>Mahabalipuram, Tamil Nadu</div>
+            </div>
+          </div>
+          <div class="location-detail-item">
+            <div class="location-detail-icon"><i class="fa-solid fa-phone"></i></div>
+            <div>
+              <div class="location-detail-label">Phone</div>
+              <div class="location-detail-value">
+                <a href="tel:+919884845022">+91 98848 45022</a> &nbsp;|&nbsp;
+                <a href="tel:+919884845023">+91 98848 45023</a>
+              </div>
+            </div>
+          </div>
+          <div class="location-detail-item">
+            <div class="location-detail-icon"><i class="fa-solid fa-envelope"></i></div>
+            <div>
+              <div class="location-detail-label">Email</div>
+              <div class="location-detail-value">
+                <a href="mailto:bookings@thecountryresort.com">bookings@thecountryresort.com</a>
+              </div>
+            </div>
+          </div>
+          <div class="location-detail-item">
+            <div class="location-detail-icon"><i class="fa-solid fa-route"></i></div>
+            <div>
+              <div class="location-detail-label">Distance from Key Points</div>
+              <div class="location-detail-value">
+                <div class="nearby-items">
+                  <div class="nearby-item">
+                    <span class="nearby-name"><i class="fa-solid fa-city"></i> Chennai City Centre</span>
+                    <span class="nearby-dist">~60 km / 90 min</span>
+                  </div>
+                  <div class="nearby-item">
+                    <span class="nearby-name"><i class="fa-solid fa-plane"></i> Chennai Airport</span>
+                    <span class="nearby-dist">~70 km / 100 min</span>
+                  </div>
+                  <div class="nearby-item">
+                    <span class="nearby-name"><i class="fa-solid fa-landmark"></i> Shore Temple</span>
+                    <span class="nearby-dist">~5 km / 10 min</span>
+                  </div>
+                  <div class="nearby-item">
+                    <span class="nearby-name"><i class="fa-solid fa-water"></i> Mahabalipuram Beach</span>
+                    <span class="nearby-dist">~4 km / 8 min</span>
+                  </div>
+                  <div class="nearby-item">
+                    <span class="nearby-name"><i class="fa-solid fa-road"></i> OMR Junction</span>
+                    <span class="nearby-dist">~35 km / 45 min</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══ TESTIMONIALS ═════════════════════════════════════ -->
+<section class="section section-deep">
+  <div class="container">
+    <div class="section-header text-center fade-in">
+      <span class="section-label">Guest Feedback</span>
+      <h2 class="section-title" style="color:var(--champagne);">What Our Guests Say</h2>
+      <p class="section-body" style="margin:20px auto 0;">
+        Honest words from the people who have stayed with us — and keep coming back.
+      </p>
+    </div>
+
+    <div class="ornament fade-in">
+      <span class="ornament-icon"><i class="fa-solid fa-star"></i></span>
+    </div>
+
+    <div class="testi-grid">
+      <div class="testi-card fade-in">
+        <div class="testi-quote">"</div>
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">The rooms were spacious, clean, and beautifully decorated. The resort facilities were top-notch, especially the food at the on-site restaurant. Couldn't have asked for a better stay.</p>
+        <div class="testi-author">
+          <div class="testi-avatar">S</div>
+          <div>
+            <div class="testi-name">Mr. Senthuri &amp; Family</div>
+            <div class="testi-member">Prestige Member</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testi-card fade-in fade-in-delay-1">
+        <div class="testi-quote">"</div>
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">Our family had an unforgettable vacation at The Country Resort. The food at the restaurant was delicious and the team at Prestige Vacations made sure every detail was taken care of. We are already planning our next trip.</p>
+        <div class="testi-author">
+          <div class="testi-avatar">A</div>
+          <div>
+            <div class="testi-name">Mr. Amal &amp; Family</div>
+            <div class="testi-member">Prestige Member</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testi-card fade-in fade-in-delay-2">
+        <div class="testi-quote">"</div>
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">The Country Resort by Prestige Vacations provided the perfect romantic retreat for my partner and me. The atmosphere, the service, the food — everything came together beautifully. It was a truly memorable experience.</p>
+        <div class="testi-author">
+          <div class="testi-avatar">C</div>
+          <div>
+            <div class="testi-name">Mr. Chinnadurai &amp; Family</div>
+            <div class="testi-member">Prestige Member</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testi-card fade-in fade-in-delay-3">
+        <div class="testi-quote">"</div>
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">I must say the customer service was exceptional. The resort was stunning with well-maintained rooms and the staff genuinely went out of their way to make our stay comfortable. I would highly recommend The Country Resort.</p>
+        <div class="testi-author">
+          <div class="testi-avatar">M</div>
+          <div>
+            <div class="testi-name">Mr. Manish Kumar</div>
+            <div class="testi-member">Resort Guest</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div style="text-align:center;margin-top:44px;" class="fade-in">
+      <a href="prestige-member-reviews.html" class="btn btn-outline">
+        <i class="fa-solid fa-star"></i> Read All Reviews
+      </a>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══ OTHER PROPERTIES ═════════════════════════════════ -->
+<section class="section section-cream">
+  <div class="container">
+    <div class="section-header text-center fade-in">
+      <span class="section-label">Also by Prestige</span>
+      <h2 class="section-title">Explore Our Other Properties</h2>
+    </div>
+    <div class="ornament fade-in">
+      <span class="ornament-icon"><i class="fa-solid fa-building"></i></span>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;" class="fade-in">
+      <a href="prestige-country-suites.html" style="display:block;border:1px solid rgba(163,137,90,0.2);padding:36px 32px;background:linear-gradient(145deg,#faf3e4,var(--cream));transition:all .3s;text-decoration:none;" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 12px 32px rgba(163,137,90,0.2)'" onmouseout="this.style.transform='none';this.style.boxShadow='none'">
+        <div style="font-size:28px;color:var(--gold-mid);margin-bottom:14px;"><i class="fa-solid fa-house"></i></div>
+        <div style="font-size:10px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold-mid);margin-bottom:10px;">Mahabalipuram</div>
+        <h3 style="font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:600;color:var(--charcoal);margin-bottom:12px;">The Country Suites</h3>
+        <p style="font-size:13px;font-weight:300;line-height:1.7;color:var(--dark-gray);margin-bottom:20px;">Private villas with personal swimming pool access and indoor games. The ultimate private retreat for couples, families, and celebrations.</p>
+        <span style="font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--gold-mid);display:inline-flex;align-items:center;gap:6px;">Discover <i class="fa-solid fa-arrow-right"></i></span>
+      </a>
+      <a href="prestige-country-bay.html" style="display:block;border:1px solid rgba(163,137,90,0.2);padding:36px 32px;background:linear-gradient(145deg,#faf3e4,var(--cream));transition:all .3s;text-decoration:none;" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 12px 32px rgba(163,137,90,0.2)'" onmouseout="this.style.transform='none';this.style.boxShadow='none'">
+        <div style="font-size:28px;color:var(--gold-mid);margin-bottom:14px;"><i class="fa-solid fa-water"></i></div>
+        <div style="font-size:10px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold-mid);margin-bottom:10px;">Marakkanam — Coming Soon</div>
+        <h3 style="font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:600;color:var(--charcoal);margin-bottom:12px;">The Country Bay</h3>
+        <p style="font-size:13px;font-weight:300;line-height:1.7;color:var(--dark-gray);margin-bottom:20px;">Our newest property — private beach access and swimming pool at Marakkanam. The sound of the sea, exclusively for Prestige members.</p>
+        <span style="font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--gold-mid);display:inline-flex;align-items:center;gap:6px;">Register Interest <i class="fa-solid fa-arrow-right"></i></span>
+      </a>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══ CTA ═══════════════════════════════════════════════ -->
+<section class="cta-banner">
+  <div class="container fade-in">
+    <span class="cta-script">Ready to visit?</span>
+    <h2 class="cta-title gold-text">Book Your Stay at<br>The Country Resort</h2>
+    <p class="cta-sub">
+      Just 90 minutes from Chennai — your next great weekend is already waiting on the ECR.
+    </p>
+    <div class="cta-buttons">
+      <a href="tel:+919884845022" class="btn btn-gold">
+        <i class="fa-solid fa-phone"></i> Call to Book
+      </a>
+      <a href="https://wa.me/919884845022" target="_blank" class="btn-whatsapp">
+        <i class="fa-brands fa-whatsapp"></i> WhatsApp Us
+      </a>
+      <a href="prestige-membership-overview.html" class="btn btn-outline">
+        <i class="fa-solid fa-crown"></i> Explore Membership
+      </a>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══ FOOTER ════════════════════════════════════════════ -->
+<footer>
+  <div class="container">
+    <div class="footer-top">
+      <div>
+        <div class="footer-brand-name gold-text">Prestige</div>
+        <div class="footer-brand-sub">Vacations &amp; Clubs</div>
+        <p class="footer-tagline">Live a Prestigious Life</p>
+        <p class="footer-desc">Chennai's most trusted holiday membership company. 15+ years of creating meaningful holidays for families across India.</p>
+        <div class="footer-contact-item"><i class="fa-solid fa-phone"></i><a href="tel:18001213457" style="color:var(--silver);opacity:.75;">1800 121 3457 (Toll Free)</a></div>
+        <div class="footer-contact-item"><i class="fa-solid fa-envelope"></i><a href="mailto:info@prestigevacations.in" style="color:var(--silver);opacity:.75;">info@prestigevacations.in</a></div>
+        <div class="footer-social">
+          <a href="https://www.facebook.com/prestigevacationschennai/" target="_blank" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="https://www.instagram.com/prestige_vacations17/" target="_blank" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+          <a href="https://youtube.com/channel/UC1k56gGYKjmQKFtGuO7WhlQ" target="_blank" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+          <a href="https://wa.me/918001213457" target="_blank" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+        </div>
+      </div>
+      <div>
+        <h4 class="footer-col-title">Our Properties</h4>
+        <div class="footer-col-divider"></div>
+        <ul class="footer-links">
+          <li><a href="prestige-country-resort.html">The Country Resort, Mahabalipuram</a></li>
+          <li><a href="prestige-country-suites.html">The Country Suites, Mahabalipuram</a></li>
+          <li><a href="prestige-country-bay.html">The Country Bay, Marakkanam</a></li>
+        </ul>
+        <h4 class="footer-col-title" style="margin-top:32px;">Membership</h4>
+        <div class="footer-col-divider"></div>
+        <ul class="footer-links">
+          <li><a href="prestige-club-membership.html">Club Membership</a></li>
+          <li><a href="prestige-holiday-membership.html">Holiday Membership</a></li>
+          <li><a href="prestige-gift-vouchers.html">Gift Vouchers</a></li>
+          <li><a href="prestige-membership-faqs.html">Membership FAQs</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="footer-col-title">Experiences</h4>
+        <div class="footer-col-divider"></div>
+        <ul class="footer-links">
+          <li><a href="prestige-resort-stays.html">Resort Stays</a></li>
+          <li><a href="prestige-day-outings.html">Day Outings</a></li>
+          <li><a href="prestige-events.html">Events</a></li>
+          <li><a href="prestige-tour-packages.html">Tour Packages</a></li>
+          <li><a href="prestige-weddings.html">Weddings &amp; Celebrations</a></li>
+          <li><a href="prestige-corporate.html">Corporate &amp; Groups</a></li>
+        </ul>
+        <h4 class="footer-col-title" style="margin-top:32px;">Quick Links</h4>
+        <div class="footer-col-divider"></div>
+        <ul class="footer-links">
+          <li><a href="prestige-about.html">About Us</a></li>
+          <li><a href="prestige-gallery.html">Gallery</a></li>
+          <li><a href="prestige-blog-index.html">Blog</a></li>
+          <li><a href="prestige-member-reviews.html">Member Reviews</a></li>
+          <li><a href="prestige-contact%20(1).html">Contact Us</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="footer-col-title">The Country Resort</h4>
+        <div class="footer-col-divider"></div>
+        <p style="font-size:13px;font-weight:300;line-height:1.8;color:var(--silver);opacity:.65;margin-bottom:24px;">No. 45/2, East Coast Road, Devaneri, Mahabalipuram, Tamil Nadu</p>
+        <div class="footer-contact-item"><i class="fa-solid fa-phone"></i><a href="tel:+919884845022" style="color:var(--silver);opacity:.75;">+91 98848 45022</a></div>
+        <div class="footer-contact-item"><i class="fa-solid fa-envelope"></i><a href="mailto:bookings@thecountryresort.com" style="color:var(--silver);opacity:.75;">bookings@thecountryresort.com</a></div>
+        <a href="tel:+919884845022" class="btn btn-gold" style="width:100%;justify-content:center;margin-top:16px;margin-bottom:12px;"><i class="fa-solid fa-phone"></i> Book a Stay</a>
+        <a href="https://wa.me/919884845022" target="_blank" class="btn-whatsapp" style="width:100%;justify-content:center;display:flex;"><i class="fa-brands fa-whatsapp"></i> WhatsApp</a>
+        <div style="margin-top:20px;">
+          <div class="footer-social">
+            <a href="https://www.facebook.com/thecountryresortmahabs" target="_blank"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="https://www.instagram.com/thecountryresort/" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-seo">
+      <a href="prestige-home.html">Resorts in Mahabalipuram</a>
+      <a href="prestige-home.html">Weekend Getaway from Chennai</a>
+      <a href="prestige-home.html">Day Outing from Chennai</a>
+      <a href="prestige-home.html">Family Resort Near Chennai</a>
+      <a href="prestige-home.html">Resort Wedding Near Chennai</a>
+      <a href="prestige-home.html">Beach Resort Near Chennai</a>
+      <a href="prestige-home.html">Holiday Membership Chennai</a>
+      <a href="prestige-home.html">Prestige Vacations Reviews</a>
+      <a href="prestige-home.html">Prestige Clubs and Resorts</a>
+      <a href="prestige-home.html">Resort Stay Mahabalipuram</a>
+    </div>
+
+    <div class="footer-bottom">
+      <span>© 2025 Prestige Vacations &amp; Clubs. All rights reserved. | Prestige Group of Companies</span>
+      <div class="footer-bottom-links">
+        <a href="prestige-home.html">Privacy Policy</a>
+        <a href="prestige-home.html">Terms &amp; Conditions</a>
+        <a href="prestige-home.html">Sitemap</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+<script>
+  const nav = document.getElementById('mainNav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 60);
+  });
+  const faders = document.querySelectorAll('.fade-in');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
+    });
+  }, { threshold: 0.1 });
+  faders.forEach(f => observer.observe(f));
+</script>
+
+
+
+<script>
+(function () {
+  function ready(fn) {
+    if (document.readyState !== 'loading') fn();
+    else document.addEventListener('DOMContentLoaded', fn);
+  }
+
+  ready(function () {
+    var nav = document.querySelector('nav.nav');
+    if (!nav || nav.querySelector('.mobile-nav-toggle')) return;
+
+    var toggle = document.createElement('button');
+    toggle.className = 'mobile-nav-toggle';
+    toggle.type = 'button';
+    toggle.setAttribute('aria-label', 'Open navigation menu');
+    toggle.setAttribute('aria-expanded', 'false');
+    toggle.innerHTML = '<span></span><span></span><span></span>';
+    nav.appendChild(toggle);
+
+    var panel = document.createElement('div');
+    panel.className = 'mobile-nav-panel';
+    panel.setAttribute('aria-hidden', 'true');
+
+    var list = nav.querySelector('.nav-links, .nls-wrap, .nl-wrap');
+    if (list) {
+      list.querySelectorAll(':scope > li').forEach(function (item) {
+        var topLink = item.querySelector(':scope > a');
+        if (topLink) {
+          var topClone = topLink.cloneNode(true);
+          topClone.className = '';
+          panel.appendChild(topClone);
+        }
+        item.querySelectorAll('.nav-dropdown a, .nd a').forEach(function (subLink) {
+          var subClone = subLink.cloneNode(true);
+          subClone.className = 'mobile-sub-link';
+          panel.appendChild(subClone);
+        });
+      });
+    }
+
+    var cta = nav.querySelector('.nav-cta, .nc');
+    if (cta) {
+      var ctaClone = cta.cloneNode(true);
+      ctaClone.className = 'mobile-cta-link';
+      panel.appendChild(ctaClone);
+    }
+
+    document.body.appendChild(panel);
+
+    function setOpen(open) {
+      document.body.classList.toggle('mobile-nav-open', open);
+      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+      toggle.setAttribute('aria-label', open ? 'Close navigation menu' : 'Open navigation menu');
+      panel.setAttribute('aria-hidden', open ? 'false' : 'true');
+    }
+
+    toggle.addEventListener('click', function () {
+      setOpen(!document.body.classList.contains('mobile-nav-open'));
+    });
+
+    panel.addEventListener('click', function (event) {
+      if (event.target.closest('a')) setOpen(false);
+    });
+
+    window.addEventListener('resize', function () {
+      if (window.innerWidth > 1100) setOpen(false);
+    });
+
+    document.addEventListener('keydown', function (event) {
+      if (event.key === 'Escape') setOpen(false);
+    });
+
+    document.querySelectorAll('body *').forEach(function (el) {
+      if (!el.children.length && el.textContent.trim().length > 2) {
+        var style = window.getComputedStyle(el);
+        var opacity = parseFloat(style.opacity);
+        if (opacity > 0 && opacity < 0.6) el.style.opacity = '0.72';
+      }
+    });
+  });
+})();
+</script>
+
+</body>
+</html>

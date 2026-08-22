@@ -1,0 +1,929 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gallery | Prestige Clubs & Resorts | Photos of Our Properties & Experiences</title>
+  <meta name="description" content="Photos and visuals from Prestige Clubs and Resorts properties — The Country Resort, The Country Suites, and The Country Bay. See our resort rooms, events, celebrations, and experiences." />
+  <meta name="keywords" content="Prestige Clubs and Resorts photos, The Country Resort Mahabalipuram photos, Prestige Vacations gallery, resort photos Chennai, ECR resort gallery, Prestige Clubs and Resorts Mahabalipuram" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600&family=Great+Vibes&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    :root{--black:#1A1A17;--matte-black:#1C1B18;--gold:#D9BA6F;--gold-mid:#C9A44B;--gold-bronze:#A3895A;--gold-dark:#504834;--silver:#DCDCDC;--champagne:#E8D8B0;--cream:#F2E7C7;--charcoal:#222222;--dark-gray:#2F2F2F;--gold-glow:rgba(217,186,111,0.18);--nav-h:80px;}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    html{scroll-behavior:smooth;}
+    body{font-family:'Montserrat',sans-serif;background:var(--black);color:var(--silver);overflow-x:hidden;}
+    a{text-decoration:none;color:inherit;}ul{list-style:none;}
+    .gold-text{background:linear-gradient(135deg,#C9A44B 0%,#D9BA6F 35%,#F2E7C7 55%,#D9BA6F 75%,#A3895A 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+    .sl{font-family:'Montserrat',sans-serif;font-size:11px;font-weight:600;letter-spacing:4px;text-transform:uppercase;color:var(--gold-mid);display:block;margin-bottom:14px;}
+    .st{font-family:'Cormorant Garamond',serif;font-size:clamp(32px,5vw,52px);font-weight:600;line-height:1.15;color:var(--champagne);}
+    .ct{max-width:1280px;margin:0 auto;}.tc{text-align:center;}.sec{padding:80px 48px;}
+    .sd{background:var(--black);}.sdp{background:#141412;}
+    .btn{display:inline-flex;align-items:center;gap:8px;padding:14px 32px;font-family:'Montserrat',sans-serif;font-size:12px;font-weight:600;letter-spacing:2px;text-transform:uppercase;cursor:pointer;transition:all .3s;border:none;}
+    .bg{background:linear-gradient(135deg,var(--gold-mid),var(--gold),var(--gold-mid));color:var(--black);}
+    .bg:hover{background:linear-gradient(135deg,var(--gold),var(--cream),var(--gold));transform:translateY(-2px);box-shadow:0 8px 24px rgba(217,186,111,.35);}
+    .bo{background:transparent;border:1px solid var(--gold);color:var(--gold);}
+    .bo:hover{background:var(--gold-glow);color:var(--cream);transform:translateY(-2px);}
+    .bw{background:#25D366;color:#fff;display:inline-flex;align-items:center;gap:8px;padding:14px 32px;font-family:'Montserrat',sans-serif;font-size:12px;font-weight:600;letter-spacing:2px;text-transform:uppercase;transition:all .3s;}
+    .bw:hover{background:#20ba59;transform:translateY(-2px);}
+
+    /* NAV */
+    .nav{position:fixed;top:0;left:0;right:0;z-index:9000;height:var(--nav-h);display:flex;align-items:center;padding:0 48px;background:rgba(26,26,23,.92);backdrop-filter:blur(12px);border-bottom:1px solid rgba(217,186,111,.15);transition:all .4s;}
+    .nav.scrolled{background:rgba(26,26,23,.98);box-shadow:0 4px 24px rgba(0,0,0,.4);}
+    .nav-logo{flex-shrink:0;margin-right:auto;}
+    .nav-logo-text{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:700;line-height:1.1;}
+    .nav-logo-sub{font-family:'Montserrat',sans-serif;font-size:9px;letter-spacing:3px;color:var(--gold-bronze);text-transform:uppercase;}
+    .nav-links{display:flex;align-items:center;gap:6px;}.nav-item{position:relative;}
+    .nav-link{display:flex;align-items:center;gap:5px;padding:8px 14px;font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--silver);transition:color .2s;white-space:nowrap;}
+    .nav-link:hover,.nav-link.active{color:var(--gold);}
+    .nav-link .fa-chevron-down{font-size:8px;transition:transform .2s;}.nav-item:hover .fa-chevron-down{transform:rotate(180deg);}
+    .nav-dropdown{position:absolute;top:calc(100% + 10px);left:0;background:var(--matte-black);border:1px solid rgba(217,186,111,.2);border-top:2px solid var(--gold);min-width:220px;opacity:0;visibility:hidden;transform:translateY(-8px);transition:all .25s;z-index:9999;}
+    .nav-item:hover .nav-dropdown{opacity:1;visibility:visible;transform:translateY(0);}
+    .nav-dropdown a{display:flex;align-items:center;gap:10px;padding:13px 20px;font-size:12px;font-weight:500;color:var(--silver);border-bottom:1px solid rgba(217,186,111,.08);transition:all .2s;}
+    .nav-dropdown a:last-child{border-bottom:none;}.nav-dropdown a i{color:var(--gold-bronze);width:14px;font-size:11px;}
+    .nav-dropdown a:hover{background:var(--gold-glow);color:var(--gold);padding-left:26px;}.nav-dropdown a:hover i{color:var(--gold);}
+    .nav-cta{margin-left:16px;padding:10px 22px;font-size:10px;}
+
+    /* HERO */
+    .ph{position:relative;padding:calc(var(--nav-h) + 80px) 48px 72px;background-color:var(--black);background-image:radial-gradient(ellipse 55% 45% at 3% 4%,rgba(217,186,111,.2) 0%,transparent 55%),radial-gradient(ellipse 55% 45% at 97% 4%,rgba(217,186,111,.2) 0%,transparent 55%);text-align:center;border-bottom:1px solid rgba(217,186,111,.12);overflow:hidden;}
+    .ph::before{content:'';position:absolute;inset:0;background-image:radial-gradient(circle 1px at 12% 18%,rgba(217,186,111,.6) 0%,transparent 100%),radial-gradient(circle 1px at 88% 22%,rgba(217,186,111,.5) 0%,transparent 100%),radial-gradient(circle 1px at 50% 8%,rgba(201,164,75,.5) 0%,transparent 100%);pointer-events:none;}
+    .phbc{display:flex;align-items:center;justify-content:center;gap:8px;margin-bottom:24px;font-size:11px;font-weight:500;letter-spacing:2px;text-transform:uppercase;color:var(--gold-bronze);position:relative;z-index:1;}
+    .phbc a{color:var(--gold-bronze);}.phbc a:hover{color:var(--gold);}.phbc i{font-size:8px;color:var(--gold-dark);}
+    .phs{font-family:'Great Vibes',cursive;font-size:clamp(26px,4vw,44px);color:var(--silver);opacity:.8;display:block;margin-bottom:12px;position:relative;z-index:1;}
+    .pht{font-family:'Cormorant Garamond',serif;font-size:clamp(48px,9vw,96px);font-weight:700;letter-spacing:4px;line-height:1;margin-bottom:24px;position:relative;z-index:1;}
+    .phl{display:flex;align-items:center;gap:16px;justify-content:center;margin-bottom:24px;position:relative;z-index:1;}
+    .phl::before,.phl::after{content:'';width:60px;height:1px;background:linear-gradient(90deg,transparent,var(--gold));}.phl::after{background:linear-gradient(90deg,var(--gold),transparent);}.phl span{color:var(--gold);font-size:10px;}
+    .phst{font-family:'Cormorant Garamond',serif;font-size:clamp(16px,2.2vw,20px);font-style:italic;font-weight:300;color:var(--silver);opacity:.7;max-width:620px;margin:0 auto 32px;position:relative;z-index:1;}
+
+    /* FILTER TABS */
+    .filter-bar{background:#141412;border-bottom:1px solid rgba(217,186,111,.15);padding:0 48px;position:sticky;top:var(--nav-h);z-index:800;}
+    .filter-tabs{display:flex;gap:0;overflow-x:auto;-ms-overflow-style:none;scrollbar-width:none;}
+    .filter-tabs::-webkit-scrollbar{display:none;}
+    .filter-tab{padding:16px 24px;font-family:'Montserrat',sans-serif;font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--silver);opacity:.5;cursor:pointer;transition:all .2s;border-bottom:2px solid transparent;white-space:nowrap;background:transparent;border-top:none;border-left:none;border-right:none;}
+    .filter-tab:hover{opacity:.8;color:var(--gold);}
+    .filter-tab.active{opacity:1;color:var(--gold);border-bottom-color:var(--gold);}
+
+    /* MASONRY GALLERY */
+    .gallery-section{padding:64px 48px;}
+    .gallery-intro{text-align:center;margin-bottom:48px;}
+    .gallery-intro-title{font-family:'Cormorant Garamond',serif;font-size:36px;font-weight:600;color:var(--champagne);margin-bottom:8px;}
+    .gallery-intro-sub{font-size:13px;font-weight:300;color:var(--silver);opacity:.6;margin-bottom:0;}
+
+    /* BENTO GRID */
+    .bento{display:grid;gap:4px;}
+    .bento-1{grid-template-columns:repeat(3,1fr);grid-auto-rows:280px;}
+    .bento-2{grid-template-columns:repeat(3,1fr);grid-auto-rows:280px;}
+    .bento-3{grid-template-columns:repeat(3,1fr);grid-auto-rows:280px;}
+
+    .bento-cell{position:relative;overflow:hidden;background:linear-gradient(135deg,#252520,#1a1a17,#252520);cursor:pointer;group:true;}
+    .bento-cell:hover .bento-overlay{opacity:1;}
+    .bento-cell:hover .bento-cell-img{transform:scale(1.04);}
+
+    /* span helpers */
+    .span-row-2{grid-row:span 1;}
+    .span-col-2{grid-column:span 1;}
+
+    .bento-cell-img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease;display:flex;align-items:center;justify-content:center;}
+    .bento-placeholder{width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;transition:transform .5s ease;}
+    .bento-placeholder-icon{font-size:clamp(28px,4vw,52px);color:rgba(217,186,111,.15);}
+    .bento-placeholder-label{font-family:'Cormorant Garamond',serif;font-size:14px;font-style:italic;color:rgba(217,186,111,.3);letter-spacing:2px;text-align:center;padding:0 16px;}
+    .bento-cell:hover .bento-placeholder{transform:scale(1.04);}
+
+    .bento-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(26,26,23,.85) 0%,rgba(26,26,23,.2) 50%,transparent 100%);opacity:0;transition:opacity .35s;display:flex;flex-direction:column;justify-content:flex-end;padding:20px;}
+    .bento-overlay-title{font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:600;color:var(--champagne);margin-bottom:4px;}
+    .bento-overlay-sub{font-size:10px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--gold-bronze);}
+    .bento-tag{position:absolute;top:14px;left:14px;background:linear-gradient(135deg,var(--gold-mid),var(--gold));color:var(--black);font-size:8px;font-weight:800;letter-spacing:2px;text-transform:uppercase;padding:4px 10px;}
+
+    /* DIVIDER */
+    .gallery-divider{display:flex;align-items:center;gap:20px;margin:56px 0 48px;}
+    .gallery-divider::before,.gallery-divider::after{content:'';flex:1;height:1px;background:linear-gradient(90deg,transparent,rgba(217,186,111,.3),transparent);}
+    .gallery-divider-content{display:flex;align-items:center;gap:10px;white-space:nowrap;}
+    .gallery-divider-icon{color:var(--gold);font-size:13px;}
+    .gallery-divider-text{font-size:11px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--gold-mid);}
+
+    /* SQUARE GRID */
+    .sq-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:4px;}
+    .sq-cell{position:relative;overflow:hidden;background:linear-gradient(135deg,#252520,#1a1a17,#252520);height:280px;cursor:pointer;}
+    .sq-cell:hover .bento-placeholder{transform:scale(1.06);}
+    .sq-cell:hover .bento-overlay{opacity:1;}
+
+    /* VIDEO PLACEHOLDER */
+    .video-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:4px;}
+    .video-cell{position:relative;overflow:hidden;background:linear-gradient(135deg,#1a1510,#141412);aspect-ratio:16/9;cursor:pointer;border:1px solid rgba(217,186,111,.1);}
+    .video-cell:hover{border-color:rgba(217,186,111,.3);}
+    .video-play{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;}
+    .video-play-btn{width:60px;height:60px;border:2px solid var(--gold);border-radius:50%;display:flex;align-items:center;justify-content:center;transition:all .3s;background:rgba(217,186,111,.1);}
+    .video-play-btn i{font-size:20px;color:var(--gold);margin-left:4px;}
+    .video-cell:hover .video-play-btn{background:var(--gold-glow);transform:scale(1.08);}
+    .video-label{font-family:'Cormorant Garamond',serif;font-size:16px;font-style:italic;color:var(--champagne);opacity:.8;text-align:center;padding:0 16px;}
+    .video-sub{font-size:10px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--gold-bronze);text-align:center;}
+
+    /* MEMBER TRIP SLIDER */
+    .member-slider-section{background:#141412;padding:80px 0;border-top:1px solid rgba(217,186,111,.15);border-bottom:1px solid rgba(217,186,111,.15);overflow:hidden;}
+    .member-slider-header{text-align:center;padding:0 48px;margin-bottom:48px;}
+    .member-slider-label{font-family:'Montserrat',sans-serif;font-size:11px;font-weight:600;letter-spacing:4px;text-transform:uppercase;color:var(--gold-mid);display:block;margin-bottom:12px;}
+    .member-slider-title{font-family:'Cormorant Garamond',serif;font-size:clamp(28px,4vw,44px);font-weight:600;color:var(--champagne);margin-bottom:8px;}
+    .member-slider-sub{font-size:13px;font-weight:300;color:var(--silver);opacity:.6;}
+
+    /* TRACK WRAPPER — clips the scrolling strip */
+    .slider-track-wrap{position:relative;}
+    .slider-track-wrap::before,
+    .slider-track-wrap::after{content:'';position:absolute;top:0;bottom:0;width:120px;z-index:2;pointer-events:none;}
+    .slider-track-wrap::before{left:0;background:linear-gradient(90deg,#141412,transparent);}
+    .slider-track-wrap::after{right:0;background:linear-gradient(270deg,#141412,transparent);}
+
+    /* ACTUAL SCROLLING TRACK */
+    .slider-track{display:flex;gap:16px;width:max-content;animation:scrollLeft 40s linear infinite;}
+    .slider-track:hover{animation-play-state:paused;}
+    .slider-track-2{animation:scrollLeft 52s linear infinite;margin-top:16px;}
+    .slider-track-2:hover{animation-play-state:paused;}
+    @keyframes scrollLeft{0%{transform:translateX(0);}100%{transform:translateX(-50%);}}
+
+    /* MEMBER PHOTO CARD */
+    .member-card{position:relative;flex-shrink:0;width:260px;height:200px;overflow:hidden;cursor:pointer;border:1px solid rgba(217,186,111,.1);transition:border-color .3s;}
+    .member-card:hover{border-color:rgba(217,186,111,.4);}
+    .member-card:hover .member-card-overlay{opacity:1;}
+    .member-card:hover .member-card-img{transform:scale(1.06);}
+    .member-card-img{width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;background:linear-gradient(135deg,#252520,#1a1a17,#252520);transition:transform .5s ease;}
+    .member-card-icon{font-size:36px;color:rgba(217,186,111,.15);transition:color .3s;}
+    .member-card:hover .member-card-icon{color:rgba(217,186,111,.28);}
+    .member-card-placeholder{font-family:'Cormorant Garamond',serif;font-size:12px;font-style:italic;color:rgba(217,186,111,.25);text-align:center;padding:0 16px;line-height:1.4;}
+    .member-card-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(26,26,23,.9) 0%,rgba(26,26,23,.2) 60%,transparent 100%);opacity:0;transition:opacity .3s;display:flex;flex-direction:column;justify-content:flex-end;padding:14px 16px;}
+    .member-card-name{font-size:12px;font-weight:600;color:var(--champagne);margin-bottom:2px;}
+    .member-card-dest{font-size:10px;font-weight:500;color:var(--gold-bronze);letter-spacing:1px;text-transform:uppercase;}
+    .member-card-stars{color:var(--gold);font-size:9px;letter-spacing:2px;margin-bottom:4px;}
+    /* tall card variant — removed for uniform size */
+    .member-card.tall{height:200px;}
+
+    /* SOCIAL BANNER */
+    .social-band{background:linear-gradient(135deg,var(--gold-dark),#2a2010,var(--gold-dark));padding:56px 48px;text-align:center;}
+    .social-band-title{font-family:'Cormorant Garamond',serif;font-size:clamp(28px,4vw,44px);font-weight:700;color:var(--cream);margin-bottom:12px;}
+    .social-band-sub{font-size:14px;font-weight:300;color:rgba(255,255,255,.7);max-width:480px;margin:0 auto 32px;line-height:1.7;}
+    .social-links{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;}
+    .social-link{display:inline-flex;align-items:center;gap:10px;padding:12px 28px;border:1px solid rgba(255,255,255,.25);color:rgba(255,255,255,.85);font-family:'Montserrat',sans-serif;font-size:12px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;transition:all .3s;}
+    .social-link:hover{background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.5);}
+    .social-link i{font-size:16px;}
+
+    /* CTA */
+    .cb{padding:80px 48px;background-color:var(--black);background-image:radial-gradient(ellipse 60% 80% at 50% 50%,rgba(217,186,111,.08) 0%,transparent 70%);text-align:center;border-top:1px solid rgba(217,186,111,.15);}
+    .cs{font-family:'Great Vibes',cursive;font-size:clamp(26px,4vw,42px);color:var(--silver);opacity:.8;display:block;margin-bottom:12px;}
+    .cbt{font-family:'Cormorant Garamond',serif;font-size:clamp(32px,5vw,52px);font-weight:700;line-height:1.1;margin-bottom:16px;}
+    .cbs{font-size:14px;font-weight:300;color:var(--silver);opacity:.7;margin-bottom:40px;}
+    .cbb{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;}
+
+    /* LIGHTBOX */
+    .lightbox{position:fixed;inset:0;background:rgba(0,0,0,.95);z-index:9999;display:none;align-items:center;justify-content:center;padding:20px;}
+    .lightbox.open{display:flex;}
+    .lightbox-inner{max-width:900px;width:100%;text-align:center;position:relative;}
+    .lightbox-img{width:100%;aspect-ratio:4/3;background:linear-gradient(135deg,#252520,#1a1a17);border:1px solid rgba(217,186,111,.2);display:flex;align-items:center;justify-content:center;}
+    .lightbox-img-icon{font-size:80px;color:rgba(217,186,111,.12);}
+    .lightbox-caption{margin-top:16px;font-family:'Cormorant Garamond',serif;font-size:20px;font-style:italic;color:var(--champagne);}
+    .lightbox-sub{font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--gold-bronze);margin-top:6px;}
+    .lightbox-close{position:absolute;top:-16px;right:0;width:44px;height:44px;border:1px solid rgba(217,186,111,.3);background:transparent;color:var(--gold);font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s;}
+    .lightbox-close:hover{background:var(--gold-glow);}
+    .lightbox-nav{position:absolute;top:50%;transform:translateY(-50%);width:44px;height:44px;border:1px solid rgba(217,186,111,.3);background:rgba(26,26,23,.8);color:var(--gold);font-size:16px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s;}
+    .lightbox-nav:hover{background:var(--gold-glow);}
+    .lightbox-prev{left:-56px;}.lightbox-next{right:-56px;}
+
+    /* FOOTER */
+    footer{background:#0e0e0c;padding:80px 48px 0;border-top:1px solid rgba(217,186,111,.2);}
+    .ft{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:48px;padding-bottom:60px;border-bottom:1px solid rgba(217,186,111,.1);}
+    .fbn{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:700;margin-bottom:6px;}
+    .fbs{font-size:9px;letter-spacing:3px;color:var(--gold-bronze);text-transform:uppercase;margin-bottom:20px;}
+    .ftag{font-family:'Cormorant Garamond',serif;font-size:15px;font-style:italic;color:var(--gold-bronze);margin-bottom:24px;}
+    .fdesc{font-size:13px;font-weight:300;line-height:1.8;color:var(--silver);opacity:.65;margin-bottom:28px;}
+    .fci{display:flex;align-items:center;gap:10px;font-size:13px;color:var(--silver);opacity:.75;margin-bottom:12px;}
+    .fci i{color:var(--gold-bronze);width:16px;font-size:13px;}
+    .fso{display:flex;gap:10px;margin-top:20px;}
+    .fso a{width:36px;height:36px;border:1px solid rgba(217,186,111,.25);display:flex;align-items:center;justify-content:center;color:var(--gold-bronze);font-size:14px;transition:all .25s;}
+    .fso a:hover{background:var(--gold-glow);border-color:var(--gold);color:var(--gold);}
+    .fct{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:600;color:var(--champagne);margin-bottom:8px;}
+    .fcd{width:32px;height:1px;background:var(--gold);margin-bottom:24px;}
+    .fl li{margin-bottom:10px;}
+    .fl a{font-size:13px;font-weight:300;color:var(--silver);opacity:.65;display:flex;align-items:center;gap:8px;transition:all .2s;}
+    .fl a::before{content:'';width:0;height:1px;background:var(--gold);transition:width .2s;flex-shrink:0;}
+    .fl a:hover{opacity:1;color:var(--gold);}.fl a:hover::before{width:12px;}
+    .fseo{padding:20px 0;border-top:1px solid rgba(217,186,111,.07);display:flex;flex-wrap:wrap;gap:8px 20px;}
+    .fseo a{font-size:11px;color:var(--silver);opacity:.35;}.fseo a:hover{opacity:.7;}
+    .fbot{padding:20px 0;display:flex;align-items:center;justify-content:space-between;font-size:12px;color:var(--silver);opacity:.4;flex-wrap:wrap;gap:12px;}
+    .fbl{display:flex;gap:20px;}.fbl a{opacity:1;transition:color .2s;}.fbl a:hover{color:var(--gold);}
+
+    /* FADE */
+    .fi{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease;}.fi.vis{opacity:1;transform:translateY(0);}
+
+    /* RESPONSIVE */
+    @media(max-width:1024px){
+      .nav{padding:0 24px;}.gallery-section{padding:48px 24px;}
+      .bento-1,.bento-2,.bento-3{grid-template-columns:repeat(2,1fr);grid-auto-rows:220px;}
+      
+      .span-col-2{grid-column:span 1;}.span-row-2{grid-row:span 1;}
+      .sq-grid{grid-template-columns:repeat(3,1fr);}
+      .video-grid{grid-template-columns:1fr 1fr;}
+      .ft{grid-template-columns:1fr 1fr;}
+      .filter-bar{padding:0 24px;}
+    }
+    @media(max-width:768px){
+      :root{--nav-h:64px;}.nav-links,.nav-cta{display:none;}
+      .bento-1,.bento-2,.bento-3{grid-template-columns:1fr;grid-auto-rows:220px;}
+      .sq-grid{grid-template-columns:repeat(2,1fr);}
+      .video-grid{grid-template-columns:1fr;}
+      .lightbox-prev{left:-10px;}.lightbox-next{right:-10px;}
+      .ft{grid-template-columns:1fr;}.fseo{display:none;}footer{padding:60px 24px 0;}
+      .social-band{padding:48px 24px;}
+    }
+
+
+    /* Mobile and compact desktop navigation fix */
+    .mobile-nav-toggle {
+      display: none;
+      width: 42px;
+      height: 42px;
+      margin-left: 12px;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 5px;
+      border: 1px solid rgba(217,186,111,0.42);
+      background: rgba(20,20,18,0.96);
+      color: var(--gold);
+      cursor: pointer;
+      z-index: 10002;
+      flex-shrink: 0;
+    }
+    .mobile-nav-toggle span {
+      display: block;
+      width: 19px;
+      height: 2px;
+      background: currentColor;
+      transition: transform 0.25s ease, opacity 0.25s ease;
+    }
+    body.mobile-nav-open { overflow: hidden; }
+    body.mobile-nav-open .mobile-nav-toggle span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    body.mobile-nav-open .mobile-nav-toggle span:nth-child(2) { opacity: 0; }
+    body.mobile-nav-open .mobile-nav-toggle span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    .mobile-nav-panel {
+      position: fixed;
+      inset: var(--nav-h) 0 auto 0;
+      max-height: calc(100vh - var(--nav-h));
+      overflow-y: auto;
+      padding: 16px 20px 28px;
+      background: rgba(20,20,18,0.98);
+      border-bottom: 1px solid rgba(217,186,111,0.24);
+      box-shadow: 0 22px 48px rgba(0,0,0,0.48);
+      transform: translateY(-110%);
+      opacity: 0;
+      visibility: hidden;
+      transition: transform 0.28s ease, opacity 0.28s ease, visibility 0.28s ease;
+      z-index: 8998;
+    }
+    body.mobile-nav-open .mobile-nav-panel {
+      transform: translateY(0);
+      opacity: 1;
+      visibility: visible;
+    }
+    .mobile-nav-panel a {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      width: 100%;
+      padding: 14px 4px;
+      border-bottom: 1px solid rgba(217,186,111,0.13);
+      color: var(--silver) !important;
+      opacity: 1 !important;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 1.2px;
+      line-height: 1.35;
+      text-transform: uppercase;
+      -webkit-text-fill-color: currentColor;
+    }
+    .mobile-nav-panel a i { color: var(--gold); min-width: 16px; }
+    .mobile-nav-panel a.mobile-sub-link {
+      padding-left: 22px;
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--champagne) !important;
+      text-transform: none;
+      letter-spacing: 0.4px;
+    }
+    .mobile-nav-panel .mobile-cta-link {
+      margin-top: 16px;
+      justify-content: center;
+      background: linear-gradient(135deg, var(--gold-mid), var(--gold), var(--gold-mid));
+      color: var(--black) !important;
+      border-bottom: none;
+      -webkit-text-fill-color: var(--black);
+    }
+    @media (max-width: 1200px) {
+      .nav { padding-left: 24px; padding-right: 24px; }
+      .nav-links, .nls-wrap, .nl-wrap { gap: 2px; }
+      .nav-link, .nl { padding-left: 9px; padding-right: 9px; font-size: 10px; letter-spacing: 1px; }
+      .nav-cta, .nc { margin-left: 8px; padding-left: 14px; padding-right: 14px; }
+    }
+    @media (max-width: 1100px) {
+      .nav-links, .nls-wrap, .nl-wrap, .nav-cta, .nc { display: none !important; }
+      .mobile-nav-toggle { display: inline-flex; }
+    }
+    @media (max-width: 768px) {
+      html, body { max-width: 100%; overflow-x: hidden; }
+      .nav { padding-left: 18px; padding-right: 18px; }
+      .nav-logo-text, .nlt { font-size: 20px; }
+      .nav-logo-sub, .nls { font-size: 8px; letter-spacing: 2px; }
+      .btn { max-width: 100%; justify-content: center; white-space: normal; text-align: center; line-height: 1.35; }
+      .section-body, p { overflow-wrap: anywhere; }
+    }
+
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav" id="mainNav">
+  <div class="nav-logo"><a href="prestige-home.html"><div class="nav-logo-text gold-text">Prestige</div><div class="nav-logo-sub">Vacations &amp; Clubs</div></a></div>
+  <ul class="nav-links">
+    <li><a href="prestige-home.html" class="nav-link">Home</a></li>
+    <li><a href="prestige-about.html" class="nav-link">About</a></li>
+    <li class="nav-item"><a href="prestige-country-resort.html" class="nav-link">Properties <i class="fa-solid fa-chevron-down"></i></a><div class="nav-dropdown"><a href="prestige-country-resort.html"><i class="fa-solid fa-tree"></i>The Country Resort</a><a href="prestige-country-suites.html"><i class="fa-solid fa-house"></i>The Country Suites</a><a href="prestige-country-bay.html"><i class="fa-solid fa-water"></i>The Country Bay</a></div></li>
+    <li class="nav-item"><a href="prestige-membership-overview.html" class="nav-link">Membership <i class="fa-solid fa-chevron-down"></i></a><div class="nav-dropdown"><a href="prestige-club-membership.html"><i class="fa-solid fa-crown"></i>Club Membership</a><a href="prestige-holiday-membership.html"><i class="fa-solid fa-umbrella-beach"></i>Holiday Membership</a><a href="prestige-gift-vouchers.html"><i class="fa-solid fa-gift"></i>Gift Vouchers</a><a href="prestige-membership-faqs.html"><i class="fa-solid fa-circle-question"></i>FAQs</a></div></li>
+    <li class="nav-item"><a href="prestige-experiences-overview.html" class="nav-link">Experiences <i class="fa-solid fa-chevron-down"></i></a><div class="nav-dropdown"><a href="prestige-resort-stays.html"><i class="fa-solid fa-bed"></i>Resort Stays</a><a href="prestige-day-outings.html"><i class="fa-solid fa-sun"></i>Day Outings</a><a href="prestige-events.html"><i class="fa-solid fa-champagne-glasses"></i>Events</a><a href="prestige-tour-packages.html"><i class="fa-solid fa-map-location-dot"></i>Tour Packages</a><a href="prestige-weddings.html"><i class="fa-solid fa-heart"></i>Weddings &amp; Celebrations</a><a href="prestige-corporate.html"><i class="fa-solid fa-briefcase"></i>Corporate &amp; Groups</a></div></li>
+    <li><a href="prestige-gallery.html" class="nav-link active">Gallery</a></li>
+    <li><a href="prestige-blog-index.html" class="nav-link">Blog</a></li>
+    <li class="nav-item"><a href="prestige-member-reviews.html" class="nav-link">Reviews <i class="fa-solid fa-chevron-down"></i></a><div class="nav-dropdown"><a href="prestige-member-reviews.html"><i class="fa-solid fa-star"></i>Member Reviews</a><a href="prestige-video-testimonials.html"><i class="fa-solid fa-circle-play"></i>Video Testimonials</a></div></li>
+    <li><a href="prestige-contact%20(1).html" class="nav-link">Contact</a></li>
+  </ul>
+  <a href="prestige-membership-overview.html" class="btn bg nav-cta">Become a Member</a>
+</nav>
+
+<!-- HERO -->
+<section class="ph">
+  <div class="phbc"><a href="prestige-home.html">Home</a><i class="fa-solid fa-chevron-right"></i><span style="color:var(--gold);">Gallery</span></div>
+  <span class="phs">See it before you experience it</span>
+  <h1 class="pht gold-text">Gallery</h1>
+  <div class="phl"><span><i class="fa-solid fa-images"></i></span></div>
+  <p class="phst">Photos from our three resort properties, member events, celebrations, and experiences — a visual journey through the Prestige world.</p>
+</section>
+
+<!-- STICKY FILTER BAR -->
+<div class="filter-bar">
+  <div class="filter-tabs">
+    <button class="filter-tab active" onclick="filterGallery('all',this)">All</button>
+    <button class="filter-tab" onclick="filterGallery('resort',this)">The Country Resort</button>
+    <button class="filter-tab" onclick="filterGallery('suites',this)">The Country Suites</button>
+    <button class="filter-tab" onclick="filterGallery('bay',this)">The Country Bay</button>
+    <button class="filter-tab" onclick="filterGallery('events',this)">Events</button>
+    <button class="filter-tab" onclick="filterGallery('celebrations',this)">Celebrations</button>
+    <button class="filter-tab" onclick="filterGallery('food',this)">Dining</button>
+    <button class="filter-tab" onclick="filterGallery('video',this)">Videos</button>
+  </div>
+</div>
+
+
+<!-- ═══ SECTION: COUNTRY RESORT ═══════════════════════════ -->
+<div class="gallery-section sd" data-section="resort">
+  <div class="ct">
+    <div class="gallery-intro fi">
+      <div class="gallery-intro-title gold-text">The Country Resort</div>
+      <p class="gallery-intro-sub">Mahabalipuram · East Coast Road · 90 min from Chennai</p>
+    </div>
+
+    <!-- Bento Grid 1 — Resort Hero -->
+    <div class="bento bento-1 fi">
+      <div class="bento-cell span-row-2" onclick="openLightbox('Country Resort — Garden Lawn','The Country Resort, Mahabalipuram','fa-tree')">
+        <div class="bento-placeholder">
+          <i class="fa-solid fa-tree bento-placeholder-icon"></i>
+          <span class="bento-placeholder-label">Garden Lawn — The Country Resort</span>
+        </div>
+        <div class="bento-overlay"><div class="bento-overlay-title">Garden Lawn</div><div class="bento-overlay-sub">The Country Resort</div></div>
+        <div class="bento-tag">Featured</div>
+      </div>
+      <div class="bento-cell" onclick="openLightbox('Resort Entrance','The Country Resort, Mahabalipuram','fa-building')">
+        <div class="bento-placeholder">
+          <i class="fa-solid fa-building bento-placeholder-icon"></i>
+          <span class="bento-placeholder-label">Resort Entrance</span>
+        </div>
+        <div class="bento-overlay"><div class="bento-overlay-title">Resort Entrance</div><div class="bento-overlay-sub">The Country Resort</div></div>
+      </div>
+      <div class="bento-cell" onclick="openLightbox('Resort Grounds — Evening','The Country Resort, Mahabalipuram','fa-moon')">
+        <div class="bento-placeholder">
+          <i class="fa-solid fa-moon bento-placeholder-icon"></i>
+          <span class="bento-placeholder-label">Evening at the Resort</span>
+        </div>
+        <div class="bento-overlay"><div class="bento-overlay-title">Evening at the Resort</div><div class="bento-overlay-sub">The Country Resort</div></div>
+      </div>
+      <div class="bento-cell" onclick="openLightbox('Suite Room — Garden View','The Country Resort, Mahabalipuram','fa-bed')">
+        <div class="bento-placeholder">
+          <i class="fa-solid fa-bed bento-placeholder-icon"></i>
+          <span class="bento-placeholder-label">Suite Room — Garden View</span>
+        </div>
+        <div class="bento-overlay"><div class="bento-overlay-title">Suite Room</div><div class="bento-overlay-sub">Garden View · ₹14,160/night</div></div>
+      </div>
+      <div class="bento-cell" onclick="openLightbox('Executive Room — Balcony View','The Country Resort, Mahabalipuram','fa-door-open')">
+        <div class="bento-placeholder">
+          <i class="fa-solid fa-door-open bento-placeholder-icon"></i>
+          <span class="bento-placeholder-label">Executive Room — Balcony View</span>
+        </div>
+        <div class="bento-overlay"><div class="bento-overlay-title">Executive Room</div><div class="bento-overlay-sub">Balcony View · ₹8,850/night</div></div>
+      </div>
+    </div>
+
+    <div class="gallery-divider fi">
+      <div class="gallery-divider-content"><i class="gallery-divider-icon fa-solid fa-utensils"></i><span class="gallery-divider-text">Green Bay Restaurant</span></div>
+    </div>
+
+    <!-- Square Grid — Food & Dining -->
+    <div class="sq-grid fi">
+      <div class="sq-cell" onclick="openLightbox('Green Bay Restaurant — Interior','The Country Resort','fa-utensils')">
+        <div class="bento-placeholder"><i class="fa-solid fa-utensils bento-placeholder-icon"></i><span class="bento-placeholder-label">Green Bay Restaurant</span></div>
+        <div class="bento-overlay"><div class="bento-overlay-title">Green Bay Restaurant</div><div class="bento-overlay-sub">Fresh Seafood &amp; Vegetarian</div></div>
+      </div>
+      <div class="sq-cell" onclick="openLightbox('Live Aquarium — Green Bay','The Country Resort','fa-fish')">
+        <div class="bento-placeholder"><i class="fa-solid fa-fish bento-placeholder-icon"></i><span class="bento-placeholder-label">Live Aquarium</span></div>
+        <div class="bento-overlay"><div class="bento-overlay-title">Live Aquarium</div><div class="bento-overlay-sub">Green Bay Restaurant</div></div>
+      </div>
+      <div class="sq-cell" onclick="openLightbox('Seafood Platter — Green Bay','The Country Resort','fa-plate-wheat')">
+        <div class="bento-placeholder"><i class="fa-solid fa-plate-wheat bento-placeholder-icon"></i><span class="bento-placeholder-label">Fresh Seafood</span></div>
+        <div class="bento-overlay"><div class="bento-overlay-title">Fresh Seafood</div><div class="bento-overlay-sub">Green Bay Restaurant</div></div>
+      </div>
+      <div class="sq-cell" onclick="openLightbox('Outdoor Dining — Resort Grounds','The Country Resort','fa-mug-saucer')">
+        <div class="bento-placeholder"><i class="fa-solid fa-mug-saucer bento-placeholder-icon"></i><span class="bento-placeholder-label">Outdoor Dining</span></div>
+        <div class="bento-overlay"><div class="bento-overlay-title">Outdoor Dining</div><div class="bento-overlay-sub">Resort Grounds</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══ SECTION: COUNTRY SUITES ══════════════════════════ -->
+<div class="gallery-section sdp" data-section="suites">
+  <div class="ct">
+    <div class="gallery-intro fi">
+      <div class="gallery-intro-title gold-text">The Country Suites</div>
+      <p class="gallery-intro-sub">Private Villas · Mahabalipuram · Personal Pool Access</p>
+    </div>
+
+    <div class="bento bento-2 fi">
+      <div class="bento-cell" onclick="openLightbox('Private Villa — Exterior','The Country Suites, Mahabalipuram','fa-house')">
+        <div class="bento-placeholder"><i class="fa-solid fa-house bento-placeholder-icon"></i><span class="bento-placeholder-label">Private Villa — Exterior</span></div>
+        <div class="bento-overlay"><div class="bento-overlay-title">Private Villa</div><div class="bento-overlay-sub">The Country Suites</div></div>
+        <div class="bento-tag">Private</div>
+      </div>
+      <div class="bento-cell" onclick="openLightbox('Personal Pool — The Suites','The Country Suites, Mahabalipuram','fa-water-ladder')">
+        <div class="bento-placeholder"><i class="fa-solid fa-water-ladder bento-placeholder-icon"></i><span class="bento-placeholder-label">Personal Pool</span></div>
+        <div class="bento-overlay"><div class="bento-overlay-title">Personal Swimming Pool</div><div class="bento-overlay-sub">Exclusive to your villa</div></div>
+      </div>
+      <div class="bento-cell" onclick="openLightbox('Villa Interior — Living Area','The Country Suites, Mahabalipuram','fa-couch')">
+        <div class="bento-placeholder"><i class="fa-solid fa-couch bento-placeholder-icon"></i><span class="bento-placeholder-label">Villa Interior</span></div>
+        <div class="bento-overlay"><div class="bento-overlay-title">Villa Interior</div><div class="bento-overlay-sub">Living Area</div></div>
+      </div>
+      <div class="bento-cell" onclick="openLightbox('Indoor Games Room','The Country Suites, Mahabalipuram','fa-chess')">
+        <div class="bento-placeholder"><i class="fa-solid fa-chess bento-placeholder-icon"></i><span class="bento-placeholder-label">Indoor Games Room</span></div>
+        <div class="bento-overlay"><div class="bento-overlay-title">Indoor Games Room</div><div class="bento-overlay-sub">Table Tennis, Carrom &amp; More</div></div>
+      </div>
+      <div class="bento-cell" onclick="openLightbox('Villa Bedroom','The Country Suites, Mahabalipuram','fa-bed')">
+        <div class="bento-placeholder"><i class="fa-solid fa-bed bento-placeholder-icon"></i><span class="bento-placeholder-label">Villa Bedroom</span></div>
+        <div class="bento-overlay"><div class="bento-overlay-title">Villa Bedroom</div><div class="bento-overlay-sub">The Country Suites</div></div>
+      </div>
+      <div class="bento-cell" onclick="openLightbox('Pool at Sunset — The Suites','The Country Suites, Mahabalipuram','fa-sun')">
+        <div class="bento-placeholder"><i class="fa-solid fa-sun bento-placeholder-icon"></i><span class="bento-placeholder-label">Pool at Sunset</span></div>
+        <div class="bento-overlay"><div class="bento-overlay-title">Pool at Sunset</div><div class="bento-overlay-sub">The Country Suites</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══ SECTION: COUNTRY BAY ══════════════════════════════ -->
+<div class="gallery-section sd" data-section="bay">
+  <div class="ct">
+    <div class="gallery-intro fi">
+      <div class="gallery-intro-title gold-text">The Country Bay</div>
+      <p class="gallery-intro-sub">Private Beach · Pool · Marakkanam · Newly Launched</p>
+    </div>
+
+    <div class="bento bento-3 fi">
+      <div class="bento-cell" onclick="openLightbox('Private Beach — The Country Bay','Marakkanam','fa-umbrella-beach')">
+        <div class="bento-placeholder"><i class="fa-solid fa-umbrella-beach bento-placeholder-icon"></i><span class="bento-placeholder-label">Private Beach</span></div>
+        <div class="bento-overlay"><div class="bento-overlay-title">Private Beach</div><div class="bento-overlay-sub">The Country Bay · Marakkanam</div></div>
+        <div class="bento-tag">Exclusive</div>
+      </div>
+      <div class="bento-cell span-col-2" onclick="openLightbox('Bay View — Pool &amp; Beach','The Country Bay, Marakkanam','fa-water')">
+        <div class="bento-placeholder"><i class="fa-solid fa-water bento-placeholder-icon"></i><span class="bento-placeholder-label">Pool &amp; Bay View — The Country Bay</span></div>
+        <div class="bento-overlay"><div class="bento-overlay-title">Pool &amp; Bay View</div><div class="bento-overlay-sub">The Country Bay · Just Launched</div></div>
+        <div class="bento-tag">New</div>
+      </div>
+      <div class="bento-cell span-col-2" onclick="openLightbox('Beachside Swimming Pool','The Country Bay, Marakkanam','fa-water-ladder')">
+        <div class="bento-placeholder"><i class="fa-solid fa-water-ladder bento-placeholder-icon"></i><span class="bento-placeholder-label">Beachside Pool — The Country Bay</span></div>
+        <div class="bento-overlay"><div class="bento-overlay-title">Beachside Swimming Pool</div><div class="bento-overlay-sub">Bay of Bengal backdrop</div></div>
+      </div>
+      <div class="bento-cell" onclick="openLightbox('Property Exterior — Country Bay','Marakkanam','fa-building')">
+        <div class="bento-placeholder"><i class="fa-solid fa-building bento-placeholder-icon"></i><span class="bento-placeholder-label">Property Exterior</span></div>
+        <div class="bento-overlay"><div class="bento-overlay-title">Property Exterior</div><div class="bento-overlay-sub">The Country Bay</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══ SECTION: EVENTS ════════════════════════════════════ -->
+<div class="gallery-section sdp" data-section="events">
+  <div class="ct">
+    <div class="gallery-intro fi">
+      <div class="gallery-intro-title gold-text">Member Events</div>
+      <p class="gallery-intro-sub">New Year Gala · Pongal · Diwali · Family Fun Day · Seasonal Celebrations</p>
+    </div>
+
+    <div class="sq-grid fi">
+      <div class="sq-cell" onclick="openLightbox('New Year Gala — Live Entertainment','The Country Resort','fa-champagne-glasses')">
+        <div class="bento-placeholder"><i class="fa-solid fa-champagne-glasses bento-placeholder-icon"></i><span class="bento-placeholder-label">New Year Gala</span></div>
+        <div class="bento-overlay"><div class="bento-overlay-title">New Year Gala</div><div class="bento-overlay-sub">Live Entertainment &amp; Dinner</div></div>
+        <div class="bento-tag">Flagship</div>
+      </div>
+      <div class="sq-cell" onclick="openLightbox('New Year — Lawn Setup','The Country Resort','fa-star')">
+        <div class="bento-placeholder"><i class="fa-solid fa-star bento-placeholder-icon"></i><span class="bento-placeholder-label">New Year — Lawn Setup</span></div>
+        <div class="bento-overlay"><div class="bento-overlay-title">New Year — Lawn Setup</div><div class="bento-overlay-sub">Open Lawn · The Country Resort</div></div>
+      </div>
+      <div class="sq-cell" onclick="openLightbox('Pongal Celebration','The Country Resort','fa-sun')">
+        <div class="bento-placeholder"><i class="fa-solid fa-sun bento-placeholder-icon"></i><span class="bento-placeholder-label">Pongal Celebration</span></div>
+        <div class="bento-overlay"><div class="bento-overlay-title">Pongal Celebration</div><div class="bento-overlay-sub">Traditional &amp; Cultural</div></div>
+      </div>
+      <div class="sq-cell" onclick="openLightbox('Diwali Evening — Resort Lit Up','The Country Resort','fa-fire-flame-curved')">
+        <div class="bento-placeholder"><i class="fa-solid fa-fire-flame-curved bento-placeholder-icon"></i><span class="bento-placeholder-label">Diwali Evening</span></div>
+        <div class="bento-overlay"><div class="bento-overlay-title">Diwali Celebration</div><div class="bento-overlay-sub">Festival of Lights</div></div>
+      </div>
+      <div class="sq-cell" onclick="openLightbox('Family Fun Day — Kids at the Pool','Prestige Events','fa-children')">
+        <div class="bento-placeholder"><i class="fa-solid fa-children bento-placeholder-icon"></i><span class="bento-placeholder-label">Family Fun Day</span></div>
+        <div class="bento-overlay"><div class="bento-overlay-title">Family Fun Day</div><div class="bento-overlay-sub">Kids &amp; Families</div></div>
+      </div>
+      <div class="sq-cell" onclick="openLightbox('Christmas Event — Resort Decor','The Country Resort','fa-tree')">
+        <div class="bento-placeholder"><i class="fa-solid fa-tree bento-placeholder-icon"></i><span class="bento-placeholder-label">Christmas Event</span></div>
+        <div class="bento-overlay"><div class="bento-overlay-title">Christmas &amp; Year-End</div><div class="bento-overlay-sub">Festive Celebrations</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══ SECTION: CELEBRATIONS ════════════════════════════ -->
+<div class="gallery-section sd" data-section="celebrations">
+  <div class="ct">
+    <div class="gallery-intro fi">
+      <div class="gallery-intro-title gold-text">Weddings &amp; Celebrations</div>
+      <p class="gallery-intro-sub">Weddings · Anniversaries · Birthdays · Corporate Events</p>
+    </div>
+
+    <div class="bento bento-2 fi">
+      <div class="bento-cell" onclick="openLightbox('Wedding — Open Lawn Setup','The Country Resort','fa-rings-wedding')">
+        <div class="bento-placeholder"><i class="fa-solid fa-rings-wedding bento-placeholder-icon"></i><span class="bento-placeholder-label">Wedding — Open Lawn</span></div>
+        <div class="bento-overlay"><div class="bento-overlay-title">Wedding on the Lawn</div><div class="bento-overlay-sub">The Country Resort</div></div>
+        <div class="bento-tag">Wedding</div>
+      </div>
+      <div class="bento-cell" onclick="openLightbox('Wedding Reception Dinner','The Country Resort','fa-champagne-glasses')">
+        <div class="bento-placeholder"><i class="fa-solid fa-champagne-glasses bento-placeholder-icon"></i><span class="bento-placeholder-label">Wedding Reception Dinner</span></div>
+        <div class="bento-overlay"><div class="bento-overlay-title">Wedding Reception</div><div class="bento-overlay-sub">The Country Resort</div></div>
+      </div>
+      <div class="bento-cell" onclick="openLightbox('Anniversary Celebration — Private Dinner','The Country Suites','fa-heart')">
+        <div class="bento-placeholder"><i class="fa-solid fa-heart bento-placeholder-icon"></i><span class="bento-placeholder-label">Anniversary Dinner</span></div>
+        <div class="bento-overlay"><div class="bento-overlay-title">Anniversary Celebration</div><div class="bento-overlay-sub">The Country Suites</div></div>
+      </div>
+      <div class="bento-cell" onclick="openLightbox('Birthday Celebration at the Resort','Prestige Clubs &amp; Resorts','fa-cake-candles')">
+        <div class="bento-placeholder"><i class="fa-solid fa-cake-candles bento-placeholder-icon"></i><span class="bento-placeholder-label">Birthday Celebration</span></div>
+        <div class="bento-overlay"><div class="bento-overlay-title">Birthday Celebration</div><div class="bento-overlay-sub">Resort Setup</div></div>
+      </div>
+      <div class="bento-cell" onclick="openLightbox('Corporate Team Day — Group Lunch','The Country Resort','fa-briefcase')">
+        <div class="bento-placeholder"><i class="fa-solid fa-briefcase bento-placeholder-icon"></i><span class="bento-placeholder-label">Corporate Team Day</span></div>
+        <div class="bento-overlay"><div class="bento-overlay-title">Corporate Team Day</div><div class="bento-overlay-sub">Group Lunch &amp; Activities</div></div>
+      </div>
+      <div class="bento-cell" onclick="openLightbox('Family Reunion — Resort Grounds','Prestige Clubs &amp; Resorts','fa-people-group')">
+        <div class="bento-placeholder"><i class="fa-solid fa-people-group bento-placeholder-icon"></i><span class="bento-placeholder-label">Family Reunion</span></div>
+        <div class="bento-overlay"><div class="bento-overlay-title">Family Reunion</div><div class="bento-overlay-sub">Resort Grounds</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══ SECTION: VIDEO ════════════════════════════════════ -->
+<div class="gallery-section sdp" data-section="video">
+  <div class="ct">
+    <div class="gallery-intro fi">
+      <div class="gallery-intro-title gold-text">Videos</div>
+      <p class="gallery-intro-sub">Watch our properties and experiences come to life — subscribe on YouTube for more</p>
+    </div>
+    <div class="video-grid fi">
+      <a href="https://youtube.com/channel/UC1k56gGYKjmQKFtGuO7WhlQ" target="_blank" class="video-cell">
+        <div class="video-play">
+          <div class="video-play-btn"><i class="fa-solid fa-play"></i></div>
+          <div class="video-label">The Country Resort — Property Tour</div>
+          <div class="video-sub">Watch on YouTube</div>
+        </div>
+      </a>
+      <a href="https://youtube.com/channel/UC1k56gGYKjmQKFtGuO7WhlQ" target="_blank" class="video-cell">
+        <div class="video-play">
+          <div class="video-play-btn"><i class="fa-solid fa-play"></i></div>
+          <div class="video-label">Member Events — New Year Gala Highlights</div>
+          <div class="video-sub">Watch on YouTube</div>
+        </div>
+      </a>
+      <a href="https://youtube.com/channel/UC1k56gGYKjmQKFtGuO7WhlQ" target="_blank" class="video-cell">
+        <div class="video-play">
+          <div class="video-play-btn"><i class="fa-solid fa-play"></i></div>
+          <div class="video-label">The Country Bay — Private Beach Launch</div>
+          <div class="video-sub">Watch on YouTube</div>
+        </div>
+      </a>
+    </div>
+    <div style="text-align:center;margin-top:36px;" class="fi">
+      <a href="https://youtube.com/channel/UC1k56gGYKjmQKFtGuO7WhlQ" target="_blank" class="btn bg"><i class="fa-brands fa-youtube"></i> View Full Channel</a>
+    </div>
+  </div>
+</div>
+
+
+<!-- MEMBER TRIP SLIDER -->
+<section class="member-slider-section" data-section="trips">
+  <div class="member-slider-header fi">
+    <span class="member-slider-label">Shared by Our Members</span>
+    <h2 class="member-slider-title">Member Trip Photos</h2>
+    <p class="member-slider-sub">Real moments from real trips — shared by Prestige Vacations members across India. Hover to pause.</p>
+  </div>
+
+  <!-- Row 1 -->
+  <div class="slider-track-wrap">
+    <div class="slider-track" id="track1">
+      <!-- Original set -->
+      <div class="member-card" onclick="openLightbox('Ooty Tea Estates','Meenakshi R · Holiday Member','fa-mountain')"><div class="member-card-img"><i class="fa-solid fa-mountain member-card-icon"></i><span class="member-card-placeholder">Ooty, Tamil Nadu</span></div><div class="member-card-overlay"><div class="member-card-stars">★★★★★</div><div class="member-card-name">Meenakshi R</div><div class="member-card-dest">Ooty · Hill Station</div></div></div>
+      <div class="member-card tall" onclick="openLightbox('Goa Beach Sunset','Arun &amp; Family · Holiday Member','fa-umbrella-beach')"><div class="member-card-img"><i class="fa-solid fa-umbrella-beach member-card-icon"></i><span class="member-card-placeholder">North Goa, Goa</span></div><div class="member-card-overlay"><div class="member-card-stars">★★★★★</div><div class="member-card-name">Arun &amp; Family</div><div class="member-card-dest">Goa · Beach</div></div></div>
+      <div class="member-card" onclick="openLightbox('Country Resort — Pool Day','Vijay S · Club Member','fa-water-ladder')"><div class="member-card-img"><i class="fa-solid fa-water-ladder member-card-icon"></i><span class="member-card-placeholder">Day Outing · Country Resort</span></div><div class="member-card-overlay"><div class="member-card-stars">★★★★★</div><div class="member-card-name">Vijay S</div><div class="member-card-dest">Country Resort · Day Outing</div></div></div>
+      <div class="member-card tall" onclick="openLightbox('Kerala Backwaters — Houseboat','Priya K · Holiday Member','fa-water')"><div class="member-card-img"><i class="fa-solid fa-water member-card-icon"></i><span class="member-card-placeholder">Alleppey, Kerala</span></div><div class="member-card-overlay"><div class="member-card-stars">★★★★★</div><div class="member-card-name">Priya K</div><div class="member-card-dest">Kerala · Backwaters</div></div></div>
+      <div class="member-card" onclick="openLightbox('Rajasthan — Jaipur Fort','Suresh M · Holiday Member','fa-landmark')"><div class="member-card-img"><i class="fa-solid fa-landmark member-card-icon"></i><span class="member-card-placeholder">Jaipur, Rajasthan</span></div><div class="member-card-overlay"><div class="member-card-stars">★★★★★</div><div class="member-card-name">Suresh M</div><div class="member-card-dest">Rajasthan · Heritage</div></div></div>
+      <div class="member-card" onclick="openLightbox('New Year Gala — Celebrations','Kavitha R · Holiday Member','fa-champagne-glasses')"><div class="member-card-img"><i class="fa-solid fa-champagne-glasses member-card-icon"></i><span class="member-card-placeholder">New Year Gala · Country Resort</span></div><div class="member-card-overlay"><div class="member-card-stars">★★★★★</div><div class="member-card-name">Kavitha R</div><div class="member-card-dest">New Year Gala · Event</div></div></div>
+      <div class="member-card tall" onclick="openLightbox('Andaman — Radhanagar Beach','Rajan &amp; Family · Holiday Member','fa-sun')"><div class="member-card-img"><i class="fa-solid fa-sun member-card-icon"></i><span class="member-card-placeholder">Andaman Islands</span></div><div class="member-card-overlay"><div class="member-card-stars">★★★★★</div><div class="member-card-name">Rajan &amp; Family</div><div class="member-card-dest">Andaman · Island Beach</div></div></div>
+      <div class="member-card" onclick="openLightbox('Munnar — Tea Plantation Walk','Deepa V · Holiday Member','fa-leaf')"><div class="member-card-img"><i class="fa-solid fa-leaf member-card-icon"></i><span class="member-card-placeholder">Munnar, Kerala</span></div><div class="member-card-overlay"><div class="member-card-stars">★★★★★</div><div class="member-card-name">Deepa V</div><div class="member-card-dest">Munnar · Hill Station</div></div></div>
+      <div class="member-card" onclick="openLightbox('Country Bay — Private Beach','Anand T · Club Member','fa-umbrella-beach')"><div class="member-card-img"><i class="fa-solid fa-umbrella-beach member-card-icon"></i><span class="member-card-placeholder">The Country Bay · Marakkanam</span></div><div class="member-card-overlay"><div class="member-card-stars">★★★★★</div><div class="member-card-name">Anand T</div><div class="member-card-dest">Country Bay · Private Beach</div></div></div>
+      <div class="member-card tall" onclick="openLightbox('Kodaikanal — Lake View','Nisha P · Holiday Member','fa-mountain')"><div class="member-card-img"><i class="fa-solid fa-mountain member-card-icon"></i><span class="member-card-placeholder">Kodaikanal, Tamil Nadu</span></div><div class="member-card-overlay"><div class="member-card-stars">★★★★★</div><div class="member-card-name">Nisha P</div><div class="member-card-dest">Kodaikanal · Hill Station</div></div></div>
+      <div class="member-card" onclick="openLightbox('Country Suites — Villa Pool','Santhosh K · Holiday Member','fa-house')"><div class="member-card-img"><i class="fa-solid fa-house member-card-icon"></i><span class="member-card-placeholder">The Country Suites · Mahabalipuram</span></div><div class="member-card-overlay"><div class="member-card-stars">★★★★★</div><div class="member-card-name">Santhosh K</div><div class="member-card-dest">Country Suites · Private Villa</div></div></div>
+      <div class="member-card" onclick="openLightbox('Varanasi Ganga Aarti','Lakshmi N · Holiday Member','fa-om')"><div class="member-card-img"><i class="fa-solid fa-om member-card-icon"></i><span class="member-card-placeholder">Varanasi, UP</span></div><div class="member-card-overlay"><div class="member-card-stars">★★★★★</div><div class="member-card-name">Lakshmi N</div><div class="member-card-dest">Varanasi · Spiritual</div></div></div>
+      <!-- Duplicate set for seamless loop -->
+      <div class="member-card" onclick="openLightbox('Ooty Tea Estates','Meenakshi R · Holiday Member','fa-mountain')"><div class="member-card-img"><i class="fa-solid fa-mountain member-card-icon"></i><span class="member-card-placeholder">Ooty, Tamil Nadu</span></div><div class="member-card-overlay"><div class="member-card-stars">★★★★★</div><div class="member-card-name">Meenakshi R</div><div class="member-card-dest">Ooty · Hill Station</div></div></div>
+      <div class="member-card tall" onclick="openLightbox('Goa Beach Sunset','Arun &amp; Family · Holiday Member','fa-umbrella-beach')"><div class="member-card-img"><i class="fa-solid fa-umbrella-beach member-card-icon"></i><span class="member-card-placeholder">North Goa, Goa</span></div><div class="member-card-overlay"><div class="member-card-stars">★★★★★</div><div class="member-card-name">Arun &amp; Family</div><div class="member-card-dest">Goa · Beach</div></div></div>
+      <div class="member-card" onclick="openLightbox('Country Resort — Pool Day','Vijay S · Club Member','fa-water-ladder')"><div class="member-card-img"><i class="fa-solid fa-water-ladder member-card-icon"></i><span class="member-card-placeholder">Day Outing · Country Resort</span></div><div class="member-card-overlay"><div class="member-card-stars">★★★★★</div><div class="member-card-name">Vijay S</div><div class="member-card-dest">Country Resort · Day Outing</div></div></div>
+      <div class="member-card tall" onclick="openLightbox('Kerala Backwaters — Houseboat','Priya K · Holiday Member','fa-water')"><div class="member-card-img"><i class="fa-solid fa-water member-card-icon"></i><span class="member-card-placeholder">Alleppey, Kerala</span></div><div class="member-card-overlay"><div class="member-card-stars">★★★★★</div><div class="member-card-name">Priya K</div><div class="member-card-dest">Kerala · Backwaters</div></div></div>
+      <div class="member-card" onclick="openLightbox('Rajasthan — Jaipur Fort','Suresh M · Holiday Member','fa-landmark')"><div class="member-card-img"><i class="fa-solid fa-landmark member-card-icon"></i><span class="member-card-placeholder">Jaipur, Rajasthan</span></div><div class="member-card-overlay"><div class="member-card-stars">★★★★★</div><div class="member-card-name">Suresh M</div><div class="member-card-dest">Rajasthan · Heritage</div></div></div>
+      <div class="member-card" onclick="openLightbox('New Year Gala — Celebrations','Kavitha R · Holiday Member','fa-champagne-glasses')"><div class="member-card-img"><i class="fa-solid fa-champagne-glasses member-card-icon"></i><span class="member-card-placeholder">New Year Gala · Country Resort</span></div><div class="member-card-overlay"><div class="member-card-stars">★★★★★</div><div class="member-card-name">Kavitha R</div><div class="member-card-dest">New Year Gala · Event</div></div></div>
+      <div class="member-card tall" onclick="openLightbox('Andaman — Radhanagar Beach','Rajan &amp; Family · Holiday Member','fa-sun')"><div class="member-card-img"><i class="fa-solid fa-sun member-card-icon"></i><span class="member-card-placeholder">Andaman Islands</span></div><div class="member-card-overlay"><div class="member-card-stars">★★★★★</div><div class="member-card-name">Rajan &amp; Family</div><div class="member-card-dest">Andaman · Island Beach</div></div></div>
+      <div class="member-card" onclick="openLightbox('Munnar — Tea Plantation Walk','Deepa V · Holiday Member','fa-leaf')"><div class="member-card-img"><i class="fa-solid fa-leaf member-card-icon"></i><span class="member-card-placeholder">Munnar, Kerala</span></div><div class="member-card-overlay"><div class="member-card-stars">★★★★★</div><div class="member-card-name">Deepa V</div><div class="member-card-dest">Munnar · Hill Station</div></div></div>
+      <div class="member-card" onclick="openLightbox('Country Bay — Private Beach','Anand T · Club Member','fa-umbrella-beach')"><div class="member-card-img"><i class="fa-solid fa-umbrella-beach member-card-icon"></i><span class="member-card-placeholder">The Country Bay · Marakkanam</span></div><div class="member-card-overlay"><div class="member-card-stars">★★★★★</div><div class="member-card-name">Anand T</div><div class="member-card-dest">Country Bay · Private Beach</div></div></div>
+      <div class="member-card tall" onclick="openLightbox('Kodaikanal — Lake View','Nisha P · Holiday Member','fa-mountain')"><div class="member-card-img"><i class="fa-solid fa-mountain member-card-icon"></i><span class="member-card-placeholder">Kodaikanal, Tamil Nadu</span></div><div class="member-card-overlay"><div class="member-card-stars">★★★★★</div><div class="member-card-name">Nisha P</div><div class="member-card-dest">Kodaikanal · Hill Station</div></div></div>
+      <div class="member-card" onclick="openLightbox('Country Suites — Villa Pool','Santhosh K · Holiday Member','fa-house')"><div class="member-card-img"><i class="fa-solid fa-house member-card-icon"></i><span class="member-card-placeholder">The Country Suites · Mahabalipuram</span></div><div class="member-card-overlay"><div class="member-card-stars">★★★★★</div><div class="member-card-name">Santhosh K</div><div class="member-card-dest">Country Suites · Private Villa</div></div></div>
+      <div class="member-card" onclick="openLightbox('Varanasi Ganga Aarti','Lakshmi N · Holiday Member','fa-om')"><div class="member-card-img"><i class="fa-solid fa-om member-card-icon"></i><span class="member-card-placeholder">Varanasi, UP</span></div><div class="member-card-overlay"><div class="member-card-stars">★★★★★</div><div class="member-card-name">Lakshmi N</div><div class="member-card-dest">Varanasi · Spiritual</div></div></div>
+    </div>
+  </div>
+
+  <!-- Row 2 — scrolls right-to-left slightly slower -->
+  <div class="slider-track-wrap" style="margin-top:16px;">
+    <div class="slider-track slider-track-2" id="track2">
+      <!-- Original set -->
+      <div class="member-card tall" onclick="openLightbox('Diwali Night — Resort','Ramesh A · Club Member','fa-fire-flame-curved')"><div class="member-card-img"><i class="fa-solid fa-fire-flame-curved member-card-icon"></i><span class="member-card-placeholder">Diwali · Country Resort</span></div><div class="member-card-overlay"><div class="member-card-stars">★★★★★</div><div class="member-card-name">Ramesh A</div><div class="member-card-dest">Diwali Event · Resort</div></div></div>
+      <div class="member-card" onclick="openLightbox('Coorg Coffee Estate','Divya M · Holiday Member','fa-mug-saucer')"><div class="member-card-img"><i class="fa-solid fa-mug-saucer member-card-icon"></i><span class="member-card-placeholder">Coorg, Karnataka</span></div><div class="member-card-overlay"><div class="member-card-stars">★★★★★</div><div class="member-card-name">Divya M</div><div class="member-card-dest">Coorg · Hill Station</div></div></div>
+      <div class="member-card" onclick="openLightbox('Country Resort — Garden Walk','Padma S · Club Member','fa-tree')"><div class="member-card-img"><i class="fa-solid fa-tree member-card-icon"></i><span class="member-card-placeholder">Country Resort · Garden</span></div><div class="member-card-overlay"><div class="member-card-stars">★★★★★</div><div class="member-card-name">Padma S</div><div class="member-card-dest">Country Resort · Grounds</div></div></div>
+      <div class="member-card tall" onclick="openLightbox('Pondicherry — French Quarter','Balaji R · Holiday Member','fa-city')"><div class="member-card-img"><i class="fa-solid fa-city member-card-icon"></i><span class="member-card-placeholder">Pondicherry</span></div><div class="member-card-overlay"><div class="member-card-stars">★★★★★</div><div class="member-card-name">Balaji R</div><div class="member-card-dest">Pondicherry · Beach &amp; Culture</div></div></div>
+      <div class="member-card" onclick="openLightbox('Country Bay — Sunrise','Harini V · Club Member','fa-sun')"><div class="member-card-img"><i class="fa-solid fa-sun member-card-icon"></i><span class="member-card-placeholder">Sunrise · Country Bay</span></div><div class="member-card-overlay"><div class="member-card-stars">★★★★★</div><div class="member-card-name">Harini V</div><div class="member-card-dest">Country Bay · Sunrise</div></div></div>
+      <div class="member-card" onclick="openLightbox('Shimla — Snow Views','Gopal N · Holiday Member','fa-snowflake')"><div class="member-card-img"><i class="fa-solid fa-snowflake member-card-icon"></i><span class="member-card-placeholder">Shimla, Himachal</span></div><div class="member-card-overlay"><div class="member-card-stars">★★★★★</div><div class="member-card-name">Gopal N</div><div class="member-card-dest">Shimla · Hill Station</div></div></div>
+      <div class="member-card tall" onclick="openLightbox('Green Bay Restaurant — Dinner','Usha T · Club Member','fa-utensils')"><div class="member-card-img"><i class="fa-solid fa-utensils member-card-icon"></i><span class="member-card-placeholder">Green Bay Restaurant</span></div><div class="member-card-overlay"><div class="member-card-stars">★★★★★</div><div class="member-card-name">Usha T</div><div class="member-card-dest">Country Resort · Dining</div></div></div>
+      <div class="member-card" onclick="openLightbox('Bandipur — Safari Morning','Karthik L · Holiday Member','fa-paw')"><div class="member-card-img"><i class="fa-solid fa-paw member-card-icon"></i><span class="member-card-placeholder">Bandipur, Karnataka</span></div><div class="member-card-overlay"><div class="member-card-stars">★★★★★</div><div class="member-card-name">Karthik L</div><div class="member-card-dest">Bandipur · Wildlife</div></div></div>
+      <div class="member-card" onclick="openLightbox('Wedding at Country Resort','Preethi &amp; Anil','fa-rings-wedding')"><div class="member-card-img"><i class="fa-solid fa-rings-wedding member-card-icon"></i><span class="member-card-placeholder">Wedding · Country Resort</span></div><div class="member-card-overlay"><div class="member-card-stars">★★★★★</div><div class="member-card-name">Preethi &amp; Anil</div><div class="member-card-dest">Wedding · Country Resort</div></div></div>
+      <div class="member-card tall" onclick="openLightbox('Mysuru Palace — Heritage','Indira C · Holiday Member','fa-landmark')"><div class="member-card-img"><i class="fa-solid fa-landmark member-card-icon"></i><span class="member-card-placeholder">Mysuru, Karnataka</span></div><div class="member-card-overlay"><div class="member-card-stars">★★★★★</div><div class="member-card-name">Indira C</div><div class="member-card-dest">Mysuru · Heritage Palace</div></div></div>
+      <div class="member-card" onclick="openLightbox('Family Fun Day — Kids Pool','Selvi R · Club Member','fa-children')"><div class="member-card-img"><i class="fa-solid fa-children member-card-icon"></i><span class="member-card-placeholder">Family Fun Day · Event</span></div><div class="member-card-overlay"><div class="member-card-stars">★★★★★</div><div class="member-card-name">Selvi R</div><div class="member-card-dest">Family Fun Day · Event</div></div></div>
+      <div class="member-card" onclick="openLightbox('Tirupati — Darshan','Venkat P · Holiday Member','fa-om')"><div class="member-card-img"><i class="fa-solid fa-om member-card-icon"></i><span class="member-card-placeholder">Tirupati, AP</span></div><div class="member-card-overlay"><div class="member-card-stars">★★★★★</div><div class="member-card-name">Venkat P</div><div class="member-card-dest">Tirupati · Spiritual</div></div></div>
+      <!-- Duplicate set -->
+      <div class="member-card tall" onclick="openLightbox('Diwali Night — Resort','Ramesh A · Club Member','fa-fire-flame-curved')"><div class="member-card-img"><i class="fa-solid fa-fire-flame-curved member-card-icon"></i><span class="member-card-placeholder">Diwali · Country Resort</span></div><div class="member-card-overlay"><div class="member-card-stars">★★★★★</div><div class="member-card-name">Ramesh A</div><div class="member-card-dest">Diwali Event · Resort</div></div></div>
+      <div class="member-card" onclick="openLightbox('Coorg Coffee Estate','Divya M · Holiday Member','fa-mug-saucer')"><div class="member-card-img"><i class="fa-solid fa-mug-saucer member-card-icon"></i><span class="member-card-placeholder">Coorg, Karnataka</span></div><div class="member-card-overlay"><div class="member-card-stars">★★★★★</div><div class="member-card-name">Divya M</div><div class="member-card-dest">Coorg · Hill Station</div></div></div>
+      <div class="member-card" onclick="openLightbox('Country Resort — Garden Walk','Padma S · Club Member','fa-tree')"><div class="member-card-img"><i class="fa-solid fa-tree member-card-icon"></i><span class="member-card-placeholder">Country Resort · Garden</span></div><div class="member-card-overlay"><div class="member-card-stars">★★★★★</div><div class="member-card-name">Padma S</div><div class="member-card-dest">Country Resort · Grounds</div></div></div>
+      <div class="member-card tall" onclick="openLightbox('Pondicherry — French Quarter','Balaji R · Holiday Member','fa-city')"><div class="member-card-img"><i class="fa-solid fa-city member-card-icon"></i><span class="member-card-placeholder">Pondicherry</span></div><div class="member-card-overlay"><div class="member-card-stars">★★★★★</div><div class="member-card-name">Balaji R</div><div class="member-card-dest">Pondicherry · Beach &amp; Culture</div></div></div>
+      <div class="member-card" onclick="openLightbox('Country Bay — Sunrise','Harini V · Club Member','fa-sun')"><div class="member-card-img"><i class="fa-solid fa-sun member-card-icon"></i><span class="member-card-placeholder">Sunrise · Country Bay</span></div><div class="member-card-overlay"><div class="member-card-stars">★★★★★</div><div class="member-card-name">Harini V</div><div class="member-card-dest">Country Bay · Sunrise</div></div></div>
+      <div class="member-card" onclick="openLightbox('Shimla — Snow Views','Gopal N · Holiday Member','fa-snowflake')"><div class="member-card-img"><i class="fa-solid fa-snowflake member-card-icon"></i><span class="member-card-placeholder">Shimla, Himachal</span></div><div class="member-card-overlay"><div class="member-card-stars">★★★★★</div><div class="member-card-name">Gopal N</div><div class="member-card-dest">Shimla · Hill Station</div></div></div>
+      <div class="member-card tall" onclick="openLightbox('Green Bay Restaurant — Dinner','Usha T · Club Member','fa-utensils')"><div class="member-card-img"><i class="fa-solid fa-utensils member-card-icon"></i><span class="member-card-placeholder">Green Bay Restaurant</span></div><div class="member-card-overlay"><div class="member-card-stars">★★★★★</div><div class="member-card-name">Usha T</div><div class="member-card-dest">Country Resort · Dining</div></div></div>
+      <div class="member-card" onclick="openLightbox('Bandipur — Safari Morning','Karthik L · Holiday Member','fa-paw')"><div class="member-card-img"><i class="fa-solid fa-paw member-card-icon"></i><span class="member-card-placeholder">Bandipur, Karnataka</span></div><div class="member-card-overlay"><div class="member-card-stars">★★★★★</div><div class="member-card-name">Karthik L</div><div class="member-card-dest">Bandipur · Wildlife</div></div></div>
+      <div class="member-card" onclick="openLightbox('Wedding at Country Resort','Preethi &amp; Anil','fa-rings-wedding')"><div class="member-card-img"><i class="fa-solid fa-rings-wedding member-card-icon"></i><span class="member-card-placeholder">Wedding · Country Resort</span></div><div class="member-card-overlay"><div class="member-card-stars">★★★★★</div><div class="member-card-name">Preethi &amp; Anil</div><div class="member-card-dest">Wedding · Country Resort</div></div></div>
+      <div class="member-card tall" onclick="openLightbox('Mysuru Palace — Heritage','Indira C · Holiday Member','fa-landmark')"><div class="member-card-img"><i class="fa-solid fa-landmark member-card-icon"></i><span class="member-card-placeholder">Mysuru, Karnataka</span></div><div class="member-card-overlay"><div class="member-card-stars">★★★★★</div><div class="member-card-name">Indira C</div><div class="member-card-dest">Mysuru · Heritage Palace</div></div></div>
+      <div class="member-card" onclick="openLightbox('Family Fun Day — Kids Pool','Selvi R · Club Member','fa-children')"><div class="member-card-img"><i class="fa-solid fa-children member-card-icon"></i><span class="member-card-placeholder">Family Fun Day · Event</span></div><div class="member-card-overlay"><div class="member-card-stars">★★★★★</div><div class="member-card-name">Selvi R</div><div class="member-card-dest">Family Fun Day · Event</div></div></div>
+      <div class="member-card" onclick="openLightbox('Tirupati — Darshan','Venkat P · Holiday Member','fa-om')"><div class="member-card-img"><i class="fa-solid fa-om member-card-icon"></i><span class="member-card-placeholder">Tirupati, AP</span></div><div class="member-card-overlay"><div class="member-card-stars">★★★★★</div><div class="member-card-name">Venkat P</div><div class="member-card-dest">Tirupati · Spiritual</div></div></div>
+    </div>
+  </div>
+
+  <div style="text-align:center;margin-top:48px;padding:0 48px;" class="fi">
+    <p style="font-family:'Cormorant Garamond',serif;font-size:18px;font-style:italic;color:var(--gold-bronze);margin-bottom:20px;">Share your Prestige journey — tag us on Instagram &amp; Facebook</p>
+    <a href="https://www.instagram.com/prestige_vacations17/" target="_blank" class="btn bg"><i class="fa-brands fa-instagram"></i> Tag @prestige_vacations17</a>
+  </div>
+</section>
+
+<!-- SOCIAL BAND -->
+<div class="social-band">
+  <h2 class="social-band-title">Follow Us for More</h2>
+  <p class="social-band-sub">Our members share their experiences every week. Follow us on Instagram, Facebook, and YouTube for the latest photos, events, and moments from Prestige properties.</p>
+  <div class="social-links">
+    <a href="https://www.instagram.com/prestige_vacations17/" target="_blank" class="social-link"><i class="fa-brands fa-instagram"></i> Instagram</a>
+    <a href="https://www.facebook.com/prestigevacationschennai/" target="_blank" class="social-link"><i class="fa-brands fa-facebook-f"></i> Facebook</a>
+    <a href="https://youtube.com/channel/UC1k56gGYKjmQKFtGuO7WhlQ" target="_blank" class="social-link"><i class="fa-brands fa-youtube"></i> YouTube</a>
+    <a href="https://wa.me/918001213457" target="_blank" class="social-link"><i class="fa-brands fa-whatsapp"></i> WhatsApp</a>
+  </div>
+</div>
+
+<!-- CTA -->
+<section class="cb">
+  <div class="ct fi">
+    <span class="cs">Like what you see?</span>
+    <h2 class="cbt gold-text">Experience It in Person</h2>
+    <p class="cbs">Photos only tell half the story. The other half is standing at the property yourself.<br>Book a stay, day outing, or enquire about membership today.</p>
+    <div class="cbb">
+      <a href="tel:18001213457" class="btn bg"><i class="fa-solid fa-phone"></i> Call 1800 121 3457</a>
+      <a href="https://wa.me/918001213457" target="_blank" class="bw"><i class="fa-brands fa-whatsapp"></i> WhatsApp Us</a>
+      <a href="prestige-membership-overview.html" class="btn bo"><i class="fa-solid fa-crown"></i> View Membership</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="ct">
+    <div class="ft">
+      <div><div class="fbn gold-text">Prestige</div><div class="fbs">Vacations &amp; Clubs</div><p class="ftag">Live a Prestigious Life</p><p class="fdesc">Chennai's most trusted holiday membership. 15+ years, 14,000+ members, three beautiful resort properties.</p><div class="fci"><i class="fa-solid fa-phone"></i><a href="tel:18001213457" style="color:var(--silver);opacity:.75;">1800 121 3457</a></div><div class="fci"><i class="fa-solid fa-envelope"></i><a href="mailto:info@prestigevacations.in" style="color:var(--silver);opacity:.75;">info@prestigevacations.in</a></div><div class="fso"><a href="https://www.facebook.com/prestigevacationschennai/" target="_blank"><i class="fa-brands fa-facebook-f"></i></a><a href="https://www.instagram.com/prestige_vacations17/" target="_blank"><i class="fa-brands fa-instagram"></i></a><a href="https://youtube.com/channel/UC1k56gGYKjmQKFtGuO7WhlQ" target="_blank"><i class="fa-brands fa-youtube"></i></a><a href="https://wa.me/918001213457" target="_blank"><i class="fa-brands fa-whatsapp"></i></a></div></div>
+      <div><h4 class="fct">Experiences</h4><div class="fcd"></div><ul class="fl"><li><a href="prestige-resort-stays.html">Resort Stays</a></li><li><a href="prestige-day-outings.html">Day Outings</a></li><li><a href="prestige-events.html">Events</a></li><li><a href="prestige-tour-packages.html">Tour Packages</a></li><li><a href="prestige-weddings.html">Weddings &amp; Celebrations</a></li><li><a href="prestige-corporate.html">Corporate &amp; Groups</a></li></ul></div>
+      <div><h4 class="fct">Our Properties</h4><div class="fcd"></div><ul class="fl"><li><a href="prestige-country-resort.html">The Country Resort</a></li><li><a href="prestige-country-suites.html">The Country Suites</a></li><li><a href="prestige-country-bay.html">The Country Bay</a></li></ul><h4 class="fct" style="margin-top:32px;">Membership</h4><div class="fcd"></div><ul class="fl"><li><a href="prestige-club-membership.html">Club Membership</a></li><li><a href="prestige-holiday-membership.html">Holiday Membership</a></li><li><a href="prestige-gift-vouchers.html">Gift Vouchers</a></li><li><a href="prestige-membership-faqs.html">FAQs</a></li></ul></div>
+      <div><h4 class="fct">Get in Touch</h4><div class="fcd"></div><p style="font-size:13px;font-weight:300;line-height:1.8;color:var(--silver);opacity:.65;margin-bottom:24px;">Ready to visit? Our team is happy to arrange a stay, day outing, or membership enquiry.</p><a href="tel:18001213457" class="btn bg" style="width:100%;justify-content:center;margin-bottom:12px;"><i class="fa-solid fa-phone"></i> Call Us Now</a><a href="https://wa.me/918001213457" target="_blank" class="bw" style="width:100%;justify-content:center;display:flex;"><i class="fa-brands fa-whatsapp"></i> WhatsApp Us</a></div>
+    </div>
+    <div class="fseo"><a href="prestige-home.html">Resorts in Mahabalipuram</a><a href="prestige-home.html">Weekend Getaway from Chennai</a><a href="prestige-home.html">Day Outing from Chennai</a><a href="prestige-home.html">Family Resort Near Chennai</a><a href="prestige-home.html">Resort Wedding Near Chennai</a><a href="prestige-home.html">Beach Resort Near Chennai</a><a href="prestige-home.html">Holiday Membership Chennai</a><a href="prestige-home.html">Prestige Vacations Reviews</a><a href="prestige-home.html">Prestige Clubs and Resorts</a><a href="prestige-home.html">Resort Stay Mahabalipuram</a></div>
+    <div class="fbot"><span>© 2025 Prestige Vacations &amp; Clubs. All rights reserved. | Prestige Group of Companies</span><div class="fbl"><a href="prestige-home.html">Privacy Policy</a><a href="prestige-home.html">Terms &amp; Conditions</a><a href="prestige-home.html">Sitemap</a></div></div>
+  </div>
+</footer>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" onclick="closeLightboxOutside(event)">
+  <div class="lightbox-inner">
+    <button class="lightbox-close" onclick="closeLightbox()"><i class="fa-solid fa-xmark"></i></button>
+    <button class="lightbox-nav lightbox-prev" onclick="navLightbox(-1)"><i class="fa-solid fa-chevron-left"></i></button>
+    <button class="lightbox-nav lightbox-next" onclick="navLightbox(1)"><i class="fa-solid fa-chevron-right"></i></button>
+    <div class="lightbox-img"><i class="lightbox-img-icon fa-solid fa-image" id="lbIcon"></i></div>
+    <div class="lightbox-caption" id="lbCaption"></div>
+    <div class="lightbox-sub" id="lbSub"></div>
+  </div>
+</div>
+
+<script>
+  /* NAV */
+  const nav=document.getElementById('mainNav');
+  window.addEventListener('scroll',()=>{nav.classList.toggle('scrolled',window.scrollY>60);});
+
+  /* FADE IN */
+  document.querySelectorAll('.fi').forEach(f=>new IntersectionObserver((e)=>{
+    e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('vis');}});
+  },{threshold:.08}).observe(f));
+
+  /* FILTER */
+  function filterGallery(cat,btn){
+    document.querySelectorAll('.filter-tab').forEach(t=>t.classList.remove('active'));
+    btn.classList.add('active');
+    const sections=document.querySelectorAll('[data-section]');
+    if(cat==='all'){
+      sections.forEach(s=>s.style.display='block');
+    } else if(cat==='video'){
+      sections.forEach(s=>s.style.display=s.dataset.section==='video'?'block':'none');
+    } else {
+      sections.forEach(s=>s.style.display=s.dataset.section===cat?'block':'none');
+    }
+  }
+
+  /* LIGHTBOX */
+  let lbItems=[];let lbIdx=0;
+  function buildItems(){
+    lbItems=[];
+    document.querySelectorAll('.bento-cell,.sq-cell').forEach(cell=>{
+      const cap=cell.querySelector('.bento-overlay-title');
+      const sub=cell.querySelector('.bento-overlay-sub');
+      const ico=cell.querySelector('.bento-placeholder-icon');
+      if(cap) lbItems.push({caption:cap.textContent,sub:sub?sub.textContent:'',icon:ico?ico.className:''});
+    });
+  }
+  function openLightbox(caption,sub,icon){
+    buildItems();
+    lbIdx=lbItems.findIndex(i=>i.caption===caption);
+    if(lbIdx<0)lbIdx=0;
+    showLightbox();
+    document.getElementById('lightbox').classList.add('open');
+    document.body.style.overflow='hidden';
+  }
+  function showLightbox(){
+    const item=lbItems[lbIdx]||{caption:'Prestige Property',sub:'',icon:'fa-solid fa-image'};
+    document.getElementById('lbCaption').textContent=item.caption;
+    document.getElementById('lbSub').textContent=item.sub;
+    const ic=document.getElementById('lbIcon');
+    ic.className='';ic.className='lightbox-img-icon '+item.icon;
+  }
+  function navLightbox(dir){
+    lbIdx=(lbIdx+dir+lbItems.length)%lbItems.length;
+    showLightbox();
+  }
+  function closeLightbox(){
+    document.getElementById('lightbox').classList.remove('open');
+    document.body.style.overflow='';
+  }
+  function closeLightboxOutside(e){
+    if(e.target===document.getElementById('lightbox'))closeLightbox();
+  }
+  document.addEventListener('keydown',e=>{
+    if(!document.getElementById('lightbox').classList.contains('open'))return;
+    if(e.key==='Escape')closeLightbox();
+    if(e.key==='ArrowLeft')navLightbox(-1);
+    if(e.key==='ArrowRight')navLightbox(1);
+  });
+</script>
+
+
+<script>
+(function () {
+  function ready(fn) {
+    if (document.readyState !== 'loading') fn();
+    else document.addEventListener('DOMContentLoaded', fn);
+  }
+
+  ready(function () {
+    var nav = document.querySelector('nav.nav');
+    if (!nav || nav.querySelector('.mobile-nav-toggle')) return;
+
+    var toggle = document.createElement('button');
+    toggle.className = 'mobile-nav-toggle';
+    toggle.type = 'button';
+    toggle.setAttribute('aria-label', 'Open navigation menu');
+    toggle.setAttribute('aria-expanded', 'false');
+    toggle.innerHTML = '<span></span><span></span><span></span>';
+    nav.appendChild(toggle);
+
+    var panel = document.createElement('div');
+    panel.className = 'mobile-nav-panel';
+    panel.setAttribute('aria-hidden', 'true');
+
+    var list = nav.querySelector('.nav-links, .nls-wrap, .nl-wrap');
+    if (list) {
+      list.querySelectorAll(':scope > li').forEach(function (item) {
+        var topLink = item.querySelector(':scope > a');
+        if (topLink) {
+          var topClone = topLink.cloneNode(true);
+          topClone.className = '';
+          panel.appendChild(topClone);
+        }
+        item.querySelectorAll('.nav-dropdown a, .nd a').forEach(function (subLink) {
+          var subClone = subLink.cloneNode(true);
+          subClone.className = 'mobile-sub-link';
+          panel.appendChild(subClone);
+        });
+      });
+    }
+
+    var cta = nav.querySelector('.nav-cta, .nc');
+    if (cta) {
+      var ctaClone = cta.cloneNode(true);
+      ctaClone.className = 'mobile-cta-link';
+      panel.appendChild(ctaClone);
+    }
+
+    document.body.appendChild(panel);
+
+    function setOpen(open) {
+      document.body.classList.toggle('mobile-nav-open', open);
+      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+      toggle.setAttribute('aria-label', open ? 'Close navigation menu' : 'Open navigation menu');
+      panel.setAttribute('aria-hidden', open ? 'false' : 'true');
+    }
+
+    toggle.addEventListener('click', function () {
+      setOpen(!document.body.classList.contains('mobile-nav-open'));
+    });
+
+    panel.addEventListener('click', function (event) {
+      if (event.target.closest('a')) setOpen(false);
+    });
+
+    window.addEventListener('resize', function () {
+      if (window.innerWidth > 1100) setOpen(false);
+    });
+
+    document.addEventListener('keydown', function (event) {
+      if (event.key === 'Escape') setOpen(false);
+    });
+
+    document.querySelectorAll('body *').forEach(function (el) {
+      if (!el.children.length && el.textContent.trim().length > 2) {
+        var style = window.getComputedStyle(el);
+        var opacity = parseFloat(style.opacity);
+        if (opacity > 0 && opacity < 0.6) el.style.opacity = '0.72';
+      }
+    });
+  });
+})();
+</script>
+
+</body>
+</html>

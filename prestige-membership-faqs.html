@@ -1,0 +1,1117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Membership FAQs | Prestige Vacations | Common Questions Answered</title>
+  <meta name="description" content="Prestige Vacations membership FAQs — honest answers to the most common questions about the Prestige Clubs and Resorts membership. Is it worth it? What's included? How does it work?" />
+  <meta name="keywords" content="Prestige Vacations FAQ, Prestige Vacations membership questions, Prestige Clubs and Resorts reviews, is Prestige Vacations worth it, Prestige Vacations membership details, Prestige group of companies reviews" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600&family=Great+Vibes&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <style>
+    /* ─── TOKENS ─────────────────────────────────────────── */
+    :root {
+      --black:       #1A1A17;
+      --matte-black: #1C1B18;
+      --gold:        #D9BA6F;
+      --gold-mid:    #C9A44B;
+      --gold-bronze: #A3895A;
+      --gold-dark:   #504834;
+      --silver:      #DCDCDC;
+      --champagne:   #E8D8B0;
+      --cream:       #F2E7C7;
+      --charcoal:    #222222;
+      --dark-gray:   #2F2F2F;
+      --gold-glow:   rgba(217,186,111,0.18);
+      --nav-h:       80px;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Montserrat', sans-serif; background: var(--black); color: var(--silver); overflow-x: hidden; }
+    a { text-decoration: none; color: inherit; }
+    ul { list-style: none; }
+
+    /* ─── UTILITY ─────────────────────────────────────────── */
+    .gold-text {
+      background: linear-gradient(135deg, #C9A44B 0%, #D9BA6F 35%, #F2E7C7 55%, #D9BA6F 75%, #A3895A 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    }
+    .section-label { font-family: 'Montserrat', sans-serif; font-size: 11px; font-weight: 600; letter-spacing: 4px; text-transform: uppercase; color: var(--gold-mid); display: block; margin-bottom: 14px; }
+    .section-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(32px, 5vw, 52px); font-weight: 600; line-height: 1.15; color: var(--champagne); }
+    .section-body { font-size: 15px; font-weight: 300; line-height: 1.85; color: var(--silver); max-width: 620px; }
+    .container { max-width: 1100px; margin: 0 auto; }
+    .text-center { text-align: center; }
+    .section { padding: 100px 48px; }
+    .section-dark  { background: var(--black); }
+    .section-deep  { background: #141412; }
+    .section-cream { background: linear-gradient(135deg, var(--cream) 0%, var(--champagne) 50%, #E0CFA0 100%); }
+    .section-cream .section-title { color: var(--charcoal); }
+    .gold-rule { width: 40px; height: 2px; background: linear-gradient(90deg, var(--gold-mid), var(--gold)); margin: 24px 0; }
+    .ornament { display: flex; align-items: center; gap: 14px; margin: 0 auto 56px; max-width: 340px; }
+    .ornament::before, .ornament::after { content: ''; flex: 1; height: 1px; background: linear-gradient(90deg, transparent, var(--gold), transparent); }
+    .ornament-icon { color: var(--gold); font-size: 13px; }
+
+    /* ─── BUTTONS ─────────────────────────────────────────── */
+    .btn { display: inline-flex; align-items: center; gap: 8px; padding: 14px 32px; font-family: 'Montserrat', sans-serif; font-size: 12px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; cursor: pointer; transition: all 0.3s ease; border: none; }
+    .btn-gold { background: linear-gradient(135deg, var(--gold-mid), var(--gold), var(--gold-mid)); color: var(--black); }
+    .btn-gold:hover { background: linear-gradient(135deg, var(--gold), var(--cream), var(--gold)); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(217,186,111,0.35); }
+    .btn-outline { background: transparent; border: 1px solid var(--gold); color: var(--gold); }
+    .btn-outline:hover { background: var(--gold-glow); color: var(--cream); transform: translateY(-2px); }
+    .btn-whatsapp { background: #25D366; color: #fff; display: inline-flex; align-items: center; gap: 8px; padding: 14px 32px; font-family: 'Montserrat', sans-serif; font-size: 12px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; transition: all 0.3s; }
+    .btn-whatsapp:hover { background: #20ba59; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(37,211,102,0.3); }
+
+    /* ─── NAVIGATION ─────────────────────────────────────── */
+    .nav { position: fixed; top: 0; left: 0; right: 0; z-index: 9000; height: var(--nav-h); display: flex; align-items: center; padding: 0 48px; background: rgba(26,26,23,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(217,186,111,0.15); transition: all 0.4s ease; }
+    .nav.scrolled { background: rgba(26,26,23,0.98); box-shadow: 0 4px 24px rgba(0,0,0,0.4); }
+    .nav-logo { flex-shrink: 0; margin-right: auto; }
+    .nav-logo-text { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 700; line-height: 1.1; }
+    .nav-logo-sub { font-family: 'Montserrat', sans-serif; font-size: 9px; letter-spacing: 3px; color: var(--gold-bronze); text-transform: uppercase; }
+    .nav-links { display: flex; align-items: center; gap: 6px; }
+    .nav-item { position: relative; }
+    .nav-link { display: flex; align-items: center; gap: 5px; padding: 8px 14px; font-size: 11px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; color: var(--silver); transition: color 0.2s; white-space: nowrap; }
+    .nav-link:hover, .nav-link.active { color: var(--gold); }
+    .nav-link .fa-chevron-down { font-size: 8px; transition: transform 0.2s; }
+    .nav-item:hover .fa-chevron-down { transform: rotate(180deg); }
+    .nav-dropdown { position: absolute; top: calc(100% + 10px); left: 0; background: var(--matte-black); border: 1px solid rgba(217,186,111,0.2); border-top: 2px solid var(--gold); min-width: 220px; opacity: 0; visibility: hidden; transform: translateY(-8px); transition: all 0.25s ease; z-index: 9999; }
+    .nav-item:hover .nav-dropdown { opacity: 1; visibility: visible; transform: translateY(0); }
+    .nav-dropdown a { display: flex; align-items: center; gap: 10px; padding: 13px 20px; font-size: 12px; font-weight: 500; color: var(--silver); border-bottom: 1px solid rgba(217,186,111,0.08); transition: all 0.2s; }
+    .nav-dropdown a:last-child { border-bottom: none; }
+    .nav-dropdown a i { color: var(--gold-bronze); width: 14px; font-size: 11px; }
+    .nav-dropdown a:hover { background: var(--gold-glow); color: var(--gold); padding-left: 26px; }
+    .nav-dropdown a:hover i { color: var(--gold); }
+    .nav-cta { margin-left: 16px; padding: 10px 22px; font-size: 10px; }
+
+    /* ─── PAGE HERO ──────────────────────────────────────── */
+    .page-hero { position: relative; padding: calc(var(--nav-h) + 90px) 48px 90px; background-color: var(--black); background-image: radial-gradient(ellipse 50% 60% at 0% 0%, rgba(217,186,111,0.18) 0%, transparent 55%), radial-gradient(ellipse 50% 60% at 100% 0%, rgba(217,186,111,0.18) 0%, transparent 55%); text-align: center; border-bottom: 1px solid rgba(217,186,111,0.12); overflow: hidden; }
+    .page-hero::before { content: ''; position: absolute; inset: 0; background-image: radial-gradient(circle 1px at 12% 18%, rgba(217,186,111,0.6) 0%, transparent 100%), radial-gradient(circle 1px at 88% 22%, rgba(217,186,111,0.5) 0%, transparent 100%), radial-gradient(circle 1px at 50% 8%, rgba(201,164,75,0.5) 0%, transparent 100%); pointer-events: none; }
+    .page-hero-breadcrumb { display: flex; align-items: center; justify-content: center; gap: 8px; margin-bottom: 28px; font-size: 11px; font-weight: 500; letter-spacing: 2px; text-transform: uppercase; color: var(--gold-bronze); position: relative; z-index: 1; }
+    .page-hero-breadcrumb a { color: var(--gold-bronze); transition: color 0.2s; }
+    .page-hero-breadcrumb a:hover { color: var(--gold); }
+    .page-hero-breadcrumb i { font-size: 8px; color: var(--gold-dark); }
+    .page-hero-script { font-family: 'Great Vibes', cursive; font-size: clamp(26px, 4vw, 44px); color: var(--silver); opacity: 0.8; display: block; margin-bottom: 12px; position: relative; z-index: 1; }
+    .page-hero-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(48px, 9vw, 96px); font-weight: 700; letter-spacing: 4px; line-height: 1; margin-bottom: 24px; position: relative; z-index: 1; }
+    .page-hero-line { display: flex; align-items: center; gap: 16px; justify-content: center; margin-bottom: 28px; position: relative; z-index: 1; }
+    .page-hero-line::before, .page-hero-line::after { content: ''; width: 60px; height: 1px; background: linear-gradient(90deg, transparent, var(--gold)); }
+    .page-hero-line::after { background: linear-gradient(90deg, var(--gold), transparent); }
+    .page-hero-line span { color: var(--gold); font-size: 10px; }
+    .page-hero-subtitle { font-family: 'Cormorant Garamond', serif; font-size: clamp(16px, 2.5vw, 22px); font-style: italic; font-weight: 300; color: var(--silver); opacity: 0.75; max-width: 680px; margin: 0 auto 40px; position: relative; z-index: 1; }
+    .page-hero-ctas { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; position: relative; z-index: 1; }
+
+    /* ─── FAQ FILTER TABS ─────────────────────────────────── */
+    .faq-tabs { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; margin-bottom: 48px; }
+    .faq-tab { padding: 9px 22px; font-family: 'Montserrat', sans-serif; font-size: 11px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; border: 1px solid rgba(217,186,111,0.25); color: var(--silver); opacity: 0.65; cursor: pointer; transition: all 0.2s; background: transparent; }
+    .faq-tab:hover, .faq-tab.active { border-color: var(--gold); color: var(--gold); opacity: 1; background: var(--gold-glow); }
+
+    /* ─── FAQ GROUP ───────────────────────────────────────── */
+    .faq-group { margin-bottom: 56px; }
+    .faq-group-title { font-family: 'Cormorant Garamond', serif; font-size: 28px; font-weight: 600; color: var(--champagne); margin-bottom: 8px; display: flex; align-items: center; gap: 12px; }
+    .faq-group-title i { color: var(--gold-mid); font-size: 20px; }
+    .faq-group-divider { width: 40px; height: 2px; background: linear-gradient(90deg, var(--gold-mid), var(--gold)); margin-bottom: 24px; }
+
+    /* ─── FAQ ACCORDION ───────────────────────────────────── */
+    .faq-item { border: 1px solid rgba(217,186,111,0.1); margin-bottom: 8px; transition: border-color 0.2s; overflow: hidden; }
+    .faq-item.open { border-color: rgba(217,186,111,0.3); }
+    .faq-question { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 20px 24px; cursor: pointer; background: #141412; transition: background 0.2s; }
+    .faq-item.open .faq-question { background: #1a1a16; }
+    .faq-question:hover { background: #1a1a16; }
+    .faq-q-text { font-family: 'Cormorant Garamond', serif; font-size: 20px; font-weight: 500; color: var(--champagne); line-height: 1.3; }
+    .faq-icon { width: 32px; height: 32px; border: 1px solid rgba(217,186,111,0.25); display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: all 0.3s; }
+    .faq-icon i { font-size: 12px; color: var(--gold-bronze); transition: transform 0.3s; }
+    .faq-item.open .faq-icon { background: var(--gold-glow); border-color: var(--gold); }
+    .faq-item.open .faq-icon i { transform: rotate(45deg); color: var(--gold); }
+    .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.4s ease, padding 0.3s ease; background: #111110; }
+    .faq-item.open .faq-answer { max-height: 600px; }
+    .faq-answer-inner { padding: 24px 24px 28px; border-top: 1px solid rgba(217,186,111,0.08); }
+    .faq-answer-text { font-size: 14px; font-weight: 300; line-height: 1.85; color: var(--silver); opacity: 0.85; margin-bottom: 0; }
+    .faq-answer-text p { margin-bottom: 12px; }
+    .faq-answer-text p:last-child { margin-bottom: 0; }
+    .faq-answer-text strong { color: var(--champagne); font-weight: 500; }
+    .faq-answer-text ul { margin: 12px 0 12px 16px; }
+    .faq-answer-text ul li { margin-bottom: 6px; display: flex; align-items: flex-start; gap: 8px; }
+    .faq-answer-text ul li::before { content: '◆'; color: var(--gold-mid); font-size: 8px; margin-top: 5px; flex-shrink: 0; }
+    .faq-cta-inline { display: inline-flex; align-items: center; gap: 6px; margin-top: 14px; font-size: 11px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; color: var(--gold); border: 1px solid rgba(217,186,111,0.3); padding: 8px 16px; transition: all 0.2s; }
+    .faq-cta-inline:hover { background: var(--gold-glow); border-color: var(--gold); }
+
+    /* ─── STILL HAVE QUESTIONS ───────────────────────────── */
+    .still-q { text-align: center; padding: 56px 48px; border: 1px solid rgba(217,186,111,0.15); background: rgba(217,186,111,0.03); }
+    .still-q-icon { font-size: 40px; color: var(--gold-bronze); margin-bottom: 20px; }
+    .still-q-title { font-family: 'Cormorant Garamond', serif; font-size: 32px; font-weight: 600; color: var(--champagne); margin-bottom: 12px; }
+    .still-q-text { font-size: 14px; font-weight: 300; color: var(--silver); opacity: 0.7; margin-bottom: 32px; }
+    .still-q-btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+
+    /* ─── CTA BANNER ─────────────────────────────────────── */
+    .cta-banner { padding: 100px 48px; background-color: var(--black); background-image: radial-gradient(ellipse 60% 80% at 50% 50%, rgba(217,186,111,0.08) 0%, transparent 70%), radial-gradient(ellipse 30% 40% at 10% 50%, rgba(217,186,111,0.1) 0%, transparent 50%), radial-gradient(ellipse 30% 40% at 90% 50%, rgba(217,186,111,0.1) 0%, transparent 50%); text-align: center; border-top: 1px solid rgba(217,186,111,0.15); }
+    .cta-script { font-family: 'Great Vibes', cursive; font-size: clamp(26px, 4vw, 42px); color: var(--silver); opacity: 0.8; display: block; margin-bottom: 12px; }
+    .cta-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(36px, 6vw, 60px); font-weight: 700; line-height: 1.1; margin-bottom: 20px; }
+    .cta-sub { font-size: 14px; font-weight: 300; color: var(--silver); opacity: 0.7; margin-bottom: 44px; }
+    .cta-buttons { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+
+    /* ─── FOOTER ─────────────────────────────────────────── */
+    footer { background: #0e0e0c; padding: 80px 48px 0; border-top: 1px solid rgba(217,186,111,0.2); }
+    .footer-top { display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: 48px; padding-bottom: 60px; border-bottom: 1px solid rgba(217,186,111,0.1); }
+    .footer-brand-name { font-family: 'Cormorant Garamond', serif; font-size: 28px; font-weight: 700; margin-bottom: 6px; }
+    .footer-brand-sub { font-size: 9px; letter-spacing: 3px; color: var(--gold-bronze); text-transform: uppercase; margin-bottom: 20px; }
+    .footer-tagline { font-family: 'Cormorant Garamond', serif; font-size: 15px; font-style: italic; color: var(--gold-bronze); margin-bottom: 24px; }
+    .footer-desc { font-size: 13px; font-weight: 300; line-height: 1.8; color: var(--silver); opacity: 0.65; margin-bottom: 28px; }
+    .footer-contact-item { display: flex; align-items: center; gap: 10px; font-size: 13px; color: var(--silver); opacity: 0.75; margin-bottom: 12px; }
+    .footer-contact-item i { color: var(--gold-bronze); width: 16px; font-size: 13px; }
+    .footer-social { display: flex; gap: 10px; margin-top: 20px; }
+    .footer-social a { width: 36px; height: 36px; border: 1px solid rgba(217,186,111,0.25); display: flex; align-items: center; justify-content: center; color: var(--gold-bronze); font-size: 14px; transition: all 0.25s; }
+    .footer-social a:hover { background: var(--gold-glow); border-color: var(--gold); color: var(--gold); }
+    .footer-col-title { font-family: 'Cormorant Garamond', serif; font-size: 20px; font-weight: 600; color: var(--champagne); margin-bottom: 8px; }
+    .footer-col-divider { width: 32px; height: 1px; background: var(--gold); margin-bottom: 24px; }
+    .footer-links li { margin-bottom: 10px; }
+    .footer-links a { font-size: 13px; font-weight: 300; color: var(--silver); opacity: 0.65; display: flex; align-items: center; gap: 8px; transition: all 0.2s; }
+    .footer-links a::before { content: ''; width: 0; height: 1px; background: var(--gold); transition: width 0.2s; flex-shrink: 0; }
+    .footer-links a:hover { opacity: 1; color: var(--gold); }
+    .footer-links a:hover::before { width: 12px; }
+    .footer-seo { padding: 20px 0; border-top: 1px solid rgba(217,186,111,0.07); display: flex; flex-wrap: wrap; gap: 8px 20px; }
+    .footer-seo a { font-size: 11px; color: var(--silver); opacity: 0.35; transition: opacity 0.2s; }
+    .footer-seo a:hover { opacity: 0.7; }
+    .footer-bottom { padding: 20px 0; display: flex; align-items: center; justify-content: space-between; font-size: 12px; color: var(--silver); opacity: 0.4; flex-wrap: wrap; gap: 12px; }
+    .footer-bottom-links { display: flex; gap: 20px; }
+    .footer-bottom-links a { opacity: 1; transition: color 0.2s; }
+    .footer-bottom-links a:hover { color: var(--gold); }
+
+    /* ─── FADE IN ─────────────────────────────────────────── */
+    .fade-in { opacity: 0; transform: translateY(28px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+    .fade-in-delay-1 { transition-delay: 0.1s; }
+    .fade-in-delay-2 { transition-delay: 0.2s; }
+
+    /* ─── RESPONSIVE ──────────────────────────────────────── */
+    @media (max-width: 1024px) {
+      .nav { padding: 0 24px; }
+      .section { padding: 80px 24px; }
+      .footer-top { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 768px) {
+      :root { --nav-h: 64px; }
+      .nav-links, .nav-cta { display: none; }
+      .page-hero { padding-left: 24px; padding-right: 24px; }
+      .footer-top { grid-template-columns: 1fr; }
+      .footer-seo { display: none; }
+      footer { padding: 60px 24px 0; }
+      .faq-tabs { gap: 8px; }
+      .still-q { padding: 40px 24px; }
+    }
+
+
+    /* Mobile and compact desktop navigation fix */
+    .mobile-nav-toggle {
+      display: none;
+      width: 42px;
+      height: 42px;
+      margin-left: 12px;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 5px;
+      border: 1px solid rgba(217,186,111,0.42);
+      background: rgba(20,20,18,0.96);
+      color: var(--gold);
+      cursor: pointer;
+      z-index: 10002;
+      flex-shrink: 0;
+    }
+    .mobile-nav-toggle span {
+      display: block;
+      width: 19px;
+      height: 2px;
+      background: currentColor;
+      transition: transform 0.25s ease, opacity 0.25s ease;
+    }
+    body.mobile-nav-open { overflow: hidden; }
+    body.mobile-nav-open .mobile-nav-toggle span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    body.mobile-nav-open .mobile-nav-toggle span:nth-child(2) { opacity: 0; }
+    body.mobile-nav-open .mobile-nav-toggle span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    .mobile-nav-panel {
+      position: fixed;
+      inset: var(--nav-h) 0 auto 0;
+      max-height: calc(100vh - var(--nav-h));
+      overflow-y: auto;
+      padding: 16px 20px 28px;
+      background: rgba(20,20,18,0.98);
+      border-bottom: 1px solid rgba(217,186,111,0.24);
+      box-shadow: 0 22px 48px rgba(0,0,0,0.48);
+      transform: translateY(-110%);
+      opacity: 0;
+      visibility: hidden;
+      transition: transform 0.28s ease, opacity 0.28s ease, visibility 0.28s ease;
+      z-index: 8998;
+    }
+    body.mobile-nav-open .mobile-nav-panel {
+      transform: translateY(0);
+      opacity: 1;
+      visibility: visible;
+    }
+    .mobile-nav-panel a {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      width: 100%;
+      padding: 14px 4px;
+      border-bottom: 1px solid rgba(217,186,111,0.13);
+      color: var(--silver) !important;
+      opacity: 1 !important;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 1.2px;
+      line-height: 1.35;
+      text-transform: uppercase;
+      -webkit-text-fill-color: currentColor;
+    }
+    .mobile-nav-panel a i { color: var(--gold); min-width: 16px; }
+    .mobile-nav-panel a.mobile-sub-link {
+      padding-left: 22px;
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--champagne) !important;
+      text-transform: none;
+      letter-spacing: 0.4px;
+    }
+    .mobile-nav-panel .mobile-cta-link {
+      margin-top: 16px;
+      justify-content: center;
+      background: linear-gradient(135deg, var(--gold-mid), var(--gold), var(--gold-mid));
+      color: var(--black) !important;
+      border-bottom: none;
+      -webkit-text-fill-color: var(--black);
+    }
+    @media (max-width: 1200px) {
+      .nav { padding-left: 24px; padding-right: 24px; }
+      .nav-links, .nls-wrap, .nl-wrap { gap: 2px; }
+      .nav-link, .nl { padding-left: 9px; padding-right: 9px; font-size: 10px; letter-spacing: 1px; }
+      .nav-cta, .nc { margin-left: 8px; padding-left: 14px; padding-right: 14px; }
+    }
+    @media (max-width: 1100px) {
+      .nav-links, .nls-wrap, .nl-wrap, .nav-cta, .nc { display: none !important; }
+      .mobile-nav-toggle { display: inline-flex; }
+    }
+    @media (max-width: 768px) {
+      html, body { max-width: 100%; overflow-x: hidden; }
+      .nav { padding-left: 18px; padding-right: 18px; }
+      .nav-logo-text, .nlt { font-size: 20px; }
+      .nav-logo-sub, .nls { font-size: 8px; letter-spacing: 2px; }
+      .btn { max-width: 100%; justify-content: center; white-space: normal; text-align: center; line-height: 1.35; }
+      .section-body, p { overflow-wrap: anywhere; }
+    }
+
+  </style>
+</head>
+
+<body>
+
+<!-- ═══ NAVIGATION ══════════════════════════════════════ -->
+<nav class="nav" id="mainNav">
+  <div class="nav-logo">
+    <a href="prestige-home.html">
+      <div class="nav-logo-text gold-text">Prestige</div>
+      <div class="nav-logo-sub">Vacations &amp; Clubs</div>
+    </a>
+  </div>
+  <ul class="nav-links">
+    <li><a href="prestige-home.html" class="nav-link">Home</a></li>
+    <li><a href="prestige-about.html" class="nav-link">About</a></li>
+    <li class="nav-item">
+      <a href="prestige-country-resort.html" class="nav-link">Properties <i class="fa-solid fa-chevron-down"></i></a>
+      <div class="nav-dropdown">
+        <a href="prestige-country-resort.html"><i class="fa-solid fa-tree"></i>The Country Resort</a>
+        <a href="prestige-country-suites.html"><i class="fa-solid fa-house"></i>The Country Suites</a>
+        <a href="prestige-country-bay.html"><i class="fa-solid fa-water"></i>The Country Bay</a>
+      </div>
+    </li>
+    <li class="nav-item">
+      <a href="prestige-home.html" class="nav-link active">Membership <i class="fa-solid fa-chevron-down"></i></a>
+      <div class="nav-dropdown">
+        <a href="prestige-club-membership.html"><i class="fa-solid fa-crown"></i>Club Membership</a>
+        <a href="prestige-holiday-membership.html"><i class="fa-solid fa-umbrella-beach"></i>Holiday Membership</a>
+        <a href="prestige-gift-vouchers.html"><i class="fa-solid fa-gift"></i>Gift Vouchers</a>
+        <a href="prestige-membership-faqs.html"><i class="fa-solid fa-circle-question"></i>Membership FAQs</a>
+      </div>
+    </li>
+    <li class="nav-item">
+      <a href="prestige-experiences-overview.html" class="nav-link">Experiences <i class="fa-solid fa-chevron-down"></i></a>
+      <div class="nav-dropdown">
+        <a href="prestige-resort-stays.html"><i class="fa-solid fa-bed"></i>Resort Stays</a>
+        <a href="prestige-day-outings.html"><i class="fa-solid fa-sun"></i>Day Outings</a>
+        <a href="prestige-events.html"><i class="fa-solid fa-champagne-glasses"></i>Events</a>
+        <a href="prestige-tour-packages.html"><i class="fa-solid fa-map-location-dot"></i>Tour Packages</a>
+        <a href="prestige-weddings.html"><i class="fa-solid fa-heart"></i>Weddings &amp; Celebrations</a>
+        <a href="prestige-corporate.html"><i class="fa-solid fa-briefcase"></i>Corporate &amp; Groups</a>
+      </div>
+    </li>
+    <li><a href="prestige-gallery.html" class="nav-link">Gallery</a></li>
+    <li><a href="prestige-blog-index.html" class="nav-link">Blog</a></li>
+    <li class="nav-item">
+      <a href="prestige-member-reviews.html" class="nav-link">Reviews <i class="fa-solid fa-chevron-down"></i></a>
+      <div class="nav-dropdown">
+        <a href="prestige-member-reviews.html"><i class="fa-solid fa-star"></i>Member Reviews</a>
+        <a href="prestige-video-testimonials.html"><i class="fa-solid fa-circle-play"></i>Video Testimonials</a>
+      </div>
+    </li>
+    <li><a href="prestige-contact%20(1).html" class="nav-link">Contact</a></li>
+  </ul>
+  <a href="prestige-contact%20(1).html" class="btn btn-gold nav-cta">Become a Member</a>
+</nav>
+
+
+<!-- ═══ PAGE HERO ═════════════════════════════════════════ -->
+<section class="page-hero">
+  <div class="page-hero-breadcrumb">
+    <a href="prestige-home.html">Home</a>
+    <i class="fa-solid fa-chevron-right"></i>
+    <a href="prestige-home.html">Membership</a>
+    <i class="fa-solid fa-chevron-right"></i>
+    <span style="color:var(--gold);">FAQs</span>
+  </div>
+  <span class="page-hero-script">Your questions, answered</span>
+  <h1 class="page-hero-title gold-text">Membership FAQs</h1>
+  <div class="page-hero-line"><span><i class="fa-solid fa-circle-question"></i></span></div>
+  <p class="page-hero-subtitle">
+    Honest answers to the questions we hear most often — before you become a member and after.
+  </p>
+  <div class="page-hero-ctas">
+    <a href="prestige-home.html" class="btn btn-gold"><i class="fa-solid fa-crown"></i> View Membership Plans</a>
+    <a href="tel:18001213457" class="btn btn-outline"><i class="fa-solid fa-phone"></i> Talk to Our Team</a>
+  </div>
+</section>
+
+
+<!-- ═══ FAQ SECTION ═══════════════════════════════════════ -->
+<section class="section section-dark">
+  <div class="container">
+
+    <!-- Filter Tabs -->
+    <div class="faq-tabs fade-in">
+      <button class="faq-tab active" onclick="filterFAQ('all', this)">All Questions</button>
+      <button class="faq-tab" onclick="filterFAQ('general', this)">General</button>
+      <button class="faq-tab" onclick="filterFAQ('membership', this)">Membership Plans</button>
+      <button class="faq-tab" onclick="filterFAQ('properties', this)">Properties</button>
+      <button class="faq-tab" onclick="filterFAQ('bookings', this)">Bookings</button>
+      <button class="faq-tab" onclick="filterFAQ('tours', this)">Tours &amp; Events</button>
+      <button class="faq-tab" onclick="filterFAQ('vouchers', this)">Gift Vouchers</button>
+    </div>
+
+    <!-- ─── GROUP 1: GENERAL ─── -->
+    <div class="faq-group fade-in" data-category="general">
+      <h2 class="faq-group-title"><i class="fa-solid fa-building-columns"></i> About Prestige Vacations</h2>
+      <div class="faq-group-divider"></div>
+
+      <div class="faq-item" onclick="toggleFAQ(this)">
+        <div class="faq-question">
+          <span class="faq-q-text">What is Prestige Vacations and how long have you been operating?</span>
+          <div class="faq-icon"><i class="fa-solid fa-plus"></i></div>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            <div class="faq-answer-text">
+              <p>Prestige Vacations is a Chennai-based holiday membership company that has been operating for over 15 years. We are part of the Prestige Group of Companies, operating under two divisions — <strong>Prestige Vacations</strong> (membership, tours, and member experience) and <strong>Prestige Clubs &amp; Resorts</strong> (our own resort properties).</p>
+              <p>We currently have 14,000+ active members across India and own three resort properties — The Country Resort and The Country Suites in Mahabalipuram, and The Country Bay in Marakkanam.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item" onclick="toggleFAQ(this)">
+        <div class="faq-question">
+          <span class="faq-q-text">Is Prestige Vacations a trustworthy company? What do existing members say?</span>
+          <div class="faq-icon"><i class="fa-solid fa-plus"></i></div>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            <div class="faq-answer-text">
+              <p>We have been serving Chennai families for over 15 years with 14,000+ active members — that number alone reflects the trust our members place in us. We own all our resort properties (The Country Resort, The Country Suites, and The Country Bay), which means consistent quality and direct accountability.</p>
+              <p>You can read genuine member experiences on our <a href="prestige-member-reviews.html" style="color:var(--gold);">testimonials page</a>, on Google Reviews, MouthShut, TripAdvisor, and JustDial. Our members regularly share their experiences across these platforms.</p>
+              <a href="prestige-member-reviews.html" class="faq-cta-inline"><i class="fa-solid fa-star"></i> Read Member Reviews</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item" onclick="toggleFAQ(this)">
+        <div class="faq-question">
+          <span class="faq-q-text">What is the difference between Prestige Vacations and Prestige Clubs &amp; Resorts?</span>
+          <div class="faq-icon"><i class="fa-solid fa-plus"></i></div>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            <div class="faq-answer-text">
+              <p>Both are part of the same Prestige Group of Companies — they are two divisions of the same organisation.</p>
+              <ul>
+                <li><strong>Prestige Vacations</strong> — the membership and holiday experience division. Manages membership plans, tour packages, events, and member support.</li>
+                <li><strong>Prestige Clubs &amp; Resorts</strong> — the hospitality and property division. Owns and operates The Country Resort, The Country Suites, and The Country Bay.</li>
+              </ul>
+              <p>When you become a member, you get access to both — the experiences managed by Prestige Vacations and the properties owned by Prestige Clubs &amp; Resorts.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item" onclick="toggleFAQ(this)">
+        <div class="faq-question">
+          <span class="faq-q-text">Where is the Prestige Vacations office located?</span>
+          <div class="faq-icon"><i class="fa-solid fa-plus"></i></div>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            <div class="faq-answer-text">
+              <p>Our main office is in Chennai. We also have presence in Velachery for member walk-ins and enquiries. To get the current office address and directions, please call us on <a href="tel:18001213457" style="color:var(--gold);">1800 121 3457</a> (toll free) or WhatsApp us and we'll share the details immediately.</p>
+              <a href="prestige-contact%20(1).html" class="faq-cta-inline"><i class="fa-solid fa-location-dot"></i> Contact &amp; Location</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ─── GROUP 2: MEMBERSHIP PLANS ─── -->
+    <div class="faq-group fade-in" data-category="membership">
+      <h2 class="faq-group-title"><i class="fa-solid fa-crown"></i> Membership Plans</h2>
+      <div class="faq-group-divider"></div>
+
+      <div class="faq-item" onclick="toggleFAQ(this)">
+        <div class="faq-question">
+          <span class="faq-q-text">What membership plans does Prestige Vacations offer?</span>
+          <div class="faq-icon"><i class="fa-solid fa-plus"></i></div>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            <div class="faq-answer-text">
+              <p>Prestige Vacations offers two membership plans:</p>
+              <ul>
+                <li><strong>Club Membership</strong> — access to all Prestige properties, day outings, priority event invitations, member discounts, and gift voucher access. Ideal for families who want flexible, ongoing access.</li>
+                <li><strong>Holiday Membership</strong> — everything in the Club Membership, plus annual resort stay nights and curated tour packages to 50+ destinations across India. The most complete holiday plan available.</li>
+              </ul>
+              <a href="prestige-home.html#compare" class="faq-cta-inline"><i class="fa-solid fa-table-columns"></i> Compare Both Plans</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item" onclick="toggleFAQ(this)">
+        <div class="faq-question">
+          <span class="faq-q-text">Is the Prestige Vacations membership worth it?</span>
+          <div class="faq-icon"><i class="fa-solid fa-plus"></i></div>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            <div class="faq-answer-text">
+              <p>For families who holiday regularly and value convenience, the membership pays for itself quickly. Here is what makes it genuinely worth it:</p>
+              <ul>
+                <li>You get access to three owned resort properties — resort stays at member rates are significantly lower than non-member rates.</li>
+                <li>Tour packages to 50+ destinations are included in the Holiday Membership — each package individually would cost considerably more.</li>
+                <li>Day outings, events, and discounts across the year add up in value far beyond the membership cost.</li>
+                <li>You stop planning from scratch every holiday — the Prestige team handles it for you.</li>
+              </ul>
+              <p>The honest answer: if you holiday 2–3 times a year, the membership will save you money while giving you better experiences.</p>
+              <a href="prestige-member-reviews.html" class="faq-cta-inline"><i class="fa-solid fa-star"></i> Read Member Reviews</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item" onclick="toggleFAQ(this)">
+        <div class="faq-question">
+          <span class="faq-q-text">How much does the Prestige Vacations membership cost?</span>
+          <div class="faq-icon"><i class="fa-solid fa-plus"></i></div>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            <div class="faq-answer-text">
+              <p>Membership pricing varies based on the plan selected (Club or Holiday), the tenure, and current offers available. We intentionally keep pricing consultative rather than fixed on the website — because the right plan and the right pricing depend on your family's specific needs.</p>
+              <p>The best way to get accurate, current pricing is to call or WhatsApp our team directly. Our team will walk you through both plans, explain what's included, and give you transparent pricing with no surprises.</p>
+              <a href="tel:18001213457" class="faq-cta-inline"><i class="fa-solid fa-phone"></i> Call for Pricing — 1800 121 3457</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item" onclick="toggleFAQ(this)">
+        <div class="faq-question">
+          <span class="faq-q-text">Can I pay for membership in instalments / EMI?</span>
+          <div class="faq-icon"><i class="fa-solid fa-plus"></i></div>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            <div class="faq-answer-text">
+              <p>Yes, Prestige Vacations offers payment flexibility. EMI and instalment options are available for membership. The specific options available to you will be discussed during your membership consultation with our team.</p>
+              <a href="tel:18001213457" class="faq-cta-inline"><i class="fa-solid fa-phone"></i> Ask About EMI Options</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item" onclick="toggleFAQ(this)">
+        <div class="faq-question">
+          <span class="faq-q-text">How is Prestige Vacations different from just booking a resort directly?</span>
+          <div class="faq-icon"><i class="fa-solid fa-plus"></i></div>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            <div class="faq-answer-text">
+              <p>Booking a resort directly gives you a single stay. The Prestige membership gives you a holiday lifestyle:</p>
+              <ul>
+                <li>Access to three owned properties at member rates — significantly cheaper than public booking rates.</li>
+                <li>Tour packages to 50+ destinations — no separate planning or booking needed.</li>
+                <li>Year-round day outings with pool, dining, and resort access.</li>
+                <li>Exclusive events throughout the year — not available to the public.</li>
+                <li>A dedicated team that knows you by name and handles all planning.</li>
+                <li>Gift vouchers for family and corporate gifting.</li>
+              </ul>
+              <p>The membership eliminates the friction of planning every holiday from scratch. You simply decide where you want to go and call us. We do the rest.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item" onclick="toggleFAQ(this)">
+        <div class="faq-question">
+          <span class="faq-q-text">Can I add family members to my membership?</span>
+          <div class="faq-icon"><i class="fa-solid fa-plus"></i></div>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            <div class="faq-answer-text">
+              <p>Yes. Prestige memberships are family memberships — your immediate family members can use the membership benefits along with you. The specific definition of "family" included in the plan and any add-on options for extended family will be explained during your membership consultation.</p>
+              <a href="tel:18001213457" class="faq-cta-inline"><i class="fa-solid fa-phone"></i> Ask About Family Membership</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ─── GROUP 3: PROPERTIES ─── -->
+    <div class="faq-group fade-in" data-category="properties">
+      <h2 class="faq-group-title"><i class="fa-solid fa-building"></i> Our Properties</h2>
+      <div class="faq-group-divider"></div>
+
+      <div class="faq-item" onclick="toggleFAQ(this)">
+        <div class="faq-question">
+          <span class="faq-q-text">What properties do Prestige Vacations members get access to?</span>
+          <div class="faq-icon"><i class="fa-solid fa-plus"></i></div>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            <div class="faq-answer-text">
+              <p>As a Prestige Vacations member, you get access to all three Prestige Clubs &amp; Resorts properties:</p>
+              <ul>
+                <li><strong>The Country Resort, Mahabalipuram</strong> — our flagship resort on the ECR, 90 minutes from Chennai. Resort stays, day outings, events, and the Green Bay restaurant.</li>
+                <li><strong>The Country Suites, Mahabalipuram</strong> — private villas with personal swimming pool access and indoor games. Perfect for couples, families, and celebrations.</li>
+                <li><strong>The Country Bay, Marakkanam</strong> — our newest property with private beach access and swimming pool, just launched on the Marakkanam coastline.</li>
+              </ul>
+              <a href="prestige-country-resort.html" class="faq-cta-inline"><i class="fa-solid fa-building"></i> Explore All Properties</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item" onclick="toggleFAQ(this)">
+        <div class="faq-question">
+          <span class="faq-q-text">How far are the Prestige properties from Chennai?</span>
+          <div class="faq-icon"><i class="fa-solid fa-plus"></i></div>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            <div class="faq-answer-text">
+              <ul>
+                <li><strong>The Country Resort, Mahabalipuram</strong> — approximately 60 km from Chennai city centre, about 90 minutes by road via the ECR.</li>
+                <li><strong>The Country Suites, Mahabalipuram</strong> — same area as The Country Resort, approximately 90 minutes from Chennai.</li>
+                <li><strong>The Country Bay, Marakkanam</strong> — approximately 110 km from Chennai, about 2 hours by road via the ECR.</li>
+              </ul>
+              <p>All three properties are accessible via the East Coast Road — a scenic, comfortable drive from Chennai.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item" onclick="toggleFAQ(this)">
+        <div class="faq-question">
+          <span class="faq-q-text">Can non-members visit Prestige properties or attend events?</span>
+          <div class="faq-icon"><i class="fa-solid fa-plus"></i></div>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            <div class="faq-answer-text">
+              <p>Non-members can stay at The Country Resort at standard (non-member) rates. However, most Prestige events and day outing privileges are available to members and their guests only.</p>
+              <p>For non-members interested in experiencing Prestige properties, it is often better value to enquire about a membership — member rates for stays and experiences are significantly lower than non-member rates.</p>
+              <a href="tel:18001213457" class="faq-cta-inline"><i class="fa-solid fa-phone"></i> Ask About Non-Member Visits</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item" onclick="toggleFAQ(this)">
+        <div class="faq-question">
+          <span class="faq-q-text">What is The Country Resort, Mahabalipuram like?</span>
+          <div class="faq-icon"><i class="fa-solid fa-plus"></i></div>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            <div class="faq-answer-text">
+              <p>The Country Resort is our flagship property — located at No. 45/2, East Coast Road, Devaneri, Mahabalipuram, near the UNESCO World Heritage Shore Temple. The resort offers:</p>
+              <ul>
+                <li>Suite Rooms (Garden View and Balcony View) — from ₹14,160/night</li>
+                <li>Executive Rooms (Garden View and Balcony View) — from ₹8,850/night</li>
+                <li>All rooms are 47–48 Sqm with complimentary breakfast and free Wi-Fi</li>
+                <li>Green Bay restaurant — fresh seafood, vegetarian options, live aquarium</li>
+                <li>Landscaped gardens, room service, parking, and pickup/drop service</li>
+                <li>Swimming pool (coming soon) and spa (coming soon)</li>
+              </ul>
+              <a href="prestige-country-resort.html" class="faq-cta-inline"><i class="fa-solid fa-tree"></i> View Country Resort Details</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ─── GROUP 4: BOOKINGS ─── -->
+    <div class="faq-group fade-in" data-category="bookings">
+      <h2 class="faq-group-title"><i class="fa-solid fa-calendar-check"></i> Bookings &amp; Stays</h2>
+      <div class="faq-group-divider"></div>
+
+      <div class="faq-item" onclick="toggleFAQ(this)">
+        <div class="faq-question">
+          <span class="faq-q-text">How do I book a stay or day outing as a Prestige member?</span>
+          <div class="faq-icon"><i class="fa-solid fa-plus"></i></div>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            <div class="faq-answer-text">
+              <p>Booking as a Prestige member is straightforward. Simply contact our team:</p>
+              <ul>
+                <li>Call our toll-free number: <strong>1800 121 3457</strong></li>
+                <li>WhatsApp us: <strong>+91 80012 13457</strong></li>
+                <li>Email us: <strong>info@prestigevacations.in</strong></li>
+              </ul>
+              <p>Tell us the property you want to visit, the dates, and the number of guests. Our team will check availability and confirm your booking. For day outings, prior booking is recommended to ensure availability, especially on weekends and public holidays.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item" onclick="toggleFAQ(this)">
+        <div class="faq-question">
+          <span class="faq-q-text">How far in advance should I book a resort stay?</span>
+          <div class="faq-icon"><i class="fa-solid fa-plus"></i></div>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            <div class="faq-answer-text">
+              <p>We recommend booking at least:</p>
+              <ul>
+                <li><strong>Weekdays</strong> — 3–5 days in advance</li>
+                <li><strong>Weekends</strong> — 7–10 days in advance</li>
+                <li><strong>Public holidays and long weekends</strong> — 2–4 weeks in advance</li>
+                <li><strong>New Year, Christmas, Diwali</strong> — 1–2 months in advance</li>
+              </ul>
+              <p>As a member, you get priority booking rights — but popular dates fill up fast, especially at The Country Suites and The Country Bay. We always recommend booking early.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item" onclick="toggleFAQ(this)">
+        <div class="faq-question">
+          <span class="faq-q-text">What is the cancellation and refund policy?</span>
+          <div class="faq-icon"><i class="fa-solid fa-plus"></i></div>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            <div class="faq-answer-text">
+              <p>Our cancellation policy varies based on the type of booking and the notice given. Generally:</p>
+              <ul>
+                <li>Cancellations with adequate notice are rescheduled without penalty.</li>
+                <li>Last-minute cancellations may be subject to terms based on the specific booking.</li>
+                <li>For event bookings and peak season stays, specific cancellation terms apply.</li>
+              </ul>
+              <p>For precise, current cancellation policy details, please contact our team directly — we are always happy to work with members on reschedules.</p>
+              <a href="tel:18001213457" class="faq-cta-inline"><i class="fa-solid fa-phone"></i> Speak to Our Team</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item" onclick="toggleFAQ(this)">
+        <div class="faq-question">
+          <span class="faq-q-text">Can I bring guests who are not Prestige members?</span>
+          <div class="faq-icon"><i class="fa-solid fa-plus"></i></div>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            <div class="faq-answer-text">
+              <p>Yes. Prestige members can bring guests to the properties and events. Guest charges may apply depending on the type of visit (day outing vs overnight stay vs event). Our team will confirm any applicable guest charges when you make your booking.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ─── GROUP 5: TOURS & EVENTS ─── -->
+    <div class="faq-group fade-in" data-category="tours">
+      <h2 class="faq-group-title"><i class="fa-solid fa-map-location-dot"></i> Tours &amp; Events</h2>
+      <div class="faq-group-divider"></div>
+
+      <div class="faq-item" onclick="toggleFAQ(this)">
+        <div class="faq-question">
+          <span class="faq-q-text">What destinations are available under the Holiday Membership tour packages?</span>
+          <div class="faq-icon"><i class="fa-solid fa-plus"></i></div>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            <div class="faq-answer-text">
+              <p>The Holiday Membership gives access to tour packages across 50+ destinations in India, including:</p>
+              <ul>
+                <li><strong>Hill stations</strong> — Ooty, Kodaikanal, Munnar, Coorg, Shimla, Manali</li>
+                <li><strong>Beaches</strong> — Goa, Kerala, Andaman Islands, Pondicherry</li>
+                <li><strong>Heritage</strong> — Rajasthan, Agra (Taj Mahal), Mysuru, Hampi</li>
+                <li><strong>Spiritual</strong> — Varanasi, Tirupati, Shirdi, Rameshwaram</li>
+                <li><strong>Wildlife</strong> — Ranthambore, Bandipur, Mudumalai</li>
+                <li><strong>City breaks</strong> — Mumbai, Delhi, Bengaluru</li>
+              </ul>
+              <p>For the full and current list of available destinations, contact our team. New destinations are added regularly.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item" onclick="toggleFAQ(this)">
+        <div class="faq-question">
+          <span class="faq-q-text">What does a Prestige tour package include?</span>
+          <div class="faq-icon"><i class="fa-solid fa-plus"></i></div>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            <div class="faq-answer-text">
+              <p>Tour package inclusions vary by destination and package type. Typically, Prestige tour packages include accommodation, transportation, and key sightseeing arrangements. Our team handles all coordination — you simply show up and enjoy the trip.</p>
+              <p>For specific inclusions for any destination, contact our team and we will share the complete package details.</p>
+              <a href="tel:18001213457" class="faq-cta-inline"><i class="fa-solid fa-phone"></i> Ask About Tour Packages</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item" onclick="toggleFAQ(this)">
+        <div class="faq-question">
+          <span class="faq-q-text">What kind of events does Prestige Vacations organise for members?</span>
+          <div class="faq-icon"><i class="fa-solid fa-plus"></i></div>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            <div class="faq-answer-text">
+              <p>Prestige Vacations organises a calendar of events exclusively for members throughout the year, including:</p>
+              <ul>
+                <li><strong>New Year Gala</strong> — our flagship annual event with live entertainment, gourmet dining, and celebrations at The Country Resort</li>
+                <li><strong>Seasonal celebrations</strong> — Pongal, Diwali, Christmas, and other festival events</li>
+                <li><strong>Weekend experiences</strong> — pool parties, cultural evenings, family fun days</li>
+                <li><strong>Special occasion events</strong> — curated experiences for key calendar moments</li>
+              </ul>
+              <p>Members receive priority access and early registration rights for all events before they open to the public.</p>
+              <a href="prestige-events.html" class="faq-cta-inline"><i class="fa-solid fa-champagne-glasses"></i> View Events</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ─── GROUP 6: GIFT VOUCHERS ─── -->
+    <div class="faq-group fade-in" data-category="vouchers">
+      <h2 class="faq-group-title"><i class="fa-solid fa-gift"></i> Gift Vouchers</h2>
+      <div class="faq-group-divider"></div>
+
+      <div class="faq-item" onclick="toggleFAQ(this)">
+        <div class="faq-question">
+          <span class="faq-q-text">What is a Prestige Vacations gift voucher and how does it work?</span>
+          <div class="faq-icon"><i class="fa-solid fa-plus"></i></div>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            <div class="faq-answer-text">
+              <p>A Prestige Vacations gift voucher is a prepaid voucher that can be redeemed for experiences across all our properties — resort stays, day outings, events, tour packages, and more. The recipient contacts our team, chooses the experience they want, and we arrange it.</p>
+              <p>Gift vouchers are available for purchase by both members and non-members. They can be delivered digitally or physically, and can be personalised with a message for the occasion.</p>
+              <a href="prestige-gift-vouchers.html" class="faq-cta-inline"><i class="fa-solid fa-gift"></i> Learn More About Gift Vouchers</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item" onclick="toggleFAQ(this)">
+        <div class="faq-question">
+          <span class="faq-q-text">Can I buy a gift voucher for someone who is not a Prestige member?</span>
+          <div class="faq-icon"><i class="fa-solid fa-plus"></i></div>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            <div class="faq-answer-text">
+              <p>Yes. Prestige gift vouchers are available for gifting to non-members. The recipient can redeem the voucher for a resort stay at The Country Resort, a day outing, or other experiences available to non-members. It is also a great way to introduce someone to the Prestige experience who might then consider a membership themselves.</p>
+              <a href="tel:18001213457" class="faq-cta-inline"><i class="fa-solid fa-phone"></i> Order a Gift Voucher</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item" onclick="toggleFAQ(this)">
+        <div class="faq-question">
+          <span class="faq-q-text">Are gift vouchers available for corporate gifting?</span>
+          <div class="faq-icon"><i class="fa-solid fa-plus"></i></div>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            <div class="faq-answer-text">
+              <p>Yes. Prestige gift vouchers are available in bulk for corporate gifting programmes. We offer competitive bulk pricing and custom branding options for corporate orders. If you would like to discuss a corporate gifting programme, please contact our team directly.</p>
+              <a href="tel:18001213457" class="faq-cta-inline"><i class="fa-solid fa-briefcase"></i> Enquire About Corporate Gifting</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- STILL HAVE QUESTIONS -->
+    <div class="still-q fade-in">
+      <div class="still-q-icon"><i class="fa-solid fa-comments"></i></div>
+      <h3 class="still-q-title">Still Have Questions?</h3>
+      <p class="still-q-text">Our team is always available to answer anything not covered here. Call, WhatsApp, or email us — we respond within 24 hours.</p>
+      <div class="still-q-btns">
+        <a href="tel:18001213457" class="btn btn-gold"><i class="fa-solid fa-phone"></i> Call 1800 121 3457</a>
+        <a href="https://wa.me/918001213457" target="_blank" class="btn-whatsapp"><i class="fa-brands fa-whatsapp"></i> WhatsApp Us</a>
+        <a href="mailto:info@prestigevacations.in" class="btn btn-outline"><i class="fa-solid fa-envelope"></i> Email Us</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ═══ CTA BANNER ═══════════════════════════════════════ -->
+<section class="cta-banner">
+  <div class="container fade-in">
+    <span class="cta-script">Ready to get started?</span>
+    <h2 class="cta-title gold-text">Join 14,000+ Prestige Members</h2>
+    <p class="cta-sub">All your questions answered. Now all that's left is making the call.<br>Our team is ready to help you find the right plan.</p>
+    <div class="cta-buttons">
+      <a href="prestige-home.html" class="btn btn-gold"><i class="fa-solid fa-crown"></i> View Membership Plans</a>
+      <a href="https://wa.me/918001213457" target="_blank" class="btn-whatsapp"><i class="fa-brands fa-whatsapp"></i> WhatsApp Us</a>
+      <a href="prestige-contact%20(1).html" class="btn btn-outline"><i class="fa-solid fa-envelope"></i> Enquire Now</a>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══ FOOTER ════════════════════════════════════════════ -->
+<footer>
+  <div class="container">
+    <div class="footer-top">
+      <div>
+        <div class="footer-brand-name gold-text">Prestige</div>
+        <div class="footer-brand-sub">Vacations &amp; Clubs</div>
+        <p class="footer-tagline">Live a Prestigious Life</p>
+        <p class="footer-desc">Chennai's most trusted holiday membership company. 15+ years, 14,000+ members, and a team that genuinely cares.</p>
+        <div class="footer-contact-item"><i class="fa-solid fa-phone"></i><a href="tel:18001213457" style="color:var(--silver);opacity:.75;">1800 121 3457 (Toll Free)</a></div>
+        <div class="footer-contact-item"><i class="fa-solid fa-envelope"></i><a href="mailto:info@prestigevacations.in" style="color:var(--silver);opacity:.75;">info@prestigevacations.in</a></div>
+        <div class="footer-social">
+          <a href="https://www.facebook.com/prestigevacationschennai/" target="_blank"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="https://www.instagram.com/prestige_vacations17/" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+          <a href="https://youtube.com/channel/UC1k56gGYKjmQKFtGuO7WhlQ" target="_blank"><i class="fa-brands fa-youtube"></i></a>
+          <a href="https://wa.me/918001213457" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
+        </div>
+      </div>
+      <div>
+        <h4 class="footer-col-title">Membership</h4>
+        <div class="footer-col-divider"></div>
+        <ul class="footer-links">
+          <li><a href="prestige-home.html">Membership Overview</a></li>
+          <li><a href="prestige-club-membership.html">Club Membership</a></li>
+          <li><a href="prestige-holiday-membership.html">Holiday Membership</a></li>
+          <li><a href="prestige-gift-vouchers.html">Gift Vouchers</a></li>
+          <li><a href="prestige-membership-faqs.html">Membership FAQs</a></li>
+        </ul>
+        <h4 class="footer-col-title" style="margin-top:32px;">Our Properties</h4>
+        <div class="footer-col-divider"></div>
+        <ul class="footer-links">
+          <li><a href="prestige-country-resort.html">The Country Resort</a></li>
+          <li><a href="prestige-country-suites.html">The Country Suites</a></li>
+          <li><a href="prestige-country-bay.html">The Country Bay</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="footer-col-title">Experiences</h4>
+        <div class="footer-col-divider"></div>
+        <ul class="footer-links">
+          <li><a href="prestige-resort-stays.html">Resort Stays</a></li>
+          <li><a href="prestige-day-outings.html">Day Outings</a></li>
+          <li><a href="prestige-events.html">Events</a></li>
+          <li><a href="prestige-tour-packages.html">Tour Packages</a></li>
+          <li><a href="prestige-weddings.html">Weddings &amp; Celebrations</a></li>
+          <li><a href="prestige-corporate.html">Corporate &amp; Groups</a></li>
+        </ul>
+        <h4 class="footer-col-title" style="margin-top:32px;">Quick Links</h4>
+        <div class="footer-col-divider"></div>
+        <ul class="footer-links">
+          <li><a href="prestige-about.html">About Us</a></li>
+          <li><a href="prestige-gallery.html">Gallery</a></li>
+          <li><a href="prestige-blog-index.html">Blog</a></li>
+          <li><a href="prestige-member-reviews.html">Member Reviews</a></li>
+          <li><a href="prestige-contact%20(1).html">Contact Us</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="footer-col-title">Get Answers</h4>
+        <div class="footer-col-divider"></div>
+        <p style="font-size:13px;font-weight:300;line-height:1.8;color:var(--silver);opacity:.65;margin-bottom:24px;">Still have questions? Our team is happy to help with anything — no pressure, no obligation.</p>
+        <a href="tel:18001213457" class="btn btn-gold" style="width:100%;justify-content:center;margin-bottom:12px;"><i class="fa-solid fa-phone"></i> Call Us Now</a>
+        <a href="https://wa.me/918001213457" target="_blank" class="btn-whatsapp" style="width:100%;justify-content:center;display:flex;"><i class="fa-brands fa-whatsapp"></i> WhatsApp Us</a>
+      </div>
+    </div>
+    <div class="footer-seo">
+      <a href="prestige-home.html">Holiday Membership Chennai</a>
+      <a href="prestige-home.html">Prestige Vacations Reviews</a>
+      <a href="prestige-home.html">Prestige Clubs and Resorts</a>
+      <a href="prestige-home.html">Resorts in Mahabalipuram</a>
+      <a href="prestige-home.html">Weekend Getaway from Chennai</a>
+      <a href="prestige-home.html">Day Outing from Chennai</a>
+      <a href="prestige-home.html">Family Resort Near Chennai</a>
+      <a href="prestige-home.html">Beach Resort Near Chennai</a>
+      <a href="prestige-home.html">Resort Stay Mahabalipuram</a>
+      <a href="prestige-home.html">Resort Wedding Near Chennai</a>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2025 Prestige Vacations &amp; Clubs. All rights reserved. | Prestige Group of Companies</span>
+      <div class="footer-bottom-links">
+        <a href="prestige-home.html">Privacy Policy</a>
+        <a href="prestige-home.html">Terms &amp; Conditions</a>
+        <a href="prestige-home.html">Sitemap</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+<script>
+  /* Sticky nav */
+  const nav = document.getElementById('mainNav');
+  window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 60); });
+
+  /* Fade in */
+  const faders = document.querySelectorAll('.fade-in');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+  }, { threshold: 0.08 });
+  faders.forEach(f => observer.observe(f));
+
+  /* FAQ accordion */
+  function toggleFAQ(item) {
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
+    if (!isOpen) item.classList.add('open');
+  }
+
+  /* FAQ category filter */
+  function filterFAQ(cat, btn) {
+    document.querySelectorAll('.faq-tab').forEach(t => t.classList.remove('active'));
+    btn.classList.add('active');
+    document.querySelectorAll('.faq-group').forEach(g => {
+      if (cat === 'all' || g.dataset.category === cat) {
+        g.style.display = 'block';
+      } else {
+        g.style.display = 'none';
+      }
+    });
+  }
+
+  /* Open first FAQ in each group on load */
+  document.querySelectorAll('.faq-group').forEach(g => {
+    const first = g.querySelector('.faq-item');
+    if (first) first.classList.add('open');
+  });
+</script>
+
+
+
+<script>
+(function () {
+  function ready(fn) {
+    if (document.readyState !== 'loading') fn();
+    else document.addEventListener('DOMContentLoaded', fn);
+  }
+
+  ready(function () {
+    var nav = document.querySelector('nav.nav');
+    if (!nav || nav.querySelector('.mobile-nav-toggle')) return;
+
+    var toggle = document.createElement('button');
+    toggle.className = 'mobile-nav-toggle';
+    toggle.type = 'button';
+    toggle.setAttribute('aria-label', 'Open navigation menu');
+    toggle.setAttribute('aria-expanded', 'false');
+    toggle.innerHTML = '<span></span><span></span><span></span>';
+    nav.appendChild(toggle);
+
+    var panel = document.createElement('div');
+    panel.className = 'mobile-nav-panel';
+    panel.setAttribute('aria-hidden', 'true');
+
+    var list = nav.querySelector('.nav-links, .nls-wrap, .nl-wrap');
+    if (list) {
+      list.querySelectorAll(':scope > li').forEach(function (item) {
+        var topLink = item.querySelector(':scope > a');
+        if (topLink) {
+          var topClone = topLink.cloneNode(true);
+          topClone.className = '';
+          panel.appendChild(topClone);
+        }
+        item.querySelectorAll('.nav-dropdown a, .nd a').forEach(function (subLink) {
+          var subClone = subLink.cloneNode(true);
+          subClone.className = 'mobile-sub-link';
+          panel.appendChild(subClone);
+        });
+      });
+    }
+
+    var cta = nav.querySelector('.nav-cta, .nc');
+    if (cta) {
+      var ctaClone = cta.cloneNode(true);
+      ctaClone.className = 'mobile-cta-link';
+      panel.appendChild(ctaClone);
+    }
+
+    document.body.appendChild(panel);
+
+    function setOpen(open) {
+      document.body.classList.toggle('mobile-nav-open', open);
+      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+      toggle.setAttribute('aria-label', open ? 'Close navigation menu' : 'Open navigation menu');
+      panel.setAttribute('aria-hidden', open ? 'false' : 'true');
+    }
+
+    toggle.addEventListener('click', function () {
+      setOpen(!document.body.classList.contains('mobile-nav-open'));
+    });
+
+    panel.addEventListener('click', function (event) {
+      if (event.target.closest('a')) setOpen(false);
+    });
+
+    window.addEventListener('resize', function () {
+      if (window.innerWidth > 1100) setOpen(false);
+    });
+
+    document.addEventListener('keydown', function (event) {
+      if (event.key === 'Escape') setOpen(false);
+    });
+
+    document.querySelectorAll('body *').forEach(function (el) {
+      if (!el.children.length && el.textContent.trim().length > 2) {
+        var style = window.getComputedStyle(el);
+        var opacity = parseFloat(style.opacity);
+        if (opacity > 0 && opacity < 0.6) el.style.opacity = '0.72';
+      }
+    });
+  });
+})();
+</script>
+
+</body>
+</html>
