@@ -450,170 +450,9 @@
     </style>
 
     <div class="review-grid" id="reviewGrid">
-
-      <!-- Each card: data-cat for filter, data-rating for sort -->
-      <div class="rc featured fi" data-cat="membership" data-rating="5">
-        <div class="rc-source">
-          <span class="rc-google"><i class="fa-brands fa-google"></i> Google Review</span>
-          <span class="rc-date">June 2025</span>
-        </div>
-        <div class="rc-stars">★★★★★</div>
-        <span class="rc-tag"><i class="fa-solid fa-crown"></i> Holiday Membership</span>
-        <p class="rc-text clamped" id="rt0">"Best decision we made as a family. We have done four holidays through the Prestige tour package — Ooty, Kerala, Andaman, and Goa. The membership paid for itself in the very first trip. The team plans everything. We just show up and enjoy. Three years in and we have zero complaints."</p>
-        <span class="rc-more" onclick="toggleText('rt0',this)">Read more</span>
-        <div class="rc-author">
-          <div class="rc-avatar av-0">V</div>
-          <div>
-            <div class="rc-author-name">Vijay Subramaniam</div>
-            <div class="rc-author-meta">Holiday Member · Adyar</div>
-          </div>
-        </div>
+      <div id="reviewsLoading" style="grid-column:1/-1;text-align:center;padding:60px 20px;color:var(--silver);opacity:.7;">
+        Loading member reviews...
       </div>
-
-      <div class="rc fi d1" data-cat="outing" data-rating="5">
-        <div class="rc-source">
-          <span class="rc-google"><i class="fa-brands fa-google"></i> Google Review</span>
-          <span class="rc-date">May 2025</span>
-        </div>
-        <div class="rc-stars">★★★★★</div>
-        <span class="rc-tag"><i class="fa-solid fa-sun"></i> Day Outing</span>
-        <p class="rc-text clamped" id="rt1">"The day outing at The Country Resort has become our monthly family ritual. Leave Chennai at 9, arrive by 10:30, spend the whole day by the pool, have an amazing lunch at Green Bay restaurant, and drive back refreshed. 100% worth the membership for this alone."</p>
-        <span class="rc-more" onclick="toggleText('rt1',this)">Read more</span>
-        <div class="rc-author">
-          <div class="rc-avatar av-1">P</div>
-          <div>
-            <div class="rc-author-name">Priya Ramakrishnan</div>
-            <div class="rc-author-meta">Club Member · Anna Nagar</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="rc fi d2" data-cat="event" data-rating="5">
-        <div class="rc-source">
-          <span class="rc-google"><i class="fa-brands fa-google"></i> Google Review</span>
-          <span class="rc-date">January 2025</span>
-        </div>
-        <div class="rc-stars">★★★★★</div>
-        <span class="rc-tag"><i class="fa-solid fa-champagne-glasses"></i> New Year Gala</span>
-        <p class="rc-text clamped" id="rt2">"Five consecutive New Year Galas at The Country Resort — and it never disappoints. The food, entertainment and midnight countdown this year were the best yet. We book our spot the moment registration opens. This is now the family tradition we look forward to most every December."</p>
-        <span class="rc-more" onclick="toggleText('rt2',this)">Read more</span>
-        <div class="rc-author">
-          <div class="rc-avatar av-2">K</div>
-          <div>
-            <div class="rc-author-name">Kavitha &amp; Rajan</div>
-            <div class="rc-author-meta">Holiday Member · Velachery</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="rc fi" data-cat="resort" data-rating="5">
-        <div class="rc-source">
-          <span class="rc-google"><i class="fa-brands fa-google"></i> Google Review</span>
-          <span class="rc-date">April 2025</span>
-        </div>
-        <div class="rc-stars">★★★★★</div>
-        <span class="rc-tag"><i class="fa-solid fa-house"></i> Country Suites Stay</span>
-        <p class="rc-text clamped" id="rt3">"Stayed at The Country Suites for our anniversary — private villa, personal pool. It felt genuinely luxurious. The team had the room decorated when we arrived. One of the best nights we have had in years. Worth every rupee of the membership."</p>
-        <span class="rc-more" onclick="toggleText('rt3',this)">Read more</span>
-        <div class="rc-author">
-          <div class="rc-avatar av-3">A</div>
-          <div>
-            <div class="rc-author-name">Arun Selvam</div>
-            <div class="rc-author-meta">Holiday Member · Porur</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="rc fi d1" data-cat="tour" data-rating="5">
-        <div class="rc-source">
-          <span class="rc-google"><i class="fa-brands fa-google"></i> Google Review</span>
-          <span class="rc-date">March 2025</span>
-        </div>
-        <div class="rc-stars">★★★★★</div>
-        <span class="rc-tag"><i class="fa-solid fa-map-location-dot"></i> Tour Package · Andaman</span>
-        <p class="rc-text clamped" id="rt4">"The Andaman trip through Prestige was the best holiday our family has ever taken. Hotels, ferries, Radhanagar Beach, scuba for the kids — all arranged. We were nervous going in but it was completely seamless from the moment we landed. The Prestige team was reachable throughout."</p>
-        <span class="rc-more" onclick="toggleText('rt4',this)">Read more</span>
-        <div class="rc-author">
-          <div class="rc-avatar av-4">M</div>
-          <div>
-            <div class="rc-author-name">Meenakshi Iyer</div>
-            <div class="rc-author-meta">Holiday Member · T Nagar</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="rc fi d2" data-cat="resort" data-rating="5">
-        <div class="rc-source">
-          <span class="rc-google"><i class="fa-brands fa-google"></i> Google Review</span>
-          <span class="rc-date">June 2025</span>
-        </div>
-        <div class="rc-stars">★★★★★</div>
-        <span class="rc-tag"><i class="fa-solid fa-umbrella-beach"></i> Country Bay · Marakkanam</span>
-        <p class="rc-text clamped" id="rt5">"First visit to The Country Bay — it exceeded every expectation. Private beach, beautiful pool, immaculate facilities. The extra 30 minutes from Mahabalipuram is 100% worth it. This is the most peaceful place within 2 hours of Chennai. Absolutely exceptional."</p>
-        <span class="rc-more" onclick="toggleText('rt5',this)">Read more</span>
-        <div class="rc-author">
-          <div class="rc-avatar av-5">D</div>
-          <div>
-            <div class="rc-author-name">Divya Natarajan</div>
-            <div class="rc-author-meta">Club Member · Nungambakkam</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="rc fi" data-cat="membership" data-rating="4">
-        <div class="rc-source">
-          <span class="rc-google"><i class="fa-brands fa-google"></i> Google Review</span>
-          <span class="rc-date">May 2025</span>
-        </div>
-        <div class="rc-stars">★★★★<span style="color:rgba(251,188,5,.25);">★</span></div>
-        <span class="rc-tag"><i class="fa-solid fa-crown"></i> Club Membership</span>
-        <p class="rc-text clamped" id="rt6">"Three years as a member and it has been genuinely worthwhile. The team at the Velachery office is helpful and responsive. My one suggestion — weekend slots at the resort book up quickly so plan ahead. Other than that, excellent value for what you get."</p>
-        <span class="rc-more" onclick="toggleText('rt6',this)">Read more</span>
-        <div class="rc-author">
-          <div class="rc-avatar av-6">R</div>
-          <div>
-            <div class="rc-author-name">Rajesh Venkat</div>
-            <div class="rc-author-meta">Club Member · Tambaram</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="rc fi d1" data-cat="event" data-rating="5">
-        <div class="rc-source">
-          <span class="rc-google"><i class="fa-brands fa-google"></i> Google Review</span>
-          <span class="rc-date">February 2025</span>
-        </div>
-        <div class="rc-stars">★★★★★</div>
-        <span class="rc-tag"><i class="fa-solid fa-cake-candles"></i> Birthday Celebration</span>
-        <p class="rc-text clamped" id="rt7">"We hosted my mother's 60th birthday at The Country Resort. 80 guests, full lawn setup, beautiful food, live music. The coordinator was present through the evening and everything ran perfectly. Our guests are still talking about it months later."</p>
-        <span class="rc-more" onclick="toggleText('rt7',this)">Read more</span>
-        <div class="rc-author">
-          <div class="rc-avatar av-7">S</div>
-          <div>
-            <div class="rc-author-name">Suresh &amp; Nalini Kumar</div>
-            <div class="rc-author-meta">Club Member · Chromepet</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="rc fi d2" data-cat="outing" data-rating="5">
-        <div class="rc-source">
-          <span class="rc-google"><i class="fa-brands fa-google"></i> Google Review</span>
-          <span class="rc-date">April 2025</span>
-        </div>
-        <div class="rc-stars">★★★★★</div>
-        <span class="rc-tag"><i class="fa-solid fa-sun"></i> Day Outing · Country Suites</span>
-        <p class="rc-text clamped" id="rt8">"The private pool at The Country Suites on a weekday — nothing like it near Chennai. Just us, the pool, and genuine quiet. 80 minutes from Sholinganallur and it felt like a full escape. Will be back every month."</p>
-        <span class="rc-more" onclick="toggleText('rt8',this)">Read more</span>
-        <div class="rc-author">
-          <div class="rc-avatar av-8">L</div>
-          <div>
-            <div class="rc-author-name">Lakshmi Srinivasan</div>
-            <div class="rc-author-meta">Club Member · Sholinganallur</div>
-          </div>
-        </div>
-      </div>
-
     </div>
 
     <!-- LOAD MORE -->
@@ -722,50 +561,147 @@
   </div>
 </footer>
 
-<script>
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
+  import {
+    getFirestore, collection, query, where, onSnapshot
+  } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
+  import { firebaseConfig } from "./firebase-config.js";
+
+  const app = initializeApp(firebaseConfig);
+  const db = getFirestore(app);
+  const reviewsRef = collection(db, "reviews");
+  let allReviews = [];
+  let activeCategory = "all";
+  let activeSort = "newest";
+
   /* NAV */
   const nav = document.getElementById('mainNav');
   window.addEventListener('scroll', () => nav.classList.toggle('sc', window.scrollY > 60));
 
   /* FADE IN */
-  document.querySelectorAll('.fi').forEach(el =>
-    new IntersectionObserver(entries => entries.forEach(e => {
-      if (e.isIntersecting) e.target.classList.add('vis');
-    }), { threshold: .08 }).observe(el)
-  );
+  function observeFadeIns() {
+    document.querySelectorAll('.fi:not(.observed)').forEach(el => {
+      el.classList.add('observed');
+      new IntersectionObserver(entries => entries.forEach(e => {
+        if (e.isIntersecting) e.target.classList.add('vis');
+      }), { threshold: .08 }).observe(el);
+    });
+  }
+
+  function escapeHTML(value) {
+    return String(value ?? '').replace(/[&<>'"]/g, c => ({
+      '&':'&amp;', '<':'&lt;', '>':'&gt;', "'":'&#39;', '"':'&quot;'
+    }[c]));
+  }
+
+  function stars(rating) {
+    const r = Math.max(1, Math.min(5, Number(rating) || 5));
+    return '★'.repeat(r) + '<span style="color:rgba(251,188,5,.25);">' + '★'.repeat(5-r) + '</span>';
+  }
+
+  function initials(name) {
+    const parts = String(name || 'Member').trim().split(/\s+/).filter(Boolean);
+    return (parts[0]?.[0] || 'M').toUpperCase() + (parts.length > 1 ? (parts[parts.length-1]?.[0] || '').toUpperCase() : '');
+  }
+
+  function formatDate(value) {
+    if (!value) return '';
+    try {
+      const d = value?.toDate ? value.toDate() : new Date(value);
+      if (Number.isNaN(d.getTime())) return escapeHTML(value);
+      return d.toLocaleDateString('en-IN', { month:'long', year:'numeric' });
+    } catch { return ''; }
+  }
+
+  function renderReviews() {
+    const grid = document.getElementById('reviewGrid');
+    let reviews = [...allReviews];
+
+    if (activeCategory !== 'all') {
+      reviews = reviews.filter(r => String(r.category || '').toLowerCase() === activeCategory);
+    }
+
+    reviews.sort((a,b) => {
+      if (activeSort === 'highest') return Number(b.rating || 0) - Number(a.rating || 0);
+      if (activeSort === 'lowest') return Number(a.rating || 0) - Number(b.rating || 0);
+      const ad = a.createdAt?.toMillis ? a.createdAt.toMillis() : new Date(a.dateValue || 0).getTime();
+      const bd = b.createdAt?.toMillis ? b.createdAt.toMillis() : new Date(b.dateValue || 0).getTime();
+      return bd - ad;
+    });
+
+    document.getElementById('reviewCount').textContent = `Showing ${reviews.length} review${reviews.length === 1 ? '' : 's'}`;
+
+    if (!reviews.length) {
+      grid.innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:60px 20px;color:var(--silver);opacity:.7;">No published reviews in this category yet.</div>';
+      return;
+    }
+
+    grid.innerHTML = reviews.map((r, i) => {
+      const name = escapeHTML(r.name || 'Prestige Member');
+      const location = escapeHTML(r.location || '');
+      const review = escapeHTML(r.review || '');
+      const category = escapeHTML(r.category || 'membership');
+      const source = escapeHTML(r.source || 'Member Review');
+      const date = formatDate(r.date || r.dateValue || r.createdAt);
+      const avatarClass = `av-${i % 9}`;
+      const tag = escapeHTML(r.categoryLabel || r.category || 'Member Review');
+      const icon = escapeHTML(r.icon || 'fa-crown');
+      const id = `rt-${i}`;
+      return `
+        <div class="rc ${i === 0 ? 'featured ' : ''}fi vis" data-cat="${category}" data-rating="${Number(r.rating) || 5}">
+          <div class="rc-source">
+            <span class="rc-google"><i class="fa-brands fa-google"></i> ${source}</span>
+            <span class="rc-date">${date}</span>
+          </div>
+          <div class="rc-stars">${stars(r.rating)}</div>
+          <span class="rc-tag"><i class="fa-solid ${icon}"></i> ${tag}</span>
+          <p class="rc-text clamped" id="${id}">"${review}"</p>
+          <span class="rc-more" onclick="toggleText('${id}',this)">Read more</span>
+          <div class="rc-author">
+            <div class="rc-avatar ${avatarClass}">${initials(r.name)}</div>
+            <div>
+              <div class="rc-author-name">${name}</div>
+              <div class="rc-author-meta">${tag}${location ? ' · ' + location : ''}</div>
+            </div>
+          </div>
+        </div>`;
+    }).join('');
+  }
+
+  /* REAL-TIME FIRESTORE REVIEWS */
+  const reviewsQuery = query(reviewsRef, where('published', '==', true));
+  onSnapshot(reviewsQuery, snapshot => {
+    allReviews = snapshot.docs.map(d => ({ id:d.id, ...d.data() }));
+    renderReviews();
+  }, error => {
+    console.error('Firebase reviews error:', error);
+    document.getElementById('reviewGrid').innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:60px 20px;color:#e8b4b4;">Unable to load reviews right now. Please try again later.</div>';
+  });
 
   /* FILTER */
-  function filterReviews(cat, btn) {
+  window.filterReviews = function(cat, btn) {
     document.querySelectorAll('.ftab').forEach(t => t.classList.remove('act'));
-    btn.classList.add('act');
-    let count = 0;
-    document.querySelectorAll('.rc').forEach(c => {
-      const show = cat === 'all' || c.dataset.cat === cat;
-      c.style.display = show ? 'flex' : 'none';
-      if (show) count++;
-    });
-    document.getElementById('reviewCount').textContent = `Showing ${count} reviews`;
-  }
+    if (btn) btn.classList.add('act');
+    activeCategory = cat;
+    renderReviews();
+  };
 
   /* SORT */
-  function sortReviews(val) {
-    const grid = document.getElementById('reviewGrid');
-    const cards = Array.from(grid.querySelectorAll('.rc'));
-    cards.sort((a, b) => {
-      const ra = parseInt(a.dataset.rating), rb = parseInt(b.dataset.rating);
-      if (val === 'highest') return rb - ra;
-      if (val === 'lowest') return ra - rb;
-      return 0;
-    });
-    cards.forEach(c => grid.appendChild(c));
-  }
+  window.sortReviews = function(val) {
+    activeSort = val;
+    renderReviews();
+  };
 
   /* EXPAND REVIEW TEXT */
-  function toggleText(id, btn) {
+  window.toggleText = function(id, btn) {
     const el = document.getElementById(id);
+    if (!el) return;
     const clamped = el.classList.toggle('clamped');
     btn.textContent = clamped ? 'Read more' : 'Show less';
-  }
+  };
+
+  observeFadeIns();
 </script>
 
 
