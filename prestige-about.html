@@ -888,13 +888,58 @@
       .stat-item:nth-child(3) { border-right: none; }
       .values-grid { grid-template-columns: 1fr; }
       .footer-top { grid-template-columns: 1fr 1fr; }
-      .timeline::before { left: 24px; }
-      .timeline-item { grid-template-columns: 24px 1fr; gap: 0 20px; }
-      .timeline-content-left { display: none; }
-      .timeline-center { padding-top: 6px; justify-content: flex-start; }
-      .timeline-content-right { padding-left: 0; }
-      .timeline-item.right .timeline-content-left { display: none; }
-      .timeline-item.right .timeline-content-right { visibility: visible; }
+      /* Mobile timeline: keep both left/right milestone content available,
+         then show the active side in a single vertical column. */
+      .timeline::before {
+        left: 12px;
+        transform: none;
+      }
+
+      .timeline-item {
+        display: grid;
+        grid-template-columns: 24px minmax(0, 1fr);
+        gap: 0 20px;
+        width: 100%;
+        margin-bottom: 45px;
+        align-items: flex-start;
+      }
+
+      .timeline-center {
+        grid-column: 1;
+        grid-row: 1;
+        padding-top: 6px;
+        justify-content: flex-start;
+      }
+
+      .timeline-content-left,
+      .timeline-content-right {
+        grid-column: 2;
+        grid-row: 1;
+        padding: 0;
+        text-align: left;
+        min-width: 0;
+        visibility: visible;
+      }
+
+      .timeline-item.left .timeline-content-left {
+        display: block;
+      }
+
+      .timeline-item.left .timeline-content-right {
+        display: none;
+      }
+
+      .timeline-item.right .timeline-content-left {
+        display: none;
+      }
+
+      .timeline-item.right .timeline-content-right {
+        display: block;
+      }
+
+      .timeline-year { font-size: 32px; }
+      .timeline-event { font-size: 21px; }
+      .timeline-detail { font-size: 13px; line-height: 1.7; }
     }
     @media (max-width: 768px) {
       :root { --nav-h: 64px; }
@@ -902,6 +947,12 @@
       .why-grid { grid-template-columns: 1fr; }
       .stats-band-grid { grid-template-columns: repeat(2, 1fr); }
       .stat-item:nth-child(2) { border-right: none; }
+      .timeline::before { left: 10px; }
+      .timeline-item { grid-template-columns: 20px minmax(0, 1fr); gap: 0 12px; margin-bottom: 38px; }
+      .timeline-dot { width: 13px; height: 13px; }
+      .timeline-year { font-size: 29px; }
+      .timeline-event { font-size: 19px; }
+      .timeline-detail { font-size: 12px; line-height: 1.65; }
       .stat-item:nth-child(4) { border-right: none; }
       .awards-row { gap: 20px; }
       .footer-top { grid-template-columns: 1fr; }
