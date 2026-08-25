@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Prestige Admin | Reviews</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+:root{--black:#1a1a17;--panel:#22211d;--panel2:#2b2924;--gold:#d9ba6f;--gold2:#c9a44b;--cream:#f2e7c7;--silver:#dcdcdc;--muted:#99968e;--danger:#d96b6b;--success:#73bd8b}
+*{box-sizing:border-box}body{margin:0;background:var(--black);color:var(--silver);font-family:Montserrat,sans-serif}button,input,textarea,select{font:inherit}.hidden{display:none!important}
+.login-wrap{min-height:100vh;display:grid;place-items:center;padding:20px}.login-card{width:min(430px,100%);background:var(--panel);border:1px solid rgba(217,186,111,.25);padding:40px;border-radius:18px;box-shadow:0 20px 70px #0008}.brand{text-align:center;color:var(--gold);font-family:'Cormorant Garamond',serif;font-size:42px}.sub{text-align:center;color:var(--muted);font-size:12px;letter-spacing:2px;text-transform:uppercase;margin:5px 0 30px}.field{margin-bottom:17px}.field label{display:block;font-size:11px;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:7px;color:var(--cream)}input,textarea,select{width:100%;background:#171612;border:1px solid #49463e;color:#fff;border-radius:8px;padding:13px;outline:none}textarea{min-height:140px;resize:vertical}input:focus,textarea:focus,select:focus{border-color:var(--gold)}.btn{border:0;border-radius:8px;padding:13px 18px;cursor:pointer;font-weight:700;letter-spacing:.5px}.btn-gold{background:var(--gold);color:#181711}.btn-outline{background:transparent;border:1px solid #666;color:#fff}.btn-danger{background:#512b2b;color:#ffd6d6}.btn-success{background:#234c32;color:#d7ffe2}.error{background:#4b2929;color:#ffd1d1;padding:11px;border-radius:7px;font-size:12px;margin-bottom:15px}.app{min-height:100vh}.topbar{height:72px;border-bottom:1px solid #38362f;background:#1c1b18;display:flex;align-items:center;justify-content:space-between;padding:0 28px;position:sticky;top:0;z-index:10}.topbrand{font-family:'Cormorant Garamond',serif;color:var(--gold);font-size:30px}.user{font-size:12px;color:var(--muted)}.container{max-width:1250px;margin:auto;padding:30px 20px}.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:15px;margin-bottom:25px}.stat{background:var(--panel);border:1px solid #3a3831;border-radius:13px;padding:22px}.stat .num{font-size:28px;color:var(--gold);font-weight:700}.stat .label{font-size:10px;text-transform:uppercase;letter-spacing:1.5px;color:var(--muted);margin-top:6px}.layout{display:grid;grid-template-columns:400px 1fr;gap:20px}.card{background:var(--panel);border:1px solid #3a3831;border-radius:13px;padding:22px}.card h2{font-family:'Cormorant Garamond',serif;color:var(--cream);font-size:27px;margin:0 0 20px}.row{display:grid;grid-template-columns:1fr 1fr;gap:12px}.actions{display:flex;gap:9px;flex-wrap:wrap;margin-top:15px}.stars{display:flex;gap:7px;margin:5px 0 18px}.star{font-size:30px;color:#555;cursor:pointer}.star.active{color:var(--gold)}.review-list{display:grid;gap:12px}.review{background:var(--panel2);border:1px solid #46433a;border-radius:11px;padding:17px}.review-head{display:flex;justify-content:space-between;gap:10px}.review-name{font-weight:700;color:#fff}.review-meta{font-size:11px;color:var(--muted);margin-top:3px}.review-stars{color:var(--gold);letter-spacing:2px}.review-text{font-size:13px;line-height:1.7;margin:13px 0;color:#ddd}.badge{font-size:9px;padding:5px 8px;border-radius:20px;text-transform:uppercase;letter-spacing:1px}.published{background:#234c32;color:#bdf1ca}.draft{background:#4b4021;color:#ffe3a2}.toast{position:fixed;right:20px;bottom:20px;background:#292722;border:1px solid #5b5547;padding:13px 18px;border-radius:8px;display:none;z-index:50}.toast.show{display:block}.empty{text-align:center;color:var(--muted);padding:50px}.small{font-size:11px;color:var(--muted);line-height:1.6}.logout{margin-left:12px}
+@media(max-width:900px){.layout{grid-template-columns:1fr}.stats{grid-template-columns:repeat(2,1fr)}}@media(max-width:520px){.topbar{padding:0 15px}.user{display:none}.container{padding:20px 13px}.stats{grid-template-columns:1fr 1fr}.row{grid-template-columns:1fr}.login-card{padding:28px 20px}.stat{padding:16px}}
+</style>
+</head>
+<body>
+<div id="loginScreen" class="login-wrap">
+  <div class="login-card">
+    <div class="brand">Prestige</div><div class="sub">Reviews Admin Panel</div>
+    <div id="loginError" class="error hidden"></div>
+    <form id="loginForm">
+      <div class="field"><label>Email</label><input id="email" type="email" required autocomplete="username"></div>
+      <div class="field"><label>Password</label><input id="password" type="password" required autocomplete="current-password"></div>
+      <button class="btn btn-gold" style="width:100%" type="submit"><i class="fa-solid fa-lock"></i> Sign In</button>
+    </form>
+    <p class="small" style="margin-top:18px">Only Firebase Authentication users whose UID is listed in Firestore <b>admins</b> can manage reviews.</p>
+  </div>
+</div>
+
+<div id="app" class="app hidden">
+<header class="topbar"><div class="topbrand">Prestige <span style="font-family:Montserrat;font-size:11px;letter-spacing:2px">ADMIN</span></div><div><span id="userEmail" class="user"></span><button id="logoutBtn" class="btn btn-outline logout">Logout</button></div></header>
+<main class="container">
+  <div class="stats">
+    <div class="stat"><div id="totalCount" class="num">0</div><div class="label">Total Reviews</div></div>
+    <div class="stat"><div id="publishedCount" class="num">0</div><div class="label">Published</div></div>
+    <div class="stat"><div id="averageRating" class="num">0.0 ⭐</div><div class="label">Average Rating</div></div>
+    <div class="stat"><div id="fiveStarCount" class="num">0</div><div class="label">5 Star Reviews</div></div>
+  </div>
+  <div class="layout">
+    <section class="card">
+      <h2 id="formTitle">Add Review</h2>
+      <form id="reviewForm">
+        <input type="hidden" id="reviewId">
+        <div class="field"><label>Customer Name</label><input id="name" required maxlength="100"></div>
+        <div class="row"><div class="field"><label>Location</label><input id="location" maxlength="80"></div><div class="field"><label>Date</label><input id="date" type="date" required></div></div>
+        <div class="field"><label>Rating</label><div id="stars" class="stars" aria-label="Rating"></div></div>
+        <div class="row"><div class="field"><label>Category</label><select id="category"><option value="membership">Holiday Membership</option><option value="resort">Resort</option><option value="outing">Day Outing</option><option value="event">Event</option><option value="tour">Tour Package</option><option value="service">Customer Service</option></select></div><div class="field"><label>Source</label><select id="source"><option>Google Review</option><option>Website Review</option><option>Member Review</option><option>Other</option></select></div></div>
+        <div class="field"><label>Review</label><textarea id="review" required maxlength="2000"></textarea></div>
+        <div class="field"><label><input id="published" type="checkbox" checked style="width:auto;margin-right:8px"> Publish immediately</label></div>
+        <div class="actions"><button class="btn btn-gold" type="submit"><i class="fa-solid fa-save"></i> <span id="saveText">Save Review</span></button><button id="cancelEdit" class="btn btn-outline hidden" type="button">Cancel Edit</button></div>
+      </form>
+      <p class="small" style="margin-top:18px">Reviews marked unpublished stay in Firebase but do not appear on the public reviews page.</p>
+    </section>
+    <section class="card"><h2>Manage Reviews</h2><div id="reviewList" class="review-list"><div class="empty">Loading...</div></div></section>
+  </div>
+</main></div>
+<div id="toast" class="toast"></div>
+
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
+import { getAuth, onAuthStateChanged, signInWithEmailAndPassword, signOut } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
+import { getFirestore, collection, addDoc, updateDoc, deleteDoc, doc, query, orderBy, onSnapshot, serverTimestamp, getDoc } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
+import { firebaseConfig } from "./firebase-config.js";
+
+const app=initializeApp(firebaseConfig); const auth=getAuth(app); const db=getFirestore(app); const reviewsRef=collection(db,'reviews');
+let currentUser=null, reviews=[], rating=5;
+const $=id=>document.getElementById(id);
+function toast(msg){$('toast').textContent=msg;$('toast').classList.add('show');setTimeout(()=>$('toast').classList.remove('show'),2800)}
+function showLoginError(msg){$('loginError').textContent=msg;$('loginError').classList.remove('hidden')}
+function clearLoginError(){$('loginError').classList.add('hidden')}
+function setStars(value){rating=value;document.querySelectorAll('.star').forEach((s,i)=>s.classList.toggle('active',i<value))}
+function initStars(){ $('stars').innerHTML=''; for(let i=1;i<=5;i++){const s=document.createElement('span');s.className='star';s.innerHTML='★';s.onclick=()=>setStars(i);$('stars').appendChild(s)}setStars(5)}
+function escapeHTML(v){return String(v??'').replace(/[&<>'"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]))}
+function dateText(v){try{const d=v?.toDate?v.toDate():new Date(v);return Number.isNaN(d.getTime())?'':d.toLocaleDateString('en-IN',{day:'2-digit',month:'short',year:'numeric'})}catch{return ''}}
+function render(){
+ $('totalCount').textContent=reviews.length; const pub=reviews.filter(r=>r.published);$('publishedCount').textContent=pub.length; const avg=reviews.length?reviews.reduce((a,r)=>a+Number(r.rating||0),0)/reviews.length:0;$('averageRating').textContent=avg.toFixed(1)+' ⭐';$('fiveStarCount').textContent=reviews.filter(r=>Number(r.rating)===5).length;
+ const list=$('reviewList'); if(!reviews.length){list.innerHTML='<div class="empty">No reviews yet.</div>';return}
+ list.innerHTML=reviews.map(r=>`<article class="review"><div class="review-head"><div><div class="review-name">${escapeHTML(r.name)}</div><div class="review-meta">${escapeHTML(r.location||'')} · ${escapeHTML(r.categoryLabel||r.category||'')}</div></div><div style="text-align:right"><div class="review-stars">${'★'.repeat(Number(r.rating)||0)}</div><span class="badge ${r.published?'published':'draft'}">${r.published?'Published':'Draft'}</span></div></div><div class="review-text">${escapeHTML(r.review)}</div><div class="small">${escapeHTML(r.source||'')} · ${dateText(r.date||r.createdAt)}</div><div class="actions"><button class="btn btn-outline edit" data-id="${r.id}"><i class="fa-solid fa-pen"></i> Edit</button><button class="btn ${r.published?'btn-danger':'btn-success'} toggle" data-id="${r.id}">${r.published?'Unpublish':'Publish'}</button><button class="btn btn-danger delete" data-id="${r.id}"><i class="fa-solid fa-trash"></i> Delete</button></div></article>`).join('');
+ list.querySelectorAll('.edit').forEach(b=>b.onclick=()=>editReview(b.dataset.id)); list.querySelectorAll('.toggle').forEach(b=>b.onclick=()=>toggleReview(b.dataset.id)); list.querySelectorAll('.delete').forEach(b=>b.onclick=()=>removeReview(b.dataset.id));
+}
+function resetForm(){ $('reviewForm').reset();$('reviewId').value='';$('published').checked=true;$('formTitle').textContent='Add Review';$('saveText').textContent='Save Review';$('cancelEdit').classList.add('hidden');$('date').value=new Date().toISOString().slice(0,10);setStars(5)}
+function editReview(id){const r=reviews.find(x=>x.id===id);if(!r)return;$('reviewId').value=id;$('formTitle').textContent='Edit Review';$('saveText').textContent='Update Review';$('cancelEdit').classList.remove('hidden');$('name').value=r.name||'';$('location').value=r.location||'';$('date').value=r.dateValue||'';$('category').value=r.category||'membership';$('source').value=r.source||'Google Review';$('review').value=r.review||'';$('published').checked=!!r.published;setStars(Number(r.rating)||5);window.scrollTo({top:0,behavior:'smooth'})}
+async function toggleReview(id){const r=reviews.find(x=>x.id===id);if(!r)return;try{await updateDoc(doc(db,'reviews',id),{published:!r.published,updatedAt:serverTimestamp()});toast(r.published?'Review unpublished':'Review published')}catch(e){toast('Permission denied or Firebase error')}}
+async function removeReview(id){if(!confirm('Delete this review permanently?'))return;try{await deleteDoc(doc(db,'reviews',id));toast('Review deleted')}catch(e){toast('Unable to delete review')}}
+$('loginForm').onsubmit=async e=>{e.preventDefault();clearLoginError();try{await signInWithEmailAndPassword(auth,$('email').value,$('password').value)}catch(e){showLoginError(e.code==='auth/invalid-credential'?'Invalid email or password.':e.message)}};
+$('logoutBtn').onclick=()=>signOut(auth);$('cancelEdit').onclick=resetForm;
+$('reviewForm').onsubmit=async e=>{e.preventDefault();if(!currentUser)return;const data={name:$('name').value.trim(),location:$('location').value.trim(),rating,dateValue:$('date').value,date:new Date($('date').value+'T12:00:00'),review:$('review').value.trim(),category:$('category').value,categoryLabel:$('category').selectedOptions[0].textContent,source:$('source').value,published:$('published').checked,updatedAt:serverTimestamp()};try{const id=$('reviewId').value;if(id){await updateDoc(doc(db,'reviews',id),data);toast('Review updated')}else{data.createdAt=serverTimestamp();await addDoc(reviewsRef,data);toast('Review added')}resetForm()}catch(e){console.error(e);toast('Could not save. Check Firestore rules.')}};
+async function startAdmin(user){currentUser=user;const adminDoc=await getDoc(doc(db,'admins',user.uid));if(!adminDoc.exists()||adminDoc.data().enabled!==true){await signOut(auth);showLoginError('This Firebase account is not authorized as an admin. Add admins/'+user.uid+' in Firestore with enabled: true.');return}$('loginScreen').classList.add('hidden');$('app').classList.remove('hidden');$('userEmail').textContent=user.email||'';initStars();resetForm();const q=query(reviewsRef,orderBy('createdAt','desc'));onSnapshot(q,s=>{reviews=s.docs.map(d=>({id:d.id,...d.data()}));render()},e=>{console.error(e);toast('Could not load reviews')})}
+onAuthStateChanged(auth,user=>{if(user)startAdmin(user);else{$('loginScreen').classList.remove('hidden');$('app').classList.add('hidden')}});
+</script>
+</body>
+</html>
