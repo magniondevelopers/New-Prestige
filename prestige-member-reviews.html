@@ -457,7 +457,7 @@
 
     <!-- LOAD MORE -->
     <div class="load-more-wrap fi">
-      <a href="https://g.page/r/PRESTIGE_GOOGLE_PLACE_ID" target="_blank" class="btn btn-google">
+      <a href="https://g.page/r/CdlpTxsslQHXEBM" target="_blank" class="btn btn-google">
         <i class="fa-brands fa-google" style="color:#4285F4;"></i> See All Reviews on Google
       </a>
       <p class="load-more-note">840+ reviews on Google · Updated in real time</p>
@@ -484,7 +484,7 @@
       <div class="gcta-step"><div class="gcta-step-num">3</div><span class="gcta-step-text">Share your Prestige experience</span></div>
     </div>
     <div class="google-cta-btns">
-      <a href="https://g.page/r/PRESTIGE_GOOGLE_PLACE_ID/review" target="_blank" class="btn btn-google" style="font-size:12px;padding:14px 28px;">
+      <a href="https://g.page/r/CdlpTxsslQHXEBM/review" target="_blank" class="btn btn-google" style="font-size:12px;padding:14px 28px;">
         <span style="font-size:18px;"><span style="color:#4285F4;">G</span><span style="color:#EA4335;">o</span><span style="color:#FBBC05;">o</span><span style="color:#4285F4;">g</span><span style="color:#34A853;">l</span><span style="color:#EA4335;">e</span></span>
         Write a Google Review
       </a>
@@ -525,7 +525,7 @@
       </div>
       <div>
         <h4 class="fct">Reviews</h4><div class="fcd"></div>
-        <ul class="fl"><li><a href="prestige-member-reviews.html">Member Reviews</a></li><li><a href="prestige-video-testimonials.html">Video Testimonials</a></li><li><a href="https://g.page/r/PRESTIGE_GOOGLE_PLACE_ID/review" target="_blank">Write a Google Review</a></li></ul>
+        <ul class="fl"><li><a href="prestige-member-reviews.html">Member Reviews</a></li><li><a href="prestige-video-testimonials.html">Video Testimonials</a></li><li><a href="https://g.page/r/CdlpTxsslQHXEBM/review" target="_blank">Write a Google Review</a></li></ul>
         <h4 class="fct" style="margin-top:32px;">Experiences</h4><div class="fcd"></div>
         <ul class="fl"><li><a href="prestige-resort-stays.html">Resort Stays</a></li><li><a href="prestige-day-outings.html">Day Outings</a></li><li><a href="prestige-tour-packages.html">Tour Packages</a></li></ul>
       </div>
@@ -674,9 +674,11 @@
   onSnapshot(reviewsQuery, snapshot => {
     allReviews = snapshot.docs.map(d => ({ id:d.id, ...d.data() }));
     renderReviews();
+    observeFadeIns();
   }, error => {
     console.error('Firebase reviews error:', error);
-    document.getElementById('reviewGrid').innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:60px 20px;color:#e8b4b4;">Unable to load reviews right now. Please try again later.</div>';
+    const grid = document.getElementById('reviewGrid');
+    grid.innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:60px 20px;color:#e8b4b4;">Unable to load reviews right now. Please try again later.</div>';
   });
 
   /* FILTER */

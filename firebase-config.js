@@ -1,10 +1,9 @@
 export const firebaseConfig = {
-  apiKey: "AIzaSyCXyeG8d2Xqa4l6lw2oxRsMnovzWRPvcVc",
-  authDomain: "chatapp-f4237.firebaseapp.com",
-  databaseURL: "https://chatapp-f4237-default-rtdb.asia-southeast1.firebasedatabase.app",
-  projectId: "chatapp-f4237",
-  storageBucket: "chatapp-f4237.firebasestorage.app",
-  messagingSenderId: "830433078140",
-  appId: "1:830433078140:web:85182fb345151dc91ed2f9",
-  measurementId: "G-G1MR37FM94"
+  apiKey: "AIzaSyANFWqwFqFuWGNzjZS2crbr_WJ29eSDdRU",
+  authDomain: "prestigevacations.firebaseapp.com",
+  projectId: "prestigevacations",
+  storageBucket: "prestigevacations.firebasestorage.app",
+  messagingSenderId: "294803443782",
+  appId: "1:294803443782:web:a3433f81c5af6a56153a47",
+  measurementId: "G-T4GCW8D1HQ"
 };
