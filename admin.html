@@ -395,24 +395,50 @@ function initQuill(){
   quill=new Quill('#quill-editor',{theme:'snow',modules:{toolbar:[[{header:[1,2,3,false]}],['bold','italic','underline','strike'],[{color:[]},{background:[]}],[{list:'ordered'},{list:'bullet'}],[{align:[]}],['blockquote','code-block'],['link','image'],['clean']]},placeholder:'Write your blog post here…'});
 }
 
-// ── AUTH
-onAuthStateChanged(auth,user=>{
+// ── AUTH — checks admins collection (matches your existing Firestore rules)
+async function checkAdminAccess(user){
+  try{
+    const adminDoc=await getDoc(doc(db,'admins',user.uid));
+    if(adminDoc.exists()&&adminDoc.data().enabled===true) return true;
+    return false;
+  }catch(e){return false;}
+}
+
+onAuthStateChanged(auth,async user=>{
   if(user){
-    document.getElementById('login-screen').style.display='none';
-    document.getElementById('app').style.display='flex';
-    document.getElementById('admin-email').textContent=user.email;
-    loadSection('dashboard');
+    const isAdmin=await checkAdminAccess(user);
+    if(isAdmin){
+      document.getElementById('login-screen').style.display='none';
+      document.getElementById('app').style.display='flex';
+      document.getElementById('admin-email').textContent=user.email;
+      loadSection('dashboard');
+    }else{
+      // Logged in but not in admins collection — sign out and show error
+      await signOut(auth);
+      document.getElementById('login-screen').style.display='flex';
+      document.getElementById('app').style.display='none';
+      document.getElementById('l-err').textContent='Access denied. Your account is not authorised as admin.';
+    }
   }else{
     document.getElementById('login-screen').style.display='flex';
     document.getElementById('app').style.display='none';
   }
 });
+
 window.doLogin=async()=>{
   const email=document.getElementById('l-email').value.trim(),pw=document.getElementById('l-pw').value,err=document.getElementById('l-err');
   err.textContent='';
-  try{await signInWithEmailAndPassword(auth,email,pw);}catch(e){err.textContent='Invalid email or password.';}
+  const btn=document.querySelector('.login-btn');
+  btn.textContent='Signing in…';btn.disabled=true;
+  try{
+    await signInWithEmailAndPassword(auth,email,pw);
+    // onAuthStateChanged above handles the rest
+  }catch(e){
+    err.textContent='Invalid email or password.';
+    btn.textContent='Sign In';btn.disabled=false;
+  }
 };
-window.doLogout=async()=>await signOut(auth);
+window.doLogout=async()=>{await signOut(auth);};
 
 // ── NAV
 window.loadSection=name=>{
