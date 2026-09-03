@@ -183,37 +183,91 @@ textarea{resize:vertical;min-height:100px;}
 
       <!-- GALLERY -->
       <div class="section" id="sec-gallery">
-        <div class="page-title">Gallery</div>
+        <div class="page-title">Gallery Management</div>
+
+        <!-- Upload Panel -->
         <div class="panel">
-          <div class="panel-header"><div class="panel-title">Category Tags</div></div>
-          <div class="panel-body">
-            <div id="tag-list" class="tag-row"></div>
-            <div style="display:flex;gap:8px;margin-top:8px;">
-              <input type="text" id="new-tag" placeholder="New tag (e.g. The Country Bay)" style="max-width:320px;"/>
-              <button class="btn btn-gold" onclick="addTag()">+ Add Tag</button>
-            </div>
-          </div>
-        </div>
-        <div class="panel">
-          <div class="panel-header"><div class="panel-title">Upload Photos</div></div>
+          <div class="panel-header"><div class="panel-title">Upload Photos / Add Video</div></div>
           <div class="panel-body">
             <div class="form-grid">
               <div>
-                <label class="lbl">Category Tag *</label>
-                <select id="photo-tag-select"></select>
+                <label class="lbl">Gallery Section *</label>
+                <select id="photo-section-select">
+                  <option value="">— Select Section —</option>
+                  <option value="our-gallery">Our Gallery</option>
+                  <option value="resort">The Country Resort</option>
+                  <option value="suites">The Country Suites</option>
+                  <option value="bay">The Country Bay</option>
+                  <option value="events">Member Events</option>
+                  <option value="celebrations">Weddings &amp; Celebrations</option>
+                  <option value="videos">Videos</option>
+                  <option value="member-trips">Member Trip Photos</option>
+                </select>
               </div>
-              <div>
+              <div id="upload-type-wrap">
+                <label class="lbl">Upload Type</label>
+                <select id="upload-type" onchange="toggleUploadType()">
+                  <option value="photo">Photo</option>
+                  <option value="video">Video (YouTube URL)</option>
+                </select>
+              </div>
+              <!-- Photo fields -->
+              <div class="form-full" id="photo-fields">
                 <label class="lbl">Select Photos (multiple allowed)</label>
                 <input type="file" id="photo-files" multiple accept="image/*"/>
               </div>
+              <!-- Photo caption -->
+              <div id="photo-caption-wrap">
+                <label class="lbl">Caption (optional)</label>
+                <input type="text" id="photo-caption" placeholder="e.g. Garden Lawn, Pool View"/>
+              </div>
+              <div id="photo-sublabel-wrap">
+                <label class="lbl">Sub Label (optional)</label>
+                <input type="text" id="photo-sublabel" placeholder="e.g. The Country Resort"/>
+              </div>
+              <!-- Video fields -->
+              <div class="form-full" id="video-fields" style="display:none;">
+                <label class="lbl">YouTube Video URL *</label>
+                <input type="url" id="video-url" placeholder="https://youtube.com/watch?v=..."/>
+              </div>
+              <div id="video-title-wrap" style="display:none;">
+                <label class="lbl">Video Title *</label>
+                <input type="text" id="video-title" placeholder="e.g. The Country Resort — Property Tour"/>
+              </div>
+              <div id="video-sub-wrap" style="display:none;">
+                <label class="lbl">Sub Label</label>
+                <input type="text" id="video-sub" placeholder="e.g. Watch on YouTube"/>
+              </div>
+              <!-- Member trip extras -->
+              <div id="member-name-wrap" style="display:none;">
+                <label class="lbl">Member Name</label>
+                <input type="text" id="member-name" placeholder="e.g. Meenakshi R"/>
+              </div>
+              <div id="member-dest-wrap" style="display:none;">
+                <label class="lbl">Destination</label>
+                <input type="text" id="member-dest" placeholder="e.g. Ooty · Hill Station"/>
+              </div>
             </div>
-            <button class="btn btn-gold" style="margin-top:14px;" id="upload-btn" onclick="uploadPhotos()">Upload Photos</button>
+            <button class="btn btn-gold" style="margin-top:14px;" id="upload-btn" onclick="uploadGalleryItem()">Upload</button>
+            <div id="upload-progress" style="margin-top:10px;font-size:12px;color:#6b7280;"></div>
           </div>
         </div>
+
+        <!-- Photos Grid per Section -->
         <div class="panel">
           <div class="panel-header">
-            <div class="panel-title">All Photos</div>
-            <select id="filter-tag" onchange="filterPhotos()" style="font-size:13px;padding:5px 10px;border:1px solid #d1d5db;border-radius:6px;"></select>
+            <div class="panel-title">Browse by Section</div>
+            <select id="filter-section" onchange="filterGallerySection()" style="font-size:13px;padding:5px 10px;border:1px solid #d1d5db;border-radius:6px;">
+              <option value="">All Sections</option>
+              <option value="our-gallery">Our Gallery</option>
+              <option value="resort">The Country Resort</option>
+              <option value="suites">The Country Suites</option>
+              <option value="bay">The Country Bay</option>
+              <option value="events">Member Events</option>
+              <option value="celebrations">Weddings &amp; Celebrations</option>
+              <option value="videos">Videos</option>
+              <option value="member-trips">Member Trip Photos</option>
+            </select>
           </div>
           <div class="panel-body"><div id="photo-grid" class="photo-grid"></div></div>
         </div>
@@ -472,57 +526,135 @@ async function loadDashboard(){
   }catch(e){console.error(e);}
 }
 
-// ── GALLERY
+// ── GALLERY — Section based
+const GALLERY_SECTIONS={
+  'our-gallery':'Our Gallery',
+  'resort':'The Country Resort',
+  'suites':'The Country Suites',
+  'bay':'The Country Bay',
+  'events':'Member Events',
+  'celebrations':'Weddings & Celebrations',
+  'videos':'Videos',
+  'member-trips':'Member Trip Photos'
+};
+
 async function loadGallery(){
-  const[ps,ts]=await Promise.all([getDocs(query(collection(db,'gallery_photos'),orderBy('createdAt','desc'))),getDocs(collection(db,'gallery_tags'))]);
-  galleryTags=ts.docs.map(d=>({id:d.id,...d.data()}));
-  document.getElementById('tag-list').innerHTML=galleryTags.map(t=>`<span class="tag-chip">${t.name} <button onclick="deleteTag('${t.id}')">×</button></span>`).join('')||'<span style="color:#9ca3af;font-size:12px;">No tags yet — add one above</span>';
-  const opts=galleryTags.map(t=>`<option value="${t.name}">${t.name}</option>`).join('');
-  document.getElementById('photo-tag-select').innerHTML='<option value="">— Select Tag —</option>'+opts;
-  document.getElementById('filter-tag').innerHTML='<option value="">All Photos</option>'+opts;
-  renderPhotos(ps.docs.map(d=>({id:d.id,...d.data()})));
+  filterGallerySection();
 }
-function renderPhotos(photos){
-  document.getElementById('photo-grid').innerHTML=photos.length?photos.map(p=>`<div class="photo-card"><img src="${p.url}" loading="lazy"/><div class="photo-info"><span class="photo-tag">${p.tag||'—'}</span><button class="btn-sm btn-danger" onclick="deletePhoto('${p.id}','${p.url}')">✕</button></div></div>`).join(''):'<p style="color:#9ca3af;padding:24px;text-align:center;">No photos yet.</p>';
-}
-window.addTag=async()=>{
-  const name=document.getElementById('new-tag').value.trim();
-  if(!name)return;
-  await addDoc(collection(db,'gallery_tags'),{name,createdAt:serverTimestamp()});
-  document.getElementById('new-tag').value='';
-  loadGallery();
-};
-window.deleteTag=async id=>{if(!confirm('Delete this tag?'))return;await deleteDoc(doc(db,'gallery_tags',id));loadGallery();};
-window.filterPhotos=async()=>{
-  const tag=document.getElementById('filter-tag').value;
-  const q=tag?query(collection(db,'gallery_photos'),where('tag','==',tag),orderBy('createdAt','desc')):query(collection(db,'gallery_photos'),orderBy('createdAt','desc'));
+
+async function filterGallerySection(){
+  const section=document.getElementById('filter-section').value;
+  const q=section
+    ?query(collection(db,'gallery_items'),where('section','==',section),orderBy('createdAt','desc'))
+    :query(collection(db,'gallery_items'),orderBy('createdAt','desc'));
   const snap=await getDocs(q);
-  renderPhotos(snap.docs.map(d=>({id:d.id,...d.data()})));
+  const items=snap.docs.map(d=>({id:d.id,...d.data()}));
+  renderGalleryGrid(items);
+}
+window.filterGallerySection=filterGallerySection;
+
+function renderGalleryGrid(items){
+  const grid=document.getElementById('photo-grid');
+  if(!items.length){grid.innerHTML='<p style="color:#9ca3af;padding:24px;text-align:center;">No items in this section yet.</p>';return;}
+  grid.innerHTML=items.map(p=>`
+    <div class="photo-card">
+      ${p.type==='video'
+        ?`<div style="background:#1a1a17;height:130px;display:flex;align-items:center;justify-content:center;color:#C9A44B;font-size:28px;">▶</div>`
+        :`<img src="${p.url}" loading="lazy"/>`}
+      <div class="photo-info" style="flex-direction:column;align-items:flex-start;gap:4px;">
+        <span class="photo-tag">${GALLERY_SECTIONS[p.section]||p.section}</span>
+        ${p.caption?`<span style="font-size:10px;color:#6b7280;">${p.caption}</span>`:''}
+        ${p.videoUrl?`<span style="font-size:10px;color:#6b7280;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:140px;">${p.videoUrl}</span>`:''}
+      </div>
+      <div style="padding:0 8px 8px;"><button class="btn-sm btn-danger" onclick="deleteGalleryItem('${p.id}','${p.url||''}')">Delete</button></div>
+    </div>`).join('');
+}
+
+window.toggleUploadType=()=>{
+  const t=document.getElementById('upload-type').value;
+  const sec=document.getElementById('photo-section-select').value;
+  document.getElementById('photo-fields').style.display=t==='photo'?'block':'none';
+  document.getElementById('photo-caption-wrap').style.display=t==='photo'?'block':'none';
+  document.getElementById('photo-sublabel-wrap').style.display=t==='photo'?'block':'none';
+  document.getElementById('video-fields').style.display=t==='video'?'block':'none';
+  document.getElementById('video-title-wrap').style.display=t==='video'?'block':'none';
+  document.getElementById('video-sub-wrap').style.display=t==='video'?'block':'none';
+  document.getElementById('member-name-wrap').style.display=sec==='member-trips'?'block':'none';
+  document.getElementById('member-dest-wrap').style.display=sec==='member-trips'?'block':'none';
 };
-window.uploadPhotos=async()=>{
-  const files=document.getElementById('photo-files').files;
-  const tag=document.getElementById('photo-tag-select').value;
-  if(!files.length)return alert('Select photos first.');
-  if(!tag)return alert('Select a category tag first.');
-  const btn=document.getElementById('upload-btn');
-  btn.disabled=true;btn.textContent='Uploading…';
-  try{
-    for(const file of files){
-      const r=ref(storage,`gallery/${Date.now()}_${file.name}`);
-      await uploadBytes(r,file);
-      const url=await getDownloadURL(r);
-      await addDoc(collection(db,'gallery_photos'),{url,tag,name:file.name,createdAt:serverTimestamp()});
+
+// Also toggle member fields when section changes
+document.addEventListener('DOMContentLoaded',()=>{
+  document.getElementById('photo-section-select')?.addEventListener('change',()=>{
+    const sec=document.getElementById('photo-section-select').value;
+    const isMember=sec==='member-trips';
+    document.getElementById('member-name-wrap').style.display=isMember?'block':'none';
+    document.getElementById('member-dest-wrap').style.display=isMember?'block':'none';
+    if(sec==='videos'){
+      document.getElementById('upload-type').value='video';
+      toggleUploadType();
+    } else {
+      document.getElementById('upload-type').value='photo';
+      toggleUploadType();
     }
-    document.getElementById('photo-files').value='';
-    loadGallery();
+  });
+});
+
+window.uploadGalleryItem=async()=>{
+  const section=document.getElementById('photo-section-select').value;
+  const type=document.getElementById('upload-type').value;
+  if(!section)return alert('Select a gallery section first.');
+  const btn=document.getElementById('upload-btn');
+  const progress=document.getElementById('upload-progress');
+  btn.disabled=true;btn.textContent='Uploading…';
+
+  try{
+    if(type==='video'){
+      const videoUrl=document.getElementById('video-url').value.trim();
+      const title=document.getElementById('video-title').value.trim();
+      const sub=document.getElementById('video-sub').value.trim();
+      if(!videoUrl)return alert('Enter a YouTube URL.');
+      await addDoc(collection(db,'gallery_items'),{
+        section,type:'video',videoUrl,title,sub,
+        createdAt:serverTimestamp()
+      });
+      document.getElementById('video-url').value='';
+      document.getElementById('video-title').value='';
+    } else {
+      const files=document.getElementById('photo-files').files;
+      if(!files.length)return alert('Select photos first.');
+      const caption=document.getElementById('photo-caption').value.trim();
+      const sublabel=document.getElementById('photo-sublabel').value.trim();
+      const memberName=document.getElementById('member-name').value.trim();
+      const memberDest=document.getElementById('member-dest').value.trim();
+      let done=0;
+      for(const file of files){
+        progress.textContent=`Uploading ${++done} of ${files.length}…`;
+        const r=ref(storage,`gallery/${Date.now()}_${file.name}`);
+        await uploadBytes(r,file);
+        const url=await getDownloadURL(r);
+        await addDoc(collection(db,'gallery_items'),{
+          section,type:'photo',url,
+          caption:caption||file.name.replace(/\.[^/.]+$/,''),
+          sublabel,memberName,memberDest,
+          createdAt:serverTimestamp()
+        });
+      }
+      document.getElementById('photo-files').value='';
+      document.getElementById('photo-caption').value='';
+    }
+    progress.textContent='✓ Uploaded successfully!';
+    setTimeout(()=>{progress.textContent='';},3000);
+    filterGallerySection();
   }catch(e){alert('Upload failed: '+e.message);}
-  btn.disabled=false;btn.textContent='Upload Photos';
+  btn.disabled=false;btn.textContent='Upload';
 };
-window.deletePhoto=async(id,url)=>{
-  if(!confirm('Delete this photo?'))return;
-  try{await deleteObject(ref(storage,url));}catch(e){}
-  await deleteDoc(doc(db,'gallery_photos',id));
-  loadGallery();
+
+window.deleteGalleryItem=async(id,url)=>{
+  if(!confirm('Delete this item?'))return;
+  if(url){try{await deleteObject(ref(storage,url));}catch(e){}}
+  await deleteDoc(doc(db,'gallery_items',id));
+  filterGallerySection();
 };
 
 // ── BLOG

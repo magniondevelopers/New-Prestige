@@ -1,73 +1,241 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title id="pageTitle">Blog Post | Prestige Vacations</title>
-<link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet"/>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title id="pageTitle">Blog Post | Prestige Vacations & Clubs</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600&family=Great+Vibes&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+<link href="https://cdn.quilljs.com/1.3.7/quill.snow.css" rel="stylesheet"/>
 <style>
-.blog-hero{width:100%;max-height:480px;object-fit:cover;border-radius:12px;margin-bottom:32px;}
-.blog-post-wrap{max-width:760px;margin:0 auto;padding:40px 20px;}
-.blog-post-cat{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#d1a84b;margin-bottom:10px;}
-.blog-post-title{font-size:32px;font-weight:900;color:#1a1a17;line-height:1.3;margin-bottom:16px;}
-.blog-post-meta{display:flex;gap:16px;font-size:13px;color:#9ca3af;margin-bottom:32px;padding-bottom:24px;border-bottom:1px solid #e5e7eb;}
-.blog-post-content{font-size:16px;line-height:1.8;color:#374151;}
-.blog-post-content h1,.blog-post-content h2,.blog-post-content h3{color:#1a1a17;margin:24px 0 12px;}
-.blog-post-content img{max-width:100%;border-radius:8px;margin:16px 0;}
-.blog-post-content blockquote{border-left:4px solid #d1a84b;padding:12px 20px;background:#fffbf0;margin:20px 0;border-radius:0 8px 8px 0;}
-.blog-not-found{text-align:center;padding:80px;color:#9ca3af;}
-.ql-toolbar,.ql-container{border:none!important;}
+:root{--black:#1A1A17;--matte-black:#1C1B18;--gold:#D9BA6F;--gold-mid:#C9A44B;--gold-bronze:#A3895A;--gold-dark:#504834;--silver:#DCDCDC;--champagne:#E8D8B0;--cream:#F2E7C7;--charcoal:#222;--dark-gray:#374151;--gold-glow:rgba(217,186,111,.18);--nav-h:80px;}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}body{font-family:'Montserrat',sans-serif;background:var(--cream);color:var(--charcoal);overflow-x:hidden;}
+a{text-decoration:none;color:inherit;}ul{list-style:none;}
+.gold-text{background:linear-gradient(135deg,#C9A44B 0%,#D9BA6F 35%,#F2E7C7 55%,#D9BA6F 75%,#A3895A 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:14px 32px;font-family:'Montserrat',sans-serif;font-size:12px;font-weight:600;letter-spacing:2px;text-transform:uppercase;cursor:pointer;transition:all .3s;border:none;}
+.btn-gold{background:linear-gradient(135deg,var(--gold-mid),var(--gold),var(--gold-mid));color:var(--black);}
+.btn-gold:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(217,186,111,.35);}
+.btn-outline{background:transparent;border:1px solid var(--gold-mid);color:var(--gold-mid);}
+.btn-outline:hover{background:rgba(201,164,75,.1);transform:translateY(-2px);}
+.bw{background:#25D366;color:#fff;display:inline-flex;align-items:center;gap:8px;padding:14px 32px;font-family:'Montserrat',sans-serif;font-size:12px;font-weight:600;letter-spacing:2px;text-transform:uppercase;transition:all .3s;}
+/* NAV (same as blog-index) */
+.nav{position:fixed;top:0;left:0;right:0;z-index:9000;height:var(--nav-h);display:flex;align-items:center;padding:0 48px;background:rgba(26,26,23,.92);backdrop-filter:blur(12px);border-bottom:1px solid rgba(217,186,111,.15);transition:all .4s;}
+.nav.scrolled{background:rgba(26,26,23,.98);box-shadow:0 4px 24px rgba(0,0,0,.4);}
+.nav-logo{flex-shrink:0;margin-right:auto;}
+.nav-links{display:flex;align-items:center;gap:6px;}.nav-item{position:relative;}
+.nav-link{display:flex;align-items:center;gap:5px;padding:8px 14px;font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--silver);transition:color .2s;white-space:nowrap;}
+.nav-link:hover,.nav-link.active{color:var(--gold);}
+.nav-link .fa-chevron-down{font-size:8px;transition:transform .2s;}.nav-item:hover .fa-chevron-down{transform:rotate(180deg);}
+.nav-dropdown{position:absolute;top:calc(100% + 10px);left:0;background:var(--matte-black);border:1px solid rgba(217,186,111,.2);border-top:2px solid var(--gold);min-width:220px;opacity:0;visibility:hidden;transform:translateY(-8px);transition:all .25s;z-index:9999;}
+.nav-item:hover .nav-dropdown{opacity:1;visibility:visible;transform:translateY(0);}
+.nav-dropdown a{display:flex;align-items:center;gap:10px;padding:13px 20px;font-size:12px;font-weight:500;color:var(--silver);border-bottom:1px solid rgba(217,186,111,.08);transition:all .2s;}
+.nav-dropdown a:last-child{border-bottom:none;}.nav-dropdown a i{color:var(--gold-bronze);width:14px;font-size:11px;}
+.nav-dropdown a:hover{background:var(--gold-glow);color:var(--gold);padding-left:26px;}.nav-dropdown a:hover i{color:var(--gold);}
+.nav-cta{margin-left:16px;padding:10px 22px;font-size:10px;}
+/* POST */
+.post-hero{width:100%;max-height:500px;object-fit:cover;display:block;}
+.post-hero-placeholder{width:100%;height:360px;background:linear-gradient(135deg,#d4c49a,#c9b57e);display:flex;align-items:center;justify-content:center;}
+.post-hero-placeholder i{font-size:64px;color:rgba(163,137,90,.3);}
+.post-wrap{max-width:780px;margin:0 auto;padding:56px 24px 80px;}
+.post-breadcrumb{display:flex;align-items:center;gap:8px;font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--gold-bronze);margin-bottom:28px;}
+.post-breadcrumb a{color:var(--gold-bronze);}.post-breadcrumb a:hover{color:var(--gold-mid);}
+.post-breadcrumb i{font-size:8px;}
+.post-cat{font-size:10px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold-mid);margin-bottom:14px;}
+.post-title{font-family:'Cormorant Garamond',serif;font-size:clamp(32px,5vw,54px);font-weight:700;color:var(--charcoal);line-height:1.2;margin-bottom:18px;}
+.post-meta{display:flex;align-items:center;gap:16px;font-size:12px;color:var(--gold-bronze);padding-bottom:28px;margin-bottom:36px;border-bottom:2px solid rgba(201,164,75,.2);}
+.post-meta-divider{width:3px;height:3px;border-radius:50%;background:var(--gold-bronze);}
+.post-content{font-size:16px;line-height:1.9;color:var(--dark-gray);}
+.post-content h1,.post-content h2,.post-content h3{font-family:'Cormorant Garamond',serif;color:var(--charcoal);margin:32px 0 14px;line-height:1.3;}
+.post-content h1{font-size:36px;}.post-content h2{font-size:28px;}.post-content h3{font-size:22px;}
+.post-content p{margin-bottom:20px;}
+.post-content img{max-width:100%;border-radius:4px;margin:24px 0;display:block;}
+.post-content blockquote{border-left:4px solid var(--gold-mid);padding:16px 24px;background:rgba(201,164,75,.06);margin:28px 0;border-radius:0 4px 4px 0;font-family:'Cormorant Garamond',serif;font-size:20px;font-style:italic;color:var(--charcoal);}
+.post-content ul,.post-content ol{padding-left:28px;margin-bottom:20px;}
+.post-content li{margin-bottom:8px;}
+.post-content a{color:var(--gold-mid);text-decoration:underline;}
+.ql-toolbar,.ql-container{border:none!important;padding:0!important;}
+.post-footer{margin-top:48px;padding-top:28px;border-top:1px solid rgba(201,164,75,.2);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;}
+.post-share{display:flex;align-items:center;gap:12px;}
+.share-label{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--gold-bronze);}
+.share-btn{width:36px;height:36px;border-radius:50%;border:1px solid rgba(201,164,75,.3);display:flex;align-items:center;justify-content:center;color:var(--gold-mid);font-size:14px;transition:all .2s;}
+.share-btn:hover{background:var(--gold-mid);color:#fff;border-color:var(--gold-mid);}
+.post-not-found{text-align:center;padding:120px 24px;font-family:'Cormorant Garamond',serif;font-size:28px;font-style:italic;color:var(--gold-bronze);}
+.post-loading{text-align:center;padding:120px 24px;font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--gold-bronze);}
+/* RELATED */
+.related-section{background:var(--black);padding:64px 48px;}
+.related-title{font-family:'Cormorant Garamond',serif;font-size:32px;font-weight:600;color:var(--champagne);text-align:center;margin-bottom:36px;}
+.related-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;max-width:1200px;margin:0 auto;}
+.related-card{background:#141412;border:1px solid rgba(217,186,111,.12);border-radius:2px;overflow:hidden;transition:all .3s;}
+.related-card:hover{border-color:rgba(217,186,111,.3);transform:translateY(-4px);}
+.related-card img{width:100%;aspect-ratio:16/9;object-fit:cover;display:block;}
+.related-card-placeholder{width:100%;aspect-ratio:16/9;background:linear-gradient(135deg,#252520,#1a1a17);display:flex;align-items:center;justify-content:center;}
+.related-card-placeholder i{font-size:32px;color:rgba(217,186,111,.1);}
+.related-card-body{padding:20px;}
+.related-card-cat{font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--gold-mid);margin-bottom:6px;}
+.related-card-title{font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:600;color:var(--champagne);line-height:1.3;}
+/* FOOTER */
+footer{background:#0e0e0c;padding:80px 48px 0;border-top:1px solid rgba(217,186,111,.2);}
+.ft{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:48px;padding-bottom:60px;border-bottom:1px solid rgba(217,186,111,.1);}
+.fbn{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:700;margin-bottom:6px;}
+.fbs{font-size:9px;letter-spacing:3px;color:var(--gold-bronze);text-transform:uppercase;margin-bottom:20px;}
+.ftag{font-family:'Cormorant Garamond',serif;font-size:15px;font-style:italic;color:var(--gold-bronze);margin-bottom:24px;}
+.fdesc{font-size:13px;font-weight:300;line-height:1.8;color:var(--silver);opacity:.65;margin-bottom:28px;}
+.fci{display:flex;align-items:center;gap:10px;font-size:13px;color:var(--silver);opacity:.75;margin-bottom:12px;}
+.fci i{color:var(--gold-bronze);width:16px;font-size:13px;}
+.fso{display:flex;gap:10px;margin-top:20px;}
+.fso a{width:36px;height:36px;border:1px solid rgba(217,186,111,.25);display:flex;align-items:center;justify-content:center;color:var(--gold-bronze);font-size:14px;transition:all .25s;}
+.fso a:hover{background:var(--gold-glow);border-color:var(--gold);color:var(--gold);}
+.fct{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:600;color:var(--champagne);margin-bottom:8px;}
+.fcd{width:32px;height:1px;background:var(--gold);margin-bottom:24px;}
+.fl li{margin-bottom:10px;}
+.fl a{font-size:13px;font-weight:300;color:var(--silver);opacity:.65;display:flex;align-items:center;gap:8px;transition:all .2s;}
+.fl a::before{content:'';width:0;height:1px;background:var(--gold);transition:width .2s;flex-shrink:0;}
+.fl a:hover{opacity:1;color:var(--gold);}.fl a:hover::before{width:12px;}
+.fbot{padding:20px 0;display:flex;align-items:center;justify-content:space-between;font-size:12px;color:var(--silver);opacity:.4;flex-wrap:wrap;gap:12px;}
+.fbl{display:flex;gap:20px;}.fbl a{opacity:1;transition:color .2s;}.fbl a:hover{color:var(--gold);}
+.mobile-nav-toggle{display:none;width:42px;height:42px;margin-left:12px;align-items:center;justify-content:center;flex-direction:column;gap:5px;border:1px solid rgba(217,186,111,.42);background:rgba(20,20,18,.96);color:var(--gold);cursor:pointer;z-index:10002;flex-shrink:0;}
+.mobile-nav-toggle span{display:block;width:19px;height:2px;background:currentColor;transition:transform .25s ease,opacity .25s ease;}
+body.mobile-nav-open{overflow:hidden;}
+body.mobile-nav-open .mobile-nav-toggle span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+body.mobile-nav-open .mobile-nav-toggle span:nth-child(2){opacity:0;}
+body.mobile-nav-open .mobile-nav-toggle span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+.mobile-nav-panel{position:fixed;inset:var(--nav-h) 0 auto 0;max-height:calc(100vh - var(--nav-h));overflow-y:auto;padding:16px 20px 28px;background:rgba(20,20,18,.98);border-bottom:1px solid rgba(217,186,111,.24);box-shadow:0 22px 48px rgba(0,0,0,.48);transform:translateY(-110%);opacity:0;visibility:hidden;transition:transform .28s ease,opacity .28s ease,visibility .28s ease;z-index:8998;}
+body.mobile-nav-open .mobile-nav-panel{transform:translateY(0);opacity:1;visibility:visible;}
+.mobile-nav-panel a{display:flex;align-items:center;gap:10px;width:100%;padding:14px 4px;border-bottom:1px solid rgba(217,186,111,.13);color:var(--silver)!important;opacity:1!important;font-family:'Montserrat',sans-serif;font-size:13px;font-weight:600;letter-spacing:1.2px;text-transform:uppercase;-webkit-text-fill-color:currentColor;}
+.mobile-nav-panel a i{color:var(--gold);min-width:16px;}
+.mobile-nav-panel a.mobile-sub-link{padding-left:22px;font-size:12px;font-weight:500;color:var(--champagne)!important;text-transform:none;letter-spacing:.4px;}
+.mobile-nav-panel .mobile-cta-link{margin-top:16px;justify-content:center;background:linear-gradient(135deg,var(--gold-mid),var(--gold),var(--gold-mid));color:var(--black)!important;border-bottom:none;-webkit-text-fill-color:var(--black);}
+@media(max-width:1100px){.nav-links,.nav-cta{display:none!important;}.mobile-nav-toggle{display:inline-flex;}}
+@media(max-width:768px){.related-grid{grid-template-columns:1fr;}.related-section{padding:48px 24px;}.ft{grid-template-columns:1fr;}footer{padding:60px 24px 0;}}
 </style>
 </head>
-<body>
-<!-- YOUR EXISTING HEADER/NAV HERE -->
+<body style="padding-top:var(--nav-h);">
+<nav class="nav" id="mainNav">
+  <div class="nav-logo"><a href="prestige-home.html"><img src="prestige group badge.png" alt="Prestige Vacations & Clubs" style="width:50px;height:auto;"></a></div>
+  <ul class="nav-links">
+    <li><a href="prestige-home.html" class="nav-link">Home</a></li>
+    <li><a href="prestige-about.html" class="nav-link">About</a></li>
+    <li class="nav-item"><a href="prestige-country-resort.html" class="nav-link">Properties <i class="fa-solid fa-chevron-down"></i></a><div class="nav-dropdown"><a href="prestige-country-resort.html"><i class="fa-solid fa-tree"></i>The Country Resort</a><a href="prestige-country-suites.html"><i class="fa-solid fa-house"></i>The Country Suites</a><a href="prestige-country-bay.html"><i class="fa-solid fa-water"></i>The Country Bay</a></div></li>
+    <li class="nav-item"><a href="prestige-membership-overview.html" class="nav-link">Membership <i class="fa-solid fa-chevron-down"></i></a><div class="nav-dropdown"><a href="prestige-club-membership.html"><i class="fa-solid fa-crown"></i>Club Membership</a><a href="prestige-holiday-membership.html"><i class="fa-solid fa-umbrella-beach"></i>Holiday Membership</a><a href="prestige-gift-vouchers.html"><i class="fa-solid fa-gift"></i>Gift Vouchers</a></div></li>
+    <li class="nav-item"><a href="prestige-experiences-overview.html" class="nav-link">Experiences <i class="fa-solid fa-chevron-down"></i></a><div class="nav-dropdown"><a href="prestige-resort-stays.html"><i class="fa-solid fa-bed"></i>Resort Stays</a><a href="prestige-day-outings.html"><i class="fa-solid fa-sun"></i>Day Outings</a><a href="prestige-events.html"><i class="fa-solid fa-champagne-glasses"></i>Events</a><a href="prestige-tour-packages.html"><i class="fa-solid fa-map-location-dot"></i>Tour Packages</a><a href="prestige-weddings.html"><i class="fa-solid fa-heart"></i>Weddings</a><a href="prestige-corporate.html"><i class="fa-solid fa-briefcase"></i>Corporate</a></div></li>
+    <li><a href="prestige-gallery.html" class="nav-link">Gallery</a></li>
+    <li><a href="prestige-blog-index.html" class="nav-link active">Blog</a></li>
+    <li class="nav-item"><a href="prestige-member-reviews.html" class="nav-link">Reviews <i class="fa-solid fa-chevron-down"></i></a><div class="nav-dropdown"><a href="prestige-member-reviews.html"><i class="fa-solid fa-star"></i>Member Reviews</a><a href="prestige-video-testimonials.html"><i class="fa-solid fa-circle-play"></i>Video Testimonials</a></div></li>
+    <li><a href="prestige-contact%20(1).html" class="nav-link">Contact</a></li>
+  </ul>
+  <a href="prestige-membership-overview.html" class="btn btn-gold nav-cta">Become a Member</a>
+</nav>
 
-<div class="blog-post-wrap" id="postContent">
-  <div class="blog-not-found">Loading post...</div>
+<div id="postHero"></div>
+<div class="post-wrap" id="postWrap">
+  <div class="post-loading">Loading post…</div>
 </div>
 
-<!-- YOUR EXISTING FOOTER HERE -->
+<!-- Related posts -->
+<div class="related-section" id="relatedSection" style="display:none;">
+  <div class="related-title gold-text">More From Our Blog</div>
+  <div class="related-grid" id="relatedGrid"></div>
+  <div style="text-align:center;margin-top:40px;">
+    <a href="prestige-blog-index.html" class="btn btn-outline" style="color:var(--gold);border-color:var(--gold);">Visit Our Blog →</a>
+  </div>
+</div>
+
+<footer>
+  <div style="max-width:1280px;margin:0 auto;">
+    <div class="ft">
+      <div><div class="fbn gold-text">Prestige</div><div class="fbs">Vacations &amp; Clubs</div><p class="ftag">Live a Prestigious Life</p><p class="fdesc">Chennai's most trusted holiday membership. 15+ years, 14,000+ members, three beautiful resort properties.</p><div class="fci"><i class="fa-solid fa-phone"></i><a href="tel:18001213457" style="color:var(--silver);opacity:.75;">1800 121 3457</a></div><div class="fci"><i class="fa-solid fa-envelope"></i><a href="mailto:info@prestigevacations.in" style="color:var(--silver);opacity:.75;">info@prestigevacations.in</a></div><div class="fso"><a href="https://www.facebook.com/prestigevacationschennai/" target="_blank"><i class="fa-brands fa-facebook-f"></i></a><a href="https://www.instagram.com/prestige_vacations17/" target="_blank"><i class="fa-brands fa-instagram"></i></a><a href="https://youtube.com/channel/UC1k56gGYKjmQKFtGuO7WhlQ" target="_blank"><i class="fa-brands fa-youtube"></i></a><a href="https://wa.me/918001213457" target="_blank"><i class="fa-brands fa-whatsapp"></i></a></div></div>
+      <div><h4 class="fct">Experiences</h4><div class="fcd"></div><ul class="fl"><li><a href="prestige-resort-stays.html">Resort Stays</a></li><li><a href="prestige-day-outings.html">Day Outings</a></li><li><a href="prestige-events.html">Events</a></li><li><a href="prestige-tour-packages.html">Tour Packages</a></li><li><a href="prestige-weddings.html">Weddings</a></li></ul></div>
+      <div><h4 class="fct">Properties</h4><div class="fcd"></div><ul class="fl"><li><a href="prestige-country-resort.html">The Country Resort</a></li><li><a href="prestige-country-suites.html">The Country Suites</a></li><li><a href="prestige-country-bay.html">The Country Bay</a></li></ul></div>
+      <div><h4 class="fct">Get in Touch</h4><div class="fcd"></div><a href="tel:18001213457" class="btn btn-gold" style="width:100%;justify-content:center;margin-bottom:12px;"><i class="fa-solid fa-phone"></i> Call Us Now</a><a href="https://wa.me/918001213457" target="_blank" class="bw" style="width:100%;justify-content:center;display:flex;"><i class="fa-brands fa-whatsapp"></i> WhatsApp Us</a></div>
+    </div>
+    <div class="fbot"><span>© 2025 Prestige Vacations &amp; Clubs. All rights reserved.</span><div class="fbl"><a href="#">Privacy Policy</a><a href="#">Terms</a></div></div>
+  </div>
+</footer>
 
 <script type="module">
-import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js';
-import { getFirestore, doc, getDoc } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js';
+import{initializeApp}from'https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js';
+import{getFirestore,doc,getDoc,collection,query,where,orderBy,limit,getDocs}from'https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js';
+const app=initializeApp({apiKey:"AIzaSyANFWqwFqFuWGNzjZS2crbr_WJ29eSDdRU",authDomain:"prestigevacations.firebaseapp.com",projectId:"prestigevacations",storageBucket:"prestigevacations.firebasestorage.app",messagingSenderId:"294803443782",appId:"1:294803443782:web:a3433f81c5af6a56153a47"});
+const db=getFirestore(app);
 
-const app = initializeApp({
-  apiKey:"AIzaSyANFWqwFqFuWGNzjZS2crbr_WJ29eSDdRU",
-  authDomain:"prestigevacations.firebaseapp.com",
-  projectId:"prestigevacations",
-  storageBucket:"prestigevacations.firebasestorage.app",
-  messagingSenderId:"294803443782",
-  appId:"1:294803443782:web:a3433f81c5af6a56153a47"
-});
-const db = getFirestore(app);
+const id=new URLSearchParams(window.location.search).get('id');
+const wrap=document.getElementById('postWrap');
 
-const id = new URLSearchParams(window.location.search).get('id');
-const wrap = document.getElementById('postContent');
+if(!id){
+  wrap.innerHTML='<div class="post-not-found">Post not found.</div>';
+}else{
+  const snap=await getDoc(doc(db,'blogs',id));
+  if(!snap.exists()||snap.data().status!=='published'){
+    wrap.innerHTML='<div class="post-not-found">Post not found or not published yet.<br><a href="prestige-blog-index.html" style="color:var(--gold-mid);margin-top:16px;display:inline-block;">← Back to Blog</a></div>';
+  }else{
+    const p=snap.data();
+    const date=p.createdAt?.toDate?p.createdAt.toDate().toLocaleDateString('en-IN',{day:'numeric',month:'long',year:'numeric'}):'';
 
-if (!id) { wrap.innerHTML='<div class="blog-not-found">Post not found.</div>'; }
-else {
-  const snap = await getDoc(doc(db,'blog_posts',id));
-  if (!snap.exists() || snap.data().status!=='published') { wrap.innerHTML='<div class="blog-not-found">Post not found or not published yet.</div>'; }
-  else {
-    const p = snap.data();
-    const dateStr = p.created?.toDate ? p.created.toDate().toLocaleDateString('en-IN',{day:'numeric',month:'long',year:'numeric'}) : '';
-    document.getElementById('pageTitle').textContent = (p.seoTitle||p.title) + ' | Prestige Vacations';
-    wrap.innerHTML = `
-      ${p.coverUrl?`<img class="blog-hero" src="${p.coverUrl}" alt="${p.title}"/>`:''}
-      <div class="blog-post-cat">${p.category||'Blog'}</div>
-      <h1 class="blog-post-title">${p.title}</h1>
-      <div class="blog-post-meta">
-        <span>✍ ${p.author||'Prestige'}</span>
-        <span>·</span>
-        <span>${dateStr}</span>
+    // SEO
+    document.getElementById('pageTitle').textContent=(p.seoTitle||p.title)+' | Prestige Vacations & Clubs';
+    if(p.seoDesc){
+      const m=document.createElement('meta');m.name='description';m.content=p.seoDesc;document.head.appendChild(m);
+    }
+
+    // Hero image
+    const heroWrap=document.getElementById('postHero');
+    if(p.coverUrl){
+      heroWrap.innerHTML=`<img class="post-hero" src="${p.coverUrl}" alt="${p.title}"/>`;
+    }else{
+      heroWrap.innerHTML=`<div class="post-hero-placeholder"><i class="fa-solid fa-pen-nib"></i></div>`;
+    }
+
+    // Post content
+    wrap.innerHTML=`
+      <div class="post-breadcrumb">
+        <a href="prestige-home.html">Home</a>
+        <i class="fa-solid fa-chevron-right" style="font-size:8px;"></i>
+        <a href="prestige-blog-index.html">Blog</a>
+        <i class="fa-solid fa-chevron-right" style="font-size:8px;"></i>
+        <span style="color:var(--gold-mid);">${p.title}</span>
       </div>
-      <div class="blog-post-content ql-editor" style="padding:0;">${p.content||''}</div>
-      <div style="margin-top:40px;padding-top:24px;border-top:1px solid #e5e7eb;">
-        <a href="prestige-blog-index.html" style="color:#d1a84b;font-weight:600;text-decoration:none;">← Back to Blog</a>
+      <div class="post-cat">${p.category||'Blog'}</div>
+      <h1 class="post-title">${p.title}</h1>
+      <div class="post-meta">
+        <span><i class="fa-solid fa-user-pen" style="margin-right:5px;"></i>${p.author||'Prestige Team'}</span>
+        <span class="post-meta-divider"></span>
+        <span><i class="fa-regular fa-calendar" style="margin-right:5px;"></i>${date}</span>
+        ${p.category?`<span class="post-meta-divider"></span><span>${p.category}</span>`:''}
+      </div>
+      <div class="post-content ql-editor" style="padding:0;">${p.content||''}</div>
+      <div class="post-footer">
+        <a href="prestige-blog-index.html" class="btn btn-outline" style="font-size:11px;padding:10px 20px;">← Back to Blog</a>
+        <div class="post-share">
+          <span class="share-label">Share</span>
+          <a class="share-btn" href="https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(window.location.href)}" target="_blank" title="Share on Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+          <a class="share-btn" href="https://wa.me/?text=${encodeURIComponent(p.title+' '+window.location.href)}" target="_blank" title="Share on WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+          <a class="share-btn" href="https://twitter.com/intent/tweet?url=${encodeURIComponent(window.location.href)}&text=${encodeURIComponent(p.title)}" target="_blank" title="Share on Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+        </div>
       </div>`;
+
+    // Related posts
+    const relSnap=await getDocs(query(collection(db,'blogs'),where('status','==','published'),orderBy('createdAt','desc'),limit(4)));
+    const related=relSnap.docs.map(d=>({id:d.id,...d.data()})).filter(r=>r.id!==id).slice(0,3);
+    if(related.length){
+      document.getElementById('relatedSection').style.display='block';
+      document.getElementById('relatedGrid').innerHTML=related.map(r=>`
+        <a class="related-card" href="prestige-blog-post.html?id=${r.id}">
+          ${r.coverUrl?`<img src="${r.coverUrl}" alt="${r.title}" loading="lazy"/>`:`<div class="related-card-placeholder"><i class="fa-solid fa-pen-nib"></i></div>`}
+          <div class="related-card-body">
+            <div class="related-card-cat">${r.category||'Blog'}</div>
+            <div class="related-card-title">${r.title}</div>
+          </div>
+        </a>`).join('');
+    }
   }
 }
+</script>
+<script>
+const nav=document.getElementById('mainNav');
+window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',window.scrollY>60));
+(function(){function ready(fn){if(document.readyState!=='loading')fn();else document.addEventListener('DOMContentLoaded',fn);}ready(function(){var nav=document.querySelector('nav.nav');if(!nav||nav.querySelector('.mobile-nav-toggle'))return;var toggle=document.createElement('button');toggle.className='mobile-nav-toggle';toggle.type='button';toggle.innerHTML='<span></span><span></span><span></span>';nav.appendChild(toggle);var panel=document.createElement('div');panel.className='mobile-nav-panel';var list=nav.querySelector('.nav-links');if(list){list.querySelectorAll(':scope > li').forEach(function(item){var topLink=item.querySelector(':scope > a');if(topLink){var c=topLink.cloneNode(true);c.className='';panel.appendChild(c);}item.querySelectorAll('.nav-dropdown a').forEach(function(sl){var sc=sl.cloneNode(true);sc.className='mobile-sub-link';panel.appendChild(sc);});});}var cta=nav.querySelector('.nav-cta');if(cta){var cc=cta.cloneNode(true);cc.className='mobile-cta-link';panel.appendChild(cc);}document.body.appendChild(panel);function setOpen(o){document.body.classList.toggle('mobile-nav-open',o);}toggle.addEventListener('click',function(){setOpen(!document.body.classList.contains('mobile-nav-open'));});panel.addEventListener('click',function(e){if(e.target.closest('a'))setOpen(false);});window.addEventListener('resize',function(){if(window.innerWidth>1100)setOpen(false);});document.addEventListener('keydown',function(e){if(e.key==='Escape')setOpen(false);});});})();
 </script>
 </body>
 </html>
