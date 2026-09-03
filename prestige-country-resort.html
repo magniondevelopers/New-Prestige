@@ -1528,12 +1528,53 @@
     </div>
   </div>
 </section>
+<style>
+    /* ─── REGISTER SECTION ────────────────────────────────── */
+    .register-section {
+      padding: 100px 48px;
+      background-color: var(--black);
+      background-image:
+        radial-gradient(ellipse 60% 80% at 50% 50%, rgba(217,186,111,0.08) 0%, transparent 70%),
+        radial-gradient(ellipse 30% 40% at 10% 50%, rgba(217,186,111,0.1)  0%, transparent 50%),
+        radial-gradient(ellipse 30% 40% at 90% 50%, rgba(217,186,111,0.1)  0%, transparent 50%);
+      text-align: center;
+      border-top: 1px solid rgba(217,186,111,0.15);
+      border-bottom: 1px solid rgba(217,186,111,0.15);
+    }
+    .register-script { font-family: 'Great Vibes', cursive; font-size: clamp(24px, 4vw, 40px); color: var(--silver); opacity: 0.8; display: block; margin-bottom: 12px; }
+    .register-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(34px, 6vw, 60px); font-weight: 700; line-height: 1.1; margin-bottom: 20px; }
+    .register-sub { font-size: 14px; font-weight: 300; color: var(--silver); opacity: 0.7; max-width: 540px; margin: 0 auto 48px; line-height: 1.7; }
+    .register-form { max-width: 560px; margin: 0 auto; text-align: left; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
+    .form-group { display: flex; flex-direction: column; gap: 6px; }
+    .form-group label { font-size: 10px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--gold-bronze); }
+    .form-group input, .form-group select, .form-group textarea { background: rgba(217,186,111,0.05); border: 1px solid rgba(217,186,111,0.2); color: var(--silver); font-family: 'Montserrat', sans-serif; font-size: 13px; font-weight: 300; padding: 13px 16px; outline: none; transition: border-color 0.2s; width: 100%; }
+    .form-group input::placeholder, .form-group textarea::placeholder { color: rgba(220,220,220,0.3); font-size: 12px; }
+    .form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: var(--gold-mid); background: rgba(217,186,111,0.08); }
+    .form-group select option { background: var(--matte-black); color: var(--silver); }
+    .form-group textarea { resize: vertical; min-height: 80px; }
+    .form-submit { width: 100%; margin-top: 8px; justify-content: center; font-size: 13px; padding: 16px; }
+    .form-note { font-size: 11px; color: var(--silver); opacity: 0.45; text-align: center; margin-top: 14px; }
+    .register-or { text-align: center; margin: 32px 0 20px; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--gold-bronze); opacity: 0.6; position: relative; }
+    .register-or::before, .register-or::after { content: ''; position: absolute; top: 50%; width: 40%; height: 1px; background: rgba(163,137,90,0.2); }
+    .register-or::before { left: 0; }
+    .register-or::after { right: 0; }
+    .register-alts { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+
+    /* ─── MEMBERSHIP CODE ROW ─────────────────────────────── */
+    #r-code-row { display: none; }
+    #r-code-row .form-group { grid-column: 1 / -1; }
+    .field-error { border-color: #e04c4c !important; }
+    .field-error-msg { font-size: 11px; color: #e04c4c; margin-top: 4px; display: none; }
+</style>
+
 <!-- ═══ INTEREST REGISTRATION ══════════════════════════════ -->
 <section class="register-section" id="register">
   <div class="container">
     <span class="register-script">Be among the first</span>
     <h2 class="register-title gold-text">Register Your Interest<br>in The Country Resort</h2>
     <p class="register-sub">The Country resort is newly launched. Register below and our team will reach out with full details, pricing, and availability — Prestige members get priority access.</p>
+
     <div class="register-form fade-in">
       <div class="form-row">
         <div class="form-group">
@@ -1545,6 +1586,7 @@
           <input type="tel" id="r-phone" placeholder="+91 XXXXX XXXXX" />
         </div>
       </div>
+
       <div class="form-row">
         <div class="form-group">
           <label for="r-email">Email Address</label>
@@ -1552,7 +1594,7 @@
         </div>
         <div class="form-group">
           <label for="r-member">Are You a Prestige Member?</label>
-          <select id="r-member">
+          <select id="r-member" onchange="toggleMemberCode()">
             <option value="" disabled selected>Select an option</option>
             <option value="yes">Yes — I'm a Prestige member</option>
             <option value="no">No — I'm a new visitor</option>
@@ -1560,6 +1602,16 @@
           </select>
         </div>
       </div>
+
+      <!-- Membership code — shown only when "Yes" is selected -->
+      <div class="form-row" id="r-code-row">
+        <div class="form-group">
+          <label for="r-code">Membership Code</label>
+          <input type="text" id="r-code" placeholder="Enter your Prestige membership code" />
+          <span class="field-error-msg" id="r-code-error">Please enter your membership code.</span>
+        </div>
+      </div>
+
       <div class="form-row">
         <div class="form-group">
           <label for="r-type">Interest Type</label>
@@ -1578,15 +1630,18 @@
           <input type="text" id="r-date" placeholder="e.g. Dec 2025, Jan 2026" />
         </div>
       </div>
+
       <div class="form-group" style="margin-bottom:16px;">
         <label for="r-message">Message (Optional)</label>
         <textarea id="r-message" placeholder="Tell us more — group size, occasion, specific requirements..."></textarea>
       </div>
+
       <button class="btn btn-gold form-submit" onclick="submitForm()">
         <i class="fa-solid fa-paper-plane"></i> Submit Your Interest
       </button>
       <p class="form-note">Our team will contact you within 24 hours. Your details are private and will never be shared.</p>
     </div>
+
     <div class="register-or">or reach us directly</div>
     <div class="register-alts">
       <a href="tel:18001213457" class="btn btn-outline"><i class="fa-solid fa-phone"></i> 1800 121 3457</a>
@@ -1596,6 +1651,72 @@
   </div>
 </section>
 
+<script>
+  // Show/hide the membership code field based on the selection
+  function toggleMemberCode() {
+    const member = document.getElementById('r-member').value;
+    const codeRow = document.getElementById('r-code-row');
+    const codeInput = document.getElementById('r-code');
+
+    if (member === 'yes') {
+      codeRow.style.display = 'grid';
+    } else {
+      codeRow.style.display = 'none';
+      codeInput.value = '';
+      codeInput.classList.remove('field-error');
+      document.getElementById('r-code-error').style.display = 'none';
+    }
+  }
+
+  // Handles validation + submission, including the membership code
+  function submitForm() {
+    const name = document.getElementById('r-name').value.trim();
+    const phone = document.getElementById('r-phone').value.trim();
+    const email = document.getElementById('r-email').value.trim();
+    const member = document.getElementById('r-member').value;
+    const codeInput = document.getElementById('r-code');
+    const code = codeInput.value.trim();
+    const type = document.getElementById('r-type').value;
+    const date = document.getElementById('r-date').value.trim();
+    const message = document.getElementById('r-message').value.trim();
+
+    // Basic required-field check
+    if (!name || !phone || !email || !member || !type) {
+      alert('Please fill in all required fields.');
+      return;
+    }
+
+    // If member is "Yes", the code becomes required
+    if (member === 'yes' && !code) {
+      codeInput.classList.add('field-error');
+      document.getElementById('r-code-error').style.display = 'block';
+      codeInput.focus();
+      return;
+    } else {
+      codeInput.classList.remove('field-error');
+      document.getElementById('r-code-error').style.display = 'none';
+    }
+
+    const formData = {
+      name,
+      phone,
+      email,
+      isMember: member,
+      membershipCode: member === 'yes' ? code : null,
+      interestType: type,
+      preferredDate: date,
+      message
+    };
+
+    // Replace this with your actual submission logic (fetch/AJAX to backend)
+    console.log('Submitting:', formData);
+    alert('Thank you! Your interest has been submitted. Our team will contact you within 24 hours.');
+
+    // Optional: reset form after submit
+    // document.querySelectorAll('.register-form input, .register-form select, .register-form textarea').forEach(el => el.value = '');
+    // toggleMemberCode();
+  }
+</script>
 
 <!-- ═══ FOOTER ════════════════════════════════════════════ -->
 <footer>
