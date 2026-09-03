@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Prestige Admin Panel</title>
+<link href="https://cdn.quilljs.com/1.3.7/quill.snow.css" rel="stylesheet"/>
+<script src="https://cdn.quilljs.com/1.3.7/quill.min.js"></script>
+<style>
+:root{--gold:#C9A44B;--glt:#D9BA6F;--blk:#1a1a17;--bg:#f0f2f5;--sw:240px;}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--bg);color:#1a1a17;}
+#login-screen{display:flex;align-items:center;justify-content:center;min-height:100vh;background:var(--blk);}
+.login-box{background:#fff;border-radius:14px;padding:48px 40px;width:380px;box-shadow:0 24px 64px rgba(0,0,0,.4);}
+.login-logo{font-size:28px;font-weight:800;color:var(--gold);margin-bottom:4px;}
+.login-sub{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#9ca3af;margin-bottom:32px;}
+.login-box input{width:100%;border:1px solid #e5e7eb;border-radius:6px;padding:10px 12px;font-size:14px;margin-bottom:12px;outline:none;}
+.login-box input:focus{border-color:var(--gold);}
+.login-btn{width:100%;background:linear-gradient(135deg,var(--gold),var(--glt));border:none;border-radius:6px;padding:11px;font-size:14px;font-weight:700;cursor:pointer;color:var(--blk);}
+.login-err{color:#ef4444;font-size:12px;margin-top:8px;text-align:center;}
+#app{display:flex;min-height:100vh;}
+.sidebar{width:var(--sw);background:var(--blk);position:fixed;top:0;left:0;bottom:0;display:flex;flex-direction:column;overflow-y:auto;z-index:100;}
+.sb-brand{padding:24px 20px 16px;border-bottom:1px solid rgba(255,255,255,.08);}
+.sb-brand-name{font-size:18px;font-weight:800;color:var(--glt);}
+.sb-brand-sub{font-size:9px;letter-spacing:2.5px;text-transform:uppercase;color:rgba(255,255,255,.3);margin-top:2px;}
+.sb-badge-panel{background:rgba(201,164,75,.15);border-radius:4px;padding:2px 7px;font-size:9px;font-weight:700;color:var(--gold);margin-top:6px;display:inline-block;}
+.sb-sec{font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.25);padding:16px 20px 4px;}
+.nav-item{display:flex;align-items:center;gap:10px;padding:10px 20px;font-size:13px;font-weight:500;color:rgba(255,255,255,.55);cursor:pointer;transition:all .2s;}
+.nav-item:hover{color:#fff;background:rgba(255,255,255,.06);}
+.nav-item.active{color:var(--glt);background:rgba(201,164,75,.12);border-right:3px solid var(--gold);}
+.sb-bottom{margin-top:auto;border-top:1px solid rgba(255,255,255,.06);}
+.sb-user{padding:12px 20px;display:flex;align-items:center;gap:8px;}
+.sb-av{width:30px;height:30px;border-radius:50%;background:linear-gradient(135deg,var(--gold),#a3895a);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:12px;color:var(--blk);}
+#admin-email{font-size:11px;color:rgba(255,255,255,.4);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:160px;}
+.logout-btn{background:none;border:none;cursor:pointer;color:rgba(255,255,255,.4);font-size:12px;padding:8px 20px;width:100%;text-align:left;}
+.logout-btn:hover{color:#fff;}
+.main{margin-left:var(--sw);flex:1;display:flex;flex-direction:column;}
+.topbar{position:sticky;top:0;background:#fff;border-bottom:1px solid #e5e7eb;padding:0 28px;height:56px;display:flex;align-items:center;justify-content:space-between;z-index:50;box-shadow:0 1px 3px rgba(0,0,0,.06);}
+.topbar-title{font-size:15px;font-weight:700;}
+.content{padding:28px;}
+.stat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:16px;margin-bottom:28px;}
+.stat-card{background:#fff;border:1px solid #e5e7eb;border-radius:10px;padding:20px;}
+.stat-num{font-size:28px;font-weight:800;color:var(--blk);}
+.stat-label{font-size:11px;color:#6b7280;margin-top:4px;}
+.stat-sub{font-size:11px;color:var(--gold);font-weight:600;margin-top:2px;}
+.stat-icon{font-size:22px;margin-bottom:10px;}
+.panel{background:#fff;border:1px solid #e5e7eb;border-radius:10px;overflow:hidden;margin-bottom:20px;}
+.panel-header{padding:16px 20px;border-bottom:1px solid #e5e7eb;display:flex;align-items:center;justify-content:space-between;}
+.panel-title{font-size:14px;font-weight:700;}
+.panel-body{padding:20px;}
+.btn{display:inline-flex;align-items:center;gap:6px;padding:8px 16px;border-radius:6px;font-size:13px;font-weight:600;cursor:pointer;border:none;transition:all .2s;}
+.btn-gold{background:linear-gradient(135deg,var(--gold),var(--glt));color:var(--blk);}
+.btn-gold:hover{opacity:.9;}
+.btn-outline{background:#fff;border:1px solid #d1d5db;color:#374151;}
+.btn-outline:hover{border-color:var(--gold);color:var(--gold);}
+.btn-danger{background:#fef2f2;border:1px solid #fecaca;color:#dc2626;}
+.btn-sm{padding:4px 10px;font-size:12px;border-radius:4px;cursor:pointer;font-weight:600;border:1px solid;}
+table{width:100%;border-collapse:collapse;}
+th{background:#f9fafb;font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#6b7280;padding:10px 14px;text-align:left;border-bottom:2px solid #e5e7eb;}
+td{padding:12px 14px;font-size:13px;border-bottom:1px solid #f3f4f6;vertical-align:middle;}
+tr:last-child td{border-bottom:none;}
+.unread-row{background:#fffbeb!important;}
+.actions-cell{display:flex;gap:6px;flex-wrap:wrap;}
+.tc-empty{text-align:center;color:#9ca3af;padding:32px;}
+.status-badge{padding:2px 8px;border-radius:20px;font-size:10px;font-weight:700;text-transform:uppercase;}
+.status-published{background:#d1fae5;color:#065f46;}
+.status-draft{background:#f3f4f6;color:#6b7280;}
+.inq-type{background:#eff6ff;color:#1d4ed8;padding:2px 8px;border-radius:20px;font-size:10px;font-weight:700;}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+.form-full{grid-column:1/-1;}
+label.lbl{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#374151;display:block;margin-bottom:5px;}
+input[type=text],input[type=url],input[type=date],input[type=email],input[type=password],input[type=number],select,textarea{width:100%;border:1px solid #d1d5db;border-radius:6px;padding:9px 12px;font-size:13px;font-family:inherit;outline:none;}
+input:focus,select:focus,textarea:focus{border-color:var(--gold);box-shadow:0 0 0 3px rgba(201,164,75,.1);}
+textarea{resize:vertical;min-height:100px;}
+.form-actions{display:flex;gap:10px;margin-top:20px;justify-content:flex-end;}
+.tag-row{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-bottom:16px;}
+.tag-chip{background:rgba(201,164,75,.12);color:var(--gold);border:1px solid rgba(201,164,75,.3);border-radius:20px;padding:4px 12px;font-size:12px;font-weight:600;display:inline-flex;align-items:center;gap:6px;}
+.tag-chip button{background:none;border:none;cursor:pointer;font-size:14px;color:var(--gold);line-height:1;}
+.photo-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:12px;margin-top:16px;}
+.photo-card{border-radius:8px;overflow:hidden;border:1px solid #e5e7eb;}
+.photo-card img{width:100%;height:130px;object-fit:cover;display:block;}
+.photo-info{padding:8px 10px;display:flex;align-items:center;justify-content:space-between;}
+.photo-tag{font-size:10px;font-weight:700;color:var(--gold);text-transform:uppercase;}
+#quill-editor{min-height:360px;font-size:14px;}
+.ql-toolbar{border-radius:6px 6px 0 0!important;border-color:#d1d5db!important;}
+.ql-container{border-radius:0 0 6px 6px!important;border-color:#d1d5db!important;}
+.cover-preview{width:100%;max-height:200px;object-fit:cover;border-radius:6px;margin-top:8px;}
+.reel-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px;}
+.reel-card{background:#fff;border:1px solid #e5e7eb;border-radius:10px;overflow:hidden;}
+.reel-thumb{width:100%;height:160px;background:var(--blk);position:relative;display:flex;align-items:center;justify-content:center;overflow:hidden;}
+.reel-thumb img{width:100%;height:100%;object-fit:cover;}
+.reel-thumb-placeholder{font-size:36px;color:rgba(255,255,255,.3);}
+.reel-overlay{position:absolute;bottom:8px;right:8px;background:rgba(0,0,0,.6);color:#fff;font-size:11px;padding:3px 8px;border-radius:4px;}
+.reel-info{padding:12px 14px;}
+.reel-url{font-size:10px;color:#9ca3af;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-top:2px;}
+.reel-actions{padding:8px 14px 14px;display:flex;gap:8px;}
+.modal-backdrop{display:none;position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:200;align-items:center;justify-content:center;}
+.modal-box{background:#fff;border-radius:12px;width:580px;max-width:95vw;max-height:90vh;overflow-y:auto;box-shadow:0 24px 48px rgba(0,0,0,.2);}
+.modal-header{padding:20px 24px;border-bottom:1px solid #e5e7eb;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;background:#fff;z-index:1;}
+.modal-title{font-size:15px;font-weight:700;}
+.modal-close{background:none;border:none;cursor:pointer;font-size:22px;color:#9ca3af;line-height:1;}
+.modal-body{padding:24px;}
+.inq-detail{display:flex;flex-direction:column;gap:14px;}
+.inq-row{display:flex;gap:12px;align-items:flex-start;}
+.inq-row label{font-size:11px;font-weight:700;text-transform:uppercase;color:#9ca3af;width:80px;flex-shrink:0;padding-top:2px;}
+.inq-row.full{flex-direction:column;}
+.inq-row.full label{width:auto;}
+.inq-message{background:#f9fafb;border:1px solid #e5e7eb;border-radius:6px;padding:12px;font-size:13px;line-height:1.6;white-space:pre-wrap;}
+.meta{font-size:11px;color:#9ca3af;margin-top:2px;}
+.fw-bold{font-weight:700;}
+.section{display:none;}
+.divider{border-top:1px solid rgba(255,255,255,.06);margin:8px 0;}
+.page-title{font-size:20px;font-weight:800;margin-bottom:20px;}
+</style>
+</head>
+<body>
+
+<!-- LOGIN -->
+<div id="login-screen">
+  <div class="login-box">
+    <div class="login-logo">⬡ Prestige</div>
+    <div class="login-sub">Admin Panel · Vacations &amp; Clubs</div>
+    <input type="email" id="l-email" placeholder="Admin email" autocomplete="email"/>
+    <input type="password" id="l-pw" placeholder="Password" autocomplete="current-password" onkeydown="if(event.key==='Enter')doLogin()"/>
+    <button class="login-btn" onclick="doLogin()">Sign In</button>
+    <div class="login-err" id="l-err"></div>
+  </div>
+</div>
+
+<!-- APP -->
+<div id="app" style="display:none;">
+  <div class="sidebar">
+    <div class="sb-brand">
+      <div class="sb-brand-name">⬡ Prestige</div>
+      <div class="sb-brand-sub">Vacations &amp; Clubs</div>
+      <div class="sb-badge-panel">Admin Panel</div>
+    </div>
+    <div class="sb-sec">Overview</div>
+    <div class="nav-item active" data-nav="dashboard" onclick="loadSection('dashboard')">📊 Dashboard</div>
+    <div class="sb-sec">Content</div>
+    <div class="nav-item" data-nav="gallery" onclick="loadSection('gallery')">🖼️ Gallery</div>
+    <div class="nav-item" data-nav="blog" onclick="loadSection('blog')">✍️ Blog Posts</div>
+    <div class="nav-item" data-nav="reviews" onclick="loadSection('reviews')">⭐ Member Reviews</div>
+    <div class="nav-item" data-nav="testimonials" onclick="loadSection('testimonials')">🎬 Video Testimonials</div>
+    <div class="sb-sec">Leads</div>
+    <div class="nav-item" data-nav="inquiries" onclick="loadSection('inquiries')">📩 Inquiries</div>
+    <div class="sb-bottom">
+      <div class="divider"></div>
+      <div class="sb-user">
+        <div class="sb-av">A</div>
+        <div id="admin-email"></div>
+      </div>
+      <button class="logout-btn" onclick="doLogout()">→ Sign Out</button>
+    </div>
+  </div>
+
+  <div class="main">
+    <div class="topbar">
+      <div class="topbar-title">Prestige Admin</div>
+      <div style="font-size:12px;color:#9ca3af;">Prestige Vacations &amp; Clubs</div>
+    </div>
+    <div class="content">
+
+      <!-- DASHBOARD -->
+      <div class="section" id="sec-dashboard">
+        <div class="page-title">Dashboard</div>
+        <div class="stat-grid">
+          <div class="stat-card"><div class="stat-icon">🖼️</div><div class="stat-num" id="d-photos">—</div><div class="stat-label">Gallery Photos</div></div>
+          <div class="stat-card"><div class="stat-icon">✍️</div><div class="stat-num" id="d-blogs">—</div><div class="stat-label">Blog Posts</div></div>
+          <div class="stat-card"><div class="stat-icon">⭐</div><div class="stat-num" id="d-reviews">—</div><div class="stat-label">Reviews</div></div>
+          <div class="stat-card"><div class="stat-icon">🎬</div><div class="stat-num" id="d-reels">—</div><div class="stat-label">Reels</div></div>
+          <div class="stat-card"><div class="stat-icon">📩</div><div class="stat-num" id="d-inquiries">—</div><div class="stat-label">Inquiries</div><div class="stat-sub" id="d-unread"></div></div>
+        </div>
+        <div class="panel">
+          <div class="panel-header">
+            <div class="panel-title">Recent Inquiries</div>
+            <button class="btn btn-outline" onclick="loadSection('inquiries')" style="font-size:12px;padding:5px 12px;">View All</button>
+          </div>
+          <table><thead><tr><th>Name</th><th>Email</th><th>Subject</th><th>Date</th><th>Action</th></tr></thead>
+          <tbody id="d-recent"><tr><td colspan="5" class="tc-empty">Loading…</td></tr></tbody></table>
+        </div>
+      </div>
+
+      <!-- GALLERY -->
+      <div class="section" id="sec-gallery">
+        <div class="page-title">Gallery</div>
+        <div class="panel">
+          <div class="panel-header"><div class="panel-title">Category Tags</div></div>
+          <div class="panel-body">
+            <div id="tag-list" class="tag-row"></div>
+            <div style="display:flex;gap:8px;margin-top:8px;">
+              <input type="text" id="new-tag" placeholder="New tag (e.g. The Country Bay)" style="max-width:320px;"/>
+              <button class="btn btn-gold" onclick="addTag()">+ Add Tag</button>
+            </div>
+          </div>
+        </div>
+        <div class="panel">
+          <div class="panel-header"><div class="panel-title">Upload Photos</div></div>
+          <div class="panel-body">
+            <div class="form-grid">
+              <div>
+                <label class="lbl">Category Tag *</label>
+                <select id="photo-tag-select"></select>
+              </div>
+              <div>
+                <label class="lbl">Select Photos (multiple allowed)</label>
+                <input type="file" id="photo-files" multiple accept="image/*"/>
+              </div>
+            </div>
+            <button class="btn btn-gold" style="margin-top:14px;" id="upload-btn" onclick="uploadPhotos()">Upload Photos</button>
+          </div>
+        </div>
+        <div class="panel">
+          <div class="panel-header">
+            <div class="panel-title">All Photos</div>
+            <select id="filter-tag" onchange="filterPhotos()" style="font-size:13px;padding:5px 10px;border:1px solid #d1d5db;border-radius:6px;"></select>
+          </div>
+          <div class="panel-body"><div id="photo-grid" class="photo-grid"></div></div>
+        </div>
+      </div>
+
+      <!-- BLOG -->
+      <div class="section" id="sec-blog">
+        <div id="blog-list-view">
+          <div class="page-title">Blog Posts</div>
+          <div class="panel">
+            <div class="panel-header">
+              <div class="panel-title">All Posts</div>
+              <button class="btn btn-gold" onclick="newBlog()">+ New Post</button>
+            </div>
+            <table><thead><tr><th>Title</th><th>Author</th><th>Status</th><th>Date</th><th>Actions</th></tr></thead>
+            <tbody id="blog-list"><tr><td colspan="5" class="tc-empty">Loading…</td></tr></tbody></table>
+          </div>
+        </div>
+        <div id="blog-form-view" style="display:none;">
+          <div style="display:flex;align-items:center;gap:12px;margin-bottom:20px;">
+            <button class="btn btn-outline" onclick="cancelBlog()">← Back</button>
+            <div class="page-title" id="blog-form-title" style="margin-bottom:0;"></div>
+          </div>
+          <div class="panel">
+            <div class="panel-body">
+              <div class="form-grid">
+                <div class="form-full">
+                  <label class="lbl">Post Title *</label>
+                  <input type="text" id="blog-title" placeholder="Enter blog post title…"/>
+                </div>
+                <div>
+                  <label class="lbl">Author</label>
+                  <input type="text" id="blog-author" placeholder="Author name"/>
+                </div>
+                <div>
+                  <label class="lbl">Category</label>
+                  <input type="text" id="blog-category" placeholder="e.g. Travel, Lifestyle, Resorts"/>
+                </div>
+                <div class="form-full">
+                  <label class="lbl">Cover Image</label>
+                  <input type="file" id="blog-cover" accept="image/*" onchange="previewCover(this)"/>
+                  <img id="blog-cover-preview" class="cover-preview" style="display:none;"/>
+                </div>
+                <div class="form-full">
+                  <label class="lbl">Content *</label>
+                  <div id="quill-editor"></div>
+                </div>
+                <div>
+                  <label class="lbl">SEO Title</label>
+                  <input type="text" id="blog-seo-title" placeholder="Title for search engines"/>
+                </div>
+                <div>
+                  <label class="lbl">SEO Description</label>
+                  <input type="text" id="blog-seo-desc" placeholder="Meta description (160 chars)"/>
+                </div>
+                <div>
+                  <label class="lbl">Status</label>
+                  <select id="blog-status"><option value="draft">Draft</option><option value="published">Published</option></select>
+                </div>
+              </div>
+              <div class="form-actions">
+                <button class="btn btn-outline" onclick="cancelBlog()">Cancel</button>
+                <button class="btn btn-outline" onclick="saveBlog('draft')">Save Draft</button>
+                <button class="btn btn-gold" onclick="saveBlog('published')">Publish Post</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- REVIEWS -->
+      <div class="section" id="sec-reviews">
+        <div class="page-title">Member Reviews</div>
+        <div class="panel">
+          <div class="panel-header">
+            <div class="panel-title">All Reviews</div>
+            <button class="btn btn-gold" onclick="openReviewForm()">+ Add Review</button>
+          </div>
+          <table><thead><tr><th>Reviewer</th><th>Rating</th><th>Review</th><th>Status</th><th>Date</th><th>Actions</th></tr></thead>
+          <tbody id="review-list"><tr><td colspan="6" class="tc-empty">Loading…</td></tr></tbody></table>
+        </div>
+      </div>
+
+      <!-- TESTIMONIALS -->
+      <div class="section" id="sec-testimonials">
+        <div class="page-title">Video Testimonials (Instagram Reels)</div>
+        <div class="panel">
+          <div class="panel-header">
+            <div class="panel-title">All Reels</div>
+            <button class="btn btn-gold" onclick="openReelForm()">+ Add Reel</button>
+          </div>
+          <div class="panel-body"><div id="reel-list" class="reel-grid"></div></div>
+        </div>
+      </div>
+
+      <!-- INQUIRIES -->
+      <div class="section" id="sec-inquiries">
+        <div class="page-title">Contact Inquiries</div>
+        <div class="panel">
+          <div class="panel-header">
+            <div class="panel-title">All Submissions</div>
+            <select id="inq-filter" onchange="filterInquiries()" style="font-size:13px;padding:5px 10px;border:1px solid #d1d5db;border-radius:6px;">
+              <option value="">All</option>
+              <option value="unread">Unread</option>
+              <option value="pending">Pending Reply</option>
+              <option value="replied">Replied</option>
+            </select>
+          </div>
+          <table><thead><tr><th>Contact</th><th>Message</th><th>Form</th><th>Status</th><th>Date</th><th>Actions</th></tr></thead>
+          <tbody id="inquiry-list"><tr><td colspan="6" class="tc-empty">Loading…</td></tr></tbody></table>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- REVIEW MODAL -->
+<div class="modal-backdrop" id="review-modal">
+  <div class="modal-box">
+    <div class="modal-header"><div class="modal-title">Add / Edit Review</div><button class="modal-close" onclick="closeReviewModal()">×</button></div>
+    <div class="modal-body">
+      <div class="form-grid">
+        <div><label class="lbl">Reviewer Name *</label><input type="text" id="r-name" placeholder="e.g. Rajesh Kumar"/></div>
+        <div><label class="lbl">Location</label><input type="text" id="r-location" placeholder="e.g. Chennai, Tamil Nadu"/></div>
+        <div><label class="lbl">Rating</label><select id="r-rating"><option value="5">★★★★★  5 Stars</option><option value="4">★★★★☆  4 Stars</option><option value="3">★★★☆☆  3 Stars</option><option value="2">★★☆☆☆  2 Stars</option><option value="1">★☆☆☆☆  1 Star</option></select></div>
+        <div><label class="lbl">Review Date</label><input type="date" id="r-date"/></div>
+        <div class="form-full"><label class="lbl">Review Text *</label><textarea id="r-text" rows="5" placeholder="Paste the Google review text here…"></textarea></div>
+        <div><label class="lbl">Status</label><select id="r-status"><option value="draft">Draft — not visible on website</option><option value="published">Published — live on website</option></select></div>
+      </div>
+      <div class="form-actions"><button class="btn btn-outline" onclick="closeReviewModal()">Cancel</button><button class="btn btn-gold" onclick="saveReview()">Save Review</button></div>
+    </div>
+  </div>
+</div>
+
+<!-- REEL MODAL -->
+<div class="modal-backdrop" id="reel-modal">
+  <div class="modal-box">
+    <div class="modal-header"><div class="modal-title">Add / Edit Reel</div><button class="modal-close" onclick="closeReelModal()">×</button></div>
+    <div class="modal-body">
+      <div class="form-grid">
+        <div class="form-full"><label class="lbl">Instagram Reel URL *</label><input type="url" id="reel-url" placeholder="https://www.instagram.com/reel/XXXXXXX/"/></div>
+        <div class="form-full"><label class="lbl">Title</label><input type="text" id="reel-title" placeholder="e.g. Arjun family testimonial"/></div>
+        <div class="form-full"><label class="lbl">Caption</label><input type="text" id="reel-caption" placeholder="Short description shown on the card"/></div>
+        <div class="form-full">
+          <label class="lbl">Custom Thumbnail (540×960px recommended)</label>
+          <input type="file" id="reel-thumb-file" accept="image/*" onchange="previewReelThumb(this)"/>
+          <img id="reel-thumb-preview" style="display:none;width:108px;height:192px;object-fit:cover;border-radius:6px;margin-top:8px;border:1px solid #e5e7eb;"/>
+        </div>
+        <div><label class="lbl">Display Order</label><input type="number" id="reel-order" value="0" min="0"/></div>
+        <div><label class="lbl">Status</label><select id="reel-status"><option value="draft">Draft</option><option value="published">Published</option></select></div>
+      </div>
+      <div class="form-actions"><button class="btn btn-outline" onclick="closeReelModal()">Cancel</button><button class="btn btn-gold" onclick="saveReel()">Save Reel</button></div>
+    </div>
+  </div>
+</div>
+
+<!-- INQUIRY MODAL -->
+<div class="modal-backdrop" id="inq-modal">
+  <div class="modal-box">
+    <div class="modal-header"><div class="modal-title">Inquiry Details</div><button class="modal-close" onclick="closeInqModal()">×</button></div>
+    <div class="modal-body" id="inq-modal-content"></div>
+  </div>
+</div>
+
+<script type="module">
+import{initializeApp}from"https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+import{getAuth,signInWithEmailAndPassword,signOut,onAuthStateChanged}from"https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+import{getFirestore,collection,addDoc,getDocs,getDoc,doc,updateDoc,deleteDoc,query,orderBy,serverTimestamp,where}from"https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+import{getStorage,ref,uploadBytes,getDownloadURL,deleteObject}from"https://www.gstatic.com/firebasejs/10.7.1/firebase-storage.js";
+
+const app=initializeApp({apiKey:"AIzaSyANFWqwFqFuWGNzjZS2crbr_WJ29eSDdRU",authDomain:"prestigevacations.firebaseapp.com",projectId:"prestigevacations",storageBucket:"prestigevacations.firebasestorage.app",messagingSenderId:"294803443782",appId:"1:294803443782:web:a3433f81c5af6a56153a47"});
+const auth=getAuth(app),db=getFirestore(app),storage=getStorage(app);
+let quill=null,editingBlogId=null,editingReviewId=null,editingReelId=null,galleryTags=[];
+
+// ── QUILL
+function initQuill(){
+  if(quill)return;
+  quill=new Quill('#quill-editor',{theme:'snow',modules:{toolbar:[[{header:[1,2,3,false]}],['bold','italic','underline','strike'],[{color:[]},{background:[]}],[{list:'ordered'},{list:'bullet'}],[{align:[]}],['blockquote','code-block'],['link','image'],['clean']]},placeholder:'Write your blog post here…'});
+}
+
+// ── AUTH
+onAuthStateChanged(auth,user=>{
+  if(user){
+    document.getElementById('login-screen').style.display='none';
+    document.getElementById('app').style.display='flex';
+    document.getElementById('admin-email').textContent=user.email;
+    loadSection('dashboard');
+  }else{
+    document.getElementById('login-screen').style.display='flex';
+    document.getElementById('app').style.display='none';
+  }
+});
+window.doLogin=async()=>{
+  const email=document.getElementById('l-email').value.trim(),pw=document.getElementById('l-pw').value,err=document.getElementById('l-err');
+  err.textContent='';
+  try{await signInWithEmailAndPassword(auth,email,pw);}catch(e){err.textContent='Invalid email or password.';}
+};
+window.doLogout=async()=>await signOut(auth);
+
+// ── NAV
+window.loadSection=name=>{
+  document.querySelectorAll('.nav-item').forEach(n=>n.classList.remove('active'));
+  const el=document.querySelector('[data-nav="'+name+'"]');
+  if(el)el.classList.add('active');
+  document.querySelectorAll('.section').forEach(s=>s.style.display='none');
+  const sec=document.getElementById('sec-'+name);
+  if(sec)sec.style.display='block';
+  if(name==='gallery')loadGallery();
+  if(name==='blog'){loadBlogs();initQuill();}
+  if(name==='reviews')loadReviews();
+  if(name==='testimonials')loadTestimonials();
+  if(name==='inquiries')loadInquiries();
+  if(name==='dashboard')loadDashboard();
+};
+
+// ── DASHBOARD
+async function loadDashboard(){
+  try{
+    const[a,b,c,d,e]=await Promise.all([getDocs(collection(db,'gallery_photos')),getDocs(collection(db,'blogs')),getDocs(collection(db,'reviews')),getDocs(collection(db,'testimonials')),getDocs(collection(db,'inquiries'))]);
+    document.getElementById('d-photos').textContent=a.size;
+    document.getElementById('d-blogs').textContent=b.size;
+    document.getElementById('d-reviews').textContent=c.size;
+    document.getElementById('d-reels').textContent=d.size;
+    document.getElementById('d-inquiries').textContent=e.size;
+    const unread=[...e.docs].filter(x=>!x.data().read).length;
+    document.getElementById('d-unread').textContent=unread+' unread';
+    const recent=[...e.docs].sort((x,y)=>(y.data().createdAt?.seconds||0)-(x.data().createdAt?.seconds||0)).slice(0,5);
+    document.getElementById('d-recent').innerHTML=recent.map(x=>{const d=x.data();return`<tr class="${!d.read?'unread-row':''}"><td><b>${d.name||'—'}</b></td><td>${d.email||'—'}</td><td>${d.subject||d.message?.substring(0,50)||'—'}</td><td>${d.createdAt?.toDate?d.createdAt.toDate().toLocaleDateString():'—'}</td><td><button class="btn-sm btn-outline" onclick="loadSection('inquiries')">View</button></td></tr>`;}).join('')||'<tr><td colspan="5" class="tc-empty">No inquiries yet</td></tr>';
+  }catch(e){console.error(e);}
+}
+
+// ── GALLERY
+async function loadGallery(){
+  const[ps,ts]=await Promise.all([getDocs(query(collection(db,'gallery_photos'),orderBy('createdAt','desc'))),getDocs(collection(db,'gallery_tags'))]);
+  galleryTags=ts.docs.map(d=>({id:d.id,...d.data()}));
+  document.getElementById('tag-list').innerHTML=galleryTags.map(t=>`<span class="tag-chip">${t.name} <button onclick="deleteTag('${t.id}')">×</button></span>`).join('')||'<span style="color:#9ca3af;font-size:12px;">No tags yet — add one above</span>';
+  const opts=galleryTags.map(t=>`<option value="${t.name}">${t.name}</option>`).join('');
+  document.getElementById('photo-tag-select').innerHTML='<option value="">— Select Tag —</option>'+opts;
+  document.getElementById('filter-tag').innerHTML='<option value="">All Photos</option>'+opts;
+  renderPhotos(ps.docs.map(d=>({id:d.id,...d.data()})));
+}
+function renderPhotos(photos){
+  document.getElementById('photo-grid').innerHTML=photos.length?photos.map(p=>`<div class="photo-card"><img src="${p.url}" loading="lazy"/><div class="photo-info"><span class="photo-tag">${p.tag||'—'}</span><button class="btn-sm btn-danger" onclick="deletePhoto('${p.id}','${p.url}')">✕</button></div></div>`).join(''):'<p style="color:#9ca3af;padding:24px;text-align:center;">No photos yet.</p>';
+}
+window.addTag=async()=>{
+  const name=document.getElementById('new-tag').value.trim();
+  if(!name)return;
+  await addDoc(collection(db,'gallery_tags'),{name,createdAt:serverTimestamp()});
+  document.getElementById('new-tag').value='';
+  loadGallery();
+};
+window.deleteTag=async id=>{if(!confirm('Delete this tag?'))return;await deleteDoc(doc(db,'gallery_tags',id));loadGallery();};
+window.filterPhotos=async()=>{
+  const tag=document.getElementById('filter-tag').value;
+  const q=tag?query(collection(db,'gallery_photos'),where('tag','==',tag),orderBy('createdAt','desc')):query(collection(db,'gallery_photos'),orderBy('createdAt','desc'));
+  const snap=await getDocs(q);
+  renderPhotos(snap.docs.map(d=>({id:d.id,...d.data()})));
+};
+window.uploadPhotos=async()=>{
+  const files=document.getElementById('photo-files').files;
+  const tag=document.getElementById('photo-tag-select').value;
+  if(!files.length)return alert('Select photos first.');
+  if(!tag)return alert('Select a category tag first.');
+  const btn=document.getElementById('upload-btn');
+  btn.disabled=true;btn.textContent='Uploading…';
+  try{
+    for(const file of files){
+      const r=ref(storage,`gallery/${Date.now()}_${file.name}`);
+      await uploadBytes(r,file);
+      const url=await getDownloadURL(r);
+      await addDoc(collection(db,'gallery_photos'),{url,tag,name:file.name,createdAt:serverTimestamp()});
+    }
+    document.getElementById('photo-files').value='';
+    loadGallery();
+  }catch(e){alert('Upload failed: '+e.message);}
+  btn.disabled=false;btn.textContent='Upload Photos';
+};
+window.deletePhoto=async(id,url)=>{
+  if(!confirm('Delete this photo?'))return;
+  try{await deleteObject(ref(storage,url));}catch(e){}
+  await deleteDoc(doc(db,'gallery_photos',id));
+  loadGallery();
+};
+
+// ── BLOG
+async function loadBlogs(){
+  const snap=await getDocs(query(collection(db,'blogs'),orderBy('createdAt','desc')));
+  const blogs=snap.docs.map(d=>({id:d.id,...d.data()}));
+  document.getElementById('blog-list').innerHTML=blogs.length?blogs.map(b=>`<tr><td><div class="fw-bold">${b.title||'Untitled'}</div><div class="meta">${b.category||''}</div></td><td>${b.author||'—'}</td><td><span class="status-badge status-${b.status||'draft'}">${b.status||'draft'}</span></td><td>${b.createdAt?.toDate?b.createdAt.toDate().toLocaleDateString():'—'}</td><td class="actions-cell"><button class="btn-sm btn-outline" onclick="editBlog('${b.id}')">Edit</button><button class="btn-sm btn-danger" onclick="deleteBlog('${b.id}')">Delete</button></td></tr>`).join(''):'<tr><td colspan="5" class="tc-empty">No blog posts yet.</td></tr>';
+}
+window.newBlog=()=>{
+  editingBlogId=null;
+  document.getElementById('blog-form-title').textContent='New Blog Post';
+  ['blog-title','blog-author','blog-category','blog-seo-title','blog-seo-desc'].forEach(id=>document.getElementById(id).value='');
+  document.getElementById('blog-status').value='draft';
+  document.getElementById('blog-cover-preview').style.display='none';
+  if(quill)quill.setContents([]);
+  document.getElementById('blog-list-view').style.display='none';
+  document.getElementById('blog-form-view').style.display='block';
+};
+window.editBlog=async id=>{
+  const snap=await getDoc(doc(db,'blogs',id));if(!snap.exists())return;
+  const b=snap.data();editingBlogId=id;
+  document.getElementById('blog-form-title').textContent='Edit Blog Post';
+  document.getElementById('blog-title').value=b.title||'';
+  document.getElementById('blog-author').value=b.author||'';
+  document.getElementById('blog-category').value=b.category||'';
+  document.getElementById('blog-seo-title').value=b.seoTitle||'';
+  document.getElementById('blog-seo-desc').value=b.seoDesc||'';
+  document.getElementById('blog-status').value=b.status||'draft';
+  if(b.coverUrl){document.getElementById('blog-cover-preview').src=b.coverUrl;document.getElementById('blog-cover-preview').style.display='block';}
+  if(quill&&b.content)quill.root.innerHTML=b.content;
+  document.getElementById('blog-list-view').style.display='none';
+  document.getElementById('blog-form-view').style.display='block';
+};
+window.cancelBlog=()=>{
+  document.getElementById('blog-list-view').style.display='block';
+  document.getElementById('blog-form-view').style.display='none';
+  editingBlogId=null;
+};
+window.saveBlog=async status=>{
+  const title=document.getElementById('blog-title').value.trim();
+  if(!title)return alert('Blog title is required.');
+  const author=document.getElementById('blog-author').value.trim();
+  const category=document.getElementById('blog-category').value.trim();
+  const seoTitle=document.getElementById('blog-seo-title').value.trim();
+  const seoDesc=document.getElementById('blog-seo-desc').value.trim();
+  const content=quill?quill.root.innerHTML:'';
+  let coverUrl=editingBlogId?(await getDoc(doc(db,'blogs',editingBlogId))).data()?.coverUrl||'':'';
+  const coverFile=document.getElementById('blog-cover').files[0];
+  if(coverFile){const r=ref(storage,`blog-covers/${Date.now()}_${coverFile.name}`);await uploadBytes(r,coverFile);coverUrl=await getDownloadURL(r);}
+  const slug=title.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/(^-|-$)/g,'');
+  const data={title,author,category,content,coverUrl,seoTitle,seoDesc,status,slug,updatedAt:serverTimestamp()};
+  if(editingBlogId){await updateDoc(doc(db,'blogs',editingBlogId),data);}
+  else{await addDoc(collection(db,'blogs'),{...data,createdAt:serverTimestamp()});}
+  cancelBlog();loadBlogs();
+};
+window.deleteBlog=async id=>{if(!confirm('Delete this blog post?'))return;await deleteDoc(doc(db,'blogs',id));loadBlogs();};
+window.previewCover=input=>{if(input.files[0]){const r=new FileReader();r.onload=e=>{document.getElementById('blog-cover-preview').src=e.target.result;document.getElementById('blog-cover-preview').style.display='block';};r.readAsDataURL(input.files[0]);}};
+
+// ── REVIEWS
+async function loadReviews(){
+  const snap=await getDocs(query(collection(db,'reviews'),orderBy('createdAt','desc')));
+  const reviews=snap.docs.map(d=>({id:d.id,...d.data()}));
+  document.getElementById('review-list').innerHTML=reviews.length?reviews.map(r=>`<tr><td><div class="fw-bold">${r.name||'—'}</div><div class="meta">${r.location||''}</div></td><td style="color:#f59e0b;">${'★'.repeat(r.rating||5)}</td><td>${(r.text||'').substring(0,80)}…</td><td><span class="status-badge status-${r.status||'draft'}">${r.status||'draft'}</span></td><td>${r.date||'—'}</td><td class="actions-cell"><button class="btn-sm btn-outline" onclick="editReview('${r.id}')">Edit</button><button class="btn-sm btn-danger" onclick="deleteReview('${r.id}')">Delete</button></td></tr>`).join(''):'<tr><td colspan="6" class="tc-empty">No reviews yet.</td></tr>';
+}
+window.openReviewForm=()=>{
+  editingReviewId=null;
+  ['r-name','r-location','r-text'].forEach(id=>document.getElementById(id).value='');
+  document.getElementById('r-rating').value='5';
+  document.getElementById('r-date').value=new Date().toISOString().split('T')[0];
+  document.getElementById('r-status').value='draft';
+  document.getElementById('review-modal').style.display='flex';
+};
+window.editReview=async id=>{
+  const snap=await getDoc(doc(db,'reviews',id));if(!snap.exists())return;
+  const r=snap.data();editingReviewId=id;
+  document.getElementById('r-name').value=r.name||'';
+  document.getElementById('r-location').value=r.location||'';
+  document.getElementById('r-rating').value=r.rating||5;
+  document.getElementById('r-text').value=r.text||'';
+  document.getElementById('r-date').value=r.date||'';
+  document.getElementById('r-status').value=r.status||'draft';
+  document.getElementById('review-modal').style.display='flex';
+};
+window.closeReviewModal=()=>{document.getElementById('review-modal').style.display='none';editingReviewId=null;};
+window.saveReview=async()=>{
+  const name=document.getElementById('r-name').value.trim(),text=document.getElementById('r-text').value.trim();
+  if(!name||!text)return alert('Name and review text are required.');
+  const data={name,location:document.getElementById('r-location').value.trim(),rating:parseInt(document.getElementById('r-rating').value),text,date:document.getElementById('r-date').value,status:document.getElementById('r-status').value,updatedAt:serverTimestamp()};
+  if(editingReviewId){await updateDoc(doc(db,'reviews',editingReviewId),data);}
+  else{await addDoc(collection(db,'reviews'),{...data,createdAt:serverTimestamp()});}
+  closeReviewModal();loadReviews();
+};
+window.deleteReview=async id=>{if(!confirm('Delete this review?'))return;await deleteDoc(doc(db,'reviews',id));loadReviews();};
+
+// ── TESTIMONIALS
+async function loadTestimonials(){
+  const snap=await getDocs(query(collection(db,'testimonials'),orderBy('order','asc')));
+  const reels=snap.docs.map(d=>({id:d.id,...d.data()}));
+  document.getElementById('reel-list').innerHTML=reels.length?reels.map(r=>`<div class="reel-card"><div class="reel-thumb">${r.thumbnail?`<img src="${r.thumbnail}"/>`:'<div class="reel-thumb-placeholder">▶</div>'}<div class="reel-overlay">▶ Reel</div></div><div class="reel-info"><div class="fw-bold">${r.title||'Untitled'}</div><div class="meta">${r.caption||''}</div><div class="reel-url">${r.reelUrl||''}</div><span class="status-badge status-${r.status||'draft'}">${r.status||'draft'}</span></div><div class="reel-actions"><button class="btn-sm btn-outline" onclick="editReel('${r.id}')">Edit</button><button class="btn-sm btn-danger" onclick="deleteReel('${r.id}')">Delete</button></div></div>`).join(''):'<p style="color:#9ca3af;padding:24px;">No reels yet.</p>';
+}
+window.openReelForm=()=>{
+  editingReelId=null;
+  ['reel-title','reel-caption','reel-url'].forEach(id=>document.getElementById(id).value='');
+  document.getElementById('reel-status').value='draft';
+  document.getElementById('reel-order').value='0';
+  document.getElementById('reel-thumb-preview').style.display='none';
+  document.getElementById('reel-modal').style.display='flex';
+};
+window.editReel=async id=>{
+  const snap=await getDoc(doc(db,'testimonials',id));if(!snap.exists())return;
+  const r=snap.data();editingReelId=id;
+  document.getElementById('reel-title').value=r.title||'';
+  document.getElementById('reel-caption').value=r.caption||'';
+  document.getElementById('reel-url').value=r.reelUrl||'';
+  document.getElementById('reel-status').value=r.status||'draft';
+  document.getElementById('reel-order').value=r.order||0;
+  if(r.thumbnail){document.getElementById('reel-thumb-preview').src=r.thumbnail;document.getElementById('reel-thumb-preview').style.display='block';}
+  document.getElementById('reel-modal').style.display='flex';
+};
+window.closeReelModal=()=>{document.getElementById('reel-modal').style.display='none';editingReelId=null;};
+window.saveReel=async()=>{
+  const reelUrl=document.getElementById('reel-url').value.trim();
+  if(!reelUrl)return alert('Instagram Reel URL is required.');
+  let thumbnail=editingReelId?(await getDoc(doc(db,'testimonials',editingReelId))).data()?.thumbnail||'':'';
+  const thumbFile=document.getElementById('reel-thumb-file').files[0];
+  if(thumbFile){const r=ref(storage,`reel-thumbs/${Date.now()}_${thumbFile.name}`);await uploadBytes(r,thumbFile);thumbnail=await getDownloadURL(r);}
+  const data={title:document.getElementById('reel-title').value.trim(),caption:document.getElementById('reel-caption').value.trim(),reelUrl,thumbnail,status:document.getElementById('reel-status').value,order:parseInt(document.getElementById('reel-order').value)||0,updatedAt:serverTimestamp()};
+  if(editingReelId){await updateDoc(doc(db,'testimonials',editingReelId),data);}
+  else{await addDoc(collection(db,'testimonials'),{...data,createdAt:serverTimestamp()});}
+  closeReelModal();loadTestimonials();
+};
+window.deleteReel=async id=>{if(!confirm('Delete this reel?'))return;await deleteDoc(doc(db,'testimonials',id));loadTestimonials();};
+window.previewReelThumb=input=>{if(input.files[0]){const r=new FileReader();r.onload=e=>{document.getElementById('reel-thumb-preview').src=e.target.result;document.getElementById('reel-thumb-preview').style.display='block';};r.readAsDataURL(input.files[0]);}};
+
+// ── INQUIRIES
+async function loadInquiries(){
+  const snap=await getDocs(query(collection(db,'inquiries'),orderBy('createdAt','desc')));
+  renderInqTable(snap.docs.map(d=>({id:d.id,...d.data()})));
+}
+function renderInqTable(list){
+  document.getElementById('inquiry-list').innerHTML=list.length?list.map(inq=>`<tr class="${!inq.read?'unread-row':''}"><td><div class="fw-bold">${inq.name||'—'}</div><div class="meta">${inq.email||''} ${inq.phone?'· '+inq.phone:''}</div></td><td>${(inq.subject||inq.message||'—').substring(0,60)}</td><td><span class="inq-type">${inq.formType||'Contact'}</span></td><td><span class="status-badge status-${inq.replied?'published':'draft'}">${inq.replied?'Replied':'Pending'}</span></td><td>${inq.createdAt?.toDate?inq.createdAt.toDate().toLocaleString():'—'}</td><td class="actions-cell"><button class="btn-sm btn-outline" onclick="viewInquiry('${inq.id}')">View</button><button class="btn-sm btn-danger" onclick="deleteInquiry('${inq.id}')">Delete</button></td></tr>`).join(''):'<tr><td colspan="6" class="tc-empty">No inquiries yet.</td></tr>';
+}
+window.filterInquiries=async()=>{
+  const status=document.getElementById('inq-filter').value;
+  const snap=await getDocs(query(collection(db,'inquiries'),orderBy('createdAt','desc')));
+  let list=snap.docs.map(d=>({id:d.id,...d.data()}));
+  if(status==='unread')list=list.filter(i=>!i.read);
+  else if(status==='pending')list=list.filter(i=>!i.replied);
+  else if(status==='replied')list=list.filter(i=>i.replied);
+  renderInqTable(list);
+};
+window.viewInquiry=async id=>{
+  const snap=await getDoc(doc(db,'inquiries',id));if(!snap.exists())return;
+  const inq=snap.data();
+  if(!inq.read)await updateDoc(doc(db,'inquiries',id),{read:true});
+  document.getElementById('inq-modal-content').innerHTML=`<div class="inq-detail"><div class="inq-row"><label>Name</label><span>${inq.name||'—'}</span></div><div class="inq-row"><label>Email</label><span><a href="mailto:${inq.email}" style="color:var(--gold);">${inq.email||'—'}</a></span></div><div class="inq-row"><label>Phone</label><span>${inq.phone||'—'}</span></div><div class="inq-row"><label>Subject</label><span>${inq.subject||'—'}</span></div><div class="inq-row"><label>Form</label><span>${inq.formType||'Contact'}</span></div><div class="inq-row"><label>Date</label><span>${inq.createdAt?.toDate?inq.createdAt.toDate().toLocaleString():'—'}</span></div><div class="inq-row full"><label>Message</label><div class="inq-message">${inq.message||'—'}</div></div><div class="inq-row"><label>Status</label><button class="btn ${inq.replied?'btn-outline':'btn-gold'}" onclick="markReplied('${id}',${!inq.replied})" style="font-size:13px;padding:6px 14px;">${inq.replied?'Mark as Pending':'✓ Mark as Replied'}</button></div></div>`;
+  document.getElementById('inq-modal').style.display='flex';
+};
+window.closeInqModal=()=>{document.getElementById('inq-modal').style.display='none';loadInquiries();};
+window.markReplied=async(id,val)=>{await updateDoc(doc(db,'inquiries',id),{replied:val});viewInquiry(id);};
+window.deleteInquiry=async id=>{if(!confirm('Delete this inquiry?'))return;await deleteDoc(doc(db,'inquiries',id));loadInquiries();};
+</script>
+</body>
+</html>
