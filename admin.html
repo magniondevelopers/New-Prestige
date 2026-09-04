@@ -437,10 +437,36 @@ textarea{resize:vertical;min-height:100px;}
 import{initializeApp}from"https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
 import{getAuth,signInWithEmailAndPassword,signOut,onAuthStateChanged}from"https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
 import{getFirestore,collection,addDoc,getDocs,getDoc,doc,updateDoc,deleteDoc,query,orderBy,serverTimestamp,where}from"https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
-import{getStorage,ref,uploadBytes,getDownloadURL,deleteObject}from"https://www.gstatic.com/firebasejs/10.7.1/firebase-storage.js";
+// Storage handled by cPanel — no Firebase Storage needed
 
 const app=initializeApp({apiKey:"AIzaSyANFWqwFqFuWGNzjZS2crbr_WJ29eSDdRU",authDomain:"prestigevacations.firebaseapp.com",projectId:"prestigevacations",storageBucket:"prestigevacations.firebasestorage.app",messagingSenderId:"294803443782",appId:"1:294803443782:web:a3433f81c5af6a56153a47"});
-const auth=getAuth(app),db=getFirestore(app),storage=getStorage(app);
+const auth=getAuth(app),db=getFirestore(app);
+
+// ── cPanel Media Upload Helper ────────────────────────────────
+const UPLOAD_URL='https://app.prestigevacations.in/website-media/upload.php';
+const UPLOAD_KEY='prestige_media_2025_secure';
+
+async function uploadToCpanel(file, folder='general'){
+  const fd=new FormData();
+  fd.append('file', file);
+  fd.append('folder', folder);
+  fd.append('key', UPLOAD_KEY);
+  const res=await fetch(UPLOAD_URL, {method:'POST', headers:{'X-Upload-Key': UPLOAD_KEY}, body:fd});
+  const data=await res.json();
+  if(!data.ok) throw new Error(data.error||'Upload failed');
+  return data.url;
+}
+
+async function deleteFromCpanel(url){
+  const filename=url.split('/').pop();
+  try{
+    await fetch(UPLOAD_URL+'?key='+UPLOAD_KEY, {
+      method:'POST',
+      headers:{'Content-Type':'application/x-www-form-urlencoded','X-Upload-Key':UPLOAD_KEY},
+      body:'_method=DELETE&filename='+encodeURIComponent(filename)+'&key='+UPLOAD_KEY
+    });
+  }catch(e){ console.warn('Delete failed:', e); }
+}
 let quill=null,editingBlogId=null,editingReviewId=null,editingReelId=null,galleryTags=[];
 
 // ── QUILL
@@ -630,9 +656,7 @@ window.uploadGalleryItem=async()=>{
       let done=0;
       for(const file of files){
         progress.textContent=`Uploading ${++done} of ${files.length}…`;
-        const r=ref(storage,`gallery/${Date.now()}_${file.name}`);
-        await uploadBytes(r,file);
-        const url=await getDownloadURL(r);
+        const url=await uploadToCpanel(file, section||'gallery');
         await addDoc(collection(db,'gallery_items'),{
           section,type:'photo',url,
           caption:caption||file.name.replace(/\.[^/.]+$/,''),
@@ -652,7 +676,7 @@ window.uploadGalleryItem=async()=>{
 
 window.deleteGalleryItem=async(id,url)=>{
   if(!confirm('Delete this item?'))return;
-  if(url){try{await deleteObject(ref(storage,url));}catch(e){}}
+  if(url){await deleteFromCpanel(url);}
   await deleteDoc(doc(db,'gallery_items',id));
   filterGallerySection();
 };
@@ -703,7 +727,7 @@ window.saveBlog=async status=>{
   const content=quill?quill.root.innerHTML:'';
   let coverUrl=editingBlogId?(await getDoc(doc(db,'blogs',editingBlogId))).data()?.coverUrl||'':'';
   const coverFile=document.getElementById('blog-cover').files[0];
-  if(coverFile){const r=ref(storage,`blog-covers/${Date.now()}_${coverFile.name}`);await uploadBytes(r,coverFile);coverUrl=await getDownloadURL(r);}
+  if(coverFile){coverUrl=await uploadToCpanel(coverFile,'blog-covers');}
   const slug=title.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/(^-|-$)/g,'');
   const data={title,author,category,content,coverUrl,seoTitle,seoDesc,status,slug,updatedAt:serverTimestamp()};
   if(editingBlogId){await updateDoc(doc(db,'blogs',editingBlogId),data);}
@@ -780,7 +804,7 @@ window.saveReel=async()=>{
   if(!reelUrl)return alert('Instagram Reel URL is required.');
   let thumbnail=editingReelId?(await getDoc(doc(db,'testimonials',editingReelId))).data()?.thumbnail||'':'';
   const thumbFile=document.getElementById('reel-thumb-file').files[0];
-  if(thumbFile){const r=ref(storage,`reel-thumbs/${Date.now()}_${thumbFile.name}`);await uploadBytes(r,thumbFile);thumbnail=await getDownloadURL(r);}
+  if(thumbFile){thumbnail=await uploadToCpanel(thumbFile,'reel-thumbs');}
   const data={title:document.getElementById('reel-title').value.trim(),caption:document.getElementById('reel-caption').value.trim(),reelUrl,thumbnail,status:document.getElementById('reel-status').value,order:parseInt(document.getElementById('reel-order').value)||0,updatedAt:serverTimestamp()};
   if(editingReelId){await updateDoc(doc(db,'testimonials',editingReelId),data);}
   else{await addDoc(collection(db,'testimonials'),{...data,createdAt:serverTimestamp()});}
