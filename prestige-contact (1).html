@@ -827,30 +827,51 @@
 
   /* FORM SUBMIT */
   function submitForm() {
-    const name    = document.getElementById('f-name').value.trim();
-    const phone   = document.getElementById('f-phone').value.trim();
-    const subject = document.getElementById('f-subject').value;
-    const message = document.getElementById('f-message').value.trim();
-    const mid     = document.getElementById('f-mid').value.trim();
+    const API = 'https://app.prestigevacations.in/website-media/website-api.php';
 
-    if (!name || !phone)  { alert('Please enter your name and mobile number.'); return; }
-    if (isMember === null){ alert('Please let us know if you are a Prestige member.'); return; }
-    if (!subject)         { alert('Please select a subject.'); return; }
-    if (!message)         { alert('Please write your message.'); return; }
+async function submitForm() {
+  const name    = document.getElementById('f-name').value.trim();
+  const phone   = document.getElementById('f-phone').value.trim();
+  const email   = document.getElementById('f-email').value.trim();
+  const subject = document.getElementById('f-subject').value;
+  const message = document.getElementById('f-message').value.trim();
+  const office  = document.getElementById('f-office').value;
+  const mid     = document.getElementById('f-mid').value.trim();
 
-    const r = routeMap[subject] || { email: 'info@prestigevacations.in' };
+  if (!name || !phone) { alert('Please enter your name and mobile number.'); return; }
+  if (isMember === null) { alert('Please let us know if you are a Prestige member.'); return; }
+  if (!subject) { alert('Please select a subject.'); return; }
+  if (!message) { alert('Please write your message.'); return; }
 
-    /* Build WhatsApp message — includes Membership ID if member */
-    const memberLine = isMember && mid ? `\nMembership ID: ${mid}` : (isMember ? '\nMembership ID: Not provided' : '');
-    const waText = `Hi, my name is ${name} (${phone}).\n${isMember ? 'I am a Prestige Member.' : 'I am not currently a member.'}${memberLine}\n\nSubject: ${r.label}\n\n${message}`;
-    const wa = `https://wa.me/918001213457?text=${encodeURIComponent(waText)}`;
+  const r = routeMap[subject] || { label: 'General Enquiry', email: 'info@prestigevacations.in' };
 
-    /* Show success + open WhatsApp */
-    document.getElementById('contactForm').style.display = 'none';
-    document.getElementById('successBox').classList.add('show');
-    window.scrollTo({ top: document.querySelector('.form-wrap').offsetTop - 100, behavior: 'smooth' });
-    setTimeout(() => window.open(wa, '_blank'), 600);
-  }
+  // Save to admin panel
+  try {
+    await fetch(API + '?action=submit_inquiry', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        name, phone, email,
+        subject: r.label,
+        message, office,
+        membershipId: mid || '',
+        isMember,
+        formType: 'Contact',
+        routedTo: r.email
+      })
+    });
+  } catch(e) { console.warn('API save failed:', e); }
+
+  // Show success — no WhatsApp redirect
+  document.getElementById('contactForm').style.display = 'none';
+  document.getElementById('successBox').classList.add('show');
+  document.getElementById('successBox').innerHTML = `
+    <div class="success-icon"><i class="fa-solid fa-circle-check"></i></div>
+    <div class="success-title">Message Sent!</div>
+    <p class="success-sub">Thank you for reaching out. Our team will get back to you within one business day.<br><br>For urgent matters, call us directly on <a href="tel:18001213457" style="color:var(--gold);font-weight:700;">1800 121 3457</a>.</p>
+  `;
+  window.scrollTo({ top: document.querySelector('.form-wrap').offsetTop - 100, behavior: 'smooth' });
+}
 </script>
 
 
