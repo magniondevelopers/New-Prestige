@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
 <title>Prestige Admin Panel</title>
 <link href="https://cdn.quilljs.com/1.3.7/quill.snow.css" rel="stylesheet"/>
 <script src="https://cdn.quilljs.com/1.3.7/quill.min.js"></script>
@@ -73,9 +72,6 @@ input[type=text],input[type=url],input[type=date],input[type=email],input[type=p
 input:focus,select:focus,textarea:focus{border-color:var(--gold);box-shadow:0 0 0 3px rgba(201,164,75,.1);}
 textarea{resize:vertical;min-height:100px;}
 .form-actions{display:flex;gap:10px;margin-top:20px;justify-content:flex-end;}
-.tag-row{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-bottom:16px;}
-.tag-chip{background:rgba(201,164,75,.12);color:var(--gold);border:1px solid rgba(201,164,75,.3);border-radius:20px;padding:4px 12px;font-size:12px;font-weight:600;display:inline-flex;align-items:center;gap:6px;}
-.tag-chip button{background:none;border:none;cursor:pointer;font-size:14px;color:var(--gold);line-height:1;}
 .photo-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:12px;margin-top:16px;}
 .photo-card{border-radius:8px;overflow:hidden;border:1px solid #e5e7eb;}
 .photo-card img{width:100%;height:130px;object-fit:cover;display:block;}
@@ -146,10 +142,7 @@ textarea{resize:vertical;min-height:100px;}
     <div class="nav-item" data-nav="inquiries" onclick="loadSection('inquiries')">📩 Inquiries</div>
     <div class="sb-bottom">
       <div class="divider"></div>
-      <div class="sb-user">
-        <div class="sb-av">A</div>
-        <div id="admin-email"></div>
-      </div>
+      <div class="sb-user"><div class="sb-av">A</div><div id="admin-email"></div></div>
       <button class="logout-btn" onclick="doLogout()">→ Sign Out</button>
     </div>
   </div>
@@ -184,8 +177,6 @@ textarea{resize:vertical;min-height:100px;}
       <!-- GALLERY -->
       <div class="section" id="sec-gallery">
         <div class="page-title">Gallery Management</div>
-
-        <!-- Upload Panel -->
         <div class="panel">
           <div class="panel-header"><div class="panel-title">Upload Photos / Add Video</div></div>
           <div class="panel-body">
@@ -204,60 +195,33 @@ textarea{resize:vertical;min-height:100px;}
                   <option value="member-trips">Member Trip Photos</option>
                 </select>
               </div>
-              <div id="upload-type-wrap">
+              <div>
                 <label class="lbl">Upload Type</label>
                 <select id="upload-type" onchange="toggleUploadType()">
                   <option value="photo">Photo</option>
                   <option value="video">Video (YouTube URL)</option>
                 </select>
               </div>
-              <!-- Photo fields -->
               <div class="form-full" id="photo-fields">
                 <label class="lbl">Select Photos (multiple allowed)</label>
                 <input type="file" id="photo-files" multiple accept="image/*"/>
               </div>
-              <!-- Photo caption -->
-              <div id="photo-caption-wrap">
-                <label class="lbl">Caption (optional)</label>
-                <input type="text" id="photo-caption" placeholder="e.g. Garden Lawn, Pool View"/>
-              </div>
-              <div id="photo-sublabel-wrap">
-                <label class="lbl">Sub Label (optional)</label>
-                <input type="text" id="photo-sublabel" placeholder="e.g. The Country Resort"/>
-              </div>
-              <!-- Video fields -->
-              <div class="form-full" id="video-fields" style="display:none;">
-                <label class="lbl">YouTube Video URL *</label>
-                <input type="url" id="video-url" placeholder="https://youtube.com/watch?v=..."/>
-              </div>
-              <div id="video-title-wrap" style="display:none;">
-                <label class="lbl">Video Title *</label>
-                <input type="text" id="video-title" placeholder="e.g. The Country Resort — Property Tour"/>
-              </div>
-              <div id="video-sub-wrap" style="display:none;">
-                <label class="lbl">Sub Label</label>
-                <input type="text" id="video-sub" placeholder="e.g. Watch on YouTube"/>
-              </div>
-              <!-- Member trip extras -->
-              <div id="member-name-wrap" style="display:none;">
-                <label class="lbl">Member Name</label>
-                <input type="text" id="member-name" placeholder="e.g. Meenakshi R"/>
-              </div>
-              <div id="member-dest-wrap" style="display:none;">
-                <label class="lbl">Destination</label>
-                <input type="text" id="member-dest" placeholder="e.g. Ooty · Hill Station"/>
-              </div>
+              <div id="photo-caption-wrap"><label class="lbl">Caption (optional)</label><input type="text" id="photo-caption" placeholder="e.g. Garden Lawn, Pool View"/></div>
+              <div id="photo-sublabel-wrap"><label class="lbl">Sub Label (optional)</label><input type="text" id="photo-sublabel" placeholder="e.g. The Country Resort"/></div>
+              <div class="form-full" id="video-fields" style="display:none;"><label class="lbl">YouTube Video URL *</label><input type="url" id="video-url" placeholder="https://youtube.com/watch?v=..."/></div>
+              <div id="video-title-wrap" style="display:none;"><label class="lbl">Video Title *</label><input type="text" id="video-title" placeholder="e.g. The Country Resort — Property Tour"/></div>
+              <div id="video-sub-wrap" style="display:none;"><label class="lbl">Sub Label</label><input type="text" id="video-sub" placeholder="e.g. Watch on YouTube"/></div>
+              <div id="member-name-wrap" style="display:none;"><label class="lbl">Member Name</label><input type="text" id="member-name" placeholder="e.g. Meenakshi R"/></div>
+              <div id="member-dest-wrap" style="display:none;"><label class="lbl">Destination</label><input type="text" id="member-dest" placeholder="e.g. Ooty · Hill Station"/></div>
             </div>
             <button class="btn btn-gold" style="margin-top:14px;" id="upload-btn" onclick="uploadGalleryItem()">Upload</button>
             <div id="upload-progress" style="margin-top:10px;font-size:12px;color:#6b7280;"></div>
           </div>
         </div>
-
-        <!-- Photos Grid per Section -->
         <div class="panel">
           <div class="panel-header">
             <div class="panel-title">Browse by Section</div>
-            <select id="filter-section" onchange="filterGallerySection()" style="font-size:13px;padding:5px 10px;border:1px solid #d1d5db;border-radius:6px;">
+            <select id="filter-section" onchange="loadGallery()" style="font-size:13px;padding:5px 10px;border:1px solid #d1d5db;border-radius:6px;">
               <option value="">All Sections</option>
               <option value="our-gallery">Our Gallery</option>
               <option value="resort">The Country Resort</option>
@@ -278,10 +242,7 @@ textarea{resize:vertical;min-height:100px;}
         <div id="blog-list-view">
           <div class="page-title">Blog Posts</div>
           <div class="panel">
-            <div class="panel-header">
-              <div class="panel-title">All Posts</div>
-              <button class="btn btn-gold" onclick="newBlog()">+ New Post</button>
-            </div>
+            <div class="panel-header"><div class="panel-title">All Posts</div><button class="btn btn-gold" onclick="newBlog()">+ New Post</button></div>
             <table><thead><tr><th>Title</th><th>Author</th><th>Status</th><th>Date</th><th>Actions</th></tr></thead>
             <tbody id="blog-list"><tr><td colspan="5" class="tc-empty">Loading…</td></tr></tbody></table>
           </div>
@@ -291,50 +252,23 @@ textarea{resize:vertical;min-height:100px;}
             <button class="btn btn-outline" onclick="cancelBlog()">← Back</button>
             <div class="page-title" id="blog-form-title" style="margin-bottom:0;"></div>
           </div>
-          <div class="panel">
-            <div class="panel-body">
-              <div class="form-grid">
-                <div class="form-full">
-                  <label class="lbl">Post Title *</label>
-                  <input type="text" id="blog-title" placeholder="Enter blog post title…"/>
-                </div>
-                <div>
-                  <label class="lbl">Author</label>
-                  <input type="text" id="blog-author" placeholder="Author name"/>
-                </div>
-                <div>
-                  <label class="lbl">Category</label>
-                  <input type="text" id="blog-category" placeholder="e.g. Travel, Lifestyle, Resorts"/>
-                </div>
-                <div class="form-full">
-                  <label class="lbl">Cover Image</label>
-                  <input type="file" id="blog-cover" accept="image/*" onchange="previewCover(this)"/>
-                  <img id="blog-cover-preview" class="cover-preview" style="display:none;"/>
-                </div>
-                <div class="form-full">
-                  <label class="lbl">Content *</label>
-                  <div id="quill-editor"></div>
-                </div>
-                <div>
-                  <label class="lbl">SEO Title</label>
-                  <input type="text" id="blog-seo-title" placeholder="Title for search engines"/>
-                </div>
-                <div>
-                  <label class="lbl">SEO Description</label>
-                  <input type="text" id="blog-seo-desc" placeholder="Meta description (160 chars)"/>
-                </div>
-                <div>
-                  <label class="lbl">Status</label>
-                  <select id="blog-status"><option value="draft">Draft</option><option value="published">Published</option></select>
-                </div>
-              </div>
-              <div class="form-actions">
-                <button class="btn btn-outline" onclick="cancelBlog()">Cancel</button>
-                <button class="btn btn-outline" onclick="saveBlog('draft')">Save Draft</button>
-                <button class="btn btn-gold" onclick="saveBlog('published')">Publish Post</button>
-              </div>
+          <div class="panel"><div class="panel-body">
+            <div class="form-grid">
+              <div class="form-full"><label class="lbl">Post Title *</label><input type="text" id="blog-title" placeholder="Enter blog post title…"/></div>
+              <div><label class="lbl">Author</label><input type="text" id="blog-author" placeholder="Author name"/></div>
+              <div><label class="lbl">Category</label><input type="text" id="blog-category" placeholder="e.g. Travel, Lifestyle, Resorts"/></div>
+              <div class="form-full"><label class="lbl">Cover Image</label><input type="file" id="blog-cover" accept="image/*" onchange="previewCover(this)"/><img id="blog-cover-preview" class="cover-preview" style="display:none;"/></div>
+              <div class="form-full"><label class="lbl">Content *</label><div id="quill-editor"></div></div>
+              <div><label class="lbl">SEO Title</label><input type="text" id="blog-seo-title" placeholder="Title for search engines"/></div>
+              <div><label class="lbl">SEO Description</label><input type="text" id="blog-seo-desc" placeholder="Meta description (160 chars)"/></div>
+              <div><label class="lbl">Status</label><select id="blog-status"><option value="draft">Draft</option><option value="published">Published</option></select></div>
             </div>
-          </div>
+            <div class="form-actions">
+              <button class="btn btn-outline" onclick="cancelBlog()">Cancel</button>
+              <button class="btn btn-outline" onclick="saveBlog('draft')">Save Draft</button>
+              <button class="btn btn-gold" onclick="saveBlog('published')">Publish Post</button>
+            </div>
+          </div></div>
         </div>
       </div>
 
@@ -342,10 +276,7 @@ textarea{resize:vertical;min-height:100px;}
       <div class="section" id="sec-reviews">
         <div class="page-title">Member Reviews</div>
         <div class="panel">
-          <div class="panel-header">
-            <div class="panel-title">All Reviews</div>
-            <button class="btn btn-gold" onclick="openReviewForm()">+ Add Review</button>
-          </div>
+          <div class="panel-header"><div class="panel-title">All Reviews</div><button class="btn btn-gold" onclick="openReviewForm()">+ Add Review</button></div>
           <table><thead><tr><th>Reviewer</th><th>Rating</th><th>Review</th><th>Status</th><th>Date</th><th>Actions</th></tr></thead>
           <tbody id="review-list"><tr><td colspan="6" class="tc-empty">Loading…</td></tr></tbody></table>
         </div>
@@ -355,10 +286,7 @@ textarea{resize:vertical;min-height:100px;}
       <div class="section" id="sec-testimonials">
         <div class="page-title">Video Testimonials (Instagram Reels)</div>
         <div class="panel">
-          <div class="panel-header">
-            <div class="panel-title">All Reels</div>
-            <button class="btn btn-gold" onclick="openReelForm()">+ Add Reel</button>
-          </div>
+          <div class="panel-header"><div class="panel-title">All Reels</div><button class="btn btn-gold" onclick="openReelForm()">+ Add Reel</button></div>
           <div class="panel-body"><div id="reel-list" class="reel-grid"></div></div>
         </div>
       </div>
@@ -370,10 +298,7 @@ textarea{resize:vertical;min-height:100px;}
           <div class="panel-header">
             <div class="panel-title">All Submissions</div>
             <select id="inq-filter" onchange="filterInquiries()" style="font-size:13px;padding:5px 10px;border:1px solid #d1d5db;border-radius:6px;">
-              <option value="">All</option>
-              <option value="unread">Unread</option>
-              <option value="pending">Pending Reply</option>
-              <option value="replied">Replied</option>
+              <option value="">All</option><option value="unread">Unread</option><option value="pending">Pending Reply</option><option value="replied">Replied</option>
             </select>
           </div>
           <table><thead><tr><th>Contact</th><th>Message</th><th>Form</th><th>Status</th><th>Date</th><th>Actions</th></tr></thead>
@@ -393,9 +318,10 @@ textarea{resize:vertical;min-height:100px;}
       <div class="form-grid">
         <div><label class="lbl">Reviewer Name *</label><input type="text" id="r-name" placeholder="e.g. Rajesh Kumar"/></div>
         <div><label class="lbl">Location</label><input type="text" id="r-location" placeholder="e.g. Chennai, Tamil Nadu"/></div>
+        <div><label class="lbl">Source</label><select id="r-source"><option value="">Direct</option><option value="Google">Google</option><option value="Facebook">Facebook</option></select></div>
         <div><label class="lbl">Rating</label><select id="r-rating"><option value="5">★★★★★  5 Stars</option><option value="4">★★★★☆  4 Stars</option><option value="3">★★★☆☆  3 Stars</option><option value="2">★★☆☆☆  2 Stars</option><option value="1">★☆☆☆☆  1 Star</option></select></div>
-        <div><label class="lbl">Review Date</label><input type="date" id="r-date"/></div>
         <div class="form-full"><label class="lbl">Review Text *</label><textarea id="r-text" rows="5" placeholder="Paste the Google review text here…"></textarea></div>
+        <div><label class="lbl">Review Date</label><input type="date" id="r-date"/></div>
         <div><label class="lbl">Status</label><select id="r-status"><option value="draft">Draft — not visible on website</option><option value="published">Published — live on website</option></select></div>
       </div>
       <div class="form-actions"><button class="btn btn-outline" onclick="closeReviewModal()">Cancel</button><button class="btn btn-gold" onclick="saveReview()">Save Review</button></div>
@@ -433,94 +359,81 @@ textarea{resize:vertical;min-height:100px;}
   </div>
 </div>
 
-<script type="module">
-import{initializeApp}from"https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
-import{getAuth,signInWithEmailAndPassword,signOut,onAuthStateChanged}from"https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
-import{getFirestore,collection,addDoc,getDocs,getDoc,doc,updateDoc,deleteDoc,query,orderBy,serverTimestamp,where}from"https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
-// Storage handled by cPanel — no Firebase Storage needed
+<script>
+// ════════════════════════════════════════════════════════════
+// PRESTIGE ADMIN — 100% cPanel, Zero Firebase
+// ════════════════════════════════════════════════════════════
+const API      = 'https://app.prestigevacations.in/website-media/website-api.php';
+const GAPI     = 'https://app.prestigevacations.in/website-media/gallery-api.php';
+const GKEY     = 'prestige_media_2025_secure';
+const UAPI     = 'https://app.prestigevacations.in/website-media/upload.php';
+let TOKEN      = localStorage.getItem('prestige_admin_token') || '';
+let adminEmail = localStorage.getItem('prestige_admin_email') || '';
+let quill      = null;
+let editingBlogId=null, editingReviewId=null, editingReelId=null, allInquiries=[];
 
-const app=initializeApp({apiKey:"AIzaSyANFWqwFqFuWGNzjZS2crbr_WJ29eSDdRU",authDomain:"prestigevacations.firebaseapp.com",projectId:"prestigevacations",storageBucket:"prestigevacations.firebasestorage.app",messagingSenderId:"294803443782",appId:"1:294803443782:web:a3433f81c5af6a56153a47"});
-const auth=getAuth(app),db=getFirestore(app);
-
-// ── cPanel Media Upload Helper ────────────────────────────────
-const UPLOAD_URL='https://app.prestigevacations.in/website-media/upload.php';
-const UPLOAD_KEY='prestige_media_2025_secure';
-
-async function uploadToCpanel(file, folder='general'){
-  const fd=new FormData();
-  fd.append('file', file);
-  fd.append('folder', folder);
-  fd.append('key', UPLOAD_KEY);
-  const res=await fetch(UPLOAD_URL, {method:'POST', headers:{'X-Upload-Key': UPLOAD_KEY}, body:fd});
-  const data=await res.json();
-  if(!data.ok) throw new Error(data.error||'Upload failed');
-  return data.url;
+// ── API HELPER ──────────────────────────────────────────────
+async function api(action, data={}, method='POST'){
+  const url=API+'?action='+action;
+  const opts={method, headers:{'X-Admin-Token':TOKEN,'Content-Type':'application/json'}};
+  if(method==='POST') opts.body=JSON.stringify(data);
+  const res=await fetch(url,opts);
+  return res.json();
+}
+async function apiGet(action, params={}){
+  const qs=Object.keys(params).map(k=>k+'='+encodeURIComponent(params[k])).join('&');
+  const url=API+'?action='+action+(qs?'&'+qs:'');
+  const res=await fetch(url,{headers:{'X-Admin-Token':TOKEN}});
+  return res.json();
 }
 
-async function deleteFromCpanel(url){
-  const filename=url.split('/').pop();
-  try{
-    await fetch(UPLOAD_URL+'?key='+UPLOAD_KEY, {
-      method:'POST',
-      headers:{'Content-Type':'application/x-www-form-urlencoded','X-Upload-Key':UPLOAD_KEY},
-      body:'_method=DELETE&filename='+encodeURIComponent(filename)+'&key='+UPLOAD_KEY
-    });
-  }catch(e){ console.warn('Delete failed:', e); }
-}
-let quill=null,editingBlogId=null,editingReviewId=null,editingReelId=null,galleryTags=[];
-
-// ── QUILL
-function initQuill(){
-  if(quill)return;
-  quill=new Quill('#quill-editor',{theme:'snow',modules:{toolbar:[[{header:[1,2,3,false]}],['bold','italic','underline','strike'],[{color:[]},{background:[]}],[{list:'ordered'},{list:'bullet'}],[{align:[]}],['blockquote','code-block'],['link','image'],['clean']]},placeholder:'Write your blog post here…'});
-}
-
-// ── AUTH — checks admins collection (matches your existing Firestore rules)
-async function checkAdminAccess(user){
-  try{
-    const adminDoc=await getDoc(doc(db,'admins',user.uid));
-    if(adminDoc.exists()&&adminDoc.data().enabled===true) return true;
-    return false;
-  }catch(e){return false;}
-}
-
-onAuthStateChanged(auth,async user=>{
-  if(user){
-    const isAdmin=await checkAdminAccess(user);
-    if(isAdmin){
-      document.getElementById('login-screen').style.display='none';
-      document.getElementById('app').style.display='flex';
-      document.getElementById('admin-email').textContent=user.email;
-      loadSection('dashboard');
-    }else{
-      // Logged in but not in admins collection — sign out and show error
-      await signOut(auth);
-      document.getElementById('login-screen').style.display='flex';
-      document.getElementById('app').style.display='none';
-      document.getElementById('l-err').textContent='Access denied. Your account is not authorised as admin.';
-    }
-  }else{
-    document.getElementById('login-screen').style.display='flex';
-    document.getElementById('app').style.display='none';
+// ── AUTH ────────────────────────────────────────────────────
+async function init(){
+  if(TOKEN){
+    const r=await apiGet('check_auth');
+    if(r.authenticated){showApp();return;}
   }
-});
+  showLogin();
+}
+
+function showLogin(){
+  document.getElementById('login-screen').style.display='flex';
+  document.getElementById('app').style.display='none';
+}
+function showApp(){
+  document.getElementById('login-screen').style.display='none';
+  document.getElementById('app').style.display='flex';
+  document.getElementById('admin-email').textContent=adminEmail;
+  loadSection('dashboard');
+}
 
 window.doLogin=async()=>{
-  const email=document.getElementById('l-email').value.trim(),pw=document.getElementById('l-pw').value,err=document.getElementById('l-err');
-  err.textContent='';
+  const email=document.getElementById('l-email').value.trim();
+  const pw=document.getElementById('l-pw').value;
+  const err=document.getElementById('l-err');
   const btn=document.querySelector('.login-btn');
-  btn.textContent='Signing in…';btn.disabled=true;
-  try{
-    await signInWithEmailAndPassword(auth,email,pw);
-    // onAuthStateChanged above handles the rest
-  }catch(e){
+  err.textContent='';btn.textContent='Signing in…';btn.disabled=true;
+  const r=await api('login',{email,password:pw});
+  if(r.ok){
+    TOKEN=r.token;adminEmail=r.email;
+    localStorage.setItem('prestige_admin_token',TOKEN);
+    localStorage.setItem('prestige_admin_email',email);
+    showApp();
+  }else{
     err.textContent='Invalid email or password.';
-    btn.textContent='Sign In';btn.disabled=false;
   }
+  btn.textContent='Sign In';btn.disabled=false;
 };
-window.doLogout=async()=>{await signOut(auth);};
 
-// ── NAV
+window.doLogout=async()=>{
+  await api('logout');
+  TOKEN='';adminEmail='';
+  localStorage.removeItem('prestige_admin_token');
+  localStorage.removeItem('prestige_admin_email');
+  showLogin();
+};
+
+// ── NAVIGATION ──────────────────────────────────────────────
 window.loadSection=name=>{
   document.querySelectorAll('.nav-item').forEach(n=>n.classList.remove('active'));
   const el=document.querySelector('[data-nav="'+name+'"]');
@@ -528,61 +441,53 @@ window.loadSection=name=>{
   document.querySelectorAll('.section').forEach(s=>s.style.display='none');
   const sec=document.getElementById('sec-'+name);
   if(sec)sec.style.display='block';
-  if(name==='gallery')loadGallery();
-  if(name==='blog'){loadBlogs();initQuill();}
-  if(name==='reviews')loadReviews();
+  if(name==='gallery')    loadGallery();
+  if(name==='blog')       {loadBlogs();initQuill();}
+  if(name==='reviews')    loadReviews();
   if(name==='testimonials')loadTestimonials();
-  if(name==='inquiries')loadInquiries();
-  if(name==='dashboard')loadDashboard();
+  if(name==='inquiries')  loadInquiries();
+  if(name==='dashboard')  loadDashboard();
 };
 
-// ── DASHBOARD
+// ── DASHBOARD ───────────────────────────────────────────────
 async function loadDashboard(){
-  try{
-    const[a,b,c,d,e]=await Promise.all([getDocs(collection(db,'gallery_photos')),getDocs(collection(db,'blogs')),getDocs(collection(db,'reviews')),getDocs(collection(db,'testimonials')),getDocs(collection(db,'inquiries'))]);
-    document.getElementById('d-photos').textContent=a.size;
-    document.getElementById('d-blogs').textContent=b.size;
-    document.getElementById('d-reviews').textContent=c.size;
-    document.getElementById('d-reels').textContent=d.size;
-    document.getElementById('d-inquiries').textContent=e.size;
-    const unread=[...e.docs].filter(x=>!x.data().read).length;
-    document.getElementById('d-unread').textContent=unread+' unread';
-    const recent=[...e.docs].sort((x,y)=>(y.data().createdAt?.seconds||0)-(x.data().createdAt?.seconds||0)).slice(0,5);
-    document.getElementById('d-recent').innerHTML=recent.map(x=>{const d=x.data();return`<tr class="${!d.read?'unread-row':''}"><td><b>${d.name||'—'}</b></td><td>${d.email||'—'}</td><td>${d.subject||d.message?.substring(0,50)||'—'}</td><td>${d.createdAt?.toDate?d.createdAt.toDate().toLocaleDateString():'—'}</td><td><button class="btn-sm btn-outline" onclick="loadSection('inquiries')">View</button></td></tr>`;}).join('')||'<tr><td colspan="5" class="tc-empty">No inquiries yet</td></tr>';
-  }catch(e){console.error(e);}
+  const[dashR,gallR]=await Promise.all([
+    apiGet('dashboard'),
+    fetch(GAPI+'?action=list&key='+GKEY,{headers:{'X-Upload-Key':GKEY}}).then(r=>r.json())
+  ]);
+  document.getElementById('d-photos').textContent=(gallR.items||[]).length;
+  document.getElementById('d-blogs').textContent=dashR.blogs||0;
+  document.getElementById('d-reviews').textContent=dashR.reviews||0;
+  document.getElementById('d-reels').textContent=dashR.reels||0;
+  document.getElementById('d-inquiries').textContent=dashR.inquiries||0;
+  document.getElementById('d-unread').textContent=(dashR.unread||0)+' unread';
+  const recent=dashR.recent||[];
+  document.getElementById('d-recent').innerHTML=recent.map(i=>`
+    <tr class="${!i.read?'unread-row':''}">
+      <td><b>${i.name||'—'}</b></td><td>${i.email||'—'}</td>
+      <td>${(i.subject||i.message||'—').substring(0,50)}</td>
+      <td>${i.createdAt?new Date(i.createdAt).toLocaleDateString():'—'}</td>
+      <td><button class="btn-sm btn-outline" onclick="loadSection('inquiries')">View</button></td>
+    </tr>`).join('')||'<tr><td colspan="5" class="tc-empty">No inquiries yet</td></tr>';
 }
 
-// ── GALLERY — 100% cPanel, no Firestore ──────────────────────
-const GALLERY_API='https://app.prestigevacations.in/website-media/gallery-api.php';
+// ── GALLERY (cPanel gallery-api.php) ────────────────────────
+const GSECTIONS={'our-gallery':'Our Gallery','resort':'The Country Resort','suites':'The Country Suites','bay':'The Country Bay','events':'Member Events','celebrations':'Weddings & Celebrations','videos':'Videos','member-trips':'Member Trip Photos'};
 
-const GALLERY_SECTIONS={
-  'our-gallery':'Our Gallery','resort':'The Country Resort',
-  'suites':'The Country Suites','bay':'The Country Bay',
-  'events':'Member Events','celebrations':'Weddings & Celebrations',
-  'videos':'Videos','member-trips':'Member Trip Photos'
-};
-
-async function loadGallery(){ filterGallerySection(); }
-
-async function filterGallerySection(){
+async function loadGallery(){
   const section=document.getElementById('filter-section').value;
-  const url=GALLERY_API+'?action=list&key='+UPLOAD_KEY+(section?'&section='+section:'');
-  const res=await fetch(url,{headers:{'X-Upload-Key':UPLOAD_KEY}});
+  const url=GAPI+'?action=list&key='+GKEY+(section?'&section='+section:'');
+  const res=await fetch(url,{headers:{'X-Upload-Key':GKEY}});
   const data=await res.json();
-  renderGalleryGrid(data.items||[]);
-}
-window.filterGallerySection=filterGallerySection;
-
-function renderGalleryGrid(items){
   const grid=document.getElementById('photo-grid');
+  const items=data.items||[];
   if(!items.length){grid.innerHTML='<p style="color:#9ca3af;padding:24px;text-align:center;">No items yet.</p>';return;}
   grid.innerHTML=items.map(p=>`
     <div class="photo-card">
-      ${p.type==='video'
-        ?`<div style="background:#1a1a17;height:130px;display:flex;align-items:center;justify-content:center;color:#C9A44B;font-size:28px;">▶</div>`
-        :`<img src="${p.url}" loading="lazy"/>`}
+      ${p.type==='video'?`<div style="background:#1a1a17;height:130px;display:flex;align-items:center;justify-content:center;color:#C9A44B;font-size:28px;">▶</div>`:
+        `<img src="${p.url}" loading="lazy"/>`}
       <div class="photo-info" style="flex-direction:column;align-items:flex-start;gap:4px;">
-        <span class="photo-tag">${GALLERY_SECTIONS[p.section]||p.section}</span>
+        <span class="photo-tag">${GSECTIONS[p.section]||p.section}</span>
         ${p.caption?`<span style="font-size:10px;color:#6b7280;">${p.caption}</span>`:''}
       </div>
       <div style="padding:0 8px 8px;"><button class="btn-sm btn-danger" onclick="deleteGalleryItem('${p.id}')">Delete</button></div>
@@ -602,14 +507,12 @@ window.toggleUploadType=()=>{
   document.getElementById('member-dest-wrap').style.display=sec==='member-trips'?'block':'none';
 };
 
-document.addEventListener('DOMContentLoaded',()=>{
-  document.getElementById('photo-section-select')?.addEventListener('change',()=>{
-    const sec=document.getElementById('photo-section-select').value;
-    document.getElementById('member-name-wrap').style.display=sec==='member-trips'?'block':'none';
-    document.getElementById('member-dest-wrap').style.display=sec==='member-trips'?'block':'none';
-    if(sec==='videos'){document.getElementById('upload-type').value='video';toggleUploadType();}
-    else{document.getElementById('upload-type').value='photo';toggleUploadType();}
-  });
+document.getElementById('photo-section-select')?.addEventListener('change',()=>{
+  const sec=document.getElementById('photo-section-select').value;
+  document.getElementById('member-name-wrap').style.display=sec==='member-trips'?'block':'none';
+  document.getElementById('member-dest-wrap').style.display=sec==='member-trips'?'block':'none';
+  if(sec==='videos'){document.getElementById('upload-type').value='video';toggleUploadType();}
+  else{document.getElementById('upload-type').value='photo';toggleUploadType();}
 });
 
 window.uploadGalleryItem=async()=>{
@@ -625,15 +528,12 @@ window.uploadGalleryItem=async()=>{
       const title=document.getElementById('video-title').value.trim();
       const sub=document.getElementById('video-sub').value.trim();
       if(!videoUrl)return alert('Enter a YouTube URL.');
-      const res=await fetch(GALLERY_API+'?action=add_video&key='+UPLOAD_KEY,{
-        method:'POST',
-        headers:{'Content-Type':'application/json','X-Upload-Key':UPLOAD_KEY},
+      const res=await fetch(GAPI+'?action=add_video&key='+GKEY,{
+        method:'POST',headers:{'Content-Type':'application/json','X-Upload-Key':GKEY},
         body:JSON.stringify({section,videoUrl,title,sub})
       });
-      const data=await res.json();
-      if(!data.ok)throw new Error(data.error||'Failed');
-      document.getElementById('video-url').value='';
-      document.getElementById('video-title').value='';
+      const d=await res.json();if(!d.ok)throw new Error(d.error);
+      document.getElementById('video-url').value='';document.getElementById('video-title').value='';
     }else{
       const files=document.getElementById('photo-files').files;
       if(!files.length)return alert('Select photos first.');
@@ -645,77 +545,49 @@ window.uploadGalleryItem=async()=>{
       for(const file of files){
         progress.textContent=`Uploading ${++done} of ${files.length}…`;
         const fd=new FormData();
-        fd.append('file',file);
-        fd.append('section',section);
+        fd.append('file',file);fd.append('section',section);
         fd.append('caption',caption||file.name.replace(/\.[^/.]+$/,''));
-        fd.append('sublabel',sublabel);
-        fd.append('memberName',memberName);
-        fd.append('memberDest',memberDest);
-        fd.append('key',UPLOAD_KEY);
-        const res=await fetch(GALLERY_API,{method:'POST',headers:{'X-Upload-Key':UPLOAD_KEY},body:fd});
-        const data=await res.json();
-        if(!data.ok)throw new Error(data.error||'Upload failed');
+        fd.append('sublabel',sublabel);fd.append('memberName',memberName);
+        fd.append('memberDest',memberDest);fd.append('key',GKEY);
+        const res=await fetch(GAPI,{method:'POST',headers:{'X-Upload-Key':GKEY},body:fd});
+        const d=await res.json();if(!d.ok)throw new Error(d.error||'Upload failed');
       }
       document.getElementById('photo-files').value='';
       document.getElementById('photo-caption').value='';
     }
     progress.textContent='✓ Uploaded successfully!';
     setTimeout(()=>{progress.textContent='';},3000);
-    filterGallerySection();
+    loadGallery();
   }catch(e){alert('Upload failed: '+e.message);}
   btn.disabled=false;btn.textContent='Upload';
 };
 
-window.deleteGalleryItem=async(id)=>{
+window.deleteGalleryItem=async id=>{
   if(!confirm('Delete this item?'))return;
-  await fetch(GALLERY_API+'?action=delete&key='+UPLOAD_KEY,{
-    method:'POST',
-    headers:{'Content-Type':'application/json','X-Upload-Key':UPLOAD_KEY},
-    body:JSON.stringify({id})
-  });
-  filterGallerySection();
-};
-    } else {
-      const files=document.getElementById('photo-files').files;
-      if(!files.length)return alert('Select photos first.');
-      const caption=document.getElementById('photo-caption').value.trim();
-      const sublabel=document.getElementById('photo-sublabel').value.trim();
-      const memberName=document.getElementById('member-name').value.trim();
-      const memberDest=document.getElementById('member-dest').value.trim();
-      let done=0;
-      for(const file of files){
-        progress.textContent=`Uploading ${++done} of ${files.length}…`;
-        const url=await uploadToCpanel(file, section||'gallery');
-        await addDoc(collection(db,'gallery_items'),{
-          section,type:'photo',url,
-          caption:caption||file.name.replace(/\.[^/.]+$/,''),
-          sublabel,memberName,memberDest,
-          createdAt:serverTimestamp()
-        });
-      }
-      document.getElementById('photo-files').value='';
-      document.getElementById('photo-caption').value='';
-    }
-    progress.textContent='✓ Uploaded successfully!';
-    setTimeout(()=>{progress.textContent='';},3000);
-    filterGallerySection();
-  }catch(e){alert('Upload failed: '+e.message);}
-  btn.disabled=false;btn.textContent='Upload';
+  await fetch(GAPI+'?action=delete&key='+GKEY,{method:'POST',headers:{'Content-Type':'application/json','X-Upload-Key':GKEY},body:JSON.stringify({id})});
+  loadGallery();
 };
 
-window.deleteGalleryItem=async(id,url)=>{
-  if(!confirm('Delete this item?'))return;
-  if(url){await deleteFromCpanel(url);}
-  await deleteDoc(doc(db,'gallery_items',id));
-  filterGallerySection();
-};
-
-// ── BLOG
-async function loadBlogs(){
-  const snap=await getDocs(query(collection(db,'blogs'),orderBy('createdAt','desc')));
-  const blogs=snap.docs.map(d=>({id:d.id,...d.data()}));
-  document.getElementById('blog-list').innerHTML=blogs.length?blogs.map(b=>`<tr><td><div class="fw-bold">${b.title||'Untitled'}</div><div class="meta">${b.category||''}</div></td><td>${b.author||'—'}</td><td><span class="status-badge status-${b.status||'draft'}">${b.status||'draft'}</span></td><td>${b.createdAt?.toDate?b.createdAt.toDate().toLocaleDateString():'—'}</td><td class="actions-cell"><button class="btn-sm btn-outline" onclick="editBlog('${b.id}')">Edit</button><button class="btn-sm btn-danger" onclick="deleteBlog('${b.id}')">Delete</button></td></tr>`).join(''):'<tr><td colspan="5" class="tc-empty">No blog posts yet.</td></tr>';
+// ── BLOG ────────────────────────────────────────────────────
+function initQuill(){
+  if(quill)return;
+  quill=new Quill('#quill-editor',{theme:'snow',modules:{toolbar:[[{header:[1,2,3,false]}],['bold','italic','underline','strike'],[{color:[]},{background:[]}],[{list:'ordered'},{list:'bullet'}],[{align:[]}],['blockquote','code-block'],['link','image'],['clean']]},placeholder:'Write your blog post here…'});
 }
+
+async function loadBlogs(){
+  const r=await apiGet('blogs');
+  const blogs=r.blogs||[];
+  document.getElementById('blog-list').innerHTML=blogs.length?blogs.map(b=>`
+    <tr><td><div class="fw-bold">${b.title||'Untitled'}</div><div class="meta">${b.category||''}</div></td>
+    <td>${b.author||'—'}</td>
+    <td><span class="status-badge status-${b.status||'draft'}">${b.status||'draft'}</span></td>
+    <td>${b.createdAt?new Date(b.createdAt).toLocaleDateString():'—'}</td>
+    <td class="actions-cell">
+      <button class="btn-sm btn-outline" onclick="editBlog('${b.id}')">Edit</button>
+      <button class="btn-sm btn-danger" onclick="deleteBlog('${b.id}')">Delete</button>
+    </td></tr>`).join(''):'<tr><td colspan="5" class="tc-empty">No blog posts yet.</td></tr>';
+}
+
 window.newBlog=()=>{
   editingBlogId=null;
   document.getElementById('blog-form-title').textContent='New Blog Post';
@@ -726,9 +598,11 @@ window.newBlog=()=>{
   document.getElementById('blog-list-view').style.display='none';
   document.getElementById('blog-form-view').style.display='block';
 };
+
 window.editBlog=async id=>{
-  const snap=await getDoc(doc(db,'blogs',id));if(!snap.exists())return;
-  const b=snap.data();editingBlogId=id;
+  const r=await apiGet('blog',{id});
+  if(!r.ok)return;
+  const b=r.blog;editingBlogId=id;
   document.getElementById('blog-form-title').textContent='Edit Blog Post';
   document.getElementById('blog-title').value=b.title||'';
   document.getElementById('blog-author').value=b.author||'';
@@ -741,73 +615,105 @@ window.editBlog=async id=>{
   document.getElementById('blog-list-view').style.display='none';
   document.getElementById('blog-form-view').style.display='block';
 };
+
 window.cancelBlog=()=>{
   document.getElementById('blog-list-view').style.display='block';
   document.getElementById('blog-form-view').style.display='none';
   editingBlogId=null;
 };
+
 window.saveBlog=async status=>{
   const title=document.getElementById('blog-title').value.trim();
   if(!title)return alert('Blog title is required.');
-  const author=document.getElementById('blog-author').value.trim();
-  const category=document.getElementById('blog-category').value.trim();
-  const seoTitle=document.getElementById('blog-seo-title').value.trim();
-  const seoDesc=document.getElementById('blog-seo-desc').value.trim();
-  const content=quill?quill.root.innerHTML:'';
-  let coverUrl=editingBlogId?(await getDoc(doc(db,'blogs',editingBlogId))).data()?.coverUrl||'':'';
+  let coverUrl='';
+  if(editingBlogId){const r=await apiGet('blog',{id:editingBlogId});coverUrl=r.blog?.coverUrl||'';}
   const coverFile=document.getElementById('blog-cover').files[0];
-  if(coverFile){coverUrl=await uploadToCpanel(coverFile,'blog-covers');}
+  if(coverFile){
+    const fd=new FormData();fd.append('file',coverFile);fd.append('key',GKEY);
+    const res=await fetch(API+'?action=upload_cover&key='+GKEY,{method:'POST',headers:{'X-Admin-Token':TOKEN,'X-Api-Key':GKEY},body:fd});
+    const d=await res.json();if(d.ok)coverUrl=d.url;
+  }
   const slug=title.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/(^-|-$)/g,'');
-  const data={title,author,category,content,coverUrl,seoTitle,seoDesc,status,slug,updatedAt:serverTimestamp()};
-  if(editingBlogId){await updateDoc(doc(db,'blogs',editingBlogId),data);}
-  else{await addDoc(collection(db,'blogs'),{...data,createdAt:serverTimestamp()});}
+  const data={id:editingBlogId||undefined,title,author:document.getElementById('blog-author').value.trim(),
+    category:document.getElementById('blog-category').value.trim(),
+    content:quill?quill.root.innerHTML:'',coverUrl,
+    seoTitle:document.getElementById('blog-seo-title').value.trim(),
+    seoDesc:document.getElementById('blog-seo-desc').value.trim(),status,slug};
+  await api('save_blog',data);
   cancelBlog();loadBlogs();
 };
-window.deleteBlog=async id=>{if(!confirm('Delete this blog post?'))return;await deleteDoc(doc(db,'blogs',id));loadBlogs();};
+
+window.deleteBlog=async id=>{if(!confirm('Delete this blog post?'))return;await api('delete_blog',{id});loadBlogs();};
 window.previewCover=input=>{if(input.files[0]){const r=new FileReader();r.onload=e=>{document.getElementById('blog-cover-preview').src=e.target.result;document.getElementById('blog-cover-preview').style.display='block';};r.readAsDataURL(input.files[0]);}};
 
-// ── REVIEWS
+// ── REVIEWS ─────────────────────────────────────────────────
 async function loadReviews(){
-  const snap=await getDocs(query(collection(db,'reviews'),orderBy('createdAt','desc')));
-  const reviews=snap.docs.map(d=>({id:d.id,...d.data()}));
-  document.getElementById('review-list').innerHTML=reviews.length?reviews.map(r=>`<tr><td><div class="fw-bold">${r.name||'—'}</div><div class="meta">${r.location||''}</div></td><td style="color:#f59e0b;">${'★'.repeat(r.rating||5)}</td><td>${(r.text||'').substring(0,80)}…</td><td><span class="status-badge status-${r.status||'draft'}">${r.status||'draft'}</span></td><td>${r.date||'—'}</td><td class="actions-cell"><button class="btn-sm btn-outline" onclick="editReview('${r.id}')">Edit</button><button class="btn-sm btn-danger" onclick="deleteReview('${r.id}')">Delete</button></td></tr>`).join(''):'<tr><td colspan="6" class="tc-empty">No reviews yet.</td></tr>';
+  const r=await apiGet('reviews');
+  const reviews=r.reviews||[];
+  document.getElementById('review-list').innerHTML=reviews.length?reviews.map(r=>`
+    <tr><td><div class="fw-bold">${r.name||'—'}</div><div class="meta">${r.location||''}</div></td>
+    <td style="color:#f59e0b;">${'★'.repeat(r.rating||5)}</td>
+    <td>${(r.text||'').substring(0,80)}…</td>
+    <td><span class="status-badge status-${r.status||'draft'}">${r.status||'draft'}</span></td>
+    <td>${r.date||'—'}</td>
+    <td class="actions-cell">
+      <button class="btn-sm btn-outline" onclick="editReview('${r.id}')">Edit</button>
+      <button class="btn-sm btn-danger" onclick="deleteReview('${r.id}')">Delete</button>
+    </td></tr>`).join(''):'<tr><td colspan="6" class="tc-empty">No reviews yet.</td></tr>';
 }
+
 window.openReviewForm=()=>{
   editingReviewId=null;
   ['r-name','r-location','r-text'].forEach(id=>document.getElementById(id).value='');
   document.getElementById('r-rating').value='5';
+  document.getElementById('r-source').value='';
   document.getElementById('r-date').value=new Date().toISOString().split('T')[0];
   document.getElementById('r-status').value='draft';
   document.getElementById('review-modal').style.display='flex';
 };
+
 window.editReview=async id=>{
-  const snap=await getDoc(doc(db,'reviews',id));if(!snap.exists())return;
-  const r=snap.data();editingReviewId=id;
-  document.getElementById('r-name').value=r.name||'';
-  document.getElementById('r-location').value=r.location||'';
-  document.getElementById('r-rating').value=r.rating||5;
-  document.getElementById('r-text').value=r.text||'';
-  document.getElementById('r-date').value=r.date||'';
-  document.getElementById('r-status').value=r.status||'draft';
+  const r=await apiGet('reviews');
+  const rev=(r.reviews||[]).find(x=>x.id===id);
+  if(!rev)return;
+  editingReviewId=id;
+  document.getElementById('r-name').value=rev.name||'';
+  document.getElementById('r-location').value=rev.location||'';
+  document.getElementById('r-rating').value=rev.rating||5;
+  document.getElementById('r-source').value=rev.source||'';
+  document.getElementById('r-text').value=rev.text||'';
+  document.getElementById('r-date').value=rev.date||'';
+  document.getElementById('r-status').value=rev.status||'draft';
   document.getElementById('review-modal').style.display='flex';
 };
+
 window.closeReviewModal=()=>{document.getElementById('review-modal').style.display='none';editingReviewId=null;};
+
 window.saveReview=async()=>{
-  const name=document.getElementById('r-name').value.trim(),text=document.getElementById('r-text').value.trim();
+  const name=document.getElementById('r-name').value.trim();
+  const text=document.getElementById('r-text').value.trim();
   if(!name||!text)return alert('Name and review text are required.');
-  const data={name,location:document.getElementById('r-location').value.trim(),rating:parseInt(document.getElementById('r-rating').value),text,date:document.getElementById('r-date').value,status:document.getElementById('r-status').value,updatedAt:serverTimestamp()};
-  if(editingReviewId){await updateDoc(doc(db,'reviews',editingReviewId),data);}
-  else{await addDoc(collection(db,'reviews'),{...data,createdAt:serverTimestamp()});}
+  const data={id:editingReviewId||undefined,name,location:document.getElementById('r-location').value.trim(),
+    rating:parseInt(document.getElementById('r-rating').value),source:document.getElementById('r-source').value,
+    text,date:document.getElementById('r-date').value,status:document.getElementById('r-status').value};
+  await api('save_review',data);
   closeReviewModal();loadReviews();
 };
-window.deleteReview=async id=>{if(!confirm('Delete this review?'))return;await deleteDoc(doc(db,'reviews',id));loadReviews();};
 
-// ── TESTIMONIALS
+window.deleteReview=async id=>{if(!confirm('Delete?'))return;await api('delete_review',{id});loadReviews();};
+
+// ── TESTIMONIALS ─────────────────────────────────────────────
 async function loadTestimonials(){
-  const snap=await getDocs(query(collection(db,'testimonials'),orderBy('order','asc')));
-  const reels=snap.docs.map(d=>({id:d.id,...d.data()}));
-  document.getElementById('reel-list').innerHTML=reels.length?reels.map(r=>`<div class="reel-card"><div class="reel-thumb">${r.thumbnail?`<img src="${r.thumbnail}"/>`:'<div class="reel-thumb-placeholder">▶</div>'}<div class="reel-overlay">▶ Reel</div></div><div class="reel-info"><div class="fw-bold">${r.title||'Untitled'}</div><div class="meta">${r.caption||''}</div><div class="reel-url">${r.reelUrl||''}</div><span class="status-badge status-${r.status||'draft'}">${r.status||'draft'}</span></div><div class="reel-actions"><button class="btn-sm btn-outline" onclick="editReel('${r.id}')">Edit</button><button class="btn-sm btn-danger" onclick="deleteReel('${r.id}')">Delete</button></div></div>`).join(''):'<p style="color:#9ca3af;padding:24px;">No reels yet.</p>';
+  const r=await apiGet('testimonials');
+  const reels=r.testimonials||[];
+  document.getElementById('reel-list').innerHTML=reels.length?reels.map(r=>`
+    <div class="reel-card">
+      <div class="reel-thumb">${r.thumbnail?`<img src="${r.thumbnail}"/>`:'<div class="reel-thumb-placeholder">▶</div>'}<div class="reel-overlay">▶ Reel</div></div>
+      <div class="reel-info"><div class="fw-bold">${r.title||'Untitled'}</div><div class="meta">${r.caption||''}</div><div class="reel-url">${r.reelUrl||''}</div><span class="status-badge status-${r.status||'draft'}">${r.status||'draft'}</span></div>
+      <div class="reel-actions"><button class="btn-sm btn-outline" onclick="editReel('${r.id}')">Edit</button><button class="btn-sm btn-danger" onclick="deleteReel('${r.id}')">Delete</button></div>
+    </div>`).join(''):'<p style="color:#9ca3af;padding:24px;">No reels yet.</p>';
 }
+
 window.openReelForm=()=>{
   editingReelId=null;
   ['reel-title','reel-caption','reel-url'].forEach(id=>document.getElementById(id).value='');
@@ -816,59 +722,103 @@ window.openReelForm=()=>{
   document.getElementById('reel-thumb-preview').style.display='none';
   document.getElementById('reel-modal').style.display='flex';
 };
+
 window.editReel=async id=>{
-  const snap=await getDoc(doc(db,'testimonials',id));if(!snap.exists())return;
-  const r=snap.data();editingReelId=id;
-  document.getElementById('reel-title').value=r.title||'';
-  document.getElementById('reel-caption').value=r.caption||'';
-  document.getElementById('reel-url').value=r.reelUrl||'';
-  document.getElementById('reel-status').value=r.status||'draft';
-  document.getElementById('reel-order').value=r.order||0;
-  if(r.thumbnail){document.getElementById('reel-thumb-preview').src=r.thumbnail;document.getElementById('reel-thumb-preview').style.display='block';}
+  const r=await apiGet('testimonials');
+  const reel=(r.testimonials||[]).find(x=>x.id===id);
+  if(!reel)return;
+  editingReelId=id;
+  document.getElementById('reel-title').value=reel.title||'';
+  document.getElementById('reel-caption').value=reel.caption||'';
+  document.getElementById('reel-url').value=reel.reelUrl||'';
+  document.getElementById('reel-status').value=reel.status||'draft';
+  document.getElementById('reel-order').value=reel.order||0;
+  if(reel.thumbnail){document.getElementById('reel-thumb-preview').src=reel.thumbnail;document.getElementById('reel-thumb-preview').style.display='block';}
   document.getElementById('reel-modal').style.display='flex';
 };
+
 window.closeReelModal=()=>{document.getElementById('reel-modal').style.display='none';editingReelId=null;};
+
 window.saveReel=async()=>{
   const reelUrl=document.getElementById('reel-url').value.trim();
   if(!reelUrl)return alert('Instagram Reel URL is required.');
-  let thumbnail=editingReelId?(await getDoc(doc(db,'testimonials',editingReelId))).data()?.thumbnail||'':'';
+  let thumbnail='';
+  if(editingReelId){const r=await apiGet('testimonials');thumbnail=(r.testimonials||[]).find(x=>x.id===editingReelId)?.thumbnail||'';}
   const thumbFile=document.getElementById('reel-thumb-file').files[0];
-  if(thumbFile){thumbnail=await uploadToCpanel(thumbFile,'reel-thumbs');}
-  const data={title:document.getElementById('reel-title').value.trim(),caption:document.getElementById('reel-caption').value.trim(),reelUrl,thumbnail,status:document.getElementById('reel-status').value,order:parseInt(document.getElementById('reel-order').value)||0,updatedAt:serverTimestamp()};
-  if(editingReelId){await updateDoc(doc(db,'testimonials',editingReelId),data);}
-  else{await addDoc(collection(db,'testimonials'),{...data,createdAt:serverTimestamp()});}
+  if(thumbFile){
+    const fd=new FormData();fd.append('file',thumbFile);fd.append('key',GKEY);
+    const res=await fetch(API+'?action=upload_thumb',{method:'POST',headers:{'X-Admin-Token':TOKEN},body:fd});
+    const d=await res.json();if(d.ok)thumbnail=d.url;
+  }
+  const data={id:editingReelId||undefined,title:document.getElementById('reel-title').value.trim(),
+    caption:document.getElementById('reel-caption').value.trim(),reelUrl,thumbnail,
+    status:document.getElementById('reel-status').value,order:parseInt(document.getElementById('reel-order').value)||0};
+  await api('save_testimonial',data);
   closeReelModal();loadTestimonials();
 };
-window.deleteReel=async id=>{if(!confirm('Delete this reel?'))return;await deleteDoc(doc(db,'testimonials',id));loadTestimonials();};
+
+window.deleteReel=async id=>{if(!confirm('Delete?'))return;await api('delete_testimonial',{id});loadTestimonials();};
 window.previewReelThumb=input=>{if(input.files[0]){const r=new FileReader();r.onload=e=>{document.getElementById('reel-thumb-preview').src=e.target.result;document.getElementById('reel-thumb-preview').style.display='block';};r.readAsDataURL(input.files[0]);}};
 
-// ── INQUIRIES
+// ── INQUIRIES ────────────────────────────────────────────────
 async function loadInquiries(){
-  const snap=await getDocs(query(collection(db,'inquiries'),orderBy('createdAt','desc')));
-  renderInqTable(snap.docs.map(d=>({id:d.id,...d.data()})));
+  const r=await apiGet('inquiries');
+  allInquiries=r.inquiries||[];
+  renderInquiries(allInquiries);
 }
-function renderInqTable(list){
-  document.getElementById('inquiry-list').innerHTML=list.length?list.map(inq=>`<tr class="${!inq.read?'unread-row':''}"><td><div class="fw-bold">${inq.name||'—'}</div><div class="meta">${inq.email||''} ${inq.phone?'· '+inq.phone:''}</div></td><td>${(inq.subject||inq.message||'—').substring(0,60)}</td><td><span class="inq-type">${inq.formType||'Contact'}</span></td><td><span class="status-badge status-${inq.replied?'published':'draft'}">${inq.replied?'Replied':'Pending'}</span></td><td>${inq.createdAt?.toDate?inq.createdAt.toDate().toLocaleString():'—'}</td><td class="actions-cell"><button class="btn-sm btn-outline" onclick="viewInquiry('${inq.id}')">View</button><button class="btn-sm btn-danger" onclick="deleteInquiry('${inq.id}')">Delete</button></td></tr>`).join(''):'<tr><td colspan="6" class="tc-empty">No inquiries yet.</td></tr>';
+
+function renderInquiries(list){
+  document.getElementById('inquiry-list').innerHTML=list.length?list.map(i=>`
+    <tr class="${!i.read?'unread-row':''}">
+      <td><div class="fw-bold">${i.name||'—'}</div><div class="meta">${i.email||''} ${i.phone?'· '+i.phone:''}</div></td>
+      <td>${(i.subject||i.message||'—').substring(0,60)}</td>
+      <td><span class="inq-type">${i.formType||'Contact'}</span></td>
+      <td><span class="status-badge status-${i.replied?'published':'draft'}">${i.replied?'Replied':'Pending'}</span></td>
+      <td>${i.createdAt?new Date(i.createdAt).toLocaleString():'—'}</td>
+      <td class="actions-cell">
+        <button class="btn-sm btn-outline" onclick="viewInquiry('${i.id}')">View</button>
+        <button class="btn-sm btn-danger" onclick="deleteInquiry('${i.id}')">Delete</button>
+      </td>
+    </tr>`).join(''):'<tr><td colspan="6" class="tc-empty">No inquiries yet.</td></tr>';
 }
-window.filterInquiries=async()=>{
-  const status=document.getElementById('inq-filter').value;
-  const snap=await getDocs(query(collection(db,'inquiries'),orderBy('createdAt','desc')));
-  let list=snap.docs.map(d=>({id:d.id,...d.data()}));
-  if(status==='unread')list=list.filter(i=>!i.read);
-  else if(status==='pending')list=list.filter(i=>!i.replied);
-  else if(status==='replied')list=list.filter(i=>i.replied);
-  renderInqTable(list);
+
+window.filterInquiries=()=>{
+  const f=document.getElementById('inq-filter').value;
+  let list=allInquiries;
+  if(f==='unread')list=list.filter(i=>!i.read);
+  else if(f==='pending')list=list.filter(i=>!i.replied);
+  else if(f==='replied')list=list.filter(i=>i.replied);
+  renderInquiries(list);
 };
+
 window.viewInquiry=async id=>{
-  const snap=await getDoc(doc(db,'inquiries',id));if(!snap.exists())return;
-  const inq=snap.data();
-  if(!inq.read)await updateDoc(doc(db,'inquiries',id),{read:true});
-  document.getElementById('inq-modal-content').innerHTML=`<div class="inq-detail"><div class="inq-row"><label>Name</label><span>${inq.name||'—'}</span></div><div class="inq-row"><label>Email</label><span><a href="mailto:${inq.email}" style="color:var(--gold);">${inq.email||'—'}</a></span></div><div class="inq-row"><label>Phone</label><span>${inq.phone||'—'}</span></div><div class="inq-row"><label>Subject</label><span>${inq.subject||'—'}</span></div><div class="inq-row"><label>Form</label><span>${inq.formType||'Contact'}</span></div><div class="inq-row"><label>Date</label><span>${inq.createdAt?.toDate?inq.createdAt.toDate().toLocaleString():'—'}</span></div><div class="inq-row full"><label>Message</label><div class="inq-message">${inq.message||'—'}</div></div><div class="inq-row"><label>Status</label><button class="btn ${inq.replied?'btn-outline':'btn-gold'}" onclick="markReplied('${id}',${!inq.replied})" style="font-size:13px;padding:6px 14px;">${inq.replied?'Mark as Pending':'✓ Mark as Replied'}</button></div></div>`;
+  const inq=allInquiries.find(i=>i.id===id);
+  if(!inq)return;
+  if(!inq.read){await api('update_inquiry',{id,read:true});inq.read=true;}
+  document.getElementById('inq-modal-content').innerHTML=`
+    <div class="inq-detail">
+      <div class="inq-row"><label>Name</label><span>${inq.name||'—'}</span></div>
+      <div class="inq-row"><label>Email</label><span><a href="mailto:${inq.email}" style="color:var(--gold);">${inq.email||'—'}</a></span></div>
+      <div class="inq-row"><label>Phone</label><span>${inq.phone||'—'}</span></div>
+      <div class="inq-row"><label>Subject</label><span>${inq.subject||'—'}</span></div>
+      <div class="inq-row"><label>Form</label><span>${inq.formType||'Contact'}</span></div>
+      <div class="inq-row"><label>Date</label><span>${inq.createdAt?new Date(inq.createdAt).toLocaleString():'—'}</span></div>
+      <div class="inq-row full"><label>Message</label><div class="inq-message">${inq.message||'—'}</div></div>
+      <div class="inq-row"><label>Status</label>
+        <button class="btn ${inq.replied?'btn-outline':'btn-gold'}" onclick="markReplied('${id}',${!inq.replied})" style="font-size:13px;padding:6px 14px;">
+          ${inq.replied?'Mark as Pending':'✓ Mark as Replied'}
+        </button>
+      </div>
+    </div>`;
   document.getElementById('inq-modal').style.display='flex';
 };
-window.closeInqModal=()=>{document.getElementById('inq-modal').style.display='none';loadInquiries();};
-window.markReplied=async(id,val)=>{await updateDoc(doc(db,'inquiries',id),{replied:val});viewInquiry(id);};
-window.deleteInquiry=async id=>{if(!confirm('Delete this inquiry?'))return;await deleteDoc(doc(db,'inquiries',id));loadInquiries();};
+
+window.closeInqModal=()=>{document.getElementById('inq-modal').style.display='none';};
+window.markReplied=async(id,val)=>{await api('update_inquiry',{id,replied:val});const i=allInquiries.find(x=>x.id===id);if(i)i.replied=val;viewInquiry(id);};
+window.deleteInquiry=async id=>{if(!confirm('Delete?'))return;await api('delete_inquiry',{id});loadInquiries();closeInqModal();};
+
+// ── INIT ─────────────────────────────────────────────────────
+init();
 </script>
 </body>
 </html>

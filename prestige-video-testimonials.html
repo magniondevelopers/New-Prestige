@@ -178,57 +178,29 @@ body.mobile-nav-open .mobile-nav-panel{transform:translateY(0);opacity:1;visibil
   </div>
 </div>
 
-<script type="module">
-import{initializeApp}from'https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js';
-import{getFirestore,collection,query,where,orderBy,getDocs}from'https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js';
-const app=initializeApp({apiKey:"AIzaSyANFWqwFqFuWGNzjZS2crbr_WJ29eSDdRU",authDomain:"prestigevacations.firebaseapp.com",projectId:"prestigevacations",storageBucket:"prestigevacations.firebasestorage.app",messagingSenderId:"294803443782",appId:"1:294803443782:web:a3433f81c5af6a56153a47"});
-const db=getFirestore(app);
-
+<script>
+const API='https://app.prestigevacations.in/website-media/website-api.php';
 let reels=[];let currentIdx=0;
-
-function getEmbedUrl(url){
-  const m=url.match(/instagram\.com\/(?:reel|p)\/([^/?]+)/);
-  return m?`https://www.instagram.com/reel/${m[1]}/embed/`:url;
-}
-
+function getEmbedUrl(url){const m=url.match(/instagram\.com\/(?:reel|p)\/([^/?]+)/);return m?`https://www.instagram.com/reel/${m[1]}/embed/`:url;}
 async function load(){
-  const snap=await getDocs(query(collection(db,'testimonials'),where('status','==','published'),orderBy('order','asc')));
-  reels=snap.docs.map(d=>({id:d.id,...d.data()}));
+  const res=await fetch(API+'?action=testimonials');
+  const data=await res.json();
+  reels=data.testimonials||[];
   const grid=document.getElementById('reelsGrid');
   if(!reels.length){grid.innerHTML='<div class="reels-empty">No testimonials yet. Check back soon!</div>';return;}
-  grid.innerHTML=reels.map((r,i)=>`
-    <div class="reel-card fi" onclick="openReel(${i})">
-      ${r.thumbnail?`<img src="${r.thumbnail}" alt="${r.title||'Member testimonial'}" loading="lazy"/>`:`<div class="reel-card-placeholder"><i class="fa-brands fa-instagram"></i></div>`}
-      <div class="reel-play-btn"><div class="play-circle">▶</div></div>
-      ${(r.title||r.caption)?`<div class="reel-caption-bar"><div class="reel-caption-title">${r.title||''}</div><div class="reel-caption-sub">${r.caption||''}</div></div>`:''}
-    </div>`).join('');
+  grid.innerHTML=reels.map((r,i)=>`<div class="reel-card fi" onclick="openReel(${i})">${r.thumbnail?`<img src="${r.thumbnail}" alt="${r.title||''}" loading="lazy"/>`:'<div class="reel-card-placeholder"><i class="fa-brands fa-instagram"></i></div>'}<div class="reel-play-btn"><div class="play-circle">▶</div></div>${(r.title||r.caption)?`<div class="reel-caption-bar"><div class="reel-caption-title">${r.title||''}</div><div class="reel-caption-sub">${r.caption||''}</div></div>`:''}</div>`).join('');
   document.querySelectorAll('.reel-card.fi').forEach(el=>new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('vis');});},{threshold:.05}).observe(el));
 }
-
 window.openReel=idx=>{
-  currentIdx=idx;
-  const r=reels[idx];
+  currentIdx=idx;const r=reels[idx];
   document.getElementById('reelFrame').innerHTML=`<iframe src="${getEmbedUrl(r.reelUrl)}" allowfullscreen scrolling="no" allowtransparency></iframe>`;
   document.getElementById('reelDirectLink').href=r.reelUrl;
   document.getElementById('reelLb').classList.add('open');
   document.body.style.overflow='hidden';
 };
-window.closeLb=()=>{
-  document.getElementById('reelFrame').innerHTML='';
-  document.getElementById('reelLb').classList.remove('open');
-  document.body.style.overflow='';
-};
-window.navReel=dir=>{
-  currentIdx=(currentIdx+dir+reels.length)%reels.length;
-  openReel(currentIdx);
-};
-document.addEventListener('keydown',e=>{
-  if(!document.getElementById('reelLb').classList.contains('open'))return;
-  if(e.key==='Escape')closeLb();
-  if(e.key==='ArrowLeft')navReel(-1);
-  if(e.key==='ArrowRight')navReel(1);
-});
-
+window.closeLb=()=>{document.getElementById('reelFrame').innerHTML='';document.getElementById('reelLb').classList.remove('open');document.body.style.overflow='';};
+window.navReel=dir=>{currentIdx=(currentIdx+dir+reels.length)%reels.length;openReel(currentIdx);};
+document.addEventListener('keydown',e=>{if(!document.getElementById('reelLb').classList.contains('open'))return;if(e.key==='Escape')closeLb();if(e.key==='ArrowLeft')navReel(-1);if(e.key==='ArrowRight')navReel(1);});
 load();
 </script>
 <script>

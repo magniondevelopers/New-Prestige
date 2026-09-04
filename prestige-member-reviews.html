@@ -176,57 +176,38 @@ body.mobile-nav-open .mobile-nav-panel{transform:translateY(0);opacity:1;visibil
   </div>
 </footer>
 
-<script type="module">
-import{initializeApp}from'https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js';
-import{getFirestore,collection,query,where,orderBy,getDocs}from'https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js';
-const app=initializeApp({apiKey:"AIzaSyANFWqwFqFuWGNzjZS2crbr_WJ29eSDdRU",authDomain:"prestigevacations.firebaseapp.com",projectId:"prestigevacations",storageBucket:"prestigevacations.firebasestorage.app",messagingSenderId:"294803443782",appId:"1:294803443782:web:a3433f81c5af6a56153a47"});
-const db=getFirestore(app);
-
+<script>
+const API='https://app.prestigevacations.in/website-media/website-api.php';
 let allReviews=[];
-
+function stars(n){return '★'.repeat(n||5)+'☆'.repeat(5-(n||5));}
 async function load(){
-  const snap=await getDocs(query(collection(db,'reviews'),where('status','==','published'),orderBy('createdAt','desc')));
-  allReviews=snap.docs.map(d=>({id:d.id,...d.data()}));
+  const res=await fetch(API+'?action=reviews');
+  const data=await res.json();
+  allReviews=data.reviews||[];
   render(allReviews);
 }
-
-function stars(n){
-  return '★'.repeat(n||5)+'☆'.repeat(5-(n||5));
-}
-
 function render(reviews){
   const grid=document.getElementById('reviewsGrid');
-  if(!reviews.length){
-    grid.innerHTML='<div class="reviews-empty">No reviews yet. Be the first to share your experience!</div>';
-    return;
-  }
-  grid.innerHTML=reviews.map(r=>`
-    <div class="review-card fi">
-      ${r.source?`<div class="review-source-badge">${r.source==='Google'?'<img src="https://www.google.com/favicon.ico" width="18" height="18" alt="Google"/>':r.source==='Facebook'?'<img src="https://www.facebook.com/favicon.ico" width="18" height="18" alt="Facebook"/>':''}</div>`:''}
-      <div class="review-quote">&ldquo;</div>
-      <div class="review-stars">${stars(r.rating)}</div>
-      <div class="review-text">${r.text}</div>
-      <div class="review-author">
-        <div class="review-avatar">${r.photoUrl?`<img src="${r.photoUrl}" alt="${r.name}"/>`:(r.name||'?')[0].toUpperCase()}</div>
-        <div>
-          <div class="review-name">${r.name}</div>
-          <div class="review-meta">${r.location||''}${r.location&&r.date?' · ':''} ${r.date||''}</div>
-          ${r.source?`<div class="review-location">${r.source} Review</div>`:''}
-        </div>
-      </div>
-    </div>`).join('');
+  if(!reviews.length){grid.innerHTML='<div class="reviews-empty">No reviews yet. Be the first!</div>';return;}
+  grid.innerHTML=reviews.map(r=>`<div class="review-card fi">
+    ${r.source?`<div class="review-source-badge">${r.source==='Google'?'<img src="https://www.google.com/favicon.ico" width="18" height="18"/>':r.source==='Facebook'?'<img src="https://www.facebook.com/favicon.ico" width="18" height="18"/>':''}</div>`:''}
+    <div class="review-quote">&ldquo;</div>
+    <div class="review-stars">${stars(r.rating)}</div>
+    <div class="review-text">${r.text}</div>
+    <div class="review-author">
+      <div class="review-avatar">${(r.name||'?')[0].toUpperCase()}</div>
+      <div><div class="review-name">${r.name}</div><div class="review-meta">${r.location||''}${r.location&&r.date?' · ':''}${r.date||''}</div>${r.source?`<div class="review-location">${r.source} Review</div>`:''}</div>
+    </div></div>`).join('');
   document.querySelectorAll('.review-card.fi').forEach(el=>new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('vis');});},{threshold:.05}).observe(el));
 }
-
 window.filterReviews=(filter,btn)=>{
   document.querySelectorAll('.filter-pill').forEach(b=>b.classList.remove('active'));
   btn.classList.add('active');
   let filtered=allReviews;
-  if(typeof filter==='number'&&filter>0) filtered=allReviews.filter(r=>r.rating===filter);
-  else if(typeof filter==='string') filtered=allReviews.filter(r=>r.source===filter);
+  if(typeof filter==='number'&&filter>0)filtered=allReviews.filter(r=>r.rating===filter);
+  else if(typeof filter==='string')filtered=allReviews.filter(r=>r.source===filter);
   render(filtered);
 };
-
 load();
 </script>
 <script>

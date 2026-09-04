@@ -154,83 +154,39 @@ body.mobile-nav-open .mobile-nav-panel{transform:translateY(0);opacity:1;visibil
   </div>
 </footer>
 
-<script type="module">
-import{initializeApp}from'https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js';
-import{getFirestore,doc,getDoc,collection,query,where,orderBy,limit,getDocs}from'https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js';
-const app=initializeApp({apiKey:"AIzaSyANFWqwFqFuWGNzjZS2crbr_WJ29eSDdRU",authDomain:"prestigevacations.firebaseapp.com",projectId:"prestigevacations",storageBucket:"prestigevacations.firebasestorage.app",messagingSenderId:"294803443782",appId:"1:294803443782:web:a3433f81c5af6a56153a47"});
-const db=getFirestore(app);
-
+<script>
+const API='https://app.prestigevacations.in/website-media/website-api.php';
 const id=new URLSearchParams(window.location.search).get('id');
 const wrap=document.getElementById('postWrap');
-
-if(!id){
-  wrap.innerHTML='<div class="post-not-found">Post not found.</div>';
-}else{
-  const snap=await getDoc(doc(db,'blogs',id));
-  if(!snap.exists()||snap.data().status!=='published'){
-    wrap.innerHTML='<div class="post-not-found">Post not found or not published yet.<br><a href="prestige-blog-index.html" style="color:var(--gold-mid);margin-top:16px;display:inline-block;">← Back to Blog</a></div>';
-  }else{
-    const p=snap.data();
-    const date=p.createdAt?.toDate?p.createdAt.toDate().toLocaleDateString('en-IN',{day:'numeric',month:'long',year:'numeric'}):'';
-
-    // SEO
-    document.getElementById('pageTitle').textContent=(p.seoTitle||p.title)+' | Prestige Vacations & Clubs';
-    if(p.seoDesc){
-      const m=document.createElement('meta');m.name='description';m.content=p.seoDesc;document.head.appendChild(m);
-    }
-
-    // Hero image
-    const heroWrap=document.getElementById('postHero');
-    if(p.coverUrl){
-      heroWrap.innerHTML=`<img class="post-hero" src="${p.coverUrl}" alt="${p.title}"/>`;
-    }else{
-      heroWrap.innerHTML=`<div class="post-hero-placeholder"><i class="fa-solid fa-pen-nib"></i></div>`;
-    }
-
-    // Post content
-    wrap.innerHTML=`
-      <div class="post-breadcrumb">
-        <a href="prestige-home.html">Home</a>
-        <i class="fa-solid fa-chevron-right" style="font-size:8px;"></i>
-        <a href="prestige-blog-index.html">Blog</a>
-        <i class="fa-solid fa-chevron-right" style="font-size:8px;"></i>
-        <span style="color:var(--gold-mid);">${p.title}</span>
-      </div>
-      <div class="post-cat">${p.category||'Blog'}</div>
-      <h1 class="post-title">${p.title}</h1>
-      <div class="post-meta">
-        <span><i class="fa-solid fa-user-pen" style="margin-right:5px;"></i>${p.author||'Prestige Team'}</span>
-        <span class="post-meta-divider"></span>
-        <span><i class="fa-regular fa-calendar" style="margin-right:5px;"></i>${date}</span>
-        ${p.category?`<span class="post-meta-divider"></span><span>${p.category}</span>`:''}
-      </div>
-      <div class="post-content ql-editor" style="padding:0;">${p.content||''}</div>
-      <div class="post-footer">
-        <a href="prestige-blog-index.html" class="btn btn-outline" style="font-size:11px;padding:10px 20px;">← Back to Blog</a>
-        <div class="post-share">
-          <span class="share-label">Share</span>
-          <a class="share-btn" href="https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(window.location.href)}" target="_blank" title="Share on Facebook"><i class="fa-brands fa-facebook-f"></i></a>
-          <a class="share-btn" href="https://wa.me/?text=${encodeURIComponent(p.title+' '+window.location.href)}" target="_blank" title="Share on WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
-          <a class="share-btn" href="https://twitter.com/intent/tweet?url=${encodeURIComponent(window.location.href)}&text=${encodeURIComponent(p.title)}" target="_blank" title="Share on Twitter"><i class="fa-brands fa-x-twitter"></i></a>
-        </div>
-      </div>`;
-
-    // Related posts
-    const relSnap=await getDocs(query(collection(db,'blogs'),where('status','==','published'),orderBy('createdAt','desc'),limit(4)));
-    const related=relSnap.docs.map(d=>({id:d.id,...d.data()})).filter(r=>r.id!==id).slice(0,3);
-    if(related.length){
-      document.getElementById('relatedSection').style.display='block';
-      document.getElementById('relatedGrid').innerHTML=related.map(r=>`
-        <a class="related-card" href="prestige-blog-post.html?id=${r.id}">
-          ${r.coverUrl?`<img src="${r.coverUrl}" alt="${r.title}" loading="lazy"/>`:`<div class="related-card-placeholder"><i class="fa-solid fa-pen-nib"></i></div>`}
-          <div class="related-card-body">
-            <div class="related-card-cat">${r.category||'Blog'}</div>
-            <div class="related-card-title">${r.title}</div>
-          </div>
-        </a>`).join('');
-    }
+async function loadPost(){
+  if(!id){wrap.innerHTML='<div class="post-not-found">Post not found.</div>';return;}
+  const res=await fetch(API+'?action=blog&id='+encodeURIComponent(id));
+  const data=await res.json();
+  if(!data.ok||!data.blog){wrap.innerHTML='<div class="post-not-found">Post not found.<br><a href="prestige-blog-index.html" style="color:var(--gold-mid);margin-top:16px;display:inline-block;">← Back to Blog</a></div>';return;}
+  const p=data.blog;
+  const date=p.createdAt?new Date(p.createdAt).toLocaleDateString('en-IN',{day:'numeric',month:'long',year:'numeric'}):'';
+  document.getElementById('pageTitle').textContent=(p.seoTitle||p.title)+' | Prestige Vacations & Clubs';
+  const heroWrap=document.getElementById('postHero');
+  heroWrap.innerHTML=p.coverUrl?`<img class="post-hero" src="${p.coverUrl}" alt="${p.title}"/>`:'<div class="post-hero-placeholder"><i class="fa-solid fa-pen-nib"></i></div>';
+  wrap.innerHTML=`
+    <div class="post-breadcrumb"><a href="prestige-home.html">Home</a><i class="fa-solid fa-chevron-right" style="font-size:8px;"></i><a href="prestige-blog-index.html">Blog</a><i class="fa-solid fa-chevron-right" style="font-size:8px;"></i><span style="color:var(--gold-mid);">${p.title}</span></div>
+    <div class="post-cat">${p.category||'Blog'}</div>
+    <h1 class="post-title">${p.title}</h1>
+    <div class="post-meta"><span><i class="fa-solid fa-user-pen" style="margin-right:5px;"></i>${p.author||'Prestige Team'}</span><span class="post-meta-divider"></span><span><i class="fa-regular fa-calendar" style="margin-right:5px;"></i>${date}</span>${p.category?`<span class="post-meta-divider"></span><span>${p.category}</span>`:''}</div>
+    <div class="post-content ql-editor" style="padding:0;">${p.content||''}</div>
+    <div class="post-footer">
+      <a href="prestige-blog-index.html" class="btn btn-outline" style="font-size:11px;padding:10px 20px;">← Back to Blog</a>
+      <div class="post-share"><span class="share-label">Share</span><a class="share-btn" href="https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(window.location.href)}" target="_blank"><i class="fa-brands fa-facebook-f"></i></a><a class="share-btn" href="https://wa.me/?text=${encodeURIComponent(p.title+' '+window.location.href)}" target="_blank"><i class="fa-brands fa-whatsapp"></i></a></div>
+    </div>`;
+  const relRes=await fetch(API+'?action=blogs');
+  const relData=await relRes.json();
+  const related=(relData.blogs||[]).filter(r=>r.id!==id).slice(0,3);
+  if(related.length){
+    document.getElementById('relatedSection').style.display='block';
+    document.getElementById('relatedGrid').innerHTML=related.map(r=>`<a class="related-card" href="prestige-blog-post.html?id=${r.id}">${r.coverUrl?`<img src="${r.coverUrl}" alt="${r.title}" loading="lazy"/>`:'<div class="related-card-placeholder"><i class="fa-solid fa-pen-nib"></i></div>'}<div class="related-card-body"><div class="related-card-cat">${r.category||'Blog'}</div><div class="related-card-title">${r.title}</div></div></a>`).join('');
   }
 }
+loadPost();
 </script>
 <script>
 const nav=document.getElementById('mainNav');

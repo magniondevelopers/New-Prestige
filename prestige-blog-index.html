@@ -152,65 +152,40 @@ body.mobile-nav-open .mobile-nav-panel{transform:translateY(0);opacity:1;visibil
   </div>
 </footer>
 
-<script type="module">
-import{initializeApp}from'https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js';
-import{getFirestore,collection,query,where,orderBy,getDocs,limit,startAfter}from'https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js';
-const app=initializeApp({apiKey:"AIzaSyANFWqwFqFuWGNzjZS2crbr_WJ29eSDdRU",authDomain:"prestigevacations.firebaseapp.com",projectId:"prestigevacations",storageBucket:"prestigevacations.firebasestorage.app",messagingSenderId:"294803443782",appId:"1:294803443782:web:a3433f81c5af6a56153a47"});
-const db=getFirestore(app);
-
-let allPosts=[],activeCategory='',lastDoc=null;
-const PAGE=9;
-
+<script>
+const API='https://app.prestigevacations.in/website-media/website-api.php';
+let allPosts=[];
 async function load(){
-  const snap=await getDocs(query(collection(db,'blogs'),where('status','==','published'),orderBy('createdAt','desc')));
-  allPosts=snap.docs.map(d=>({id:d.id,...d.data()}));
-
-  // Build category filters
+  const res=await fetch(API+'?action=blogs');
+  const data=await res.json();
+  allPosts=data.blogs||[];
   const cats=[...new Set(allPosts.map(p=>p.category).filter(Boolean))];
   const filter=document.getElementById('blogFilter');
-  cats.forEach(c=>{
-    const btn=document.createElement('button');
-    btn.className='blog-filter-btn';
-    btn.textContent=c;
-    btn.onclick=()=>filterBlog(c,btn);
-    filter.appendChild(btn);
-  });
+  cats.forEach(c=>{const btn=document.createElement('button');btn.className='blog-filter-btn';btn.textContent=c;btn.onclick=()=>filterBlog(c,btn);filter.appendChild(btn);});
   render(allPosts);
 }
-
 function render(posts){
   const grid=document.getElementById('blogGrid');
   if(!posts.length){grid.innerHTML='<div class="blog-empty">No posts yet. Check back soon!</div>';return;}
   grid.innerHTML=posts.map(p=>{
-    const date=p.createdAt?.toDate?p.createdAt.toDate().toLocaleDateString('en-IN',{day:'numeric',month:'short',year:'numeric'}):'';
+    const date=p.createdAt?new Date(p.createdAt).toLocaleDateString('en-IN',{day:'numeric',month:'short',year:'numeric'}):'';
     const excerpt=(p.excerpt||(p.content||'').replace(/<[^>]+>/g,'')).substring(0,130);
     return`<a class="blog-card fi" href="prestige-blog-post.html?id=${p.id}">
-      ${p.coverUrl
-        ?`<img class="blog-card-img" src="${p.coverUrl}" alt="${p.title}" loading="lazy"/>`
-        :`<div class="blog-card-img-placeholder"><i class="fa-solid fa-pen-nib"></i></div>`}
+      ${p.coverUrl?`<img class="blog-card-img" src="${p.coverUrl}" alt="${p.title}" loading="lazy"/>`:`<div class="blog-card-img-placeholder"><i class="fa-solid fa-pen-nib"></i></div>`}
       <div class="blog-card-body">
         <div class="blog-cat">${p.category||'Blog'}</div>
         <div class="blog-card-title">${p.title}</div>
-        <div class="blog-card-excerpt">${excerpt}…</div>
-        <div class="blog-meta">
-          <span>✍ ${p.author||'Prestige'} · ${date}</span>
-          <span class="blog-read">Read <i class="fa-solid fa-arrow-right" style="font-size:9px;"></i></span>
-        </div>
-      </div>
-    </a>`;
+        <div class="blog-card-excerpt">${excerpt}...</div>
+        <div class="blog-meta"><span>✍ ${p.author||'Prestige'} · ${date}</span><span class="blog-read">Read <i class="fa-solid fa-arrow-right" style="font-size:9px;"></i></span></div>
+      </div></a>`;
   }).join('');
-  // Animate in
   document.querySelectorAll('.blog-card.fi').forEach(el=>new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('vis');});},{threshold:.08}).observe(el));
 }
-
 window.filterBlog=(cat,btn)=>{
   document.querySelectorAll('.blog-filter-btn').forEach(b=>b.classList.remove('active'));
   btn.classList.add('active');
-  activeCategory=cat;
-  const filtered=cat?allPosts.filter(p=>p.category===cat):allPosts;
-  render(filtered);
+  render(cat?allPosts.filter(p=>p.category===cat):allPosts);
 };
-
 load();
 </script>
 <script>
