@@ -552,36 +552,30 @@ async function loadDashboard(){
   }catch(e){console.error(e);}
 }
 
-// ── GALLERY — Section based
+// ── GALLERY — 100% cPanel, no Firestore ──────────────────────
+const GALLERY_API='https://app.prestigevacations.in/website-media/gallery-api.php';
+
 const GALLERY_SECTIONS={
-  'our-gallery':'Our Gallery',
-  'resort':'The Country Resort',
-  'suites':'The Country Suites',
-  'bay':'The Country Bay',
-  'events':'Member Events',
-  'celebrations':'Weddings & Celebrations',
-  'videos':'Videos',
-  'member-trips':'Member Trip Photos'
+  'our-gallery':'Our Gallery','resort':'The Country Resort',
+  'suites':'The Country Suites','bay':'The Country Bay',
+  'events':'Member Events','celebrations':'Weddings & Celebrations',
+  'videos':'Videos','member-trips':'Member Trip Photos'
 };
 
-async function loadGallery(){
-  filterGallerySection();
-}
+async function loadGallery(){ filterGallerySection(); }
 
 async function filterGallerySection(){
   const section=document.getElementById('filter-section').value;
-  const q=section
-    ?query(collection(db,'gallery_items'),where('section','==',section),orderBy('createdAt','desc'))
-    :query(collection(db,'gallery_items'),orderBy('createdAt','desc'));
-  const snap=await getDocs(q);
-  const items=snap.docs.map(d=>({id:d.id,...d.data()}));
-  renderGalleryGrid(items);
+  const url=GALLERY_API+'?action=list&key='+UPLOAD_KEY+(section?'&section='+section:'');
+  const res=await fetch(url,{headers:{'X-Upload-Key':UPLOAD_KEY}});
+  const data=await res.json();
+  renderGalleryGrid(data.items||[]);
 }
 window.filterGallerySection=filterGallerySection;
 
 function renderGalleryGrid(items){
   const grid=document.getElementById('photo-grid');
-  if(!items.length){grid.innerHTML='<p style="color:#9ca3af;padding:24px;text-align:center;">No items in this section yet.</p>';return;}
+  if(!items.length){grid.innerHTML='<p style="color:#9ca3af;padding:24px;text-align:center;">No items yet.</p>';return;}
   grid.innerHTML=items.map(p=>`
     <div class="photo-card">
       ${p.type==='video'
@@ -590,9 +584,8 @@ function renderGalleryGrid(items){
       <div class="photo-info" style="flex-direction:column;align-items:flex-start;gap:4px;">
         <span class="photo-tag">${GALLERY_SECTIONS[p.section]||p.section}</span>
         ${p.caption?`<span style="font-size:10px;color:#6b7280;">${p.caption}</span>`:''}
-        ${p.videoUrl?`<span style="font-size:10px;color:#6b7280;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:140px;">${p.videoUrl}</span>`:''}
       </div>
-      <div style="padding:0 8px 8px;"><button class="btn-sm btn-danger" onclick="deleteGalleryItem('${p.id}','${p.url||''}')">Delete</button></div>
+      <div style="padding:0 8px 8px;"><button class="btn-sm btn-danger" onclick="deleteGalleryItem('${p.id}')">Delete</button></div>
     </div>`).join('');
 }
 
@@ -609,20 +602,13 @@ window.toggleUploadType=()=>{
   document.getElementById('member-dest-wrap').style.display=sec==='member-trips'?'block':'none';
 };
 
-// Also toggle member fields when section changes
 document.addEventListener('DOMContentLoaded',()=>{
   document.getElementById('photo-section-select')?.addEventListener('change',()=>{
     const sec=document.getElementById('photo-section-select').value;
-    const isMember=sec==='member-trips';
-    document.getElementById('member-name-wrap').style.display=isMember?'block':'none';
-    document.getElementById('member-dest-wrap').style.display=isMember?'block':'none';
-    if(sec==='videos'){
-      document.getElementById('upload-type').value='video';
-      toggleUploadType();
-    } else {
-      document.getElementById('upload-type').value='photo';
-      toggleUploadType();
-    }
+    document.getElementById('member-name-wrap').style.display=sec==='member-trips'?'block':'none';
+    document.getElementById('member-dest-wrap').style.display=sec==='member-trips'?'block':'none';
+    if(sec==='videos'){document.getElementById('upload-type').value='video';toggleUploadType();}
+    else{document.getElementById('upload-type').value='photo';toggleUploadType();}
   });
 });
 
@@ -633,19 +619,62 @@ window.uploadGalleryItem=async()=>{
   const btn=document.getElementById('upload-btn');
   const progress=document.getElementById('upload-progress');
   btn.disabled=true;btn.textContent='Uploading…';
-
   try{
     if(type==='video'){
       const videoUrl=document.getElementById('video-url').value.trim();
       const title=document.getElementById('video-title').value.trim();
       const sub=document.getElementById('video-sub').value.trim();
       if(!videoUrl)return alert('Enter a YouTube URL.');
-      await addDoc(collection(db,'gallery_items'),{
-        section,type:'video',videoUrl,title,sub,
-        createdAt:serverTimestamp()
+      const res=await fetch(GALLERY_API+'?action=add_video&key='+UPLOAD_KEY,{
+        method:'POST',
+        headers:{'Content-Type':'application/json','X-Upload-Key':UPLOAD_KEY},
+        body:JSON.stringify({section,videoUrl,title,sub})
       });
+      const data=await res.json();
+      if(!data.ok)throw new Error(data.error||'Failed');
       document.getElementById('video-url').value='';
       document.getElementById('video-title').value='';
+    }else{
+      const files=document.getElementById('photo-files').files;
+      if(!files.length)return alert('Select photos first.');
+      const caption=document.getElementById('photo-caption').value.trim();
+      const sublabel=document.getElementById('photo-sublabel').value.trim();
+      const memberName=document.getElementById('member-name').value.trim();
+      const memberDest=document.getElementById('member-dest').value.trim();
+      let done=0;
+      for(const file of files){
+        progress.textContent=`Uploading ${++done} of ${files.length}…`;
+        const fd=new FormData();
+        fd.append('file',file);
+        fd.append('section',section);
+        fd.append('caption',caption||file.name.replace(/\.[^/.]+$/,''));
+        fd.append('sublabel',sublabel);
+        fd.append('memberName',memberName);
+        fd.append('memberDest',memberDest);
+        fd.append('key',UPLOAD_KEY);
+        const res=await fetch(GALLERY_API,{method:'POST',headers:{'X-Upload-Key':UPLOAD_KEY},body:fd});
+        const data=await res.json();
+        if(!data.ok)throw new Error(data.error||'Upload failed');
+      }
+      document.getElementById('photo-files').value='';
+      document.getElementById('photo-caption').value='';
+    }
+    progress.textContent='✓ Uploaded successfully!';
+    setTimeout(()=>{progress.textContent='';},3000);
+    filterGallerySection();
+  }catch(e){alert('Upload failed: '+e.message);}
+  btn.disabled=false;btn.textContent='Upload';
+};
+
+window.deleteGalleryItem=async(id)=>{
+  if(!confirm('Delete this item?'))return;
+  await fetch(GALLERY_API+'?action=delete&key='+UPLOAD_KEY,{
+    method:'POST',
+    headers:{'Content-Type':'application/json','X-Upload-Key':UPLOAD_KEY},
+    body:JSON.stringify({id})
+  });
+  filterGallerySection();
+};
     } else {
       const files=document.getElementById('photo-files').files;
       if(!files.length)return alert('Select photos first.');
