@@ -107,6 +107,15 @@ textarea{resize:vertical;min-height:100px;}
 .section{display:none;}
 .divider{border-top:1px solid rgba(255,255,255,.06);margin:8px 0;}
 .page-title{font-size:20px;font-weight:800;margin-bottom:20px;}
+.pr-table{width:100%;border-collapse:collapse;}
+.pr-table th{font-size:11px;text-transform:uppercase;letter-spacing:.5px;color:#6b7280;text-align:left;padding:8px 6px;}
+.pr-table td{padding:6px;vertical-align:middle;}
+.pr-table input[type=text],.pr-table input[type=number]{padding:7px 9px;font-size:13px;}
+.pr-table .pr-price{max-width:130px;}
+.pr-table .pr-unit{max-width:120px;}
+.pr-note{margin:14px 0 0;}
+.pr-from{font-size:12px;color:#6b7280;font-weight:400;margin-left:8px;}
+.inq-extra{white-space:pre-wrap;}
 </style>
 </head>
 <body>
@@ -138,6 +147,8 @@ textarea{resize:vertical;min-height:100px;}
     <div class="nav-item" data-nav="blog" onclick="loadSection('blog')">✍️ Blog Posts</div>
     <div class="nav-item" data-nav="reviews" onclick="loadSection('reviews')">⭐ Member Reviews</div>
     <div class="nav-item" data-nav="testimonials" onclick="loadSection('testimonials')">🎬 Video Testimonials</div>
+    <div class="sb-sec">Properties</div>
+    <div class="nav-item" data-nav="pricing" onclick="loadSection('pricing')">💰 Room Pricing</div>
     <div class="sb-sec">Leads</div>
     <div class="nav-item" data-nav="inquiries" onclick="loadSection('inquiries')">📩 Inquiries</div>
     <div class="sb-bottom">
@@ -291,15 +302,30 @@ textarea{resize:vertical;min-height:100px;}
         </div>
       </div>
 
+      <!-- ROOM PRICING -->
+      <div class="section" id="sec-pricing">
+        <div class="page-title">Room Pricing</div>
+        <p style="font-size:13px;color:#6b7280;margin:-6px 0 18px;">Prices update on the website as soon as you save. Leave a price empty to show "On request". Untick "Show" to hide a room.</p>
+        <div id="pricing-panels"><div class="panel"><div class="panel-body tc-empty">Loading…</div></div></div>
+        <div style="position:sticky;bottom:0;background:#f9fafb;padding:14px 0;display:flex;gap:12px;align-items:center;justify-content:flex-end;border-top:1px solid #e5e7eb;">
+          <span id="pricing-status" style="font-size:13px;color:#6b7280;"></span>
+          <button class="btn btn-outline" onclick="loadPricing()">Discard changes</button>
+          <button class="btn btn-gold" id="pricing-save" onclick="savePricing()">Save Pricing</button>
+        </div>
+      </div>
+
       <!-- INQUIRIES -->
       <div class="section" id="sec-inquiries">
         <div class="page-title">Contact Inquiries</div>
         <div class="panel">
           <div class="panel-header">
             <div class="panel-title">All Submissions</div>
+            <div style="display:flex;gap:8px;">
+            <select id="inq-form-filter" onchange="filterInquiries()" style="font-size:13px;padding:5px 10px;border:1px solid #d1d5db;border-radius:6px;"><option value="">All forms</option></select>
             <select id="inq-filter" onchange="filterInquiries()" style="font-size:13px;padding:5px 10px;border:1px solid #d1d5db;border-radius:6px;">
               <option value="">All</option><option value="unread">Unread</option><option value="pending">Pending Reply</option><option value="replied">Replied</option>
             </select>
+            </div>
           </div>
           <table><thead><tr><th>Contact</th><th>Message</th><th>Form</th><th>Status</th><th>Date</th><th>Actions</th></tr></thead>
           <tbody id="inquiry-list"><tr><td colspan="6" class="tc-empty">Loading…</td></tr></tbody></table>
@@ -446,6 +472,7 @@ window.loadSection=name=>{
   if(name==='reviews')    loadReviews();
   if(name==='testimonials')loadTestimonials();
   if(name==='inquiries')  loadInquiries();
+  if(name==='pricing')    loadPricing();
   if(name==='dashboard')  loadDashboard();
 };
 
@@ -767,24 +794,32 @@ async function loadInquiries(){
   renderInquiries(allInquiries);
 }
 
+function esc(v){return String(v==null?'':v).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
+
 function renderInquiries(list){
+  const forms=[...new Set(allInquiries.map(i=>i.formType||'Contact'))].sort();
+  const ff=document.getElementById('inq-form-filter');
+  const cur=ff.value;
+  ff.innerHTML='<option value="">All forms</option>'+forms.map(f=>`<option ${f===cur?'selected':''}>${esc(f)}</option>`).join('');
   document.getElementById('inquiry-list').innerHTML=list.length?list.map(i=>`
     <tr class="${!i.read?'unread-row':''}">
-      <td><div class="fw-bold">${i.name||'—'}</div><div class="meta">${i.email||''} ${i.phone?'· '+i.phone:''}</div></td>
-      <td>${(i.subject||i.message||'—').substring(0,60)}</td>
-      <td><span class="inq-type">${i.formType||'Contact'}</span></td>
+      <td><div class="fw-bold">${esc(i.name||'—')}</div><div class="meta">${esc(i.email||'')} ${i.phone?'· '+esc(i.phone):''}</div></td>
+      <td>${esc((i.subject||i.message||'—').substring(0,60))}</td>
+      <td><span class="inq-type">${esc(i.formType||'Contact')}</span></td>
       <td><span class="status-badge status-${i.replied?'published':'draft'}">${i.replied?'Replied':'Pending'}</span></td>
       <td>${i.createdAt?new Date(i.createdAt).toLocaleString():'—'}</td>
       <td class="actions-cell">
-        <button class="btn-sm btn-outline" onclick="viewInquiry('${i.id}')">View</button>
-        <button class="btn-sm btn-danger" onclick="deleteInquiry('${i.id}')">Delete</button>
+        <button class="btn-sm btn-outline" onclick="viewInquiry('${esc(i.id)}')">View</button>
+        <button class="btn-sm btn-danger" onclick="deleteInquiry('${esc(i.id)}')">Delete</button>
       </td>
     </tr>`).join(''):'<tr><td colspan="6" class="tc-empty">No inquiries yet.</td></tr>';
 }
 
 window.filterInquiries=()=>{
   const f=document.getElementById('inq-filter').value;
+  const form=document.getElementById('inq-form-filter').value;
   let list=allInquiries;
+  if(form)list=list.filter(i=>(i.formType||'Contact')===form);
   if(f==='unread')list=list.filter(i=>!i.read);
   else if(f==='pending')list=list.filter(i=>!i.replied);
   else if(f==='replied')list=list.filter(i=>i.replied);
@@ -795,17 +830,20 @@ window.viewInquiry=async id=>{
   const inq=allInquiries.find(i=>i.id===id);
   if(!inq)return;
   if(!inq.read){await api('update_inquiry',{id,read:true});inq.read=true;}
+  const extra=[['Page',inq.page],['Office',inq.office],['Membership ID',inq.membershipId]]
+    .filter(x=>x[1]).map(x=>`<div class="inq-row"><label>${x[0]}</label><span>${esc(x[1])}</span></div>`).join('');
   document.getElementById('inq-modal-content').innerHTML=`
     <div class="inq-detail">
-      <div class="inq-row"><label>Name</label><span>${inq.name||'—'}</span></div>
-      <div class="inq-row"><label>Email</label><span><a href="mailto:${inq.email}" style="color:var(--gold);">${inq.email||'—'}</a></span></div>
-      <div class="inq-row"><label>Phone</label><span>${inq.phone||'—'}</span></div>
-      <div class="inq-row"><label>Subject</label><span>${inq.subject||'—'}</span></div>
-      <div class="inq-row"><label>Form</label><span>${inq.formType||'Contact'}</span></div>
+      <div class="inq-row"><label>Name</label><span>${esc(inq.name||'—')}</span></div>
+      <div class="inq-row"><label>Email</label><span>${inq.email?`<a href="mailto:${esc(inq.email)}" style="color:var(--gold);">${esc(inq.email)}</a>`:'—'}</span></div>
+      <div class="inq-row"><label>Phone</label><span>${inq.phone?`<a href="tel:${esc(inq.phone)}" style="color:var(--gold);">${esc(inq.phone)}</a>`:'—'}</span></div>
+      <div class="inq-row"><label>Subject</label><span>${esc(inq.subject||'—')}</span></div>
+      <div class="inq-row"><label>Form</label><span>${esc(inq.formType||'Contact')}</span></div>
+      ${extra}
       <div class="inq-row"><label>Date</label><span>${inq.createdAt?new Date(inq.createdAt).toLocaleString():'—'}</span></div>
-      <div class="inq-row full"><label>Message</label><div class="inq-message">${inq.message||'—'}</div></div>
+      <div class="inq-row full"><label>Message</label><div class="inq-message inq-extra">${esc(inq.message||'—')}</div></div>
       <div class="inq-row"><label>Status</label>
-        <button class="btn ${inq.replied?'btn-outline':'btn-gold'}" onclick="markReplied('${id}',${!inq.replied})" style="font-size:13px;padding:6px 14px;">
+        <button class="btn ${inq.replied?'btn-outline':'btn-gold'}" onclick="markReplied('${esc(id)}',${!inq.replied})" style="font-size:13px;padding:6px 14px;">
           ${inq.replied?'Mark as Pending':'✓ Mark as Replied'}
         </button>
       </div>
@@ -816,6 +854,102 @@ window.viewInquiry=async id=>{
 window.closeInqModal=()=>{document.getElementById('inq-modal').style.display='none';};
 window.markReplied=async(id,val)=>{await api('update_inquiry',{id,replied:val});const i=allInquiries.find(x=>x.id===id);if(i)i.replied=val;viewInquiry(id);};
 window.deleteInquiry=async id=>{if(!confirm('Delete?'))return;await api('delete_inquiry',{id});loadInquiries();closeInqModal();};
+
+
+// ── ROOM PRICING (cPanel pricing-api.php) ───────────────────
+const PAPI='https://app.prestigevacations.in/website-media/pricing-api.php';
+const PROPS=[
+  {key:'country-resort',title:'The Country Resort',sub:'Mahabalipuram · rooms shown on the resort page, Resort Stays and FAQs',fixed:true},
+  {key:'country-suites',title:'The Country Suites',sub:'Mahabalipuram · private villas',fixed:true},
+  {key:'country-bay',   title:'The Country Bay',   sub:'Marakkanam · rooms appear in a "Rooms & Tariff" section once you add them',fixed:false}
+];
+let pricing=null;
+
+async function loadPricing(){
+  document.getElementById('pricing-status').textContent='';
+  try{
+    const r=await fetch(PAPI+'?action=get',{cache:'no-store'});
+    pricing=await r.json();
+  }catch(e){
+    document.getElementById('pricing-panels').innerHTML='<div class="panel"><div class="panel-body tc-empty">Could not load pricing. Check that pricing-api.php is uploaded.</div></div>';
+    return;
+  }
+  pricing.properties=pricing.properties||{};
+  PROPS.forEach(p=>{pricing.properties[p.key]=pricing.properties[p.key]||{name:p.title,note:'',rooms:[]};});
+  renderPricing();
+}
+window.loadPricing=loadPricing;
+
+function fromPrice(rooms){
+  const v=rooms.filter(r=>r.visible!==false&&Number(r.price)>0).map(r=>Number(r.price));
+  return v.length?'Starting from ₹'+Math.min(...v).toLocaleString('en-IN'):'No prices set';
+}
+
+function renderPricing(){
+  document.getElementById('pricing-panels').innerHTML=PROPS.map(p=>{
+    const d=pricing.properties[p.key];
+    const rows=(d.rooms||[]).map((r,i)=>`
+      <tr>
+        <td><input type="text" value="${esc(r.name)}" oninput="prSet('${p.key}',${i},'name',this.value)"/></td>
+        <td><input type="text" value="${esc(r.variant||'')}" placeholder="e.g. Garden View" oninput="prSet('${p.key}',${i},'variant',this.value)"/></td>
+        ${p.fixed?'':`<td><input type="text" value="${esc(r.description||'')}" placeholder="Short description" oninput="prSet('${p.key}',${i},'description',this.value)"/></td>`}
+        <td><input class="pr-price" type="number" min="0" step="1" value="${r.price==null?'':esc(r.price)}" placeholder="On request" oninput="prSet('${p.key}',${i},'price',this.value)"/></td>
+        <td><input class="pr-unit" type="text" value="${esc(r.unit||'night')}" oninput="prSet('${p.key}',${i},'unit',this.value)"/></td>
+        <td style="text-align:center;"><input type="checkbox" ${r.visible!==false?'checked':''} onchange="prSet('${p.key}',${i},'visible',this.checked)"/></td>
+        <td>${p.fixed?'':`<button class="btn-sm btn-danger" onclick="prRemove('${p.key}',${i})">Remove</button>`}</td>
+      </tr>`).join('');
+    return `<div class="panel" style="margin-bottom:20px;">
+      <div class="panel-header">
+        <div><div class="panel-title">${p.title}<span class="pr-from" id="pr-from-${p.key}">${fromPrice(d.rooms||[])}</span></div>
+        <div style="font-size:12px;color:#9ca3af;margin-top:2px;">${p.sub}</div></div>
+        ${p.fixed?'':`<button class="btn btn-gold" onclick="prAdd('${p.key}')">+ Add Room</button>`}
+      </div>
+      <div class="panel-body">
+        <div style="overflow-x:auto;"><table class="pr-table">
+          <thead><tr><th>Room / Villa</th><th>Variant</th>${p.fixed?'':'<th>Description</th>'}<th>Price (₹)</th><th>Per</th><th>Show</th><th></th></tr></thead>
+          <tbody>${rows||`<tr><td colspan="7" class="tc-empty">No rooms yet. Click "+ Add Room".</td></tr>`}</tbody>
+        </table></div>
+        ${p.key==='country-bay'?`<div class="pr-note"><label class="lbl">Note under the section title (optional)</label><input type="text" value="${esc(d.note||'')}" placeholder="e.g. Launch offer — members get 20% off" oninput="pricing.properties['${p.key}'].note=this.value;prDirty()"/></div>`:''}
+      </div></div>`;
+  }).join('');
+}
+
+window.prSet=(key,i,field,val)=>{
+  const r=pricing.properties[key].rooms[i];
+  r[field]=field==='price'?(val===''?null:Number(val)):val;
+  document.getElementById('pr-from-'+key).textContent=fromPrice(pricing.properties[key].rooms);
+  prDirty();
+};
+window.prAdd=key=>{
+  pricing.properties[key].rooms.push({id:'room-'+Date.now().toString(36),name:'New Room',variant:'',description:'',price:null,unit:'night',visible:true});
+  renderPricing();prDirty();
+};
+window.prRemove=(key,i)=>{
+  if(!confirm('Remove this room from the website?'))return;
+  pricing.properties[key].rooms.splice(i,1);renderPricing();prDirty();
+};
+function prDirty(){document.getElementById('pricing-status').textContent='Unsaved changes';}
+
+window.savePricing=async()=>{
+  for(const p of PROPS){
+    for(const r of pricing.properties[p.key].rooms){
+      if(!String(r.name||'').trim()){alert(p.title+': every room needs a name.');return;}
+      if(r.price!=null&&(isNaN(r.price)||r.price<0)){alert(p.title+': "'+r.name+'" has an invalid price.');return;}
+    }
+  }
+  const btn=document.getElementById('pricing-save');
+  btn.disabled=true;btn.textContent='Saving…';
+  try{
+    const res=await fetch(PAPI+'?action=save',{method:'POST',headers:{'Content-Type':'application/json','X-Admin-Token':TOKEN},body:JSON.stringify(pricing)});
+    const j=await res.json();
+    if(!j.ok)throw new Error(j.error||'Save failed');
+    pricing=j.pricing;renderPricing();
+    document.getElementById('pricing-status').textContent='✓ Saved — live on the website';
+  }catch(e){
+    alert('Could not save pricing: '+e.message);
+  }
+  btn.disabled=false;btn.textContent='Save Pricing';
+};
 
 // ── INIT ─────────────────────────────────────────────────────
 init();

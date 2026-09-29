@@ -429,6 +429,25 @@
       .section-body, p { overflow-wrap: anywhere; }
     }
 
+
+    /* Rooms & Tariff (dynamic) */
+    .pv-section { background: #0f0f0d; }
+    .pv-note { font-size: 13px; color: var(--silver); opacity: .7; margin-top: 14px; }
+    .pv-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 24px; }
+    .pv-card { background: #141412; border: 1px solid rgba(217,186,111,0.15); padding: 28px; display: flex; flex-direction: column; transition: all .3s ease; }
+    .pv-card:hover { border-color: var(--gold); transform: translateY(-4px); }
+    .pv-card-name { font-family: 'Cormorant Garamond', serif; font-size: 26px; font-weight: 600; color: var(--champagne); }
+    .pv-card-variant { font-family: 'Cormorant Garamond', serif; font-size: 17px; color: var(--gold-bronze); margin-top: 2px; }
+    .pv-card-desc { font-size: 13px; font-weight: 300; line-height: 1.7; color: var(--silver); opacity: .75; margin: 14px 0 0; }
+    .pv-card-foot { display: flex; align-items: flex-end; justify-content: space-between; gap: 12px; margin-top: auto; padding-top: 22px; border-top: 1px solid rgba(217,186,111,0.12); }
+    .pv-card-label { font-size: 10px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--gold-bronze); margin-bottom: 4px; }
+    .pv-card-price { font-family: 'Cormorant Garamond', serif; font-size: 28px; font-weight: 600; color: var(--gold); }
+    .pv-card-price span { font-family: 'Montserrat', sans-serif; font-size: 11px; font-weight: 400; color: var(--silver); opacity: .5; margin-left: 2px; }
+    .pv-card-cta { font-size: 11px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); white-space: nowrap; }
+    .form-success { display: none; text-align: center; padding: 40px 24px; border: 1px solid rgba(217,186,111,0.25); background: rgba(217,186,111,0.04); max-width: 720px; margin: 0 auto; }
+    .form-success i { font-size: 36px; color: var(--gold); margin-bottom: 14px; }
+    .form-success h3 { font-family: 'Cormorant Garamond', serif; font-size: 28px; color: var(--champagne); margin-bottom: 8px; }
+    .form-success p { font-size: 13px; color: var(--silver); opacity: .75; }
   </style>
 </head>
 
@@ -825,12 +844,24 @@
 
 
 <!-- ═══ INTEREST REGISTRATION ══════════════════════════════ -->
+<!-- ROOMS & TARIFF (managed from Admin Panel → Room Pricing) -->
+<section class="section pv-section" data-pv-section="country-bay" style="display:none;">
+  <div class="container">
+    <div style="text-align:center;margin-bottom:40px;">
+      <span class="section-label">Rooms &amp; Tariff</span>
+      <h2 class="section-title" style="color:var(--champagne);">Stay at The Country Bay</h2>
+      <p class="pv-note" data-pv-note="country-bay" style="display:none;"></p>
+    </div>
+    <div class="pv-grid" data-pv-list="country-bay"></div>
+  </div>
+</section>
+
 <section class="register-section" id="register">
   <div class="container">
     <span class="register-script">Be among the first</span>
     <h2 class="register-title gold-text">Register Your Interest<br>in The Country Bay</h2>
     <p class="register-sub">The Country Bay is newly launched. Register below and our team will reach out with full details, pricing, and availability — Prestige members get priority access.</p>
-    <div class="register-form fade-in">
+    <div class="register-form fade-in" id="bayForm">
       <div class="form-row">
         <div class="form-group">
           <label for="r-name">Full Name</label>
@@ -878,10 +909,15 @@
         <label for="r-message">Message (Optional)</label>
         <textarea id="r-message" placeholder="Tell us more — group size, occasion, specific requirements..."></textarea>
       </div>
-      <button class="btn btn-gold form-submit" onclick="submitForm()">
+      <button type="button" class="btn btn-gold form-submit" id="baySubmit">
         <i class="fa-solid fa-paper-plane"></i> Submit Your Interest
       </button>
       <p class="form-note">Our team will contact you within 24 hours. Your details are private and will never be shared.</p>
+    </div>
+    <div class="form-success" id="baySuccess">
+      <i class="fa-solid fa-circle-check"></i>
+      <h3>Thank you for registering!</h3>
+      <p>Your interest in The Country Bay has been received. Our team will contact you within 24 hours.</p>
     </div>
     <div class="register-or">or reach us directly</div>
     <div class="register-alts">
@@ -1041,16 +1077,6 @@
   }, { threshold: 0.1 });
   faders.forEach(f => observer.observe(f));
 
-  function submitForm() {
-    const name   = document.getElementById('r-name')?.value || '';
-    const phone  = document.getElementById('r-phone')?.value || '';
-    const member = document.getElementById('r-member')?.value || '';
-    const type   = document.getElementById('r-type')?.value || '';
-    const date   = document.getElementById('r-date')?.value || '';
-    const msg    = document.getElementById('r-message')?.value || '';
-    const text = `Hi Prestige Vacations! I'm interested in The Country Bay, Marakkanam.%0A%0AName: ${name}%0APhone: ${phone}%0AMember: ${member}%0AInterest: ${type}%0ATravel Period: ${date}%0AMessage: ${msg}`;
-    window.open(`https://wa.me/918001213457?text=${text}`, '_blank');
-  }
 </script>
 
 
@@ -1138,5 +1164,22 @@
 })();
 </script>
 
+<script src="prestige-inquiry.js"></script>
+<script src="prestige-pricing.js"></script>
+<script>
+  PrestigeInquiry.bindForm({
+    button: 'baySubmit', form: 'bayForm', success: 'baySuccess',
+    collect: function (v) {
+      var sel = function (id) { var el = document.getElementById(id); return el && el.selectedIndex > 0 ? el.options[el.selectedIndex].text : ''; };
+      return {
+        name: v('r-name'), phone: v('r-phone'), email: v('r-email'),
+        subject: 'The Country Bay — ' + (sel('r-type') || 'Interest Registration'),
+        message: v('r-message'),
+        formType: 'The Country Bay',
+        details: { 'Prestige member': sel('r-member'), 'Interested in': sel('r-type'), 'Travel period': v('r-date') }
+      };
+    }
+  });
+</script>
 </body>
 </html>

@@ -177,6 +177,11 @@
     .villa-card-img-label { font-family: 'Cormorant Garamond', serif; font-size: 14px; font-style: italic; color: var(--gold-bronze); letter-spacing: 2px; }
     .villa-badge { position: absolute; top: 16px; left: 16px; background: linear-gradient(135deg, var(--gold-mid), var(--gold)); color: var(--black); font-size: 9px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; padding: 5px 12px; }
     .villa-card-body { padding: 28px; }
+    .villa-card-pricebox { margin: 4px 0 18px; }
+    .villa-card-price-label { font-size: 10px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--gold-bronze); margin-bottom: 4px; }
+    .villa-card-price { font-family: 'Cormorant Garamond', serif; font-size: 28px; font-weight: 600; color: var(--gold); }
+    .villa-card-price .room-price-night { font-family: 'Montserrat', sans-serif; font-size: 11px; color: var(--silver); opacity: 0.5; margin-left: 2px; font-weight: 400; }
+
     .villa-card-name { font-family: 'Cormorant Garamond', serif; font-size: 24px; font-weight: 600; color: var(--champagne); margin-bottom: 10px; line-height: 1.2; }
     .villa-card-specs { display: flex; gap: 16px; margin-bottom: 14px; flex-wrap: wrap; }
     .villa-spec { display: flex; align-items: center; gap: 5px; font-size: 11px; color: var(--silver); opacity: 0.7; }
@@ -676,6 +681,10 @@
             <span class="villa-card-tag">Indoor Games</span>
             <span class="villa-card-tag">Full Privacy</span>
           </div>
+          <div class="villa-card-pricebox" style="display:none;" data-pv-box>
+            <div class="villa-card-price-label">Starting From</div>
+            <div class="villa-card-price" data-pv-room="country-suites/garden-villa" data-pv-format="rich" data-pv-empty="hide"></div>
+          </div>
           <div class="villa-card-footer">
             <span class="villa-card-ideal">Ideal for families &amp; groups</span>
             <a href="prestige-contact%20(1).html" class="villa-card-cta">Enquire <i class="fa-solid fa-arrow-right"></i></a>
@@ -703,6 +712,10 @@
             <span class="villa-card-tag">Premium Interiors</span>
             <span class="villa-card-tag">Most Popular</span>
           </div>
+          <div class="villa-card-pricebox" style="display:none;" data-pv-box>
+            <div class="villa-card-price-label">Starting From</div>
+            <div class="villa-card-price" data-pv-room="country-suites/signature-pool-villa" data-pv-format="rich" data-pv-empty="hide"></div>
+          </div>
           <div class="villa-card-footer">
             <span class="villa-card-ideal">Ideal for couples &amp; anniversaries</span>
             <a href="prestige-contact%20(1).html" class="villa-card-cta">Enquire <i class="fa-solid fa-arrow-right"></i></a>
@@ -729,6 +742,10 @@
             <span class="villa-card-tag">Multiple Rooms</span>
             <span class="villa-card-tag">Indoor Games</span>
             <span class="villa-card-tag">Group-Ready</span>
+          </div>
+          <div class="villa-card-pricebox" style="display:none;" data-pv-box>
+            <div class="villa-card-price-label">Starting From</div>
+            <div class="villa-card-price" data-pv-room="country-suites/family-grand-villa" data-pv-format="rich" data-pv-empty="hide"></div>
           </div>
           <div class="villa-card-footer">
             <span class="villa-card-ideal">Ideal for large families &amp; groups</span>
@@ -1296,5 +1313,15 @@
 })();
 </script>
 
+<script src="prestige-pricing.js"></script>
+<script>
+  // Reveal a villa's price box once the admin has set a price for it
+  new MutationObserver(function () {
+    document.querySelectorAll('[data-pv-box]').forEach(function (box) {
+      var p = box.querySelector('[data-pv-room]');
+      box.style.display = (p && p.style.display !== 'none' && p.textContent.trim()) ? '' : 'none';
+    });
+  }).observe(document.querySelector('.villa-grid'), { subtree: true, childList: true, characterData: true, attributes: true });
+</script>
 </body>
 </html>

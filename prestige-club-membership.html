@@ -355,22 +355,23 @@
       <h2 class="st">Enquire About Club Membership</h2>
       <p class="sb" style="margin:20px auto 0;">Fill in your details and our team will reach out within 24 hours with everything you need to know.</p>
     </div>
-    <div class="enq-form fi">
+    <div class="enq-success" id="clubSuccess"><i class="fa-solid fa-circle-check"></i><h3>Thank you!</h3><p>Your Club Membership enquiry has been received. Our team will contact you within 24 hours.</p></div>
+    <div class="enq-form fi" id="clubForm">
       <div class="frow">
-        <div class="fg"><label>Full Name</label><input type="text" placeholder="Your full name"/></div>
-        <div class="fg"><label>Phone Number</label><input type="tel" placeholder="+91 XXXXX XXXXX"/></div>
+        <div class="fg"><label for="c-name">Full Name</label><input type="text" id="c-name" placeholder="Your full name"/></div>
+        <div class="fg"><label for="c-phone">Phone Number</label><input type="tel" id="c-phone" placeholder="+91 XXXXX XXXXX"/></div>
       </div>
       <div class="frow">
-        <div class="fg"><label>Email Address</label><input type="email" placeholder="your@email.com"/></div>
-        <div class="fg"><label>City / Area</label><input type="text" placeholder="e.g. Chennai, Velachery, OMR"/></div>
+        <div class="fg"><label for="c-email">Email Address</label><input type="email" id="c-email" placeholder="your@email.com"/></div>
+        <div class="fg"><label for="c-city">City / Area</label><input type="text" id="c-city" placeholder="e.g. Chennai, Velachery, OMR"/></div>
       </div>
       <div class="fg" style="margin-bottom:16px;">
-        <label>What Would You Like to Know?</label>
-        <textarea placeholder="Tell us what you're looking for — day outings, events, pricing, or anything else about Club Membership..."></textarea>
+        <label for="c-message">What Would You Like to Know?</label>
+        <textarea id="c-message" placeholder="Tell us what you're looking for — day outings, events, pricing, or anything else about Club Membership..."></textarea>
       </div>
-      <a href="https://wa.me/918001213457?text=Hi,%20I'm%20interested%20in%20Prestige%20Vacations%20Club%20Membership.%20Please%20share%20more%20details." target="_blank" class="btn bg" style="width:100%;justify-content:center;font-size:13px;padding:16px;">
-        <i class="fa-solid fa-paper-plane"></i> Submit Enquiry via WhatsApp
-      </a>
+      <button type="button" id="clubSubmit" class="btn bg" style="width:100%;justify-content:center;font-size:13px;padding:16px;border:none;cursor:pointer;">
+        <i class="fa-solid fa-paper-plane"></i> Submit Enquiry
+      </button>
       <p style="font-size:11px;color:var(--silver);opacity:.45;text-align:center;margin-top:14px;">Our team will contact you within 24 hours. All enquiries are private and confidential.</p>
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:20px;">
         <a href="tel:18001213457" class="btn bg" style="justify-content:center;font-size:11px;padding:13px;"><i class="fa-solid fa-phone"></i> 1800 121 3457</a>
@@ -496,5 +497,19 @@
 })();
 </script>
 
+<script src="prestige-inquiry.js"></script>
+<script>
+  PrestigeInquiry.bindForm({
+    button: 'clubSubmit', form: 'clubForm', success: 'clubSuccess',
+    collect: function (v) {
+      return {
+        name: v('c-name'), phone: v('c-phone'), email: v('c-email'),
+        subject: 'Club Membership Enquiry', message: v('c-message'),
+        formType: 'Club Membership',
+        details: { 'City / Area': v('c-city') }
+      };
+    }
+  });
+</script>
 </body>
 </html>
