@@ -1,3096 +1,824 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
-<meta charset="UTF-8">
-
-<meta
-  name="viewport"
-  content="width=device-width, initial-scale=1.0"
->
-
-<title>Prestige Admin | Reviews</title>
-
-
-<link
-  rel="preconnect"
-  href="https://fonts.googleapis.com"
->
-
-<link
-  rel="preconnect"
-  href="https://fonts.googleapis.com"
-  crossorigin
->
-
-
-<link
-  href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap"
-  rel="stylesheet"
->
-
-
-<link
-  rel="stylesheet"
-  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
->
-
-
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Prestige Admin Panel</title>
+<link href="https://cdn.quilljs.com/1.3.7/quill.snow.css" rel="stylesheet"/>
+<script src="https://cdn.quilljs.com/1.3.7/quill.min.js"></script>
 <style>
-
-/* =========================================
-   COLORS
-========================================= */
-
-:root{
-
-  --black:#1a1a17;
-  --panel:#22211d;
-  --panel2:#2b2924;
-
-  --gold:#d9ba6f;
-  --cream:#f2e7c7;
-
-  --silver:#dcdcdc;
-  --muted:#99968e;
-
-  --danger:#d96b6b;
-  --success:#73bd8b;
-
-}
-
-
-/* =========================================
-   RESET
-========================================= */
-
-*{
-  box-sizing:border-box;
-}
-
-
-html,
-body{
-  margin:0;
-  padding:0;
-  min-height:100%;
-}
-
-
-body{
-  background:var(--black);
-  color:var(--silver);
-  font-family:Montserrat,sans-serif;
-}
-
-
-button,
-input,
-textarea,
-select{
-  font:inherit;
-}
-
-
-button{
-  cursor:pointer;
-}
-
-
-.hidden{
-  display:none !important;
-}
-
-
-/* =========================================
-   LOGIN
-========================================= */
-
-.login-wrap{
-
-  min-height:100vh;
-
-  display:grid;
-
-  place-items:center;
-
-  padding:20px;
-
-}
-
-
-.login-card{
-
-  width:min(430px,100%);
-
-  background:var(--panel);
-
-  border:
-    1px solid
-    rgba(217,186,111,.25);
-
-  padding:40px;
-
-  border-radius:18px;
-
-  box-shadow:
-    0 20px 70px #0008;
-
-}
-
-
-.brand{
-
-  text-align:center;
-
-  color:var(--gold);
-
-  font-family:
-    'Cormorant Garamond',
-    serif;
-
-  font-size:46px;
-
-  font-weight:600;
-
-}
-
-
-.sub{
-
-  text-align:center;
-
-  color:var(--muted);
-
-  font-size:11px;
-
-  letter-spacing:2px;
-
-  text-transform:uppercase;
-
-  margin:
-    5px 0 30px;
-
-}
-
-
-.field{
-  margin-bottom:17px;
-}
-
-
-.field label{
-
-  display:block;
-
-  font-size:11px;
-
-  text-transform:uppercase;
-
-  letter-spacing:1.5px;
-
-  margin-bottom:7px;
-
-  color:var(--cream);
-
-}
-
-
-input,
-textarea,
-select{
-
-  width:100%;
-
-  background:#171612;
-
-  border:1px solid #49463e;
-
-  color:#fff;
-
-  border-radius:8px;
-
-  padding:13px;
-
-  outline:none;
-
-}
-
-
-input:focus,
-textarea:focus,
-select:focus{
-
-  border-color:var(--gold);
-
-}
-
-
-textarea{
-
-  min-height:140px;
-
-  resize:vertical;
-
-}
-
-
-.btn{
-
-  border:0;
-
-  border-radius:8px;
-
-  padding:13px 18px;
-
-  cursor:pointer;
-
-  font-weight:700;
-
-  letter-spacing:.5px;
-
-  transition:.15s;
-
-}
-
-
-.btn:hover{
-  transform:translateY(-1px);
-}
-
-
-.btn:disabled{
-
-  opacity:.5;
-
-  cursor:not-allowed;
-
-  transform:none;
-
-}
-
-
-.btn-gold{
-
-  background:var(--gold);
-
-  color:#181711;
-
-}
-
-
-.btn-outline{
-
-  background:transparent;
-
-  border:
-    1px solid #666;
-
-  color:#fff;
-
-}
-
-
-.btn-danger{
-
-  background:#512b2b;
-
-  color:#ffd6d6;
-
-}
-
-
-.btn-success{
-
-  background:#234c32;
-
-  color:#d7ffe2;
-
-}
-
-
-.error{
-
-  background:#4b2929;
-
-  color:#ffd1d1;
-
-  padding:13px;
-
-  border-radius:7px;
-
-  font-size:12px;
-
-  line-height:1.7;
-
-  margin-bottom:15px;
-
-  white-space:pre-line;
-
-  word-break:break-word;
-
-}
-
-
-.info{
-
-  background:#302c1f;
-
-  color:#ffe5a4;
-
-  padding:13px;
-
-  border-radius:7px;
-
-  font-size:12px;
-
-  line-height:1.7;
-
-  margin-bottom:15px;
-
-  white-space:pre-line;
-
-  word-break:break-word;
-
-}
-
-
-.small{
-
-  font-size:11px;
-
-  color:var(--muted);
-
-  line-height:1.6;
-
-}
-
-
-/* =========================================
-   HEADER
-========================================= */
-
-.app{
-
-  min-height:100vh;
-
-}
-
-
-.topbar{
-
-  height:72px;
-
-  border-bottom:
-    1px solid #38362f;
-
-  background:#1c1b18;
-
-  display:flex;
-
-  align-items:center;
-
-  justify-content:space-between;
-
-  padding:0 28px;
-
-  position:sticky;
-
-  top:0;
-
-  z-index:10;
-
-}
-
-
-.topbrand{
-
-  font-family:
-    'Cormorant Garamond',
-    serif;
-
-  color:var(--gold);
-
-  font-size:30px;
-
-}
-
-
-.user{
-
-  font-size:12px;
-
-  color:var(--muted);
-
-}
-
-
-.logout{
-
-  margin-left:12px;
-
-}
-
-
-/* =========================================
-   CONTENT
-========================================= */
-
-.container{
-
-  max-width:1250px;
-
-  margin:auto;
-
-  padding:30px 20px;
-
-}
-
-
-.stats{
-
-  display:grid;
-
-  grid-template-columns:
-    repeat(4,1fr);
-
-  gap:15px;
-
-  margin-bottom:25px;
-
-}
-
-
-.stat{
-
-  background:var(--panel);
-
-  border:
-    1px solid #3a3831;
-
-  border-radius:13px;
-
-  padding:22px;
-
-}
-
-
-.stat .num{
-
-  font-size:28px;
-
-  color:var(--gold);
-
-  font-weight:700;
-
-}
-
-
-.stat .label{
-
-  font-size:10px;
-
-  text-transform:uppercase;
-
-  letter-spacing:1.5px;
-
-  color:var(--muted);
-
-  margin-top:6px;
-
-}
-
-
-.layout{
-
-  display:grid;
-
-  grid-template-columns:400px 1fr;
-
-  gap:20px;
-
-}
-
-
-.card{
-
-  background:var(--panel);
-
-  border:
-    1px solid #3a3831;
-
-  border-radius:13px;
-
-  padding:22px;
-
-}
-
-
-.card h2{
-
-  font-family:
-    'Cormorant Garamond',
-    serif;
-
-  color:var(--cream);
-
-  font-size:28px;
-
-  margin:
-    0 0 20px;
-
-}
-
-
-.row{
-
-  display:grid;
-
-  grid-template-columns:
-    1fr 1fr;
-
-  gap:12px;
-
-}
-
-
-.actions{
-
-  display:flex;
-
-  gap:9px;
-
-  flex-wrap:wrap;
-
-  margin-top:15px;
-
-}
-
-
-/* =========================================
-   STARS
-========================================= */
-
-.stars{
-
-  display:flex;
-
-  gap:7px;
-
-  margin:
-    5px 0 18px;
-
-}
-
-
-.star{
-
-  font-size:30px;
-
-  color:#555;
-
-  cursor:pointer;
-
-  transition:.15s;
-
-}
-
-
-.star:hover{
-
-  transform:
-    scale(1.08);
-
-}
-
-
-.star.active{
-
-  color:var(--gold);
-
-}
-
-
-/* =========================================
-   REVIEWS
-========================================= */
-
-.review-list{
-
-  display:grid;
-
-  gap:12px;
-
-}
-
-
-.review{
-
-  background:var(--panel2);
-
-  border:
-    1px solid #46433a;
-
-  border-radius:11px;
-
-  padding:17px;
-
-}
-
-
-.review-head{
-
-  display:flex;
-
-  justify-content:
-    space-between;
-
-  gap:10px;
-
-}
-
-
-.review-name{
-
-  font-weight:700;
-
-  color:#fff;
-
-}
-
-
-.review-meta{
-
-  font-size:11px;
-
-  color:var(--muted);
-
-  margin-top:3px;
-
-}
-
-
-.review-stars{
-
-  color:var(--gold);
-
-  letter-spacing:2px;
-
-}
-
-
-.review-text{
-
-  font-size:13px;
-
-  line-height:1.7;
-
-  margin:13px 0;
-
-  color:#ddd;
-
-  white-space:pre-wrap;
-
-}
-
-
-.badge{
-
-  display:inline-block;
-
-  font-size:9px;
-
-  padding:5px 8px;
-
-  border-radius:20px;
-
-  text-transform:uppercase;
-
-  letter-spacing:1px;
-
-  margin-top:5px;
-
-}
-
-
-.published{
-
-  background:#234c32;
-
-  color:#bdf1ca;
-
-}
-
-
-.draft{
-
-  background:#4b4021;
-
-  color:#ffe3a2;
-
-}
-
-
-.empty{
-
-  text-align:center;
-
-  color:var(--muted);
-
-  padding:50px;
-
-}
-
-
-.toast{
-
-  position:fixed;
-
-  right:20px;
-
-  bottom:20px;
-
-  background:#292722;
-
-  border:
-    1px solid #5b5547;
-
-  padding:13px 18px;
-
-  border-radius:8px;
-
-  display:none;
-
-  z-index:50;
-
-  max-width:450px;
-
-  line-height:1.6;
-
-}
-
-
-.toast.show{
-  display:block;
-}
-
-
-/* =========================================
-   RESPONSIVE
-========================================= */
-
-@media(max-width:900px){
-
-  .layout{
-
-    grid-template-columns:
-      1fr;
-
-  }
-
-
-  .stats{
-
-    grid-template-columns:
-      repeat(2,1fr);
-
-  }
-
-}
-
-
-@media(max-width:520px){
-
-  .topbar{
-
-    padding:
-      0 15px;
-
-  }
-
-
-  .user{
-    display:none;
-  }
-
-
-  .container{
-
-    padding:
-      20px 13px;
-
-  }
-
-
-  .stats{
-
-    grid-template-columns:
-      1fr 1fr;
-
-  }
-
-
-  .row{
-
-    grid-template-columns:
-      1fr;
-
-  }
-
-
-  .login-card{
-
-    padding:
-      28px 20px;
-
-  }
-
-}
-
+:root{--gold:#C9A44B;--glt:#D9BA6F;--blk:#1a1a17;--bg:#f0f2f5;--sw:240px;}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--bg);color:#1a1a17;}
+#login-screen{display:flex;align-items:center;justify-content:center;min-height:100vh;background:var(--blk);}
+.login-box{background:#fff;border-radius:14px;padding:48px 40px;width:380px;box-shadow:0 24px 64px rgba(0,0,0,.4);}
+.login-logo{font-size:28px;font-weight:800;color:var(--gold);margin-bottom:4px;}
+.login-sub{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#9ca3af;margin-bottom:32px;}
+.login-box input{width:100%;border:1px solid #e5e7eb;border-radius:6px;padding:10px 12px;font-size:14px;margin-bottom:12px;outline:none;}
+.login-box input:focus{border-color:var(--gold);}
+.login-btn{width:100%;background:linear-gradient(135deg,var(--gold),var(--glt));border:none;border-radius:6px;padding:11px;font-size:14px;font-weight:700;cursor:pointer;color:var(--blk);}
+.login-err{color:#ef4444;font-size:12px;margin-top:8px;text-align:center;}
+#app{display:flex;min-height:100vh;}
+.sidebar{width:var(--sw);background:var(--blk);position:fixed;top:0;left:0;bottom:0;display:flex;flex-direction:column;overflow-y:auto;z-index:100;}
+.sb-brand{padding:24px 20px 16px;border-bottom:1px solid rgba(255,255,255,.08);}
+.sb-brand-name{font-size:18px;font-weight:800;color:var(--glt);}
+.sb-brand-sub{font-size:9px;letter-spacing:2.5px;text-transform:uppercase;color:rgba(255,255,255,.3);margin-top:2px;}
+.sb-badge-panel{background:rgba(201,164,75,.15);border-radius:4px;padding:2px 7px;font-size:9px;font-weight:700;color:var(--gold);margin-top:6px;display:inline-block;}
+.sb-sec{font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.25);padding:16px 20px 4px;}
+.nav-item{display:flex;align-items:center;gap:10px;padding:10px 20px;font-size:13px;font-weight:500;color:rgba(255,255,255,.55);cursor:pointer;transition:all .2s;}
+.nav-item:hover{color:#fff;background:rgba(255,255,255,.06);}
+.nav-item.active{color:var(--glt);background:rgba(201,164,75,.12);border-right:3px solid var(--gold);}
+.sb-bottom{margin-top:auto;border-top:1px solid rgba(255,255,255,.06);}
+.sb-user{padding:12px 20px;display:flex;align-items:center;gap:8px;}
+.sb-av{width:30px;height:30px;border-radius:50%;background:linear-gradient(135deg,var(--gold),#a3895a);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:12px;color:var(--blk);}
+#admin-email{font-size:11px;color:rgba(255,255,255,.4);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:160px;}
+.logout-btn{background:none;border:none;cursor:pointer;color:rgba(255,255,255,.4);font-size:12px;padding:8px 20px;width:100%;text-align:left;}
+.logout-btn:hover{color:#fff;}
+.main{margin-left:var(--sw);flex:1;display:flex;flex-direction:column;}
+.topbar{position:sticky;top:0;background:#fff;border-bottom:1px solid #e5e7eb;padding:0 28px;height:56px;display:flex;align-items:center;justify-content:space-between;z-index:50;box-shadow:0 1px 3px rgba(0,0,0,.06);}
+.topbar-title{font-size:15px;font-weight:700;}
+.content{padding:28px;}
+.stat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:16px;margin-bottom:28px;}
+.stat-card{background:#fff;border:1px solid #e5e7eb;border-radius:10px;padding:20px;}
+.stat-num{font-size:28px;font-weight:800;color:var(--blk);}
+.stat-label{font-size:11px;color:#6b7280;margin-top:4px;}
+.stat-sub{font-size:11px;color:var(--gold);font-weight:600;margin-top:2px;}
+.stat-icon{font-size:22px;margin-bottom:10px;}
+.panel{background:#fff;border:1px solid #e5e7eb;border-radius:10px;overflow:hidden;margin-bottom:20px;}
+.panel-header{padding:16px 20px;border-bottom:1px solid #e5e7eb;display:flex;align-items:center;justify-content:space-between;}
+.panel-title{font-size:14px;font-weight:700;}
+.panel-body{padding:20px;}
+.btn{display:inline-flex;align-items:center;gap:6px;padding:8px 16px;border-radius:6px;font-size:13px;font-weight:600;cursor:pointer;border:none;transition:all .2s;}
+.btn-gold{background:linear-gradient(135deg,var(--gold),var(--glt));color:var(--blk);}
+.btn-gold:hover{opacity:.9;}
+.btn-outline{background:#fff;border:1px solid #d1d5db;color:#374151;}
+.btn-outline:hover{border-color:var(--gold);color:var(--gold);}
+.btn-danger{background:#fef2f2;border:1px solid #fecaca;color:#dc2626;}
+.btn-sm{padding:4px 10px;font-size:12px;border-radius:4px;cursor:pointer;font-weight:600;border:1px solid;}
+table{width:100%;border-collapse:collapse;}
+th{background:#f9fafb;font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#6b7280;padding:10px 14px;text-align:left;border-bottom:2px solid #e5e7eb;}
+td{padding:12px 14px;font-size:13px;border-bottom:1px solid #f3f4f6;vertical-align:middle;}
+tr:last-child td{border-bottom:none;}
+.unread-row{background:#fffbeb!important;}
+.actions-cell{display:flex;gap:6px;flex-wrap:wrap;}
+.tc-empty{text-align:center;color:#9ca3af;padding:32px;}
+.status-badge{padding:2px 8px;border-radius:20px;font-size:10px;font-weight:700;text-transform:uppercase;}
+.status-published{background:#d1fae5;color:#065f46;}
+.status-draft{background:#f3f4f6;color:#6b7280;}
+.inq-type{background:#eff6ff;color:#1d4ed8;padding:2px 8px;border-radius:20px;font-size:10px;font-weight:700;}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+.form-full{grid-column:1/-1;}
+label.lbl{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#374151;display:block;margin-bottom:5px;}
+input[type=text],input[type=url],input[type=date],input[type=email],input[type=password],input[type=number],select,textarea{width:100%;border:1px solid #d1d5db;border-radius:6px;padding:9px 12px;font-size:13px;font-family:inherit;outline:none;}
+input:focus,select:focus,textarea:focus{border-color:var(--gold);box-shadow:0 0 0 3px rgba(201,164,75,.1);}
+textarea{resize:vertical;min-height:100px;}
+.form-actions{display:flex;gap:10px;margin-top:20px;justify-content:flex-end;}
+.photo-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:12px;margin-top:16px;}
+.photo-card{border-radius:8px;overflow:hidden;border:1px solid #e5e7eb;}
+.photo-card img{width:100%;height:130px;object-fit:cover;display:block;}
+.photo-info{padding:8px 10px;display:flex;align-items:center;justify-content:space-between;}
+.photo-tag{font-size:10px;font-weight:700;color:var(--gold);text-transform:uppercase;}
+#quill-editor{min-height:360px;font-size:14px;}
+.ql-toolbar{border-radius:6px 6px 0 0!important;border-color:#d1d5db!important;}
+.ql-container{border-radius:0 0 6px 6px!important;border-color:#d1d5db!important;}
+.cover-preview{width:100%;max-height:200px;object-fit:cover;border-radius:6px;margin-top:8px;}
+.reel-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px;}
+.reel-card{background:#fff;border:1px solid #e5e7eb;border-radius:10px;overflow:hidden;}
+.reel-thumb{width:100%;height:160px;background:var(--blk);position:relative;display:flex;align-items:center;justify-content:center;overflow:hidden;}
+.reel-thumb img{width:100%;height:100%;object-fit:cover;}
+.reel-thumb-placeholder{font-size:36px;color:rgba(255,255,255,.3);}
+.reel-overlay{position:absolute;bottom:8px;right:8px;background:rgba(0,0,0,.6);color:#fff;font-size:11px;padding:3px 8px;border-radius:4px;}
+.reel-info{padding:12px 14px;}
+.reel-url{font-size:10px;color:#9ca3af;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-top:2px;}
+.reel-actions{padding:8px 14px 14px;display:flex;gap:8px;}
+.modal-backdrop{display:none;position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:200;align-items:center;justify-content:center;}
+.modal-box{background:#fff;border-radius:12px;width:580px;max-width:95vw;max-height:90vh;overflow-y:auto;box-shadow:0 24px 48px rgba(0,0,0,.2);}
+.modal-header{padding:20px 24px;border-bottom:1px solid #e5e7eb;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;background:#fff;z-index:1;}
+.modal-title{font-size:15px;font-weight:700;}
+.modal-close{background:none;border:none;cursor:pointer;font-size:22px;color:#9ca3af;line-height:1;}
+.modal-body{padding:24px;}
+.inq-detail{display:flex;flex-direction:column;gap:14px;}
+.inq-row{display:flex;gap:12px;align-items:flex-start;}
+.inq-row label{font-size:11px;font-weight:700;text-transform:uppercase;color:#9ca3af;width:80px;flex-shrink:0;padding-top:2px;}
+.inq-row.full{flex-direction:column;}
+.inq-row.full label{width:auto;}
+.inq-message{background:#f9fafb;border:1px solid #e5e7eb;border-radius:6px;padding:12px;font-size:13px;line-height:1.6;white-space:pre-wrap;}
+.meta{font-size:11px;color:#9ca3af;margin-top:2px;}
+.fw-bold{font-weight:700;}
+.section{display:none;}
+.divider{border-top:1px solid rgba(255,255,255,.06);margin:8px 0;}
+.page-title{font-size:20px;font-weight:800;margin-bottom:20px;}
 </style>
-
 </head>
-
-
 <body>
 
+<!-- LOGIN -->
+<div id="login-screen">
+  <div class="login-box">
+    <div class="login-logo">⬡ Prestige</div>
+    <div class="login-sub">Admin Panel · Vacations &amp; Clubs</div>
+    <input type="email" id="l-email" placeholder="Admin email" autocomplete="email"/>
+    <input type="password" id="l-pw" placeholder="Password" autocomplete="current-password" onkeydown="if(event.key==='Enter')doLogin()"/>
+    <button class="login-btn" onclick="doLogin()">Sign In</button>
+    <div class="login-err" id="l-err"></div>
+  </div>
+</div>
 
-<!-- =========================================
-     LOGIN
-========================================= -->
-
-<section
-  id="loginScreen"
-  class="login-wrap"
->
-
-  <div class="login-card">
-
-    <div class="brand">
-      Prestige
+<!-- APP -->
+<div id="app" style="display:none;">
+  <div class="sidebar">
+    <div class="sb-brand">
+      <div class="sb-brand-name">⬡ Prestige</div>
+      <div class="sb-brand-sub">Vacations &amp; Clubs</div>
+      <div class="sb-badge-panel">Admin Panel</div>
     </div>
-
-    <div class="sub">
-      Reviews Admin Panel
+    <div class="sb-sec">Overview</div>
+    <div class="nav-item active" data-nav="dashboard" onclick="loadSection('dashboard')">📊 Dashboard</div>
+    <div class="sb-sec">Content</div>
+    <div class="nav-item" data-nav="gallery" onclick="loadSection('gallery')">🖼️ Gallery</div>
+    <div class="nav-item" data-nav="blog" onclick="loadSection('blog')">✍️ Blog Posts</div>
+    <div class="nav-item" data-nav="reviews" onclick="loadSection('reviews')">⭐ Member Reviews</div>
+    <div class="nav-item" data-nav="testimonials" onclick="loadSection('testimonials')">🎬 Video Testimonials</div>
+    <div class="sb-sec">Leads</div>
+    <div class="nav-item" data-nav="inquiries" onclick="loadSection('inquiries')">📩 Inquiries</div>
+    <div class="sb-bottom">
+      <div class="divider"></div>
+      <div class="sb-user"><div class="sb-av">A</div><div id="admin-email"></div></div>
+      <button class="logout-btn" onclick="doLogout()">→ Sign Out</button>
     </div>
-
-
-    <div
-      id="loginError"
-      class="error hidden"
-    ></div>
-
-
-    <div
-      id="loginInfo"
-      class="info hidden"
-    ></div>
-
-
-    <form id="loginForm">
-
-      <div class="field">
-
-        <label for="email">
-          Email
-        </label>
-
-        <input
-          id="email"
-          type="email"
-          required
-          autocomplete="username"
-          placeholder="Admin email"
-        >
-
-      </div>
-
-
-      <div class="field">
-
-        <label for="password">
-          Password
-        </label>
-
-        <input
-          id="password"
-          type="password"
-          required
-          autocomplete="current-password"
-          placeholder="Password"
-        >
-
-      </div>
-
-
-      <button
-        id="loginBtn"
-        class="btn btn-gold"
-        type="submit"
-        style="width:100%"
-      >
-
-        <i class="fa-solid fa-lock"></i>
-
-        <span id="loginText">
-          Sign In
-        </span>
-
-      </button>
-
-    </form>
-
-
-    <p
-      class="small"
-      style="margin-top:18px"
-    >
-
-      Prestige Vacation Reviews Admin
-
-    </p>
-
   </div>
 
-</section>
-
-
-
-<!-- =========================================
-     ADMIN APP
-========================================= -->
-
-<section
-  id="app"
-  class="app hidden"
->
-
-
-  <header class="topbar">
-
-    <div class="topbrand">
-
-      Prestige
-
-      <span
-        style="
-          font-family:Montserrat;
-          font-size:11px;
-          letter-spacing:2px;
-        "
-      >
-        ADMIN
-      </span>
-
+  <div class="main">
+    <div class="topbar">
+      <div class="topbar-title">Prestige Admin</div>
+      <div style="font-size:12px;color:#9ca3af;">Prestige Vacations &amp; Clubs</div>
     </div>
+    <div class="content">
 
-
-    <div>
-
-      <span
-        id="userEmail"
-        class="user"
-      ></span>
-
-
-      <button
-        id="logoutBtn"
-        class="btn btn-outline logout"
-        type="button"
-      >
-        Logout
-      </button>
-
-    </div>
-
-  </header>
-
-
-
-  <main class="container">
-
-
-    <!-- STATS -->
-
-    <div class="stats">
-
-
-      <div class="stat">
-
-        <div
-          id="totalCount"
-          class="num"
-        >
-          0
+      <!-- DASHBOARD -->
+      <div class="section" id="sec-dashboard">
+        <div class="page-title">Dashboard</div>
+        <div class="stat-grid">
+          <div class="stat-card"><div class="stat-icon">🖼️</div><div class="stat-num" id="d-photos">—</div><div class="stat-label">Gallery Photos</div></div>
+          <div class="stat-card"><div class="stat-icon">✍️</div><div class="stat-num" id="d-blogs">—</div><div class="stat-label">Blog Posts</div></div>
+          <div class="stat-card"><div class="stat-icon">⭐</div><div class="stat-num" id="d-reviews">—</div><div class="stat-label">Reviews</div></div>
+          <div class="stat-card"><div class="stat-icon">🎬</div><div class="stat-num" id="d-reels">—</div><div class="stat-label">Reels</div></div>
+          <div class="stat-card"><div class="stat-icon">📩</div><div class="stat-num" id="d-inquiries">—</div><div class="stat-label">Inquiries</div><div class="stat-sub" id="d-unread"></div></div>
         </div>
-
-        <div class="label">
-          Total Reviews
+        <div class="panel">
+          <div class="panel-header">
+            <div class="panel-title">Recent Inquiries</div>
+            <button class="btn btn-outline" onclick="loadSection('inquiries')" style="font-size:12px;padding:5px 12px;">View All</button>
+          </div>
+          <table><thead><tr><th>Name</th><th>Email</th><th>Subject</th><th>Date</th><th>Action</th></tr></thead>
+          <tbody id="d-recent"><tr><td colspan="5" class="tc-empty">Loading…</td></tr></tbody></table>
         </div>
-
       </div>
 
-
-      <div class="stat">
-
-        <div
-          id="publishedCount"
-          class="num"
-        >
-          0
-        </div>
-
-        <div class="label">
-          Published
-        </div>
-
-      </div>
-
-
-      <div class="stat">
-
-        <div
-          id="averageRating"
-          class="num"
-        >
-          0.0 ⭐
-        </div>
-
-        <div class="label">
-          Average Rating
-        </div>
-
-      </div>
-
-
-      <div class="stat">
-
-        <div
-          id="fiveStarCount"
-          class="num"
-        >
-          0
-        </div>
-
-        <div class="label">
-          5 Star Reviews
-        </div>
-
-      </div>
-
-
-    </div>
-
-
-
-    <div class="layout">
-
-
-      <!-- =====================================
-           FORM
-      ====================================== -->
-
-      <section class="card">
-
-        <h2 id="formTitle">
-          Add Review
-        </h2>
-
-
-        <form id="reviewForm">
-
-
-          <input
-            type="hidden"
-            id="reviewId"
-          >
-
-
-          <div class="field">
-
-            <label for="name">
-              Customer Name
-            </label>
-
-            <input
-              id="name"
-              required
-              maxlength="100"
-            >
-
-          </div>
-
-
-          <div class="row">
-
-
-            <div class="field">
-
-              <label for="location">
-                Location
-              </label>
-
-              <input
-                id="location"
-                maxlength="80"
-              >
-
-            </div>
-
-
-            <div class="field">
-
-              <label for="date">
-                Date
-              </label>
-
-              <input
-                id="date"
-                type="date"
-                required
-              >
-
-            </div>
-
-
-          </div>
-
-
-          <div class="field">
-
-            <label>
-              Rating
-            </label>
-
-            <div
-              id="stars"
-              class="stars"
-            ></div>
-
-          </div>
-
-
-          <div class="row">
-
-
-            <div class="field">
-
-              <label for="category">
-                Category
-              </label>
-
-
-              <select id="category">
-
-                <option value="membership">
-                  Holiday Membership
-                </option>
-
-                <option value="resort">
-                  Resort
-                </option>
-
-                <option value="outing">
-                  Day Outing
-                </option>
-
-                <option value="event">
-                  Club Member
-                </option>
-
-                <option value="tour">
-                  Tour Package
-                </option>
-
-                <option value="service">
-                  Customer Service
-                </option>
-
-              </select>
-
-            </div>
-
-
-            <div class="field">
-
-              <label for="source">
-                Source
-              </label>
-
-
-              <select id="source">
-
-                <option>
-                  Google Review
-                </option>
-
-                <option>
-                  Website Review
-                </option>
-
-                <option>
-                  Member Review
-                </option>
-
-                <option>
-                  Other
-                </option>
-
-              </select>
-
-            </div>
-
-
-          </div>
-
-
-          <div class="field">
-
-            <label for="review">
-              Review
-            </label>
-
-            <textarea
-              id="review"
-              required
-              maxlength="2000"
-            ></textarea>
-
-          </div>
-
-
-          <div class="field">
-
-            <label>
-
-              <input
-                id="published"
-                type="checkbox"
-                checked
-                style="
-                  width:auto;
-                  margin-right:8px;
-                "
-              >
-
-              Publish immediately
-
-            </label>
-
-          </div>
-
-
-          <div class="actions">
-
-
-            <button
-              id="saveButton"
-              class="btn btn-gold"
-              type="submit"
-            >
-
-              <i class="fa-solid fa-save"></i>
-
-              <span id="saveText">
-                Save Review
-              </span>
-
-            </button>
-
-
-            <button
-              id="cancelEdit"
-              class="btn btn-outline hidden"
-              type="button"
-            >
-
-              Cancel Edit
-
-            </button>
-
-
-          </div>
-
-
-        </form>
-
-
-      </section>
-
-
-
-      <!-- =====================================
-           REVIEW LIST
-      ====================================== -->
-
-      <section class="card">
-
-        <h2>
-          Manage Reviews
-        </h2>
-
-
-        <div
-          id="reviewList"
-          class="review-list"
-        >
-
-          <div class="empty">
-            Loading...
-          </div>
-
-        </div>
-
-      </section>
-
-
-    </div>
-
-  </main>
-
-</section>
-
-
-
-<div
-  id="toast"
-  class="toast"
-></div>
-
-
-
-<!-- =========================================
-     FIREBASE CODE
-========================================= -->
-
-<script type="module">
-
-
-/* =========================================
-   IMPORT FIREBASE
-========================================= */
-
-import {
-
-  initializeApp
-
-}
-
-from
-  "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
-
-
-import {
-
-  getAuth,
-  onAuthStateChanged,
-  signInWithEmailAndPassword,
-  signOut
-
-}
-
-from
-  "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
-
-
-import {
-
-  getFirestore,
-  collection,
-  doc,
-  getDoc,
-  addDoc,
-  updateDoc,
-  deleteDoc,
-  query,
-  orderBy,
-  onSnapshot,
-  serverTimestamp
-
-}
-
-from
-  "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
-
-
-import {
-
-  firebaseConfig
-
-}
-
-from
-  "./firebase-config.js";
-
-
-/* =========================================
-   INITIALIZE
-========================================= */
-
-const firebaseApp =
-  initializeApp(
-    firebaseConfig
-  );
-
-
-const auth =
-  getAuth(
-    firebaseApp
-  );
-
-
-const db =
-  getFirestore(
-    firebaseApp
-  );
-
-
-const reviewsRef =
-  collection(
-    db,
-    "reviews"
-  );
-
-
-/* =========================================
-   STATE
-========================================= */
-
-let currentUser =
-  null;
-
-let reviews =
-  [];
-
-let rating =
-  5;
-
-let unsubscribeReviews =
-  null;
-
-let initializing =
-  false;
-
-
-/* =========================================
-   HELPER
-========================================= */
-
-const $ =
-  id =>
-    document.getElementById(id);
-
-
-/* =========================================
-   ERROR MESSAGES
-========================================= */
-
-function authMessage(
-  code
-){
-
-  const messages = {
-
-    "auth/invalid-email":
-      "Invalid email address.",
-
-    "auth/user-not-found":
-      "No Firebase user exists with this email.",
-
-    "auth/wrong-password":
-      "Incorrect password.",
-
-    "auth/invalid-credential":
-      "Incorrect email or password.",
-
-    "auth/user-disabled":
-      "This Firebase user has been disabled.",
-
-    "auth/too-many-requests":
-      "Too many attempts. Try again later.",
-
-    "auth/network-request-failed":
-      "Network error. Check your internet connection.",
-
-    "auth/operation-not-allowed":
-      "Email/Password authentication is not enabled in Firebase.",
-
-    "auth/app-not-authorized":
-      "This domain is not authorized in Firebase Authentication."
-
-  };
-
-
-  return (
-    messages[code] ||
-    "Authentication error: " +
-    code
-  );
-
-}
-
-
-/* =========================================
-   FIRESTORE ERROR
-========================================= */
-
-function firestoreMessage(
-  error
-){
-
-  console.error(
-    "Firestore:",
-    error
-  );
-
-
-  if (
-    error?.code ===
-    "permission-denied"
-  ){
-
-    return (
-      "Firestore permission denied. " +
-      "Check Firestore Rules."
-    );
-
-  }
-
-
-  if (
-    error?.code ===
-    "unavailable"
-  ){
-
-    return (
-      "Firestore is currently unavailable. " +
-      "Make sure Firestore Database is created " +
-      "in the prestigevacations Firebase project " +
-      "and that your browser/network can reach Firebase."
-    );
-
-  }
-
-
-  if (
-    error?.code ===
-    "failed-precondition"
-  ){
-
-    return (
-      "Firestore configuration/index problem."
-    );
-
-  }
-
-
-  return (
-    error?.message ||
-    "Unknown Firestore error."
-  );
-
-}
-
-
-/* =========================================
-   UI
-========================================= */
-
-function showError(
-  message
-){
-
-  $("loginInfo")
-    .classList
-    .add("hidden");
-
-
-  $("loginError")
-    .textContent =
-      message;
-
-
-  $("loginError")
-    .classList
-    .remove("hidden");
-
-}
-
-
-function showInfo(
-  message
-){
-
-  $("loginError")
-    .classList
-    .add("hidden");
-
-
-  $("loginInfo")
-    .textContent =
-      message;
-
-
-  $("loginInfo")
-    .classList
-    .remove("hidden");
-
-}
-
-
-function clearMessages(){
-
-  $("loginError")
-    .classList
-    .add("hidden");
-
-
-  $("loginInfo")
-    .classList
-    .add("hidden");
-
-
-  $("loginError")
-    .textContent =
-      "";
-
-
-  $("loginInfo")
-    .textContent =
-      "";
-
-}
-
-
-function setLoading(
-  loading
-){
-
-  $("loginBtn")
-    .disabled =
-      loading;
-
-
-  $("loginText")
-    .textContent =
-      loading
-        ? "Signing In..."
-        : "Sign In";
-
-}
-
-
-function toast(
-  message
-){
-
-  $("toast")
-    .textContent =
-      message;
-
-
-  $("toast")
-    .classList
-    .add("show");
-
-
-  setTimeout(
-    () => {
-
-      $("toast")
-        .classList
-        .remove("show");
-
-    },
-    3500
-  );
-
-}
-
-
-/* =========================================
-   HTML ESCAPE
-========================================= */
-
-function escapeHTML(
-  value
-){
-
-  return String(
-    value ?? ""
-  ).replace(
-    /[&<>'"]/g,
-    c => ({
-      "&":"&amp;",
-      "<":"&lt;",
-      ">":"&gt;",
-      "'":"&#39;",
-      '"':"&quot;"
-    }[c])
-  );
-
-}
-
-
-/* =========================================
-   STARS
-========================================= */
-
-function setStars(
-  value
-){
-
-  rating =
-    Math.max(
-      1,
-      Math.min(
-        5,
-        Number(value) || 5
-      )
-    );
-
-
-  document
-    .querySelectorAll(
-      ".star"
-    )
-    .forEach(
-      (star,index) => {
-
-        star.classList.toggle(
-          "active",
-          index < rating
-        );
-
-      }
-    );
-
-}
-
-
-function initStars(){
-
-  $("stars").innerHTML =
-    "";
-
-
-  for(
-    let i = 1;
-    i <= 5;
-    i++
-  ){
-
-    const star =
-      document.createElement(
-        "span"
-      );
-
-
-    star.className =
-      "star";
-
-
-    star.textContent =
-      "★";
-
-
-    star.onclick =
-      () =>
-        setStars(i);
-
-
-    $("stars")
-      .appendChild(
-        star
-      );
-
-  }
-
-
-  setStars(5);
-
-}
-
-
-/* =========================================
-   DATE
-========================================= */
-
-function formatDate(
-  value
-){
-
-  try{
-
-    const date =
-      value?.toDate
-        ? value.toDate()
-        : new Date(value);
-
-
-    if(
-      Number.isNaN(
-        date.getTime()
-      )
-    ){
-
-      return "";
-
-    }
-
-
-    return date.toLocaleDateString(
-      "en-IN",
-      {
-        day:"2-digit",
-        month:"short",
-        year:"numeric"
-      }
-    );
-
-
-  }catch{
-
-    return "";
-
-  }
-
-}
-
-
-/* =========================================
-   RESET
-========================================= */
-
-function resetForm(){
-
-  $("reviewForm")
-    .reset();
-
-
-  $("reviewId")
-    .value =
-      "";
-
-
-  $("formTitle")
-    .textContent =
-      "Add Review";
-
-
-  $("saveText")
-    .textContent =
-      "Save Review";
-
-
-  $("cancelEdit")
-    .classList
-    .add("hidden");
-
-
-  $("published")
-    .checked =
-      true;
-
-
-  $("date")
-    .value =
-      new Date()
-        .toISOString()
-        .slice(0,10);
-
-
-  setStars(
-    5
-  );
-
-}
-
-
-/* =========================================
-   RENDER
-========================================= */
-
-function renderReviews(){
-
-  $("totalCount")
-    .textContent =
-      reviews.length;
-
-
-  const published =
-    reviews.filter(
-      r =>
-        r.published === true
-    );
-
-
-  $("publishedCount")
-    .textContent =
-      published.length;
-
-
-  const totalRating =
-    reviews.reduce(
-      (
-        total,
-        review
-      ) => {
-
-        return (
-          total +
-          Number(
-            review.rating || 0
-          )
-        );
-
-      },
-      0
-    );
-
-
-  const average =
-    reviews.length
-      ? totalRating /
-        reviews.length
-      : 0;
-
-
-  $("averageRating")
-    .textContent =
-      average.toFixed(1) +
-      " ⭐";
-
-
-  $("fiveStarCount")
-    .textContent =
-      reviews.filter(
-        r =>
-          Number(
-            r.rating
-          ) === 5
-      ).length;
-
-
-  const list =
-    $("reviewList");
-
-
-  if(
-    !reviews.length
-  ){
-
-    list.innerHTML =
-      '<div class="empty">No reviews yet.</div>';
-
-    return;
-
-  }
-
-
-  list.innerHTML =
-    reviews.map(
-      review => {
-
-        return `
-
-          <article class="review">
-
-            <div class="review-head">
-
+      <!-- GALLERY -->
+      <div class="section" id="sec-gallery">
+        <div class="page-title">Gallery Management</div>
+        <div class="panel">
+          <div class="panel-header"><div class="panel-title">Upload Photos / Add Video</div></div>
+          <div class="panel-body">
+            <div class="form-grid">
               <div>
-
-                <div class="review-name">
-
-                  ${escapeHTML(
-                    review.name
-                  )}
-
-                </div>
-
-
-                <div class="review-meta">
-
-                  ${escapeHTML(
-                    review.location || ""
-                  )}
-
-                  ${
-                    review.location
-                      ? " · "
-                      : ""
-                  }
-
-                  ${escapeHTML(
-                    review.categoryLabel ||
-                    review.category ||
-                    ""
-                  )}
-
-                </div>
-
+                <label class="lbl">Gallery Section *</label>
+                <select id="photo-section-select">
+                  <option value="">— Select Section —</option>
+                  <option value="our-gallery">Our Gallery</option>
+                  <option value="resort">The Country Resort</option>
+                  <option value="suites">The Country Suites</option>
+                  <option value="bay">The Country Bay</option>
+                  <option value="events">Member Events</option>
+                  <option value="celebrations">Weddings &amp; Celebrations</option>
+                  <option value="videos">Videos</option>
+                  <option value="member-trips">Member Trip Photos</option>
+                </select>
               </div>
-
-
-              <div
-                style="
-                  text-align:right;
-                "
-              >
-
-                <div class="review-stars">
-
-                  ${
-                    "★".repeat(
-                      Number(
-                        review.rating
-                      ) || 0
-                    )
-                  }
-
-                </div>
-
-
-                <span
-                  class="badge ${
-                    review.published
-                      ? "published"
-                      : "draft"
-                  }"
-                >
-
-                  ${
-                    review.published
-                      ? "Published"
-                      : "Draft"
-                  }
-
-                </span>
-
+              <div>
+                <label class="lbl">Upload Type</label>
+                <select id="upload-type" onchange="toggleUploadType()">
+                  <option value="photo">Photo</option>
+                  <option value="video">Video (YouTube URL)</option>
+                </select>
               </div>
-
+              <div class="form-full" id="photo-fields">
+                <label class="lbl">Select Photos (multiple allowed)</label>
+                <input type="file" id="photo-files" multiple accept="image/*"/>
+              </div>
+              <div id="photo-caption-wrap"><label class="lbl">Caption (optional)</label><input type="text" id="photo-caption" placeholder="e.g. Garden Lawn, Pool View"/></div>
+              <div id="photo-sublabel-wrap"><label class="lbl">Sub Label (optional)</label><input type="text" id="photo-sublabel" placeholder="e.g. The Country Resort"/></div>
+              <div class="form-full" id="video-fields" style="display:none;"><label class="lbl">YouTube Video URL *</label><input type="url" id="video-url" placeholder="https://youtube.com/watch?v=..."/></div>
+              <div id="video-title-wrap" style="display:none;"><label class="lbl">Video Title *</label><input type="text" id="video-title" placeholder="e.g. The Country Resort — Property Tour"/></div>
+              <div id="video-sub-wrap" style="display:none;"><label class="lbl">Sub Label</label><input type="text" id="video-sub" placeholder="e.g. Watch on YouTube"/></div>
+              <div id="member-name-wrap" style="display:none;"><label class="lbl">Member Name</label><input type="text" id="member-name" placeholder="e.g. Meenakshi R"/></div>
+              <div id="member-dest-wrap" style="display:none;"><label class="lbl">Destination</label><input type="text" id="member-dest" placeholder="e.g. Ooty · Hill Station"/></div>
             </div>
+            <button class="btn btn-gold" style="margin-top:14px;" id="upload-btn" onclick="uploadGalleryItem()">Upload</button>
+            <div id="upload-progress" style="margin-top:10px;font-size:12px;color:#6b7280;"></div>
+          </div>
+        </div>
+        <div class="panel">
+          <div class="panel-header">
+            <div class="panel-title">Browse by Section</div>
+            <select id="filter-section" onchange="loadGallery()" style="font-size:13px;padding:5px 10px;border:1px solid #d1d5db;border-radius:6px;">
+              <option value="">All Sections</option>
+              <option value="our-gallery">Our Gallery</option>
+              <option value="resort">The Country Resort</option>
+              <option value="suites">The Country Suites</option>
+              <option value="bay">The Country Bay</option>
+              <option value="events">Member Events</option>
+              <option value="celebrations">Weddings &amp; Celebrations</option>
+              <option value="videos">Videos</option>
+              <option value="member-trips">Member Trip Photos</option>
+            </select>
+          </div>
+          <div class="panel-body"><div id="photo-grid" class="photo-grid"></div></div>
+        </div>
+      </div>
 
-
-            <div class="review-text">
-
-              ${escapeHTML(
-                review.review
-              )}
-
+      <!-- BLOG -->
+      <div class="section" id="sec-blog">
+        <div id="blog-list-view">
+          <div class="page-title">Blog Posts</div>
+          <div class="panel">
+            <div class="panel-header"><div class="panel-title">All Posts</div><button class="btn btn-gold" onclick="newBlog()">+ New Post</button></div>
+            <table><thead><tr><th>Title</th><th>Author</th><th>Status</th><th>Date</th><th>Actions</th></tr></thead>
+            <tbody id="blog-list"><tr><td colspan="5" class="tc-empty">Loading…</td></tr></tbody></table>
+          </div>
+        </div>
+        <div id="blog-form-view" style="display:none;">
+          <div style="display:flex;align-items:center;gap:12px;margin-bottom:20px;">
+            <button class="btn btn-outline" onclick="cancelBlog()">← Back</button>
+            <div class="page-title" id="blog-form-title" style="margin-bottom:0;"></div>
+          </div>
+          <div class="panel"><div class="panel-body">
+            <div class="form-grid">
+              <div class="form-full"><label class="lbl">Post Title *</label><input type="text" id="blog-title" placeholder="Enter blog post title…"/></div>
+              <div><label class="lbl">Author</label><input type="text" id="blog-author" placeholder="Author name"/></div>
+              <div><label class="lbl">Category</label><input type="text" id="blog-category" placeholder="e.g. Travel, Lifestyle, Resorts"/></div>
+              <div class="form-full"><label class="lbl">Cover Image</label><input type="file" id="blog-cover" accept="image/*" onchange="previewCover(this)"/><img id="blog-cover-preview" class="cover-preview" style="display:none;"/></div>
+              <div class="form-full"><label class="lbl">Content *</label><div id="quill-editor"></div></div>
+              <div><label class="lbl">SEO Title</label><input type="text" id="blog-seo-title" placeholder="Title for search engines"/></div>
+              <div><label class="lbl">SEO Description</label><input type="text" id="blog-seo-desc" placeholder="Meta description (160 chars)"/></div>
+              <div><label class="lbl">Status</label><select id="blog-status"><option value="draft">Draft</option><option value="published">Published</option></select></div>
             </div>
-
-
-            <div class="small">
-
-              ${escapeHTML(
-                review.source || ""
-              )}
-
-              ${
-                review.source
-                  ? " · "
-                  : ""
-              }
-
-              ${formatDate(
-                review.date ||
-                review.createdAt
-              )}
-
+            <div class="form-actions">
+              <button class="btn btn-outline" onclick="cancelBlog()">Cancel</button>
+              <button class="btn btn-outline" onclick="saveBlog('draft')">Save Draft</button>
+              <button class="btn btn-gold" onclick="saveBlog('published')">Publish Post</button>
             </div>
+          </div></div>
+        </div>
+      </div>
 
+      <!-- REVIEWS -->
+      <div class="section" id="sec-reviews">
+        <div class="page-title">Member Reviews</div>
+        <div class="panel">
+          <div class="panel-header"><div class="panel-title">All Reviews</div><button class="btn btn-gold" onclick="openReviewForm()">+ Add Review</button></div>
+          <table><thead><tr><th>Reviewer</th><th>Rating</th><th>Review</th><th>Status</th><th>Date</th><th>Actions</th></tr></thead>
+          <tbody id="review-list"><tr><td colspan="6" class="tc-empty">Loading…</td></tr></tbody></table>
+        </div>
+      </div>
 
-            <div class="actions">
+      <!-- TESTIMONIALS -->
+      <div class="section" id="sec-testimonials">
+        <div class="page-title">Video Testimonials (Instagram Reels)</div>
+        <div class="panel">
+          <div class="panel-header"><div class="panel-title">All Reels</div><button class="btn btn-gold" onclick="openReelForm()">+ Add Reel</button></div>
+          <div class="panel-body"><div id="reel-list" class="reel-grid"></div></div>
+        </div>
+      </div>
 
-              <button
-                class="btn btn-outline edit"
-                data-id="${review.id}"
-                type="button"
-              >
+      <!-- INQUIRIES -->
+      <div class="section" id="sec-inquiries">
+        <div class="page-title">Contact Inquiries</div>
+        <div class="panel">
+          <div class="panel-header">
+            <div class="panel-title">All Submissions</div>
+            <select id="inq-filter" onchange="filterInquiries()" style="font-size:13px;padding:5px 10px;border:1px solid #d1d5db;border-radius:6px;">
+              <option value="">All</option><option value="unread">Unread</option><option value="pending">Pending Reply</option><option value="replied">Replied</option>
+            </select>
+          </div>
+          <table><thead><tr><th>Contact</th><th>Message</th><th>Form</th><th>Status</th><th>Date</th><th>Actions</th></tr></thead>
+          <tbody id="inquiry-list"><tr><td colspan="6" class="tc-empty">Loading…</td></tr></tbody></table>
+        </div>
+      </div>
 
-                <i
-                  class="fa-solid fa-pen"
-                ></i>
+    </div>
+  </div>
+</div>
 
-                Edit
+<!-- REVIEW MODAL -->
+<div class="modal-backdrop" id="review-modal">
+  <div class="modal-box">
+    <div class="modal-header"><div class="modal-title">Add / Edit Review</div><button class="modal-close" onclick="closeReviewModal()">×</button></div>
+    <div class="modal-body">
+      <div class="form-grid">
+        <div><label class="lbl">Reviewer Name *</label><input type="text" id="r-name" placeholder="e.g. Rajesh Kumar"/></div>
+        <div><label class="lbl">Location</label><input type="text" id="r-location" placeholder="e.g. Chennai, Tamil Nadu"/></div>
+        <div><label class="lbl">Source</label><select id="r-source"><option value="">Direct</option><option value="Google">Google</option><option value="Facebook">Facebook</option></select></div>
+        <div><label class="lbl">Rating</label><select id="r-rating"><option value="5">★★★★★  5 Stars</option><option value="4">★★★★☆  4 Stars</option><option value="3">★★★☆☆  3 Stars</option><option value="2">★★☆☆☆  2 Stars</option><option value="1">★☆☆☆☆  1 Star</option></select></div>
+        <div class="form-full"><label class="lbl">Review Text *</label><textarea id="r-text" rows="5" placeholder="Paste the Google review text here…"></textarea></div>
+        <div><label class="lbl">Review Date</label><input type="date" id="r-date"/></div>
+        <div><label class="lbl">Status</label><select id="r-status"><option value="draft">Draft — not visible on website</option><option value="published">Published — live on website</option></select></div>
+      </div>
+      <div class="form-actions"><button class="btn btn-outline" onclick="closeReviewModal()">Cancel</button><button class="btn btn-gold" onclick="saveReview()">Save Review</button></div>
+    </div>
+  </div>
+</div>
 
-              </button>
+<!-- REEL MODAL -->
+<div class="modal-backdrop" id="reel-modal">
+  <div class="modal-box">
+    <div class="modal-header"><div class="modal-title">Add / Edit Reel</div><button class="modal-close" onclick="closeReelModal()">×</button></div>
+    <div class="modal-body">
+      <div class="form-grid">
+        <div class="form-full"><label class="lbl">Instagram Reel URL *</label><input type="url" id="reel-url" placeholder="https://www.instagram.com/reel/XXXXXXX/"/></div>
+        <div class="form-full"><label class="lbl">Title</label><input type="text" id="reel-title" placeholder="e.g. Arjun family testimonial"/></div>
+        <div class="form-full"><label class="lbl">Caption</label><input type="text" id="reel-caption" placeholder="Short description shown on the card"/></div>
+        <div class="form-full">
+          <label class="lbl">Custom Thumbnail (540×960px recommended)</label>
+          <input type="file" id="reel-thumb-file" accept="image/*" onchange="previewReelThumb(this)"/>
+          <img id="reel-thumb-preview" style="display:none;width:108px;height:192px;object-fit:cover;border-radius:6px;margin-top:8px;border:1px solid #e5e7eb;"/>
+        </div>
+        <div><label class="lbl">Display Order</label><input type="number" id="reel-order" value="0" min="0"/></div>
+        <div><label class="lbl">Status</label><select id="reel-status"><option value="draft">Draft</option><option value="published">Published</option></select></div>
+      </div>
+      <div class="form-actions"><button class="btn btn-outline" onclick="closeReelModal()">Cancel</button><button class="btn btn-gold" onclick="saveReel()">Save Reel</button></div>
+    </div>
+  </div>
+</div>
 
+<!-- INQUIRY MODAL -->
+<div class="modal-backdrop" id="inq-modal">
+  <div class="modal-box">
+    <div class="modal-header"><div class="modal-title">Inquiry Details</div><button class="modal-close" onclick="closeInqModal()">×</button></div>
+    <div class="modal-body" id="inq-modal-content"></div>
+  </div>
+</div>
 
-              <button
-                class="btn ${
-                  review.published
-                    ? "btn-danger"
-                    : "btn-success"
-                } toggle"
-                data-id="${review.id}"
-                type="button"
-              >
+<script>
+// ════════════════════════════════════════════════════════════
+// PRESTIGE ADMIN — 100% cPanel, Zero Firebase
+// ════════════════════════════════════════════════════════════
+const API      = 'https://app.prestigevacations.in/website-media/website-api.php';
+const GAPI     = 'https://app.prestigevacations.in/website-media/gallery-api.php';
+const GKEY     = 'prestige_media_2025_secure';
+const UAPI     = 'https://app.prestigevacations.in/website-media/upload.php';
+let TOKEN      = localStorage.getItem('prestige_admin_token') || '';
+let adminEmail = localStorage.getItem('prestige_admin_email') || '';
+let quill      = null;
+let editingBlogId=null, editingReviewId=null, editingReelId=null, allInquiries=[];
 
-                ${
-                  review.published
-                    ? "Unpublish"
-                    : "Publish"
-                }
-
-              </button>
-
-
-              <button
-                class="btn btn-danger delete"
-                data-id="${review.id}"
-                type="button"
-              >
-
-                <i
-                  class="fa-solid fa-trash"
-                ></i>
-
-                Delete
-
-              </button>
-
-            </div>
-
-          </article>
-
-        `;
-
-      }
-    ).join("");
-
-
-  list
-    .querySelectorAll(
-      ".edit"
-    )
-    .forEach(
-      button => {
-
-        button.onclick =
-          () =>
-            editReview(
-              button.dataset.id
-            );
-
-      }
-    );
-
-
-  list
-    .querySelectorAll(
-      ".toggle"
-    )
-    .forEach(
-      button => {
-
-        button.onclick =
-          () =>
-            toggleReview(
-              button.dataset.id
-            );
-
-      }
-    );
-
-
-  list
-    .querySelectorAll(
-      ".delete"
-    )
-    .forEach(
-      button => {
-
-        button.onclick =
-          () =>
-            deleteReview(
-              button.dataset.id
-            );
-
-      }
-    );
-
+// ── API HELPER ──────────────────────────────────────────────
+async function api(action, data={}, method='POST'){
+  const url=API+'?action='+action;
+  const opts={method, headers:{'X-Admin-Token':TOKEN,'Content-Type':'application/json'}};
+  if(method==='POST') opts.body=JSON.stringify(data);
+  const res=await fetch(url,opts);
+  return res.json();
+}
+async function apiGet(action, params={}){
+  const qs=Object.keys(params).map(k=>k+'='+encodeURIComponent(params[k])).join('&');
+  const url=API+'?action='+action+(qs?'&'+qs:'');
+  const res=await fetch(url,{headers:{'X-Admin-Token':TOKEN}});
+  return res.json();
 }
 
-
-/* =========================================
-   LOAD REVIEWS
-========================================= */
-
-function loadReviews(){
-
-  if(
-    unsubscribeReviews
-  ){
-
-    unsubscribeReviews();
-
-    unsubscribeReviews =
-      null;
-
+// ── AUTH ────────────────────────────────────────────────────
+async function init(){
+  if(TOKEN){
+    const r=await apiGet('check_auth');
+    if(r.authenticated){showApp();return;}
   }
-
-
-  const q =
-    query(
-      reviewsRef,
-      orderBy(
-        "createdAt",
-        "desc"
-      )
-    );
-
-
-  unsubscribeReviews =
-    onSnapshot(
-      q,
-
-      snapshot => {
-
-        reviews =
-          snapshot.docs.map(
-            item => ({
-              id:item.id,
-              ...item.data()
-            })
-          );
-
-
-        renderReviews();
-
-      },
-
-      error => {
-
-        console.error(
-          error
-        );
-
-
-        toast(
-          firestoreMessage(
-            error
-          )
-        );
-
-      }
-    );
-
+  showLogin();
 }
 
-
-/* =========================================
-   EDIT
-========================================= */
-
-function editReview(
-  id
-){
-
-  const review =
-    reviews.find(
-      item =>
-        item.id === id
-    );
-
-
-  if(!review){
-    return;
-  }
-
-
-  $("reviewId")
-    .value =
-      id;
-
-
-  $("formTitle")
-    .textContent =
-      "Edit Review";
-
-
-  $("saveText")
-    .textContent =
-      "Update Review";
-
-
-  $("cancelEdit")
-    .classList
-    .remove("hidden");
-
-
-  $("name")
-    .value =
-      review.name || "";
-
-
-  $("location")
-    .value =
-      review.location || "";
-
-
-  $("date")
-    .value =
-      review.dateValue || "";
-
-
-  $("category")
-    .value =
-      review.category ||
-      "membership";
-
-
-  $("source")
-    .value =
-      review.source ||
-      "Google Review";
-
-
-  $("review")
-    .value =
-      review.review || "";
-
-
-  $("published")
-    .checked =
-      review.published === true;
-
-
-  setStars(
-    Number(
-      review.rating
-    ) || 5
-  );
-
-
-  window.scrollTo({
-    top:0,
-    behavior:"smooth"
-  });
-
+function showLogin(){
+  document.getElementById('login-screen').style.display='flex';
+  document.getElementById('app').style.display='none';
+}
+function showApp(){
+  document.getElementById('login-screen').style.display='none';
+  document.getElementById('app').style.display='flex';
+  document.getElementById('admin-email').textContent=adminEmail;
+  loadSection('dashboard');
 }
 
-
-/* =========================================
-   TOGGLE
-========================================= */
-
-async function toggleReview(
-  id
-){
-
-  const review =
-    reviews.find(
-      item =>
-        item.id === id
-    );
-
-
-  if(!review){
-    return;
+window.doLogin=async()=>{
+  const email=document.getElementById('l-email').value.trim();
+  const pw=document.getElementById('l-pw').value;
+  const err=document.getElementById('l-err');
+  const btn=document.querySelector('.login-btn');
+  err.textContent='';btn.textContent='Signing in…';btn.disabled=true;
+  const r=await api('login',{email,password:pw});
+  if(r.ok){
+    TOKEN=r.token;adminEmail=r.email;
+    localStorage.setItem('prestige_admin_token',TOKEN);
+    localStorage.setItem('prestige_admin_email',email);
+    showApp();
+  }else{
+    err.textContent='Invalid email or password.';
   }
+  btn.textContent='Sign In';btn.disabled=false;
+};
 
+window.doLogout=async()=>{
+  await api('logout');
+  TOKEN='';adminEmail='';
+  localStorage.removeItem('prestige_admin_token');
+  localStorage.removeItem('prestige_admin_email');
+  showLogin();
+};
 
+// ── NAVIGATION ──────────────────────────────────────────────
+window.loadSection=name=>{
+  document.querySelectorAll('.nav-item').forEach(n=>n.classList.remove('active'));
+  const el=document.querySelector('[data-nav="'+name+'"]');
+  if(el)el.classList.add('active');
+  document.querySelectorAll('.section').forEach(s=>s.style.display='none');
+  const sec=document.getElementById('sec-'+name);
+  if(sec)sec.style.display='block';
+  if(name==='gallery')    loadGallery();
+  if(name==='blog')       {loadBlogs();initQuill();}
+  if(name==='reviews')    loadReviews();
+  if(name==='testimonials')loadTestimonials();
+  if(name==='inquiries')  loadInquiries();
+  if(name==='dashboard')  loadDashboard();
+};
+
+// ── DASHBOARD ───────────────────────────────────────────────
+async function loadDashboard(){
+  const[dashR,gallR]=await Promise.all([
+    apiGet('dashboard'),
+    fetch(GAPI+'?action=list&key='+GKEY,{headers:{'X-Upload-Key':GKEY}}).then(r=>r.json())
+  ]);
+  document.getElementById('d-photos').textContent=(gallR.items||[]).length;
+  document.getElementById('d-blogs').textContent=dashR.blogs||0;
+  document.getElementById('d-reviews').textContent=dashR.reviews||0;
+  document.getElementById('d-reels').textContent=dashR.reels||0;
+  document.getElementById('d-inquiries').textContent=dashR.inquiries||0;
+  document.getElementById('d-unread').textContent=(dashR.unread||0)+' unread';
+  const recent=dashR.recent||[];
+  document.getElementById('d-recent').innerHTML=recent.map(i=>`
+    <tr class="${!i.read?'unread-row':''}">
+      <td><b>${i.name||'—'}</b></td><td>${i.email||'—'}</td>
+      <td>${(i.subject||i.message||'—').substring(0,50)}</td>
+      <td>${i.createdAt?new Date(i.createdAt).toLocaleDateString():'—'}</td>
+      <td><button class="btn-sm btn-outline" onclick="loadSection('inquiries')">View</button></td>
+    </tr>`).join('')||'<tr><td colspan="5" class="tc-empty">No inquiries yet</td></tr>';
+}
+
+// ── GALLERY (cPanel gallery-api.php) ────────────────────────
+const GSECTIONS={'our-gallery':'Our Gallery','resort':'The Country Resort','suites':'The Country Suites','bay':'The Country Bay','events':'Member Events','celebrations':'Weddings & Celebrations','videos':'Videos','member-trips':'Member Trip Photos'};
+
+async function loadGallery(){
+  const section=document.getElementById('filter-section').value;
+  const url=GAPI+'?action=list&key='+GKEY+(section?'&section='+section:'');
+  const res=await fetch(url,{headers:{'X-Upload-Key':GKEY}});
+  const data=await res.json();
+  const grid=document.getElementById('photo-grid');
+  const items=data.items||[];
+  if(!items.length){grid.innerHTML='<p style="color:#9ca3af;padding:24px;text-align:center;">No items yet.</p>';return;}
+  grid.innerHTML=items.map(p=>`
+    <div class="photo-card">
+      ${p.type==='video'?`<div style="background:#1a1a17;height:130px;display:flex;align-items:center;justify-content:center;color:#C9A44B;font-size:28px;">▶</div>`:
+        `<img src="${p.url}" loading="lazy"/>`}
+      <div class="photo-info" style="flex-direction:column;align-items:flex-start;gap:4px;">
+        <span class="photo-tag">${GSECTIONS[p.section]||p.section}</span>
+        ${p.caption?`<span style="font-size:10px;color:#6b7280;">${p.caption}</span>`:''}
+      </div>
+      <div style="padding:0 8px 8px;"><button class="btn-sm btn-danger" onclick="deleteGalleryItem('${p.id}')">Delete</button></div>
+    </div>`).join('');
+}
+
+window.toggleUploadType=()=>{
+  const t=document.getElementById('upload-type').value;
+  const sec=document.getElementById('photo-section-select').value;
+  document.getElementById('photo-fields').style.display=t==='photo'?'block':'none';
+  document.getElementById('photo-caption-wrap').style.display=t==='photo'?'block':'none';
+  document.getElementById('photo-sublabel-wrap').style.display=t==='photo'?'block':'none';
+  document.getElementById('video-fields').style.display=t==='video'?'block':'none';
+  document.getElementById('video-title-wrap').style.display=t==='video'?'block':'none';
+  document.getElementById('video-sub-wrap').style.display=t==='video'?'block':'none';
+  document.getElementById('member-name-wrap').style.display=sec==='member-trips'?'block':'none';
+  document.getElementById('member-dest-wrap').style.display=sec==='member-trips'?'block':'none';
+};
+
+document.getElementById('photo-section-select')?.addEventListener('change',()=>{
+  const sec=document.getElementById('photo-section-select').value;
+  document.getElementById('member-name-wrap').style.display=sec==='member-trips'?'block':'none';
+  document.getElementById('member-dest-wrap').style.display=sec==='member-trips'?'block':'none';
+  if(sec==='videos'){document.getElementById('upload-type').value='video';toggleUploadType();}
+  else{document.getElementById('upload-type').value='photo';toggleUploadType();}
+});
+
+window.uploadGalleryItem=async()=>{
+  const section=document.getElementById('photo-section-select').value;
+  const type=document.getElementById('upload-type').value;
+  if(!section)return alert('Select a gallery section first.');
+  const btn=document.getElementById('upload-btn');
+  const progress=document.getElementById('upload-progress');
+  btn.disabled=true;btn.textContent='Uploading…';
   try{
-
-    await updateDoc(
-      doc(
-        db,
-        "reviews",
-        id
-      ),
-      {
-        published:
-          !review.published,
-
-        updatedAt:
-          serverTimestamp()
+    if(type==='video'){
+      const videoUrl=document.getElementById('video-url').value.trim();
+      const title=document.getElementById('video-title').value.trim();
+      const sub=document.getElementById('video-sub').value.trim();
+      if(!videoUrl)return alert('Enter a YouTube URL.');
+      const res=await fetch(GAPI+'?action=add_video&key='+GKEY,{
+        method:'POST',headers:{'Content-Type':'application/json','X-Upload-Key':GKEY},
+        body:JSON.stringify({section,videoUrl,title,sub})
+      });
+      const d=await res.json();if(!d.ok)throw new Error(d.error);
+      document.getElementById('video-url').value='';document.getElementById('video-title').value='';
+    }else{
+      const files=document.getElementById('photo-files').files;
+      if(!files.length)return alert('Select photos first.');
+      const caption=document.getElementById('photo-caption').value.trim();
+      const sublabel=document.getElementById('photo-sublabel').value.trim();
+      const memberName=document.getElementById('member-name').value.trim();
+      const memberDest=document.getElementById('member-dest').value.trim();
+      let done=0;
+      for(const file of files){
+        progress.textContent=`Uploading ${++done} of ${files.length}…`;
+        const fd=new FormData();
+        fd.append('file',file);fd.append('section',section);
+        fd.append('caption',caption||file.name.replace(/\.[^/.]+$/,''));
+        fd.append('sublabel',sublabel);fd.append('memberName',memberName);
+        fd.append('memberDest',memberDest);fd.append('key',GKEY);
+        const res=await fetch(GAPI,{method:'POST',headers:{'X-Upload-Key':GKEY},body:fd});
+        const d=await res.json();if(!d.ok)throw new Error(d.error||'Upload failed');
       }
-    );
+      document.getElementById('photo-files').value='';
+      document.getElementById('photo-caption').value='';
+    }
+    progress.textContent='✓ Uploaded successfully!';
+    setTimeout(()=>{progress.textContent='';},3000);
+    loadGallery();
+  }catch(e){alert('Upload failed: '+e.message);}
+  btn.disabled=false;btn.textContent='Upload';
+};
 
+window.deleteGalleryItem=async id=>{
+  if(!confirm('Delete this item?'))return;
+  await fetch(GAPI+'?action=delete&key='+GKEY,{method:'POST',headers:{'Content-Type':'application/json','X-Upload-Key':GKEY},body:JSON.stringify({id})});
+  loadGallery();
+};
 
-    toast(
-      review.published
-        ? "Review unpublished."
-        : "Review published."
-    );
-
-
-  }catch(error){
-
-    toast(
-      firestoreMessage(
-        error
-      )
-    );
-
-  }
-
+// ── BLOG ────────────────────────────────────────────────────
+function initQuill(){
+  if(quill)return;
+  quill=new Quill('#quill-editor',{theme:'snow',modules:{toolbar:[[{header:[1,2,3,false]}],['bold','italic','underline','strike'],[{color:[]},{background:[]}],[{list:'ordered'},{list:'bullet'}],[{align:[]}],['blockquote','code-block'],['link','image'],['clean']]},placeholder:'Write your blog post here…'});
 }
 
-
-/* =========================================
-   DELETE
-========================================= */
-
-async function deleteReview(
-  id
-){
-
-  if(
-    !confirm(
-      "Delete this review permanently?"
-    )
-  ){
-
-    return;
-  }
-
-
-  try{
-
-    await deleteDoc(
-      doc(
-        db,
-        "reviews",
-        id
-      )
-    );
-
-
-    toast(
-      "Review deleted."
-    );
-
-
-  }catch(error){
-
-    toast(
-      firestoreMessage(
-        error
-      )
-    );
-
-  }
-
+async function loadBlogs(){
+  const r=await apiGet('blogs');
+  const blogs=r.blogs||[];
+  document.getElementById('blog-list').innerHTML=blogs.length?blogs.map(b=>`
+    <tr><td><div class="fw-bold">${b.title||'Untitled'}</div><div class="meta">${b.category||''}</div></td>
+    <td>${b.author||'—'}</td>
+    <td><span class="status-badge status-${b.status||'draft'}">${b.status||'draft'}</span></td>
+    <td>${b.createdAt?new Date(b.createdAt).toLocaleDateString():'—'}</td>
+    <td class="actions-cell">
+      <button class="btn-sm btn-outline" onclick="editBlog('${b.id}')">Edit</button>
+      <button class="btn-sm btn-danger" onclick="deleteBlog('${b.id}')">Delete</button>
+    </td></tr>`).join(''):'<tr><td colspan="5" class="tc-empty">No blog posts yet.</td></tr>';
 }
 
+window.newBlog=()=>{
+  editingBlogId=null;
+  document.getElementById('blog-form-title').textContent='New Blog Post';
+  ['blog-title','blog-author','blog-category','blog-seo-title','blog-seo-desc'].forEach(id=>document.getElementById(id).value='');
+  document.getElementById('blog-status').value='draft';
+  document.getElementById('blog-cover-preview').style.display='none';
+  if(quill)quill.setContents([]);
+  document.getElementById('blog-list-view').style.display='none';
+  document.getElementById('blog-form-view').style.display='block';
+};
 
-/* =========================================
-   CHECK ADMIN
-========================================= */
+window.editBlog=async id=>{
+  const r=await apiGet('blog',{id});
+  if(!r.ok)return;
+  const b=r.blog;editingBlogId=id;
+  document.getElementById('blog-form-title').textContent='Edit Blog Post';
+  document.getElementById('blog-title').value=b.title||'';
+  document.getElementById('blog-author').value=b.author||'';
+  document.getElementById('blog-category').value=b.category||'';
+  document.getElementById('blog-seo-title').value=b.seoTitle||'';
+  document.getElementById('blog-seo-desc').value=b.seoDesc||'';
+  document.getElementById('blog-status').value=b.status||'draft';
+  if(b.coverUrl){document.getElementById('blog-cover-preview').src=b.coverUrl;document.getElementById('blog-cover-preview').style.display='block';}
+  if(quill&&b.content)quill.root.innerHTML=b.content;
+  document.getElementById('blog-list-view').style.display='none';
+  document.getElementById('blog-form-view').style.display='block';
+};
 
-async function checkAdmin(
-  user
-){
+window.cancelBlog=()=>{
+  document.getElementById('blog-list-view').style.display='block';
+  document.getElementById('blog-form-view').style.display='none';
+  editingBlogId=null;
+};
 
-  const adminRef =
-    doc(
-      db,
-      "admins",
-      user.uid
-    );
-
-
-  try{
-
-    const snapshot =
-      await getDoc(
-        adminRef
-      );
-
-
-    if(
-      !snapshot.exists()
-    ){
-
-      return {
-        ok:false,
-
-        message:
-`Login successful, but this Firebase account is not an admin.
-
-Create this Firestore document:
-
-Collection:
-admins
-
-Document ID:
-${user.uid}
-
-Field:
-enabled
-
-Type:
-Boolean
-
-Value:
-true`
-      };
-
-    }
-
-
-    const data =
-      snapshot.data();
-
-
-    if(
-      data.enabled !== true
-    ){
-
-      return {
-        ok:false,
-
-        message:
-`The admin document exists, but enabled is not true.
-
-Set:
-
-admins/${user.uid}
-
-enabled = true`
-      };
-
-    }
-
-
-    return {
-      ok:true
-    };
-
-
-  }catch(error){
-
-    return {
-      ok:false,
-
-      message:
-        firestoreMessage(
-          error
-        )
-    };
-
+window.saveBlog=async status=>{
+  const title=document.getElementById('blog-title').value.trim();
+  if(!title)return alert('Blog title is required.');
+  let coverUrl='';
+  if(editingBlogId){const r=await apiGet('blog',{id:editingBlogId});coverUrl=r.blog?.coverUrl||'';}
+  const coverFile=document.getElementById('blog-cover').files[0];
+  if(coverFile){
+    const fd=new FormData();fd.append('file',coverFile);fd.append('key',GKEY);
+    const res=await fetch(API+'?action=upload_cover&key='+GKEY,{method:'POST',headers:{'X-Admin-Token':TOKEN,'X-Api-Key':GKEY},body:fd});
+    const d=await res.json();if(d.ok)coverUrl=d.url;
   }
+  const slug=title.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/(^-|-$)/g,'');
+  const data={id:editingBlogId||undefined,title,author:document.getElementById('blog-author').value.trim(),
+    category:document.getElementById('blog-category').value.trim(),
+    content:quill?quill.root.innerHTML:'',coverUrl,
+    seoTitle:document.getElementById('blog-seo-title').value.trim(),
+    seoDesc:document.getElementById('blog-seo-desc').value.trim(),status,slug};
+  await api('save_blog',data);
+  cancelBlog();loadBlogs();
+};
 
+window.deleteBlog=async id=>{if(!confirm('Delete this blog post?'))return;await api('delete_blog',{id});loadBlogs();};
+window.previewCover=input=>{if(input.files[0]){const r=new FileReader();r.onload=e=>{document.getElementById('blog-cover-preview').src=e.target.result;document.getElementById('blog-cover-preview').style.display='block';};r.readAsDataURL(input.files[0]);}};
+
+// ── REVIEWS ─────────────────────────────────────────────────
+async function loadReviews(){
+  const r=await apiGet('reviews');
+  const reviews=r.reviews||[];
+  document.getElementById('review-list').innerHTML=reviews.length?reviews.map(r=>`
+    <tr><td><div class="fw-bold">${r.name||'—'}</div><div class="meta">${r.location||''}</div></td>
+    <td style="color:#f59e0b;">${'★'.repeat(r.rating||5)}</td>
+    <td>${(r.text||'').substring(0,80)}…</td>
+    <td><span class="status-badge status-${r.status||'draft'}">${r.status||'draft'}</span></td>
+    <td>${r.date||'—'}</td>
+    <td class="actions-cell">
+      <button class="btn-sm btn-outline" onclick="editReview('${r.id}')">Edit</button>
+      <button class="btn-sm btn-danger" onclick="deleteReview('${r.id}')">Delete</button>
+    </td></tr>`).join(''):'<tr><td colspan="6" class="tc-empty">No reviews yet.</td></tr>';
 }
 
+window.openReviewForm=()=>{
+  editingReviewId=null;
+  ['r-name','r-location','r-text'].forEach(id=>document.getElementById(id).value='');
+  document.getElementById('r-rating').value='5';
+  document.getElementById('r-source').value='';
+  document.getElementById('r-date').value=new Date().toISOString().split('T')[0];
+  document.getElementById('r-status').value='draft';
+  document.getElementById('review-modal').style.display='flex';
+};
 
-/* =========================================
-   SHOW DASHBOARD
-========================================= */
+window.editReview=async id=>{
+  const r=await apiGet('reviews');
+  const rev=(r.reviews||[]).find(x=>x.id===id);
+  if(!rev)return;
+  editingReviewId=id;
+  document.getElementById('r-name').value=rev.name||'';
+  document.getElementById('r-location').value=rev.location||'';
+  document.getElementById('r-rating').value=rev.rating||5;
+  document.getElementById('r-source').value=rev.source||'';
+  document.getElementById('r-text').value=rev.text||'';
+  document.getElementById('r-date').value=rev.date||'';
+  document.getElementById('r-status').value=rev.status||'draft';
+  document.getElementById('review-modal').style.display='flex';
+};
 
-async function showDashboard(
-  user
-){
+window.closeReviewModal=()=>{document.getElementById('review-modal').style.display='none';editingReviewId=null;};
 
-  if(
-    initializing
-  ){
+window.saveReview=async()=>{
+  const name=document.getElementById('r-name').value.trim();
+  const text=document.getElementById('r-text').value.trim();
+  if(!name||!text)return alert('Name and review text are required.');
+  const data={id:editingReviewId||undefined,name,location:document.getElementById('r-location').value.trim(),
+    rating:parseInt(document.getElementById('r-rating').value),source:document.getElementById('r-source').value,
+    text,date:document.getElementById('r-date').value,status:document.getElementById('r-status').value};
+  await api('save_review',data);
+  closeReviewModal();loadReviews();
+};
 
-    return;
-  }
+window.deleteReview=async id=>{if(!confirm('Delete?'))return;await api('delete_review',{id});loadReviews();};
 
-
-  initializing =
-    true;
-
-
-  try{
-
-    showInfo(
-      "Checking administrator access..."
-    );
-
-
-    const result =
-      await checkAdmin(
-        user
-      );
-
-
-    if(
-      !result.ok
-    ){
-
-      await signOut(
-        auth
-      );
-
-
-      showError(
-        result.message
-      );
-
-
-      return;
-    }
-
-
-    /*
-     * ADMIN VERIFIED
-     */
-
-    currentUser =
-      user;
-
-
-    $("loginScreen")
-      .classList
-      .add("hidden");
-
-
-    $("app")
-      .classList
-      .remove("hidden");
-
-
-    $("userEmail")
-      .textContent =
-        user.email || "";
-
-
-    initStars();
-
-    resetForm();
-
-    loadReviews();
-
-
-  } finally {
-
-    initializing =
-      false;
-  }
-
+// ── TESTIMONIALS ─────────────────────────────────────────────
+async function loadTestimonials(){
+  const r=await apiGet('testimonials');
+  const reels=r.testimonials||[];
+  document.getElementById('reel-list').innerHTML=reels.length?reels.map(r=>`
+    <div class="reel-card">
+      <div class="reel-thumb">${r.thumbnail?`<img src="${r.thumbnail}"/>`:'<div class="reel-thumb-placeholder">▶</div>'}<div class="reel-overlay">▶ Reel</div></div>
+      <div class="reel-info"><div class="fw-bold">${r.title||'Untitled'}</div><div class="meta">${r.caption||''}</div><div class="reel-url">${r.reelUrl||''}</div><span class="status-badge status-${r.status||'draft'}">${r.status||'draft'}</span></div>
+      <div class="reel-actions"><button class="btn-sm btn-outline" onclick="editReel('${r.id}')">Edit</button><button class="btn-sm btn-danger" onclick="deleteReel('${r.id}')">Delete</button></div>
+    </div>`).join(''):'<p style="color:#9ca3af;padding:24px;">No reels yet.</p>';
 }
 
-
-/* =========================================
-   LOGIN
-========================================= */
-
-$("loginForm")
-  .addEventListener(
-    "submit",
-    async event => {
-
-      event.preventDefault();
-
-
-      clearMessages();
-
-
-      const email =
-        $("email")
-          .value
-          .trim();
-
-
-      const password =
-        $("password")
-          .value;
-
-
-      if(
-        !email ||
-        !password
-      ){
-
-        showError(
-          "Please enter your email and password."
-        );
-
-        return;
-      }
-
-
-      setLoading(
-        true
-      );
-
-
-      try{
-
-        showInfo(
-          "Signing in..."
-        );
-
-
-        /*
-         * Firebase Authentication
-         */
-
-        const credential =
-          await signInWithEmailAndPassword(
-            auth,
-            email,
-            password
-          );
-
-
-        /*
-         * Credentials are valid.
-         */
-
-        showInfo(
-          "Credentials accepted. Opening admin panel..."
-        );
-
-
-        /*
-         * Check admin.
-         */
-
-        await showDashboard(
-          credential.user
-        );
-
-
-      }catch(error){
-
-        console.error(
-          "LOGIN ERROR:",
-          error
-        );
-
-
-        if(
-          error?.code &&
-          error.code.startsWith(
-            "auth/"
-          )
-        ){
-
-          showError(
-            authMessage(
-              error.code
-            )
-          );
-
-        }else{
-
-          showError(
-            firestoreMessage(
-              error
-            )
-          );
-
-        }
-
-      }finally{
-
-        setLoading(
-          false
-        );
-
-      }
-
-    }
-  );
-
-
-/* =========================================
-   AUTH STATE
-========================================= */
-
-onAuthStateChanged(
-  auth,
-  async user => {
-
-    if(
-      !user
-    ){
-
-      currentUser =
-        null;
-
-
-      if(
-        unsubscribeReviews
-      ){
-
-        unsubscribeReviews();
-
-        unsubscribeReviews =
-          null;
-
-      }
-
-
-      $("app")
-        .classList
-        .add("hidden");
-
-
-      $("loginScreen")
-        .classList
-        .remove("hidden");
-
-
-      return;
-
-    }
-
-
-    /*
-     * Firebase restored a previous session.
-     */
-
-    if(
-      $("app")
-        .classList
-        .contains(
-          "hidden"
-        )
-    ){
-
-      try{
-
-        await showDashboard(
-          user
-        );
-
-      }catch(error){
-
-        console.error(
-          error
-        );
-
-        await signOut(
-          auth
-        );
-
-
-        showError(
-          error?.message ||
-          "Could not restore your admin session."
-        );
-
-      }
-
-    }
-
+window.openReelForm=()=>{
+  editingReelId=null;
+  ['reel-title','reel-caption','reel-url'].forEach(id=>document.getElementById(id).value='');
+  document.getElementById('reel-status').value='draft';
+  document.getElementById('reel-order').value='0';
+  document.getElementById('reel-thumb-preview').style.display='none';
+  document.getElementById('reel-modal').style.display='flex';
+};
+
+window.editReel=async id=>{
+  const r=await apiGet('testimonials');
+  const reel=(r.testimonials||[]).find(x=>x.id===id);
+  if(!reel)return;
+  editingReelId=id;
+  document.getElementById('reel-title').value=reel.title||'';
+  document.getElementById('reel-caption').value=reel.caption||'';
+  document.getElementById('reel-url').value=reel.reelUrl||'';
+  document.getElementById('reel-status').value=reel.status||'draft';
+  document.getElementById('reel-order').value=reel.order||0;
+  if(reel.thumbnail){document.getElementById('reel-thumb-preview').src=reel.thumbnail;document.getElementById('reel-thumb-preview').style.display='block';}
+  document.getElementById('reel-modal').style.display='flex';
+};
+
+window.closeReelModal=()=>{document.getElementById('reel-modal').style.display='none';editingReelId=null;};
+
+window.saveReel=async()=>{
+  const reelUrl=document.getElementById('reel-url').value.trim();
+  if(!reelUrl)return alert('Instagram Reel URL is required.');
+  let thumbnail='';
+  if(editingReelId){const r=await apiGet('testimonials');thumbnail=(r.testimonials||[]).find(x=>x.id===editingReelId)?.thumbnail||'';}
+  const thumbFile=document.getElementById('reel-thumb-file').files[0];
+  if(thumbFile){
+    const fd=new FormData();fd.append('file',thumbFile);fd.append('key',GKEY);
+    const res=await fetch(API+'?action=upload_thumb',{method:'POST',headers:{'X-Admin-Token':TOKEN},body:fd});
+    const d=await res.json();if(d.ok)thumbnail=d.url;
   }
-);
-
-
-/* =========================================
-   LOGOUT
-========================================= */
-
-$("logoutBtn")
-  .addEventListener(
-    "click",
-    async () => {
-
-      try{
-
-        if(
-          unsubscribeReviews
-        ){
-
-          unsubscribeReviews();
-
-          unsubscribeReviews =
-            null;
-
-        }
-
-
-        await signOut(
-          auth
-        );
-
-
-        reviews =
-          [];
-
-
-        resetForm();
-
-
-      }catch(error){
-
-        toast(
-          error?.message ||
-          "Logout failed."
-        );
-
-      }
-
-    }
-  );
-
-
-/* =========================================
-   CANCEL
-========================================= */
-
-$("cancelEdit")
-  .addEventListener(
-    "click",
-    resetForm
-  );
-
-
-/* =========================================
-   SAVE REVIEW
-========================================= */
-
-$("reviewForm")
-  .addEventListener(
-    "submit",
-    async event => {
-
-      event.preventDefault();
-
-
-      if(
-        !currentUser
-      ){
-
-        toast(
-          "Please sign in again."
-        );
-
-        return;
-      }
-
-
-      const button =
-        $("saveButton");
-
-
-      button.disabled =
-        true;
-
-
-      const data = {
-
-        name:
-          $("name")
-            .value
-            .trim(),
-
-        location:
-          $("location")
-            .value
-            .trim(),
-
-        rating:
-          Number(
-            rating
-          ),
-
-        dateValue:
-          $("date")
-            .value,
-
-        date:
-          new Date(
-            $("date").value +
-            "T12:00:00"
-          ),
-
-        review:
-          $("review")
-            .value
-            .trim(),
-
-        category:
-          $("category")
-            .value,
-
-        categoryLabel:
-          $("category")
-            .selectedOptions[0]
-            .textContent,
-
-        source:
-          $("source")
-            .value,
-
-        published:
-          $("published")
-            .checked,
-
-        updatedAt:
-          serverTimestamp()
-
-      };
-
-
-      try{
-
-        const id =
-          $("reviewId")
-            .value;
-
-
-        if(
-          id
-        ){
-
-          await updateDoc(
-            doc(
-              db,
-              "reviews",
-              id
-            ),
-            data
-          );
-
-
-          toast(
-            "Review updated successfully."
-          );
-
-
-        }else{
-
-          data.createdAt =
-            serverTimestamp();
-
-
-          await addDoc(
-            reviewsRef,
-            data
-          );
-
-
-          toast(
-            "Review added successfully."
-          );
-
-        }
-
-
-        resetForm();
-
-
-      }catch(error){
-
-        toast(
-          firestoreMessage(
-            error
-          )
-        );
-
-
-      }finally{
-
-        button.disabled =
-          false;
-
-      }
-
-    }
-  );
-
+  const data={id:editingReelId||undefined,title:document.getElementById('reel-title').value.trim(),
+    caption:document.getElementById('reel-caption').value.trim(),reelUrl,thumbnail,
+    status:document.getElementById('reel-status').value,order:parseInt(document.getElementById('reel-order').value)||0};
+  await api('save_testimonial',data);
+  closeReelModal();loadTestimonials();
+};
+
+window.deleteReel=async id=>{if(!confirm('Delete?'))return;await api('delete_testimonial',{id});loadTestimonials();};
+window.previewReelThumb=input=>{if(input.files[0]){const r=new FileReader();r.onload=e=>{document.getElementById('reel-thumb-preview').src=e.target.result;document.getElementById('reel-thumb-preview').style.display='block';};r.readAsDataURL(input.files[0]);}};
+
+// ── INQUIRIES ────────────────────────────────────────────────
+async function loadInquiries(){
+  const r=await apiGet('inquiries');
+  allInquiries=r.inquiries||[];
+  renderInquiries(allInquiries);
+}
+
+function renderInquiries(list){
+  document.getElementById('inquiry-list').innerHTML=list.length?list.map(i=>`
+    <tr class="${!i.read?'unread-row':''}">
+      <td><div class="fw-bold">${i.name||'—'}</div><div class="meta">${i.email||''} ${i.phone?'· '+i.phone:''}</div></td>
+      <td>${(i.subject||i.message||'—').substring(0,60)}</td>
+      <td><span class="inq-type">${i.formType||'Contact'}</span></td>
+      <td><span class="status-badge status-${i.replied?'published':'draft'}">${i.replied?'Replied':'Pending'}</span></td>
+      <td>${i.createdAt?new Date(i.createdAt).toLocaleString():'—'}</td>
+      <td class="actions-cell">
+        <button class="btn-sm btn-outline" onclick="viewInquiry('${i.id}')">View</button>
+        <button class="btn-sm btn-danger" onclick="deleteInquiry('${i.id}')">Delete</button>
+      </td>
+    </tr>`).join(''):'<tr><td colspan="6" class="tc-empty">No inquiries yet.</td></tr>';
+}
+
+window.filterInquiries=()=>{
+  const f=document.getElementById('inq-filter').value;
+  let list=allInquiries;
+  if(f==='unread')list=list.filter(i=>!i.read);
+  else if(f==='pending')list=list.filter(i=>!i.replied);
+  else if(f==='replied')list=list.filter(i=>i.replied);
+  renderInquiries(list);
+};
+
+window.viewInquiry=async id=>{
+  const inq=allInquiries.find(i=>i.id===id);
+  if(!inq)return;
+  if(!inq.read){await api('update_inquiry',{id,read:true});inq.read=true;}
+  document.getElementById('inq-modal-content').innerHTML=`
+    <div class="inq-detail">
+      <div class="inq-row"><label>Name</label><span>${inq.name||'—'}</span></div>
+      <div class="inq-row"><label>Email</label><span><a href="mailto:${inq.email}" style="color:var(--gold);">${inq.email||'—'}</a></span></div>
+      <div class="inq-row"><label>Phone</label><span>${inq.phone||'—'}</span></div>
+      <div class="inq-row"><label>Subject</label><span>${inq.subject||'—'}</span></div>
+      <div class="inq-row"><label>Form</label><span>${inq.formType||'Contact'}</span></div>
+      <div class="inq-row"><label>Date</label><span>${inq.createdAt?new Date(inq.createdAt).toLocaleString():'—'}</span></div>
+      <div class="inq-row full"><label>Message</label><div class="inq-message">${inq.message||'—'}</div></div>
+      <div class="inq-row"><label>Status</label>
+        <button class="btn ${inq.replied?'btn-outline':'btn-gold'}" onclick="markReplied('${id}',${!inq.replied})" style="font-size:13px;padding:6px 14px;">
+          ${inq.replied?'Mark as Pending':'✓ Mark as Replied'}
+        </button>
+      </div>
+    </div>`;
+  document.getElementById('inq-modal').style.display='flex';
+};
+
+window.closeInqModal=()=>{document.getElementById('inq-modal').style.display='none';};
+window.markReplied=async(id,val)=>{await api('update_inquiry',{id,replied:val});const i=allInquiries.find(x=>x.id===id);if(i)i.replied=val;viewInquiry(id);};
+window.deleteInquiry=async id=>{if(!confirm('Delete?'))return;await api('delete_inquiry',{id});loadInquiries();closeInqModal();};
+
+// ── INIT ─────────────────────────────────────────────────────
+init();
 </script>
-
 </body>
 </html>
