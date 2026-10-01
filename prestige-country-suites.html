@@ -32,7 +32,39 @@
     html { scroll-behavior: smooth; }
     body { font-family: 'Montserrat', sans-serif; background: var(--black); color: var(--silver); overflow-x: hidden; }
     a { text-decoration: none; color: inherit; }
-    img { max-width: 100%; display: block; }
+    img {
+      max-width: 100%;
+      width: auto;
+      height: auto;
+      display: block;
+      object-fit: contain;
+      object-position: center center;
+    }
+
+    /* RESPONSIVE IMAGE FIX — prevents stretching/squashing on resize */
+    .overview-img-main,
+    .villa-card-img,
+    .pool-img-main {
+      overflow: hidden;
+    }
+
+    .overview-img-main img,
+    .villa-card-img img,
+    .pool-img-main img {
+      display: block;
+      width: 100%;
+      height: auto;
+      max-width: 100%;
+      object-fit: contain;
+      object-position: center center;
+    }
+
+    .nav-logo img {
+      width: 50px !important;
+      height: auto !important;
+      max-width: 50px !important;
+      object-fit: contain;
+    }
     ul { list-style: none; }
 
     /* ─── UTILITY ─────────────────────────────────────────── */
@@ -166,14 +198,14 @@
 
     /* ─── OVERVIEW GRID ───────────────────────────────────── */
     .overview-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
-    .overview-img-main { width: 100%; aspect-ratio: 4/3; background: linear-gradient(135deg, #252520, #1a1a17, #252520); border: 1px solid rgba(217,186,111,0.2); display: flex; align-items: center; justify-content: center; }
+    .overview-img-main { width: 100%; background: linear-gradient(135deg, #252520, #1a1a17, #252520); border: 1px solid rgba(217,186,111,0.2); display: flex; align-items: center; justify-content: center; }
     .img-placeholder-label { font-family: 'Cormorant Garamond', serif; font-size: 15px; font-style: italic; color: var(--gold-bronze); letter-spacing: 2px; }
 
     /* ─── VILLA TYPES ─────────────────────────────────────── */
     .villa-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
     .villa-card { background: #141412; border: 1px solid rgba(217,186,111,0.15); overflow: hidden; transition: all 0.35s ease; }
     .villa-card:hover { border-color: var(--gold); transform: translateY(-5px); box-shadow: 0 20px 50px rgba(0,0,0,0.5), 0 0 0 1px rgba(217,186,111,0.15); }
-    .villa-card-img { width: 100%; aspect-ratio: 4/3; background: linear-gradient(135deg, #2a2920, #1C1B18, #2a2920); display: flex; align-items: center; justify-content: center; position: relative; }
+    .villa-card-img { width: 100%; background: linear-gradient(135deg, #2a2920, #1C1B18, #2a2920); display: flex; align-items: center; justify-content: center; position: relative; }
     .villa-card-img-label { font-family: 'Cormorant Garamond', serif; font-size: 14px; font-style: italic; color: var(--gold-bronze); letter-spacing: 2px; }
     .villa-badge { position: absolute; top: 16px; left: 16px; background: linear-gradient(135deg, var(--gold-mid), var(--gold)); color: var(--black); font-size: 9px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; padding: 5px 12px; }
     .villa-card-body { padding: 28px; }
@@ -204,7 +236,7 @@
     }
     .pool-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
     .pool-img-wrap { position: relative; }
-    .pool-img-main { width: 100%; aspect-ratio: 1/1; background: linear-gradient(135deg, #1a2a2a, #1a1a17, #1a2a2a); border: 1px solid rgba(217,186,111,0.2); display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 12px; }
+    .pool-img-main { width: 100%; background: linear-gradient(135deg, #1a2a2a, #1a1a17, #1a2a2a); border: 1px solid rgba(217,186,111,0.2); display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 12px; }
     .pool-img-icon { font-size: 48px; color: rgba(217,186,111,0.2); }
     .pool-img-label-text { font-family: 'Cormorant Garamond', serif; font-size: 16px; font-style: italic; color: rgba(217,186,111,0.3); letter-spacing: 2px; }
     .pool-img-wrap::before { content: ''; position: absolute; inset: 14px; border: 1px solid rgba(217,186,111,0.1); pointer-events: none; z-index: 1; }
@@ -648,7 +680,8 @@
     <div class="overview-grid">
       <div class="fade-in">
         <div class="overview-img-main">
-          <span class="img-placeholder-label">The Country Suites — Villa View</span>
+          <img src="images/Rectangle 11.jpg" alt="Resort Image">
+          <!--<span class="img-placeholder-label">The Country Suites — Villa View</span>-->
         </div>
       </div>
       <div class="fade-in fade-in-delay-1">
@@ -695,9 +728,11 @@
 
       <!-- Villa 1 -->
       <div class="villa-card fade-in">
+        
         <div class="villa-card-img">
-          <span class="villa-card-img-label">Garden Villa</span>
-          <span class="villa-badge">Villa</span>
+          <img src="images/Rectangle 12-1.jpg" alt="Resort Image">
+          <!--<span class="villa-card-img-label">Garden Villa</span>-->
+          <!--<span class="villa-badge">Villa</span>-->
         </div>
         <div class="villa-card-body">
           <h3 class="villa-card-name">Garden Villa</h3>
@@ -727,8 +762,9 @@
       <!-- Villa 2 -->
       <div class="villa-card fade-in fade-in-delay-1">
         <div class="villa-card-img">
-          <span class="villa-card-img-label">Pool Villa</span>
-          <span class="villa-badge">Signature Villa</span>
+          <img src="images/Rectangle 12-4.jpg" alt="Resort Image">
+          <!--<span class="villa-card-img-label">Pool Villa</span>
+          <span class="villa-badge">Signature Villa</span>-->
         </div>
         <div class="villa-card-body">
           <h3 class="villa-card-name">Signature Pool Villa</h3>
@@ -758,8 +794,9 @@
       <!-- Villa 3 -->
       <div class="villa-card fade-in fade-in-delay-2">
         <div class="villa-card-img">
-          <span class="villa-card-img-label">Family Villa</span>
-          <span class="villa-badge">Family Villa</span>
+          <img src="images/Rectangle 14-1.jpg" alt="Resort Image">
+          <!--<span class="villa-card-img-label">Family Villa</span>
+          <span class="villa-badge">Family Villa</span>-->
         </div>
         <div class="villa-card-body">
           <h3 class="villa-card-name">Family Grand Villa</h3>
@@ -848,8 +885,9 @@
 
       <div class="pool-img-wrap fade-in fade-in-delay-1">
         <div class="pool-img-main">
-          <div class="pool-img-icon"><i class="fa-solid fa-water-ladder"></i></div>
-          <div class="pool-img-label-text">Private Pool<br>Villa Image</div>
+          <img src="images/Rectangle 15-1.jpg" alt="Resort Image">
+          <div class="pool-img-icon"><!--<i class="fa-solid fa-water-ladder"></i>--></div>
+          <!--<div class="pool-img-label-text">Private Pool<br>Villa Image</div>-->
         </div>
       </div>
     </div>
