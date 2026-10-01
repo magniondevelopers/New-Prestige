@@ -16,6 +16,10 @@
     html{scroll-behavior:smooth;}
     body{font-family:'Montserrat',sans-serif;background:var(--black);color:var(--silver);overflow-x:hidden;}
     a{text-decoration:none;color:inherit;}ul{list-style:none;}
+
+    /* ===== IMAGE FIX: global responsive behaviour ===== */
+    img{max-width:100%;height:auto;display:block;}
+
     .gold-text{background:linear-gradient(135deg,#C9A44B 0%,#D9BA6F 35%,#F2E7C7 55%,#D9BA6F 75%,#A3895A 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
     .sl{font-family:'Montserrat',sans-serif;font-size:11px;font-weight:600;letter-spacing:4px;text-transform:uppercase;color:var(--gold-mid);display:block;margin-bottom:14px;}
     .st{font-family:'Cormorant Garamond',serif;font-size:clamp(32px,5vw,52px);font-weight:600;line-height:1.15;color:var(--champagne);}
@@ -41,6 +45,7 @@
     .nav{position:fixed;top:0;left:0;right:0;z-index:9000;height:var(--nav-h);display:flex;align-items:center;padding:0 48px;background:rgba(26,26,23,.92);backdrop-filter:blur(12px);border-bottom:1px solid rgba(217,186,111,.15);transition:all .4s;}
     .nav.scrolled{background:rgba(26,26,23,.98);box-shadow:0 4px 24px rgba(0,0,0,.4);}
     .nav-logo{flex-shrink:0;margin-right:auto;}
+    .nav-logo img{width:50px;height:auto;}
     .nav-logo-text{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:700;line-height:1.1;}
     .nav-logo-sub{font-family:'Montserrat',sans-serif;font-size:9px;letter-spacing:3px;color:var(--gold-bronze);text-transform:uppercase;}
     .nav-links{display:flex;align-items:center;gap:6px;}.nav-item{position:relative;}
@@ -57,7 +62,7 @@
     /* HERO */
     .ph{position:relative;padding:calc(var(--nav-h) + 90px) 48px 90px;background-color:var(--black);background-image:radial-gradient(ellipse 55% 45% at 3% 4%,rgba(217,186,111,.22) 0%,transparent 55%),radial-gradient(ellipse 55% 45% at 97% 4%,rgba(217,186,111,.22) 0%,transparent 55%);text-align:center;border-bottom:1px solid rgba(217,186,111,.12);overflow:hidden;}
     .ph::before{content:'';position:absolute;inset:0;background-image:radial-gradient(circle 1px at 12% 18%,rgba(217,186,111,.6) 0%,transparent 100%),radial-gradient(circle 1px at 88% 22%,rgba(217,186,111,.5) 0%,transparent 100%),radial-gradient(circle 1px at 50% 8%,rgba(201,164,75,.5) 0%,transparent 100%),radial-gradient(circle 1px at 30% 72%,rgba(217,186,111,.35) 0%,transparent 100%);pointer-events:none;}
-    .phbc{display:flex;align-items:center;justify-content:center;gap:8px;margin-bottom:28px;font-size:11px;font-weight:500;letter-spacing:2px;text-transform:uppercase;color:var(--gold-bronze);position:relative;z-index:1;}
+    .phbc{display:flex;align-items:center;justify-content:center;gap:8px;margin-bottom:28px;font-size:11px;font-weight:500;letter-spacing:2px;text-transform:uppercase;color:var(--gold-bronze);position:relative;z-index:1;flex-wrap:wrap;}
     .phbc a{color:var(--gold-bronze);}.phbc a:hover{color:var(--gold);}.phbc i{font-size:8px;color:var(--gold-dark);}
     .phs{font-family:'Great Vibes',cursive;font-size:clamp(26px,4vw,44px);color:var(--silver);opacity:.8;display:block;margin-bottom:12px;position:relative;z-index:1;}
     .pht{font-family:'Cormorant Garamond',serif;font-size:clamp(44px,8vw,88px);font-weight:700;letter-spacing:3px;line-height:1;margin-bottom:24px;position:relative;z-index:1;overflow-wrap:break-word;word-break:break-word;}
@@ -71,14 +76,18 @@
 
     /* WHAT WE DO SPLIT */
     .intro-split{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;}
-    .intro-img{width:100%;aspect-ratio:4/3;background:linear-gradient(135deg,#252520,#1a1a17,#252520);border:1px solid rgba(217,186,111,.2);display:flex;align-items:center;justify-content:center;position:relative;}
+    .intro-split > *{min-width:0;}
+
+    /* ===== IMAGE FIX: intro image fills its frame ===== */
+    .intro-img{width:100%;aspect-ratio:4/3;background:linear-gradient(135deg,#252520,#1a1a17,#252520);border:1px solid rgba(217,186,111,.2);position:relative;overflow:hidden;}
+    .intro-img > img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;z-index:0;}
     .intro-img-label{font-family:'Cormorant Garamond',serif;font-size:15px;font-style:italic;color:var(--gold-bronze);letter-spacing:2px;}
-    .intro-img-badge{position:absolute;bottom:20px;left:20px;right:20px;background:rgba(26,26,23,.85);border:1px solid rgba(217,186,111,.2);padding:16px 20px;text-align:center;}
+    .intro-img-badge{position:absolute;bottom:20px;left:20px;right:20px;background:rgba(26,26,23,.85);border:1px solid rgba(217,186,111,.2);padding:16px 20px;text-align:center;z-index:2;}
     .intro-img-badge-text{font-family:'Cormorant Garamond',serif;font-size:16px;font-style:italic;color:var(--champagne);}
 
     /* OUTING TYPE CARDS */
     .type-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;}
-    .type-card{background:#141412;border:1px solid rgba(217,186,111,.08);padding:40px 32px;transition:all .3s;position:relative;overflow:hidden;}
+    .type-card{background:#141412;border:1px solid rgba(217,186,111,.08);padding:40px 32px;transition:all .3s;position:relative;overflow:hidden;min-width:0;}
     .type-card::before{content:'';position:absolute;top:0;left:0;width:100%;height:3px;background:linear-gradient(90deg,transparent,rgba(217,186,111,.15),transparent);transition:background .3s;}
     .type-card:hover::before{background:linear-gradient(90deg,var(--gold-mid),var(--gold),var(--gold-mid));}
     .type-card:hover{background:#1a1a16;border-color:rgba(217,186,111,.25);}
@@ -93,7 +102,8 @@
 
     /* WHY RESORT CORPORATE */
     .why-band{background:linear-gradient(135deg,#141412,#1C1B18,#141412);border-top:1px solid rgba(217,186,111,.18);border-bottom:1px solid rgba(217,186,111,.18);padding:72px 48px;}
-    .why-band-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;}
+    .why-band-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;max-width:1200px;margin:0 auto;}
+    .why-band-grid > *{min-width:0;}
     .why-band-quote{font-family:'Cormorant Garamond',serif;font-size:clamp(24px,4vw,40px);font-style:italic;font-weight:500;color:var(--champagne);line-height:1.3;margin-bottom:20px;}
     .why-band-attr{font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--gold-bronze);}
     .why-band-points{display:flex;flex-direction:column;gap:20px;}
@@ -105,7 +115,7 @@
 
     /* WHAT WE OFFER */
     .offer-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
-    .offer-card{background:linear-gradient(145deg,#faf3e4,var(--cream));border:1px solid rgba(163,137,90,.18);padding:32px 28px;transition:all .3s;position:relative;}
+    .offer-card{background:linear-gradient(145deg,#faf3e4,var(--cream));border:1px solid rgba(163,137,90,.18);padding:32px 28px;transition:all .3s;position:relative;min-width:0;}
     .offer-card::before{content:'';position:absolute;top:0;left:0;width:100%;height:3px;background:linear-gradient(90deg,var(--gold-mid),var(--gold),var(--gold-mid));}
     .offer-card:hover{transform:translateY(-3px);border-color:var(--gold-mid);box-shadow:0 10px 28px rgba(163,137,90,.2);}
     .offer-icon{font-size:28px;color:var(--gold-mid);margin-bottom:14px;}
@@ -114,17 +124,23 @@
 
     /* VENUE CARDS */
     .venue-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
-    .venue-card{background:#141412;border:1px solid rgba(217,186,111,.1);overflow:hidden;transition:all .3s;position:relative;}
-    .venue-card::before{content:'';position:absolute;top:0;left:0;width:100%;height:3px;background:linear-gradient(90deg,var(--gold-mid),var(--gold),var(--gold-mid));}
+    .venue-card{display:flex;flex-direction:column;min-width:0;background:#141412;border:1px solid rgba(217,186,111,.1);overflow:hidden;transition:all .3s;position:relative;}
+    .venue-card::before{content:'';position:absolute;top:0;left:0;width:100%;height:3px;background:linear-gradient(90deg,var(--gold-mid),var(--gold),var(--gold-mid));z-index:3;}
     .venue-card:hover{border-color:rgba(217,186,111,.3);transform:translateY(-4px);}
-    .venue-img{width:100%;aspect-ratio:16/9;background:linear-gradient(135deg,#252520,#1a1a17,#252520);display:flex;align-items:center;justify-content:center;}
-    .venue-img-lbl{font-family:'Cormorant Garamond',serif;font-size:14px;font-style:italic;color:var(--gold-bronze);letter-spacing:2px;}
-    .venue-body{padding:28px 28px 32px;}
+
+    /* ===== IMAGE FIX: fixed-ratio frame, image fills & crops neatly ===== */
+    .venue-img{position:relative;width:100%;aspect-ratio:16/9;overflow:hidden;background:linear-gradient(135deg,#252520,#1a1a17,#252520);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+    .venue-img > img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;z-index:1;transition:transform .6s ease;}
+    .venue-card:hover .venue-img > img{transform:scale(1.05);}
+    /* placeholder label sits behind the photo; only visible when a card has no image */
+    .venue-img-lbl{position:relative;z-index:0;font-family:'Cormorant Garamond',serif;font-size:14px;font-style:italic;color:var(--gold-bronze);letter-spacing:2px;}
+
+    .venue-body{padding:28px 28px 32px;display:flex;flex-direction:column;flex:1;}
     .venue-tag{font-size:9px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--gold-bronze);margin-bottom:8px;}
     .venue-name{font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:600;color:var(--champagne);margin-bottom:6px;}
     .venue-loc{font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold-mid);margin-bottom:12px;display:flex;align-items:center;gap:5px;}
     .venue-desc{font-size:13px;font-weight:300;line-height:1.7;color:var(--silver);opacity:.78;margin-bottom:16px;}
-    .venue-specs{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:20px;}
+    .venue-specs{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:20px;margin-top:auto;}
     .venue-spec{background:rgba(217,186,111,.05);border:1px solid rgba(217,186,111,.1);padding:10px 12px;text-align:center;}
     .venue-spec-val{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:600;color:var(--champagne);}
     .venue-spec-lbl{font-size:9px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold-bronze);}
@@ -135,7 +151,7 @@
     .process-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0;position:relative;}
     .process-grid::before{content:'';position:absolute;top:28px;left:12.5%;right:12.5%;height:1px;background:linear-gradient(90deg,transparent,var(--gold-mid),var(--gold),var(--gold-mid),transparent);}
     .process-step{text-align:center;padding:0 20px;position:relative;z-index:1;}
-    .process-num{width:56px;height:56px;border:2px solid var(--gold);background:var(--sdp,#141412);display:flex;align-items:center;justify-content:center;margin:0 auto 16px;position:relative;z-index:2;background:var(--black);}
+    .process-num{width:56px;height:56px;border:2px solid var(--gold);display:flex;align-items:center;justify-content:center;margin:0 auto 16px;position:relative;z-index:2;background:var(--black);}
     .process-num-t{font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:700;line-height:1;}
     .process-icon{font-size:20px;color:var(--gold-mid);margin-bottom:10px;}
     .process-title{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:600;color:var(--champagne);margin-bottom:8px;}
@@ -144,17 +160,18 @@
     /* GIFT VOUCHER CORPORATE BAND */
     .gift-band{background:linear-gradient(135deg,var(--gold-dark),#2a2010,var(--gold-dark));padding:60px 48px;}
     .gift-band-inner{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;max-width:1000px;margin:0 auto;}
+    .gift-band-inner > *{min-width:0;}
     .gift-band-content .sl{color:rgba(255,255,255,.5);}
     .gift-band-title{font-family:'Cormorant Garamond',serif;font-size:clamp(28px,4vw,42px);font-weight:700;color:var(--cream);margin-bottom:14px;}
     .gift-band-desc{font-size:14px;font-weight:300;line-height:1.8;color:rgba(255,255,255,.7);margin-bottom:28px;}
     .gift-band-list li{display:flex;align-items:center;gap:10px;font-size:13px;color:rgba(255,255,255,.75);padding:8px 0;border-bottom:1px solid rgba(255,255,255,.1);}
     .gift-band-list li:last-child{border-bottom:none;}
     .gift-band-list li i{color:var(--gold);font-size:12px;flex-shrink:0;}
-    .gift-band-ctas{display:flex;flex-direction:column;gap:12px;align-items:flex-start;}
+    .gift-band-ctas{display:flex;flex-direction:column;gap:12px;align-items:stretch;}
 
     /* TESTI */
     .testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
-    .testi-card{background:#1a1a17;border:1px solid rgba(217,186,111,.12);padding:32px 28px;transition:border-color .3s;}
+    .testi-card{background:#1a1a17;border:1px solid rgba(217,186,111,.12);padding:32px 28px;transition:border-color .3s;min-width:0;}
     .testi-card:hover{border-color:rgba(217,186,111,.3);}
     .testi-quote{font-size:40px;line-height:1;color:var(--gold);opacity:.2;font-family:'Cormorant Garamond',serif;margin-bottom:8px;}
     .testi-stars{color:var(--gold);font-size:12px;margin-bottom:14px;letter-spacing:3px;}
@@ -213,13 +230,18 @@
     }
     @media(max-width:768px){
       :root{--nav-h:64px;}.nav-links,.nav-cta{display:none;}
-      .type-grid{grid-template-columns:1fr;}
+      .sec{padding:64px 20px;}
+      .type-grid{grid-template-columns:1fr;gap:16px;}
+      .type-card{padding:32px 24px;}
       .offer-grid{grid-template-columns:1fr;}
       .venue-grid{grid-template-columns:1fr;}
       .process-grid{grid-template-columns:1fr;}
       .testi-grid{grid-template-columns:1fr;}
       .ft{grid-template-columns:1fr;}.fseo{display:none;}footer{padding:60px 24px 0;}
       .why-band,.gift-band{padding:48px 24px;}
+      .cb{padding:72px 24px;}
+      .intro-img-badge{left:12px;right:12px;bottom:12px;padding:12px 14px;}
+      .intro-img-badge-text{font-size:14px;}
     }
 
 
@@ -324,8 +346,12 @@
       .section-body, p { overflow-wrap: anywhere; }
     }
 
-  
-@media (max-width:480px){.ph{padding-left:24px;padding-right:24px;}.pht{font-size:clamp(31px,11vw,88px);letter-spacing:1px;}}
+@media (max-width:480px){
+  .ph{padding-left:24px;padding-right:24px;}
+  .pht{font-size:clamp(31px,11vw,88px);letter-spacing:1px;}
+  .venue-body{padding:22px 20px 26px;}
+  .gift-band-ctas .btn{width:100%;}
+}
 </style>
 </head>
 <body>
@@ -333,9 +359,7 @@
 <!-- NAV -->
 <nav class="nav" id="mainNav">
   <div class="nav-logo"><a href="prestige-home.html">
-    <img src="prestige group badge.png" alt="prestige vacations & clubs" style="width:50px;height:auto;">
-    <!--<div class="nav-logo-text gold-text">Prestige</div>
-    <div class="nav-logo-sub">Vacations &amp; Clubs</div>-->
+    <img src="prestige group badge.png" alt="Prestige Vacations & Clubs" width="50" height="50">
   </a></div>
   <ul class="nav-links">
     <li><a href="prestige-home.html" class="nav-link">Home</a></li>
@@ -392,7 +416,7 @@
       </div>
       <div class="fi d1">
         <div class="intro-img">
-          <span class="intro-img-label">Corporate Outing Image</span>
+          <img src="images/Rectangle 14-5.jpg" alt="Corporate team outing at a Prestige resort" loading="lazy">
           <div class="intro-img-badge">
             <div class="intro-img-badge-text">"The best team meetings happen outside the meeting room."</div>
           </div>
@@ -550,7 +574,10 @@
     </div>
     <div class="venue-grid">
       <div class="venue-card fi">
-        <div class="venue-img"><span class="venue-img-lbl">The Country Resort</span></div>
+        <div class="venue-img">
+          <span class="venue-img-lbl">The Country Resort</span>
+          <img src="images/Rectangle 11-2.jpg" alt="The Country Resort" loading="lazy">
+        </div>
         <div class="venue-body">
           <div class="venue-tag">Property One · Mahabalipuram</div>
           <h3 class="venue-name">The Country Resort</h3>
@@ -564,7 +591,10 @@
         </div>
       </div>
       <div class="venue-card fi d1">
-        <div class="venue-img"><span class="venue-img-lbl">The Country Suites</span></div>
+        <div class="venue-img">
+          <span class="venue-img-lbl">The Country Suites</span>
+          <img src="images/Rectangle 12-3.jpg" alt="The Country Suites" loading="lazy">
+        </div>
         <div class="venue-body">
           <div class="venue-tag">Property Two · Mahabalipuram</div>
           <h3 class="venue-name">The Country Suites</h3>
@@ -578,7 +608,11 @@
         </div>
       </div>
       <div class="venue-card fi d2">
-        <div class="venue-img"><span class="venue-img-lbl">The Country Bay</span></div>
+        <div class="venue-img">
+          <span class="venue-img-lbl">The Country Bay</span>
+          <!-- Add your Country Bay photo here, e.g.:
+          <img src="images/your-country-bay-image.jpg" alt="The Country Bay" loading="lazy"> -->
+        </div>
         <div class="venue-body">
           <div class="venue-tag">Property Three · Marakkanam · New</div>
           <h3 class="venue-name">The Country Bay</h3>
@@ -726,9 +760,12 @@
 <script>
   const nav=document.getElementById('mainNav');
   window.addEventListener('scroll',()=>{nav.classList.toggle('scrolled',window.scrollY>60);});
-  document.querySelectorAll('.fi').forEach(f=>new IntersectionObserver((e)=>{e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('vis');}});},{threshold:.1}).observe(f));
-</script>
 
+  const io=new IntersectionObserver((entries)=>{
+    entries.forEach(x=>{if(x.isIntersecting){x.target.classList.add('vis');io.unobserve(x.target);}});
+  },{threshold:.1});
+  document.querySelectorAll('.fi').forEach(f=>io.observe(f));
+</script>
 
 <script>
 (function () {
