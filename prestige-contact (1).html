@@ -440,20 +440,26 @@
     const r = routeMap[subject] || { label: 'General Enquiry', email: 'info@prestigevacations.in' };
 
     try {
-      await fetch(API + '?action=submit_inquiry', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          name, phone, email,
-          subject: r.label,
-          message, office,
-          membershipId: mid || '',
-          isMember,
-          formType: 'Contact',
-          routedTo: r.email
-        })
+      await PrestigeInquiry.submit({
+        name, phone, email,
+        subject: r.label,
+        message,
+        formType: 'Contact',
+        office, membershipId: mid || '', isMember, routedTo: r.email,
+        details: {
+          'Prestige member': isMember ? 'Yes' : 'No',
+          'Membership ID': mid,
+          'Preferred office': office,
+          'Department': r.label
+        }
       });
-    } catch(e) { console.warn('API error:', e); }
+    } catch (e) {
+      console.error('Inquiry error:', e);
+      alert('Sorry, we could not send your message right now. Please try again, or call us on 1800 121 3457.');
+      btn.disabled = false;
+      btn.innerHTML = '<i class="fa-solid fa-paper-plane"></i> Send Message';
+      return;
+    }
 
     document.getElementById('contactForm').style.display = 'none';
     document.getElementById('successBox').style.display = 'block';
@@ -500,5 +506,6 @@
 })();
 </script>
 
+<script src="prestige-inquiry.js"></script>
 </body>
 </html>

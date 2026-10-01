@@ -367,21 +367,22 @@
 <section class="sec sd" id="enquire">
   <div class="ct">
     <div class="tc fi" style="margin-bottom:48px;"><span class="sl">Join Today</span><h2 class="st">Enquire About Holiday Membership</h2><p class="sb" style="margin:20px auto 0;">Fill in your details and our team will reach out within 24 hours with everything you need.</p></div>
-    <div class="enq-form fi">
+    <div class="enq-success" id="holidaySuccess"><i class="fa-solid fa-circle-check"></i><h3>Thank you!</h3><p>Your Holiday Membership enquiry has been received. Our team will contact you within 24 hours.</p></div>
+    <div class="enq-form fi" id="holidayForm">
       <div class="frow">
-        <div class="fg"><label>Full Name</label><input type="text" placeholder="Your full name"/></div>
-        <div class="fg"><label>Phone Number</label><input type="tel" placeholder="+91 XXXXX XXXXX"/></div>
+        <div class="fg"><label for="h-name">Full Name</label><input type="text" id="h-name" placeholder="Your full name"/></div>
+        <div class="fg"><label for="h-phone">Phone Number</label><input type="tel" id="h-phone" placeholder="+91 XXXXX XXXXX"/></div>
       </div>
       <div class="frow">
-        <div class="fg"><label>Email Address</label><input type="email" placeholder="your@email.com"/></div>
-        <div class="fg"><label>Family Size</label><select><option value="" disabled selected>How many in your family?</option><option>2 (Couple)</option><option>3-4 (Small family)</option><option>5-6 (Large family)</option><option>6+ (Extended family)</option></select></div>
+        <div class="fg"><label for="h-email">Email Address</label><input type="email" id="h-email" placeholder="your@email.com"/></div>
+        <div class="fg"><label for="h-family">Family Size</label><select id="h-family"><option value="" disabled selected>How many in your family?</option><option>2 (Couple)</option><option>3-4 (Small family)</option><option>5-6 (Large family)</option><option>6+ (Extended family)</option></select></div>
       </div>
       <div class="frow">
-        <div class="fg"><label>Holidays Per Year</label><select><option value="" disabled selected>How often do you holiday?</option><option>1-2 times a year</option><option>3-4 times a year</option><option>5+ times a year</option></select></div>
-        <div class="fg"><label>Most Interested In</label><select><option value="" disabled selected>What matters most to you?</option><option>Resort stays near Chennai</option><option>Tour packages across India</option><option>Both equally</option></select></div>
+        <div class="fg"><label for="h-freq">Holidays Per Year</label><select id="h-freq"><option value="" disabled selected>How often do you holiday?</option><option>1-2 times a year</option><option>3-4 times a year</option><option>5+ times a year</option></select></div>
+        <div class="fg"><label for="h-interest">Most Interested In</label><select id="h-interest"><option value="" disabled selected>What matters most to you?</option><option>Resort stays near Chennai</option><option>Tour packages across India</option><option>Both equally</option></select></div>
       </div>
-      <div class="fg" style="margin-bottom:16px;"><label>Any Questions?</label><textarea placeholder="Ask us anything about the Holiday Membership — destinations, pricing, how it works..."></textarea></div>
-      <a href="https://wa.me/918001213457?text=Hi,%20I'm%20interested%20in%20Prestige%20Vacations%20Holiday%20Membership.%20Please%20share%20more%20details." target="_blank" class="btn bg" style="width:100%;justify-content:center;font-size:13px;padding:16px;"><i class="fa-solid fa-paper-plane"></i> Submit Enquiry via WhatsApp</a>
+      <div class="fg" style="margin-bottom:16px;"><label for="h-message">Any Questions?</label><textarea id="h-message" placeholder="Ask us anything about the Holiday Membership — destinations, pricing, how it works..."></textarea></div>
+      <button type="button" id="holidaySubmit" class="btn bg" style="width:100%;justify-content:center;font-size:13px;padding:16px;border:none;cursor:pointer;"><i class="fa-solid fa-paper-plane"></i> Submit Enquiry</button>
       <p style="font-size:11px;color:var(--silver);opacity:.45;text-align:center;margin-top:14px;">Our team will contact you within 24 hours.</p>
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:20px;">
         <a href="tel:18001213457" class="btn bg" style="justify-content:center;font-size:11px;padding:13px;"><i class="fa-solid fa-phone"></i> 1800 121 3457</a>
@@ -496,4 +497,18 @@
 })();
 </script>
 
+<script src="prestige-inquiry.js"></script>
+<script>
+  PrestigeInquiry.bindForm({
+    button: 'holidaySubmit', form: 'holidayForm', success: 'holidaySuccess',
+    collect: function (v) {
+      return {
+        name: v('h-name'), phone: v('h-phone'), email: v('h-email'),
+        subject: 'Holiday Membership Enquiry', message: v('h-message'),
+        formType: 'Holiday Membership',
+        details: { 'Family size': v('h-family'), 'Holidays per year': v('h-freq'), 'Most interested in': v('h-interest') }
+      };
+    }
+  });
+</script>
 </body></html>
