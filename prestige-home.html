@@ -40,7 +40,48 @@
       overflow-x: hidden;
     }
     a { text-decoration: none; color: inherit; }
-    img { max-width: 100%; display: block; }
+    img {
+      max-width: 100%;
+      display: block;
+      height: auto;
+      width: auto;
+    }
+
+    /*
+     * RESPONSIVE IMAGE FIX
+     * --------------------
+     * The image containers below use aspect-ratio. Their images must fill
+     * the container without being stretched when the browser is resized.
+     * object-fit: cover preserves the original image proportions and crops
+     * only the overflow instead of distorting the image.
+     */
+    .about-img-placeholder,
+    .property-img,
+    .event-img,
+    .blog-img {
+      overflow: hidden;
+    }
+
+    .about-img-placeholder > img,
+    .property-img > img,
+    .event-img > img,
+    .blog-img > img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      max-width: none;
+      object-fit: cover;
+      object-position: center center;
+      flex: 0 0 auto;
+    }
+
+    /* Keep the navigation logo proportional. */
+    .nav-logo img {
+      width: 50px;
+      height: auto;
+      max-width: 50px;
+      object-fit: contain;
+    }
     ul { list-style: none; }
 
     /* ─── UTILITY ────────────────────────────────────────── */
@@ -1309,7 +1350,7 @@
 ═══════════════════════════════════════════════════════ -->
 <nav class="nav" id="mainNav">
    <div class="nav-logo">
-    <img src="prestige group badge.png" alt="prestige vacations & clubs" style="width:50px;height:auto;">
+    <img src="prestige group badge.png" alt="Prestige Vacations & Clubs">
     <!--<div class="nav-logo-text gold-text">Prestige</div>
     <div class="nav-logo-sub">Vacations &amp; Clubs</div>-->
   </div>
