@@ -14,9 +14,15 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600&family=Great+Vibes&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600&family=Great+Vibes&family=Montserrat:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
 
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+  />
 
   <style>
 
@@ -53,6 +59,10 @@
       background:var(--black);
       color:var(--silver);
       overflow-x:hidden;
+    }
+
+    img{
+      max-width:100%;
     }
 
     a{
@@ -146,7 +156,11 @@
     .gr{
       width:40px;
       height:2px;
-      background:linear-gradient(90deg,var(--gold-mid),var(--gold));
+      background:linear-gradient(
+        90deg,
+        var(--gold-mid),
+        var(--gold)
+      );
       margin:24px 0;
     }
 
@@ -254,9 +268,10 @@
       transform:translateY(-2px);
     }
 
-    /* =========================
+
+    /* =====================================================
        NAVIGATION
-    ========================= */
+    ===================================================== */
 
     .nav{
       position:fixed;
@@ -282,6 +297,12 @@
     .nlg{
       flex-shrink:0;
       margin-right:auto;
+    }
+
+    .nlg img{
+      display:block;
+      width:50px;
+      height:auto;
     }
 
     .nlt{
@@ -395,9 +416,10 @@
       font-size:10px;
     }
 
-    /* =========================
+
+    /* =====================================================
        HERO
-    ========================= */
+    ===================================================== */
 
     .ph{
       position:relative;
@@ -557,9 +579,10 @@
       z-index:1;
     }
 
-    /* =========================
+
+    /* =====================================================
        QUICK FACTS
-    ========================= */
+    ===================================================== */
 
     .qf-band{
       background:linear-gradient(
@@ -614,9 +637,10 @@
       color:var(--champagne);
     }
 
-    /* =========================
+
+    /* =====================================================
        PROPERTY STAYS
-    ========================= */
+    ===================================================== */
 
     .ps{
       display:flex;
@@ -626,7 +650,7 @@
 
     .ps-item{
       display:grid;
-      grid-template-columns:1fr 1fr;
+      grid-template-columns:minmax(0,1fr) minmax(0,1fr);
       gap:64px;
       align-items:center;
     }
@@ -639,33 +663,62 @@
       direction:ltr;
     }
 
-    /* FIXED PROPERTY IMAGE CONTAINER */
+
+    /* =====================================================
+       IMPORTANT IMAGE FIX
+    ===================================================== */
 
     .pimg{
       width:100%;
       aspect-ratio:4 / 3;
-      background:linear-gradient(
-        135deg,
-        #252520,
-        #1a1a17,
-        #252520
-      );
-      border:1px solid rgba(217,186,111,.2);
-      display:flex;
-      align-items:center;
-      justify-content:center;
       position:relative;
       overflow:hidden;
+      background:#252520;
+      border:1px solid rgba(217,186,111,.2);
+      display:block;
+      isolation:isolate;
     }
 
-    /* FIXED PROPERTY IMAGE */
+    /*
+      This is the important fix.
 
-    .pimg img{
+      The image now:
+      - fills the complete placeholder
+      - keeps its aspect ratio
+      - crops instead of stretching
+      - remains responsive
+    */
+
+    .pimg > img{
+      display:block;
       width:100%;
       height:100%;
-      display:block;
+      min-width:100%;
+      min-height:100%;
       object-fit:cover;
       object-position:center center;
+      position:absolute;
+      inset:0;
+      z-index:1;
+    }
+
+    /*
+      Optional dark luxury overlay.
+      It only sits above the image and below badges.
+    */
+
+    .pimg::after{
+      content:'';
+      position:absolute;
+      inset:0;
+      z-index:2;
+      pointer-events:none;
+      background:linear-gradient(
+        180deg,
+        rgba(0,0,0,.04) 0%,
+        rgba(0,0,0,.02) 45%,
+        rgba(0,0,0,.20) 100%
+      );
     }
 
     .pimg-lbl{
@@ -675,16 +728,18 @@
       color:var(--gold-bronze);
       letter-spacing:2px;
       position:absolute;
+      z-index:4;
       left:20px;
+      right:20px;
       bottom:20px;
-      z-index:2;
-      text-shadow:0 2px 8px rgba(0,0,0,.7);
+      text-align:center;
     }
 
     .pbadge{
       position:absolute;
       top:20px;
       left:20px;
+      z-index:4;
       background:linear-gradient(
         135deg,
         var(--gold-mid),
@@ -696,13 +751,13 @@
       letter-spacing:2px;
       text-transform:uppercase;
       padding:5px 14px;
-      z-index:3;
     }
 
     .pnew{
       position:absolute;
       top:20px;
       right:20px;
+      z-index:4;
       background:var(--black);
       border:1px solid var(--gold);
       color:var(--gold);
@@ -711,7 +766,6 @@
       letter-spacing:2px;
       text-transform:uppercase;
       padding:5px 14px;
-      z-index:3;
     }
 
     .ptitle{
@@ -781,7 +835,7 @@
 
     .rmini{
       display:grid;
-      grid-template-columns:repeat(2,1fr);
+      grid-template-columns:repeat(2,minmax(0,1fr));
       gap:14px;
       margin-bottom:28px;
     }
@@ -855,9 +909,10 @@
       flex-wrap:wrap;
     }
 
-    /* =========================
+
+    /* =====================================================
        WHY STAY
-    ========================= */
+    ===================================================== */
 
     .wsg{
       display:grid;
@@ -904,9 +959,10 @@
       color:var(--dark-gray);
     }
 
-    /* =========================
+
+    /* =====================================================
        MEMBER BAND
-    ========================= */
+    ===================================================== */
 
     .mb{
       background:linear-gradient(
@@ -970,9 +1026,10 @@
       flex-wrap:wrap;
     }
 
-    /* =========================
+
+    /* =====================================================
        HOW TO BOOK
-    ========================= */
+    ===================================================== */
 
     .hb-grid{
       display:grid;
@@ -1048,9 +1105,10 @@
       opacity:.75;
     }
 
-    /* =========================
+
+    /* =====================================================
        TIPS
-    ========================= */
+    ===================================================== */
 
     .tg{
       display:grid;
@@ -1118,9 +1176,10 @@
       opacity:.75;
     }
 
-    /* =========================
+
+    /* =====================================================
        CTA
-    ========================= */
+    ===================================================== */
 
     .cb{
       padding:100px 48px;
@@ -1177,9 +1236,10 @@
       flex-wrap:wrap;
     }
 
-    /* =========================
+
+    /* =====================================================
        FOOTER
-    ========================= */
+    ===================================================== */
 
     footer{
       background:#0e0e0c;
@@ -1360,9 +1420,10 @@
       color:var(--gold);
     }
 
-    /* =========================
+
+    /* =====================================================
        SCROLL ANIMATION
-    ========================= */
+    ===================================================== */
 
     .fi{
       opacity:0;
@@ -1389,9 +1450,10 @@
       transition-delay:.3s;
     }
 
-    /* =========================
-       MOBILE NAV
-    ========================= */
+
+    /* =====================================================
+       MOBILE NAVIGATION
+    ===================================================== */
 
     .mobile-nav-toggle{
       display:none;
@@ -1402,8 +1464,8 @@
       justify-content:center;
       flex-direction:column;
       gap:5px;
-      border:1px solid rgba(217,186,111,0.42);
-      background:rgba(20,20,18,0.96);
+      border:1px solid rgba(217,186,111,.42);
+      background:rgba(20,20,18,.96);
       color:var(--gold);
       cursor:pointer;
       z-index:10002;
@@ -1425,17 +1487,20 @@
     }
 
     body.mobile-nav-open
-    .mobile-nav-toggle span:nth-child(1){
+    .mobile-nav-toggle
+    span:nth-child(1){
       transform:translateY(7px) rotate(45deg);
     }
 
     body.mobile-nav-open
-    .mobile-nav-toggle span:nth-child(2){
+    .mobile-nav-toggle
+    span:nth-child(2){
       opacity:0;
     }
 
     body.mobile-nav-open
-    .mobile-nav-toggle span:nth-child(3){
+    .mobile-nav-toggle
+    span:nth-child(3){
       transform:translateY(-7px) rotate(-45deg);
     }
 
@@ -1445,9 +1510,9 @@
       max-height:calc(100vh - var(--nav-h));
       overflow-y:auto;
       padding:16px 20px 28px;
-      background:rgba(20,20,18,0.98);
-      border-bottom:1px solid rgba(217,186,111,0.24);
-      box-shadow:0 22px 48px rgba(0,0,0,0.48);
+      background:rgba(20,20,18,.98);
+      border-bottom:1px solid rgba(217,186,111,.24);
+      box-shadow:0 22px 48px rgba(0,0,0,.48);
       transform:translateY(-110%);
       opacity:0;
       visibility:hidden;
@@ -1470,7 +1535,7 @@
       gap:10px;
       width:100%;
       padding:14px 4px;
-      border-bottom:1px solid rgba(217,186,111,0.13);
+      border-bottom:1px solid rgba(217,186,111,.13);
       color:var(--silver) !important;
       opacity:1 !important;
       font-family:'Montserrat',sans-serif;
@@ -1510,9 +1575,10 @@
       -webkit-text-fill-color:var(--black);
     }
 
-    /* =========================
-       RESPONSIVE
-    ========================= */
+
+    /* =====================================================
+       TABLET
+    ===================================================== */
 
     @media(max-width:1024px){
 
@@ -1525,7 +1591,7 @@
       }
 
       .ps-item{
-        grid-template-columns:1fr;
+        grid-template-columns:minmax(0,1fr);
         gap:36px;
       }
 
@@ -1562,13 +1628,77 @@
         grid-template-columns:1fr 1fr;
       }
 
-      /* IMAGE SIZE ON TABLET */
+      /*
+        Tablet image height remains proportional.
+      */
 
       .pimg{
-        aspect-ratio:16 / 10;
+        width:100%;
+        aspect-ratio:4 / 3;
       }
 
     }
+
+
+    /* =====================================================
+       COMPACT DESKTOP NAV
+    ===================================================== */
+
+    @media(max-width:1200px){
+
+      .nav{
+        padding-left:24px;
+        padding-right:24px;
+      }
+
+      .nav-links,
+      .nls-wrap,
+      .nl-wrap{
+        gap:2px;
+      }
+
+      .nav-link,
+      .nl{
+        padding-left:9px;
+        padding-right:9px;
+        font-size:10px;
+        letter-spacing:1px;
+      }
+
+      .nav-cta,
+      .nc{
+        margin-left:8px;
+        padding-left:14px;
+        padding-right:14px;
+      }
+
+    }
+
+
+    /* =====================================================
+       MOBILE NAV
+    ===================================================== */
+
+    @media(max-width:1100px){
+
+      .nav-links,
+      .nls-wrap,
+      .nl-wrap,
+      .nav-cta,
+      .nc{
+        display:none !important;
+      }
+
+      .mobile-nav-toggle{
+        display:inline-flex;
+      }
+
+    }
+
+
+    /* =====================================================
+       MOBILE
+    ===================================================== */
 
     @media(max-width:768px){
 
@@ -1576,9 +1706,43 @@
         --nav-h:64px;
       }
 
-      .nls-wrap,
-      .nc{
-        display:none;
+      html,
+      body{
+        max-width:100%;
+        overflow-x:hidden;
+      }
+
+      .nav{
+        padding-left:18px;
+        padding-right:18px;
+      }
+
+      .nav-logo-text,
+      .nlt{
+        font-size:20px;
+      }
+
+      .nav-logo-sub,
+      .nls{
+        font-size:8px;
+        letter-spacing:2px;
+      }
+
+      .nlg img{
+        width:46px;
+      }
+
+      .btn{
+        max-width:100%;
+        justify-content:center;
+        white-space:normal;
+        text-align:center;
+        line-height:1.35;
+      }
+
+      .section-body,
+      p{
+        overflow-wrap:anywhere;
       }
 
       .wsg{
@@ -1625,21 +1789,60 @@
         padding:48px 24px;
       }
 
-      /* MOBILE PROPERTY IMAGE */
+      /*
+        Mobile image fix.
+
+        The image still fills the complete placeholder
+        and remains a clean 4:3 crop.
+      */
 
       .pimg{
-        aspect-ratio:16 / 10;
-        min-height:220px;
+        width:100%;
+        aspect-ratio:4 / 3;
+        min-height:0;
+        max-height:none;
       }
 
-      .pimg img{
+      .pimg > img{
         width:100%;
         height:100%;
         object-fit:cover;
-        object-position:center;
+        object-position:center center;
+      }
+
+      .ptitle{
+        font-size:32px;
+      }
+
+      .pdesc{
+        font-size:13px;
+      }
+
+      .phi-text{
+        font-size:12px;
+      }
+
+      .pbadge,
+      .pnew{
+        top:12px;
+        font-size:8px;
+        padding:5px 9px;
+      }
+
+      .pbadge{
+        left:12px;
+      }
+
+      .pnew{
+        right:12px;
       }
 
     }
+
+
+    /* =====================================================
+       SMALL MOBILE
+    ===================================================== */
 
     @media(max-width:480px){
 
@@ -1653,104 +1856,47 @@
         letter-spacing:2px;
       }
 
-      /* SMALL MOBILE IMAGE */
+      .sec{
+        padding-left:20px;
+        padding-right:20px;
+      }
+
+      .qf-band{
+        padding-left:16px;
+        padding-right:16px;
+      }
+
+      .qf-i{
+        padding:14px 8px;
+      }
+
+      .qf-v{
+        font-size:17px;
+      }
+
+      /*
+        Prevent image badges from colliding on very
+        small screens.
+      */
+
+      .pbadge,
+      .pnew{
+        max-width:44%;
+        overflow:hidden;
+        text-overflow:ellipsis;
+        white-space:nowrap;
+      }
 
       .pimg{
-        aspect-ratio:16 / 10;
-        min-height:190px;
+        aspect-ratio:4 / 3;
       }
 
-      .pimg img{
-        object-fit:cover;
+      .pctas{
+        flex-direction:column;
       }
 
-    }
-
-    /* =========================
-       MOBILE / COMPACT NAV FIX
-    ========================= */
-
-    @media(max-width:1200px){
-
-      .nav{
-        padding-left:24px;
-        padding-right:24px;
-      }
-
-      .nav-links,
-      .nls-wrap,
-      .nl-wrap{
-        gap:2px;
-      }
-
-      .nav-link,
-      .nl{
-        padding-left:9px;
-        padding-right:9px;
-        font-size:10px;
-        letter-spacing:1px;
-      }
-
-      .nav-cta,
-      .nc{
-        margin-left:8px;
-        padding-left:14px;
-        padding-right:14px;
-      }
-
-    }
-
-    @media(max-width:1100px){
-
-      .nav-links,
-      .nls-wrap,
-      .nl-wrap,
-      .nav-cta,
-      .nc{
-        display:none !important;
-      }
-
-      .mobile-nav-toggle{
-        display:inline-flex;
-      }
-
-    }
-
-    @media(max-width:768px){
-
-      html,
-      body{
-        max-width:100%;
-        overflow-x:hidden;
-      }
-
-      .nav{
-        padding-left:18px;
-        padding-right:18px;
-      }
-
-      .nav-logo-text,
-      .nlt{
-        font-size:20px;
-      }
-
-      .nav-logo-sub,
-      .nls{
-        font-size:8px;
-        letter-spacing:2px;
-      }
-
-      .btn{
-        max-width:100%;
-        justify-content:center;
-        white-space:normal;
-        text-align:center;
-        line-height:1.35;
-      }
-
-      .section-body,
-      p{
-        overflow-wrap:anywhere;
+      .pctas .btn{
+        width:100%;
       }
 
     }
@@ -1760,9 +1906,9 @@
 
 <body>
 
-<!-- =========================
+<!-- =====================================================
      NAVIGATION
-========================= -->
+===================================================== -->
 
 <nav class="nav" id="mn">
 
@@ -1771,19 +1917,22 @@
       <img
         src="prestige group badge.png"
         alt="Prestige Vacations & Clubs"
-        style="width:50px;height:auto;"
-      >
+      />
     </a>
   </div>
 
   <ul class="nls-wrap">
 
     <li>
-      <a href="prestige-home.html" class="nl">Home</a>
+      <a href="prestige-home.html" class="nl">
+        Home
+      </a>
     </li>
 
     <li>
-      <a href="prestige-about.html" class="nl">About</a>
+      <a href="prestige-about.html" class="nl">
+        About
+      </a>
     </li>
 
     <li class="ni">
@@ -1891,11 +2040,15 @@
     </li>
 
     <li>
-      <a href="prestige-gallery.html" class="nl">Gallery</a>
+      <a href="prestige-gallery.html" class="nl">
+        Gallery
+      </a>
     </li>
 
     <li>
-      <a href="prestige-blog-index.html" class="nl">Blog</a>
+      <a href="prestige-blog-index.html" class="nl">
+        Blog
+      </a>
     </li>
 
     <li class="ni">
@@ -1939,19 +2092,23 @@
 </nav>
 
 
-<!-- =========================
+<!-- =====================================================
      HERO
-========================= -->
+===================================================== -->
 
 <section class="ph">
 
   <div class="phbc">
 
-    <a href="prestige-home.html">Home</a>
+    <a href="prestige-home.html">
+      Home
+    </a>
 
     <i class="fa-solid fa-chevron-right"></i>
 
-    <a href="prestige-home.html">Experiences</a>
+    <a href="prestige-home.html">
+      Experiences
+    </a>
 
     <i class="fa-solid fa-chevron-right"></i>
 
@@ -1976,7 +2133,9 @@
   </div>
 
   <p class="phst">
-    Three distinct resort experiences. All within two hours of Chennai. Each one worth every minute of the drive.
+    Three distinct resort experiences.
+    All within two hours of Chennai.
+    Each one worth every minute of the drive.
   </p>
 
   <div class="phcta">
@@ -2008,9 +2167,9 @@
 </section>
 
 
-<!-- =========================
+<!-- =====================================================
      QUICK FACTS
-========================= -->
+===================================================== -->
 
 <div class="qf-band">
 
@@ -2020,31 +2179,45 @@
       <div class="qf-ic">
         <i class="fa-solid fa-building"></i>
       </div>
-      <div class="qf-l">Properties</div>
-      <div class="qf-v">3 Resorts</div>
+      <div class="qf-l">
+        Properties
+      </div>
+      <div class="qf-v">
+        3 Resorts
+      </div>
     </div>
 
     <div class="qf-i fi d1">
       <div class="qf-ic">
         <i class="fa-solid fa-route"></i>
       </div>
-      <div class="qf-l">From Chennai</div>
-      <div class="qf-v">90–120 Min</div>
+      <div class="qf-l">
+        From Chennai
+      </div>
+      <div class="qf-v">
+        90–120 Min
+      </div>
     </div>
 
     <div class="qf-i fi d2">
       <div class="qf-ic">
         <i class="fa-solid fa-mug-saucer"></i>
       </div>
-      <div class="qf-l">Breakfast</div>
-      <div class="qf-v">Complimentary</div>
+      <div class="qf-l">
+        Breakfast
+      </div>
+      <div class="qf-v">
+        Complimentary
+      </div>
     </div>
 
     <div class="qf-i fi d3">
       <div class="qf-ic">
         <i class="fa-solid fa-indian-rupee-sign"></i>
       </div>
-      <div class="qf-l">Rooms From</div>
+      <div class="qf-l">
+        Rooms From
+      </div>
       <div
         class="qf-v gold-text"
         data-pv-from="country-resort"
@@ -2057,8 +2230,12 @@
       <div class="qf-ic">
         <i class="fa-solid fa-crown"></i>
       </div>
-      <div class="qf-l">Best Rates</div>
-      <div class="qf-v">Members</div>
+      <div class="qf-l">
+        Best Rates
+      </div>
+      <div class="qf-v">
+        Members
+      </div>
     </div>
 
   </div>
@@ -2066,9 +2243,9 @@
 </div>
 
 
-<!-- =========================
+<!-- =====================================================
      THREE PROPERTIES
-========================= -->
+===================================================== -->
 
 <section class="sec sd">
 
@@ -2091,7 +2268,10 @@
         class="sb"
         style="margin:20px auto 0;"
       >
-        Each Prestige property offers a completely different stay experience. Pick the one that fits your mood, your group, and what you need from this holiday.
+        Each Prestige property offers a completely
+        different stay experience. Pick the one that
+        fits your mood, your group, and what you need
+        from this holiday.
       </p>
 
     </div>
@@ -2100,9 +2280,9 @@
     <div class="ps">
 
 
-      <!-- =========================
+      <!-- =================================================
            COUNTRY RESORT
-      ========================= -->
+      ================================================= -->
 
       <div class="ps-item fi">
 
@@ -2110,8 +2290,10 @@
 
           <img
             src="images/Rectangle 12.jpg"
-            alt="The Country Resort Mahabalipuram"
-          >
+            alt="The Country Resort"
+            loading="lazy"
+            decoding="async"
+          />
 
         </div>
 
@@ -2131,7 +2313,12 @@
           </p>
 
           <p class="pdesc">
-            Our flagship resort — where the Prestige story began. Set on the ECR near the UNESCO World Heritage Mahabalipuram Shore Temple, The Country Resort is a warm, beautifully maintained retreat with spacious rooms, the Green Bay restaurant, landscaped gardens, and a team that feels like old friends by day two.
+            Our flagship resort — where the Prestige story began.
+            Set on the ECR near the UNESCO World Heritage
+            Mahabalipuram Shore Temple, The Country Resort is a
+            warm, beautifully maintained retreat with spacious
+            rooms, the Green Bay restaurant, landscaped gardens,
+            and a team that feels like old friends by day two.
           </p>
 
           <div class="phi">
@@ -2211,7 +2398,8 @@
                 data-pv-prefix="suite"
                 data-pv-format="rich"
               >
-                ₹14,160<span>/night</span>
+                ₹14,160
+                <span>/night</span>
               </div>
 
             </div>
@@ -2247,7 +2435,8 @@
                 data-pv-prefix="executive"
                 data-pv-format="rich"
               >
-                ₹8,850<span>/night</span>
+                ₹8,850
+                <span>/night</span>
               </div>
 
             </div>
@@ -2280,9 +2469,9 @@
       </div>
 
 
-      <!-- =========================
+      <!-- =================================================
            COUNTRY SUITES
-      ========================= -->
+      ================================================= -->
 
       <div class="ps-item rev fi">
 
@@ -2290,8 +2479,10 @@
 
           <img
             src="images/Rectangle 15-1.jpg"
-            alt="The Country Suites Mahabalipuram"
-          >
+            alt="The Country Suites"
+            loading="lazy"
+            decoding="async"
+          />
 
         </div>
 
@@ -2311,7 +2502,12 @@
           </p>
 
           <p class="pdesc">
-            Not a resort room — a private villa. The Country Suites offers private villas with personal swimming pool access and an indoor games room. No shared spaces, no lobby traffic. Just you, your people, and a space that is entirely yours for the duration of your stay.
+            Not a resort room — a private villa.
+            The Country Suites offers private villas with
+            personal swimming pool access and an indoor
+            games room. No shared spaces, no lobby traffic.
+            Just you, your people, and a space that is entirely
+            yours for the duration of your stay.
           </p>
 
           <div class="phi">
@@ -2384,21 +2580,13 @@
       </div>
 
 
-      <!-- =========================
+      <!-- =================================================
            COUNTRY BAY
-      ========================= -->
+      ================================================= -->
 
       <div class="ps-item fi">
 
         <div class="pimg">
-
-          <!-- ADD YOUR COUNTRY BAY IMAGE HERE -->
-          <!-- Example:
-          <img
-            src="images/country-bay.jpg"
-            alt="The Country Bay Marakkanam"
-          >
-          -->
 
           <span class="pbadge">
             Newest Property
@@ -2430,7 +2618,12 @@
           </p>
 
           <p class="pdesc">
-            Prestige's newest and most exclusive property — the only one with private beach access. The Country Bay puts you on the Marakkanam coastline with a private beach, a stunning pool, and full Prestige service. An experience that simply does not exist anywhere else along the ECR corridor.
+            Prestige's newest and most exclusive property —
+            the only one with private beach access.
+            The Country Bay puts you on the Marakkanam coastline
+            with a private beach, a stunning pool, and full
+            Prestige service. An experience that simply does not
+            exist anywhere else along the ECR corridor.
           </p>
 
           <div class="phi">
@@ -2510,9 +2703,9 @@
 </section>
 
 
-<!-- =========================
-     WHY PRESTIGE STAYS
-========================= -->
+<!-- =====================================================
+     WHY PRESTIGE
+===================================================== -->
 
 <section class="sec scr">
 
@@ -2535,11 +2728,12 @@
         class="sb"
         style="margin:20px auto 0;"
       >
-        It is not just the room. It is the entire experience — from the moment you decide to visit to the moment you drive back.
+        It is not just the room. It is the entire experience —
+        from the moment you decide to visit to the moment you
+        drive back.
       </p>
 
     </div>
-
 
     <div class="orn fi">
       <span class="orn-i">
@@ -2547,74 +2741,63 @@
       </span>
     </div>
 
-
     <div class="wsg">
 
       <div class="wsc fi">
-
         <div class="wsi">
           <i class="fa-solid fa-building-columns"></i>
         </div>
-
         <h3 class="wst">
           We Own the Properties
         </h3>
-
         <p class="wsd">
-          Every Prestige resort is owned and operated by us — no third-party surprises, no inconsistency. Quality, service, and experience are our direct responsibility.
+          Every Prestige resort is owned and operated by us —
+          no third-party surprises, no inconsistency. Quality,
+          service, and experience are our direct responsibility.
         </p>
-
       </div>
 
-
       <div class="wsc fi d1">
-
         <div class="wsi">
           <i class="fa-solid fa-handshake"></i>
         </div>
-
         <h3 class="wst">
           A Team That Knows You
         </h3>
-
         <p class="wsd">
-          After a few visits our team knows your name and preferences. That familiarity makes every stay feel less like a hotel and more like coming back somewhere special.
+          After a few visits our team knows your name and
+          preferences. That familiarity makes every stay feel
+          less like a hotel and more like coming back somewhere
+          special.
         </p>
-
       </div>
 
-
       <div class="wsc fi d2">
-
         <div class="wsi">
           <i class="fa-solid fa-location-dot"></i>
         </div>
-
         <h3 class="wst">
           Close to Chennai
         </h3>
-
         <p class="wsd">
-          90 minutes is all it takes. No flights, no long drives. Drive down on a Friday evening and wake up on Saturday in a completely different setting.
+          90 minutes is all it takes. No flights, no long drives.
+          Drive down on a Friday evening and wake up on Saturday
+          in a completely different setting.
         </p>
-
       </div>
 
-
       <div class="wsc fi d3">
-
         <div class="wsi">
           <i class="fa-solid fa-crown"></i>
         </div>
-
         <h3 class="wst">
           Member Rates That Make Sense
         </h3>
-
         <p class="wsd">
-          Members get significantly better rates than public guests, plus priority booking during peak season. The more you stay, the more the membership pays for itself.
+          Members get significantly better rates than public
+          guests, plus priority booking during peak season.
+          The more you stay, the more the membership pays for itself.
         </p>
-
       </div>
 
     </div>
@@ -2624,9 +2807,9 @@
 </section>
 
 
-<!-- =========================
-     MEMBER ADVANTAGE
-========================= -->
+<!-- =====================================================
+     MEMBER BAND
+===================================================== -->
 
 <div class="mb">
 
@@ -2635,7 +2818,9 @@
   </h2>
 
   <p class="mb-sub">
-    A Prestige membership gives you access to all three properties at member rates, with priority booking and a team that handles everything.
+    A Prestige membership gives you access to all three
+    properties at member rates, with priority booking and
+    a team that handles everything.
   </p>
 
   <div class="mb-perks">
@@ -2666,7 +2851,6 @@
     </span>
 
   </div>
-
 
   <div class="mb-btns">
 
@@ -2704,9 +2888,9 @@
 </div>
 
 
-<!-- =========================
+<!-- =====================================================
      HOW TO BOOK
-========================= -->
+===================================================== -->
 
 <section class="sec sdp">
 
@@ -2732,18 +2916,17 @@
         class="sb"
         style="margin:20px auto 0;"
       >
-        No online forms. No complicated process. A call or a message — and we handle the rest.
+        No online forms. No complicated process.
+        A call or a message — and we handle the rest.
       </p>
 
     </div>
-
 
     <div class="orn fi">
       <span class="orn-i">
         <i class="fa-solid fa-phone"></i>
       </span>
     </div>
-
 
     <div class="hb-grid">
 
@@ -2764,7 +2947,8 @@
         </h3>
 
         <p class="hb-desc">
-          Tell us which property you want, your preferred dates, and the number of guests. That is all we need.
+          Tell us which property you want, your preferred dates,
+          and the number of guests. That is all we need.
         </p>
 
       </div>
@@ -2787,7 +2971,8 @@
         </h3>
 
         <p class="hb-desc">
-          Our team checks availability for your dates and confirms room type, pricing, and any special requirements.
+          Our team checks availability for your dates and confirms
+          room type, pricing, and any special requirements.
         </p>
 
       </div>
@@ -2810,7 +2995,9 @@
         </h3>
 
         <p class="hb-desc">
-          Once you confirm, we lock in your dates. You'll receive confirmation via WhatsApp or email — ready for arrival.
+          Once you confirm, we lock in your dates.
+          You'll receive confirmation via WhatsApp or email —
+          ready for arrival.
         </p>
 
       </div>
@@ -2833,7 +3020,8 @@
         </h3>
 
         <p class="hb-desc">
-          Check in, settle in, and let our team take care of everything else. Your only job is to enjoy the stay.
+          Check in, settle in, and let our team take care of
+          everything else. Your only job is to enjoy the stay.
         </p>
 
       </div>
@@ -2877,9 +3065,9 @@
 </section>
 
 
-<!-- =========================
+<!-- =====================================================
      TIPS
-========================= -->
+===================================================== -->
 
 <section class="sec sd">
 
@@ -2899,7 +3087,6 @@
       </h2>
 
     </div>
-
 
     <div class="orn fi">
 
@@ -2923,7 +3110,10 @@
         </h3>
 
         <p class="td">
-          Weekend availability — especially at The Country Suites and The Country Bay — fills up fast. Book at least 7–10 days ahead for weekends and 4–6 weeks for long weekends and public holidays.
+          Weekend availability — especially at The Country Suites
+          and The Country Bay — fills up fast. Book at least 7–10
+          days ahead for weekends and 4–6 weeks for long weekends
+          and public holidays.
         </p>
 
       </div>
@@ -2940,7 +3130,10 @@
         </h3>
 
         <p class="td">
-          Quieter, more peaceful, and more available. If you can take a day off, a Tuesday–Thursday stay is a completely different — and often better — experience than a crowded Friday night.
+          Quieter, more peaceful, and more available.
+          If you can take a day off, a Tuesday–Thursday stay
+          is a completely different — and often better —
+          experience than a crowded Friday night.
         </p>
 
       </div>
@@ -2957,7 +3150,10 @@
         </h3>
 
         <p class="td">
-          Plan your stay around a Prestige event — especially the New Year Gala — and your resort stay becomes a full experience. Some of our most memorable stays happen on event weekends.
+          Plan your stay around a Prestige event —
+          especially the New Year Gala — and your resort
+          stay becomes a full experience. Some of our most
+          memorable stays happen on event weekends.
         </p>
 
       </div>
@@ -2969,9 +3165,9 @@
 </section>
 
 
-<!-- =========================
+<!-- =====================================================
      CTA
-========================= -->
+===================================================== -->
 
 <section class="cb">
 
@@ -2986,7 +3182,8 @@
     </h2>
 
     <p class="cbs">
-      Three properties. Three experiences. One call to book any of them.
+      Three properties. Three experiences.
+      One call to book any of them.
     </p>
 
     <div class="cbb">
@@ -3023,15 +3220,16 @@
 </section>
 
 
-<!-- =========================
+<!-- =====================================================
      FOOTER
-========================= -->
+===================================================== -->
 
 <footer>
 
   <div class="ct">
 
     <div class="ft">
+
 
       <div>
 
@@ -3048,7 +3246,8 @@
         </p>
 
         <p class="fdesc">
-          Chennai's most trusted holiday membership. 15+ years, 14,000+ members, three resort properties.
+          Chennai's most trusted holiday membership.
+          15+ years, 14,000+ members, three resort properties.
         </p>
 
         <div class="fci">
@@ -3070,7 +3269,6 @@
             info@prestigevacations.in
           </a>
         </div>
-
 
         <div class="fso">
 
@@ -3247,7 +3445,8 @@
             margin-bottom:24px;
           "
         >
-          Ready to book? Our team will confirm availability and lock in your dates within the hour.
+          Ready to book? Our team will confirm availability
+          and lock in your dates within the hour.
         </p>
 
         <a
@@ -3330,7 +3529,9 @@
     <div class="fbot">
 
       <span>
-        © 2025 Prestige Vacations &amp; Clubs. All rights reserved. | Prestige Group of Companies
+        © 2025 Prestige Vacations &amp; Clubs.
+        All rights reserved. |
+        Prestige Group of Companies
       </span>
 
       <div class="fbl">
@@ -3356,56 +3557,51 @@
 </footer>
 
 
-<!-- =========================
-     SCROLL ANIMATION
-========================= -->
+<!-- =====================================================
+     SCROLL SCRIPT
+===================================================== -->
 
 <script>
 
   const n = document.getElementById('mn');
 
   window.addEventListener('scroll', () => {
-
     n.classList.toggle(
       'scrolled',
       window.scrollY > 60
     );
-
   });
 
 
-  document.querySelectorAll('.fi').forEach(f => {
+  document
+    .querySelectorAll('.fi')
+    .forEach(f => {
 
-    new IntersectionObserver(
+      new IntersectionObserver(
+        (entries) => {
 
-      (e) => {
+          entries.forEach(x => {
 
-        e.forEach(x => {
+            if (x.isIntersecting) {
+              x.target.classList.add('vis');
+            }
 
-          if(x.isIntersecting){
+          });
 
-            x.target.classList.add('vis');
+        },
+        {
+          threshold:.1
+        }
+      ).observe(f);
 
-          }
-
-        });
-
-      },
-
-      {
-        threshold:.1
-      }
-
-    ).observe(f);
-
-  });
+    });
 
 </script>
 
 
-<!-- =========================
-     MOBILE NAVIGATION
-========================= -->
+<!-- =====================================================
+     MOBILE NAVIGATION SCRIPT
+===================================================== -->
 
 <script>
 
@@ -3413,17 +3609,13 @@
 
   function ready(fn) {
 
-    if(document.readyState !== 'loading'){
-
+    if (document.readyState !== 'loading') {
       fn();
-
-    }else{
-
+    } else {
       document.addEventListener(
         'DOMContentLoaded',
         fn
       );
-
     }
 
   }
@@ -3433,10 +3625,10 @@
 
     var nav = document.querySelector('nav.nav');
 
-    if(
+    if (
       !nav ||
       nav.querySelector('.mobile-nav-toggle')
-    ){
+    ) {
       return;
     }
 
@@ -3447,7 +3639,8 @@
     toggle.className =
       'mobile-nav-toggle';
 
-    toggle.type = 'button';
+    toggle.type =
+      'button';
 
     toggle.setAttribute(
       'aria-label',
@@ -3483,23 +3676,25 @@
       );
 
 
-    if(list){
+    if (list) {
 
       list
         .querySelectorAll(':scope > li')
-        .forEach(function(item){
+        .forEach(function (item) {
 
           var topLink =
             item.querySelector(':scope > a');
 
-          if(topLink){
+          if (topLink) {
 
             var topClone =
               topLink.cloneNode(true);
 
             topClone.className = '';
 
-            panel.appendChild(topClone);
+            panel.appendChild(
+              topClone
+            );
 
           }
 
@@ -3508,7 +3703,7 @@
             .querySelectorAll(
               '.nav-dropdown a, .nd a'
             )
-            .forEach(function(subLink){
+            .forEach(function (subLink) {
 
               var subClone =
                 subLink.cloneNode(true);
@@ -3516,7 +3711,9 @@
               subClone.className =
                 'mobile-sub-link';
 
-              panel.appendChild(subClone);
+              panel.appendChild(
+                subClone
+              );
 
             });
 
@@ -3531,7 +3728,7 @@
       );
 
 
-    if(cta){
+    if (cta) {
 
       var ctaClone =
         cta.cloneNode(true);
@@ -3539,7 +3736,9 @@
       ctaClone.className =
         'mobile-cta-link';
 
-      panel.appendChild(ctaClone);
+      panel.appendChild(
+        ctaClone
+      );
 
     }
 
@@ -3547,7 +3746,7 @@
     document.body.appendChild(panel);
 
 
-    function setOpen(open){
+    function setOpen(open) {
 
       document.body.classList.toggle(
         'mobile-nav-open',
@@ -3576,7 +3775,7 @@
 
     toggle.addEventListener(
       'click',
-      function(){
+      function () {
 
         setOpen(
           !document.body.classList.contains(
@@ -3590,14 +3789,12 @@
 
     panel.addEventListener(
       'click',
-      function(event){
+      function (event) {
 
-        if(
+        if (
           event.target.closest('a')
-        ){
-
+        ) {
           setOpen(false);
-
         }
 
       }
@@ -3606,12 +3803,10 @@
 
     window.addEventListener(
       'resize',
-      function(){
+      function () {
 
-        if(window.innerWidth > 1100){
-
+        if (window.innerWidth > 1100) {
           setOpen(false);
-
         }
 
       }
@@ -3620,12 +3815,10 @@
 
     document.addEventListener(
       'keydown',
-      function(event){
+      function (event) {
 
-        if(event.key === 'Escape'){
-
+        if (event.key === 'Escape') {
           setOpen(false);
-
         }
 
       }
@@ -3634,12 +3827,12 @@
 
     document
       .querySelectorAll('body *')
-      .forEach(function(el){
+      .forEach(function (el) {
 
-        if(
+        if (
           !el.children.length &&
           el.textContent.trim().length > 2
-        ){
+        ) {
 
           var style =
             window.getComputedStyle(el);
@@ -3647,13 +3840,11 @@
           var opacity =
             parseFloat(style.opacity);
 
-          if(
+          if (
             opacity > 0 &&
             opacity < 0.6
-          ){
-
+          ) {
             el.style.opacity = '0.72';
-
           }
 
         }
@@ -3666,10 +3857,6 @@
 
 </script>
 
-
-<!-- =========================
-     PRICING
-========================= -->
 
 <script src="prestige-pricing.js"></script>
 
