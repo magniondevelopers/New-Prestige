@@ -40,7 +40,38 @@
       overflow-x: hidden;
     }
     a { text-decoration: none; color: inherit; }
-    img { max-width: 100%; display: block; }
+    /* Global image rule: never stretch images when the viewport changes */
+    img {
+      display: block;
+      max-width: 100%;
+      width: auto;
+      height: auto;
+      object-fit: contain;
+    }
+
+    /* Responsive image protection */
+    .story-img {
+      width: 100%;
+      height: auto;
+      aspect-ratio: auto;
+      overflow: hidden;
+    }
+
+    .story-img img {
+      display: block;
+      width: 100%;
+      height: auto;
+      max-width: 100%;
+      object-fit: contain;
+      object-position: center;
+    }
+
+    .nav-logo img {
+      width: 50px;
+      height: auto;
+      max-width: 50px;
+      object-fit: contain;
+    }
     ul { list-style: none; }
 
     /* ─── UTILITY ────────────────────────────────────────── */
@@ -1161,7 +1192,8 @@
       <!-- Image -->
       <div class="story-img-wrap fade-in">
         <div class="story-img">
-          <span class="story-img-label">Prestige Legacy</span>
+          <img src="images/Mask group-3.jpg" alt="Resort Image">
+          <!--<span class="story-img-label">Prestige Legacy</span>-->
         </div>
         <div class="story-year-badge">
           <span class="story-year-num gold-text">15+</span>
