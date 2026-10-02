@@ -40,7 +40,48 @@
       overflow-x: hidden;
     }
     a { text-decoration: none; color: inherit; }
-    img { max-width: 100%; display: block; }
+    img {
+      max-width: 100%;
+      display: block;
+      height: auto;
+      width: auto;
+    }
+
+    /*
+     * RESPONSIVE IMAGE FIX
+     * --------------------
+     * The image containers below use aspect-ratio. Their images must fill
+     * the container without being stretched when the browser is resized.
+     * object-fit: cover preserves the original image proportions and crops
+     * only the overflow instead of distorting the image.
+     */
+    .about-img-placeholder,
+    .property-img,
+    .event-img,
+    .blog-img {
+      overflow: hidden;
+    }
+
+    .about-img-placeholder > img,
+    .property-img > img,
+    .event-img > img,
+    .blog-img > img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      max-width: none;
+      object-fit: cover;
+      object-position: center center;
+      flex: 0 0 auto;
+    }
+
+    /* Keep the navigation logo proportional. */
+    .nav-logo img {
+      width: 50px;
+      height: auto;
+      max-width: 50px;
+      object-fit: contain;
+    }
     ul { list-style: none; }
 
     /* ─── UTILITY ────────────────────────────────────────── */
@@ -1308,9 +1349,10 @@
      NAVIGATION
 ═══════════════════════════════════════════════════════ -->
 <nav class="nav" id="mainNav">
-  <div class="nav-logo">
-    <div class="nav-logo-text gold-text">Prestige</div>
-    <div class="nav-logo-sub">Vacations &amp; Clubs</div>
+   <div class="nav-logo">
+    <img src="prestige group badge.png" alt="Prestige Vacations & Clubs">
+    <!--<div class="nav-logo-text gold-text">Prestige</div>
+    <div class="nav-logo-sub">Vacations &amp; Clubs</div>-->
   </div>
 
   <ul class="nav-links">
@@ -1386,9 +1428,9 @@
     <span class="hero-script">Welcome to</span>
 
     <h1 class="hero-title gold-text">PRESTIGE</h1>
-    <p class="hero-sub">GROUP OF COMPANIES</p>
+    <p class="hero-sub">Group of Companies</p>
 
-    <div class="hero-badge">LIVE A PRESTIGIOUS LIFE</div>
+    <!--<div class="hero-badge">Group of Companies</div> -->
 
     <div class="hero-divider">
       <span><i class="fa-solid fa-diamond"></i></span>
@@ -1446,8 +1488,10 @@
     <div class="about-grid">
 
       <div class="about-img-frame fade-in">
+        
         <div class="about-img-placeholder">
-          <span style="font-style:italic;letter-spacing:2px">Resort Image</span>
+          <img src="images/Mask group-1.jpg" alt="Resort Image">
+          <!--<span style="font-style:italic;letter-spacing:2px">Resort Image</span>-->
         </div>
       </div>
 
@@ -1522,7 +1566,8 @@
       <!-- Property 1 -->
       <div class="property-card fade-in">
         <div class="property-img">
-          <span class="property-img-label">The Country Resort</span>
+          <img src="images/Mask group-2.jpg" alt="counrty resort">
+          <!--<span class="property-img-label">The Country Resort</span>-->
         </div>
         <div class="property-body">
           <div class="property-location">
@@ -1548,7 +1593,8 @@
       <!-- Property 2 -->
       <div class="property-card fade-in fade-in-delay-1">
         <div class="property-img">
-          <span class="property-img-label">The Country Suites</span>
+          <img src="images/Mask group.jpg" alt="Resort Image">
+         <!--<span class="property-img-label">The Country Suites</span>-->
         </div>
         <div class="property-body">
           <div class="property-location">
@@ -1764,7 +1810,8 @@
 
     <div class="events-grid">
       <div class="event-card fade-in">
-        <div class="event-img"><i class="fa-solid fa-champagne-glasses"></i></div>
+        <div class="event-img" >
+           <img src="images/Rectangle 5.jpg" alt="Resort Image"><!--<i class="fa-solid fa-champagne-glasses">--></i></div>
         <div class="event-body">
           <div class="event-date"><i class="fa-regular fa-calendar"></i> New Year 2026</div>
           <h3 class="event-title">New Year Gala Night</h3>
@@ -1774,7 +1821,9 @@
       </div>
 
       <div class="event-card fade-in fade-in-delay-1">
-        <div class="event-img"><i class="fa-solid fa-sun"></i></div>
+        <div class="event-img">
+           <img src="images/Rectangle 7.jpg" alt="Resort Image">
+           <!--<i class="fa-solid fa-sun"></i>--></div>
         <div class="event-body">
           <div class="event-date"><i class="fa-regular fa-calendar"></i> Weekend Events</div>
           <h3 class="event-title">Member Weekend Escapes</h3>
@@ -1784,7 +1833,9 @@
       </div>
 
       <div class="event-card fade-in fade-in-delay-2">
-        <div class="event-img"><i class="fa-solid fa-heart"></i></div>
+        <div class="event-img">
+          <img src="images/Rectangle 6.jpg" alt="Resort Image">
+          <!--<i class="fa-solid fa-heart"></i>--></div>
         <div class="event-body">
           <div class="event-date"><i class="fa-regular fa-calendar"></i> Seasonal Events</div>
           <h3 class="event-title">Seasonal Celebrations</h3>
@@ -1889,7 +1940,9 @@
     <div class="blog-grid">
 
       <div class="blog-card fade-in">
-        <div class="blog-img"><i class="fa-solid fa-image"></i></div>
+        <div class="blog-img">
+          <img src="images/Rectangle 8.jpg" alt="Resort Image">
+          <!--<i class="fa-solid fa-image"></i>--></div>
         <div class="blog-body">
           <div class="blog-cat">Member Stories</div>
           <h3 class="blog-title">The Night We Stopped Rushing and Just… Stayed</h3>
@@ -1902,7 +1955,9 @@
       </div>
 
       <div class="blog-card fade-in fade-in-delay-1">
-        <div class="blog-img"><i class="fa-solid fa-image"></i></div>
+        <div class="blog-img">
+          <img src="images/Rectangle 9.jpg" alt="Resort Image">
+          <!--<i class="fa-solid fa-image"></i>--></div>
         <div class="blog-body">
           <div class="blog-cat">Resort Experience</div>
           <h3 class="blog-title">We Got Married at The Country Resort — Best Decision Ever</h3>
@@ -1915,7 +1970,9 @@
       </div>
 
       <div class="blog-card fade-in fade-in-delay-2">
-        <div class="blog-img"><i class="fa-solid fa-image"></i></div>
+        <div class="blog-img">
+          <img src="images/Rectangle 10.jpg" alt="Resort Image">
+          <!--<i class="fa-solid fa-image"></i>--></div>
         <div class="blog-body">
           <div class="blog-cat">Destination Guide</div>
           <h3 class="blog-title">Best Weekend Getaways from Chennai Under 2 Hours</h3>
