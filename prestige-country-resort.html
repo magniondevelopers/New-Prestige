@@ -146,9 +146,20 @@
     }
     /* large image placeholder full bleed */
     .prop-hero-bg {
-      position: absolute; inset: 0;
-      background: linear-gradient(160deg, #1e1c14 0%, #141210 40%, #0d0c0a 100%);
-      display: flex; align-items: center; justify-content: center;
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      background: #141210;
+    }
+
+    .prop-hero-bg img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+      object-position: center center;
     }
     .prop-hero-bg-label {
       font-family: 'Cormorant Garamond', serif;
@@ -572,6 +583,48 @@
     .fade-in-delay-4 { transition-delay: 0.4s; }
     .fade-in-delay-5 { transition-delay: 0.5s; }
 
+
+    /* ─── RESPONSIVE IMAGE FIT ───────────────────────────── */
+    .overview-img-main,
+    .room-img,
+    .location-map-placeholder {
+      overflow: hidden;
+    }
+
+    .overview-img-main img,
+    .room-img img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+      object-position: center center;
+    }
+
+    .overview-img-main img {
+      aspect-ratio: 4 / 3;
+    }
+
+    .room-img img {
+      aspect-ratio: 16 / 10;
+    }
+
+    .restaurant-grid .overview-img-main img {
+      aspect-ratio: 3 / 4;
+    }
+
+    @media (max-width: 768px) {
+      .prop-hero-bg img {
+        object-position: center center;
+      }
+
+      .overview-img-main img,
+      .room-img img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+
     /* ─── RESPONSIVE ─────────────────────────────────────── */
     @media (max-width: 1024px) {
       .nav { padding: 0 24px; }
@@ -768,9 +821,7 @@
 <!-- ═══ PROPERTY HERO ═══════════════════════════════════ -->
 <section class="prop-hero">
   <div class="prop-hero-bg">
-    <div class="prop-hero-bg-label">
-      Property Image<br>The Country Resort, Mahabalipuram
-    </div>
+    
   </div>
 
   <!-- Info bar top right -->
