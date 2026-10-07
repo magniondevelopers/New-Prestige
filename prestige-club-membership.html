@@ -112,6 +112,86 @@
     @media(max-width:768px){:root{--nav-h:64px;}.nls-wrap,.nc{display:none;}.inc-grid{grid-template-columns:1fr;}.frow{grid-template-columns:1fr;}.ft{grid-template-columns:1fr;}.fseo{display:none;}footer{padding:60px 24px 0;}}
 
 
+    /* RESPONSIVE IMAGE FIX */
+    .intro-grid{
+      display:grid;
+      grid-template-columns:minmax(0,1fr) minmax(0,1fr);
+      gap:clamp(32px,6vw,80px);
+      align-items:center;
+    }
+
+    .image-frame{
+      width:100%;
+      aspect-ratio:4 / 3;
+      overflow:hidden;
+      background:#1a1a17;
+      border:1px solid rgba(217,186,111,.2);
+      position:relative;
+    }
+
+    .image-frame img{
+      display:block;
+      width:100%;
+      height:100%;
+      max-width:100%;
+      object-fit:cover;
+      object-position:center center;
+      border:0;
+      margin:0;
+      padding:0;
+    }
+
+    img{
+      max-width:100%;
+      height:auto;
+    }
+
+    .contact-buttons{
+      display:grid;
+      grid-template-columns:repeat(2,minmax(0,1fr));
+      gap:12px;
+      margin-top:20px;
+    }
+
+    @media (max-width:1024px){
+      .intro-grid{
+        gap:40px;
+      }
+    }
+
+    @media (max-width:768px){
+      .intro-grid{
+        grid-template-columns:1fr;
+        gap:42px;
+      }
+
+      .image-frame{
+        width:100%;
+        aspect-ratio:4 / 3;
+      }
+
+      .image-frame img{
+        width:100%;
+        height:100%;
+        object-fit:cover;
+        object-position:center center;
+      }
+    }
+
+    @media (max-width:480px){
+      .intro-grid{
+        gap:32px;
+      }
+
+      .image-frame{
+        aspect-ratio:4 / 3;
+      }
+
+      .contact-buttons{
+        grid-template-columns:1fr;
+      }
+    }
+
     /* Mobile and compact desktop navigation fix */
     .mobile-nav-toggle {
       display: none;
@@ -253,10 +333,11 @@
 <!-- WHAT IS IT -->
 <section class="sec sd">
   <div class="ct">
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;">
+    <div class="intro-grid">
       <div class="fi">
-        <div style="width:100%;aspect-ratio:4/3;background:linear-gradient(135deg,#252520,#1a1a17,#252520);border:1px solid rgba(217,186,111,.2);display:flex;align-items:center;justify-content:center;">
-          <span style="font-family:'Cormorant Garamond',serif;font-size:15px;font-style:italic;color:var(--gold-bronze);letter-spacing:2px;">Club Membership Image</span>
+        <div class="image-frame">
+          <img src="images/Prestige-club-membership.html.png" alt="Prestige Club Membership resort experience" loading="lazy" decoding="async">
+          <!--<span style="font-family:'Cormorant Garamond',serif;font-size:15px;font-style:italic;color:var(--gold-bronze);letter-spacing:2px;">Club Membership Image</span>-->
         </div>
       </div>
       <div class="fi d1">
@@ -373,7 +454,7 @@
         <i class="fa-solid fa-paper-plane"></i> Submit Enquiry
       </button>
       <p style="font-size:11px;color:var(--silver);opacity:.45;text-align:center;margin-top:14px;">Our team will contact you within 24 hours. All enquiries are private and confidential.</p>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:20px;">
+      <div class="contact-buttons">
         <a href="tel:18001213457" class="btn bg" style="justify-content:center;font-size:11px;padding:13px;"><i class="fa-solid fa-phone"></i> 1800 121 3457</a>
         <a href="mailto:info@prestigevacations.in" class="btn bo" style="justify-content:center;font-size:11px;padding:13px;"><i class="fa-solid fa-envelope"></i> Email Us</a>
       </div>
